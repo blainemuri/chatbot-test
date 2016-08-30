@@ -4,6 +4,9 @@ import json
 import thesaurus
 from watson_developer_cloud import ConversationV1
 
+#Connect to Watson Conversation
+#Get response back for dialog
+
 conversation = ConversationV1(
   username='b42cc929-33b8-462c-9cf7-d42cba172c56',
   password='CXMTz6p7nv2w',

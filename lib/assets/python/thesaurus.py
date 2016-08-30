@@ -4,6 +4,8 @@ import lxml.etree as etree
 from urllib2 import Request, urlopen, URLError
 from xml.dom import minidom
 
+#does not include dicitonary.com as thesaurus option.
+
 def thesaurus(userWord, file):
 	entitiy_name = ""
 	num_entities = 0

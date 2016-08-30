@@ -4,6 +4,8 @@ import lxml.etree as etree
 from urllib2 import Request, urlopen, URLError
 from xml.dom import minidom
 
+#module to access third party thesaurus to get synonyms
+
 def thesaurus():
 	file_name = time.strftime("%c")
 	thesaurus_type = raw_input("Would you like to use dictionary.com (0) or bighugelabs.com (1)? ")
