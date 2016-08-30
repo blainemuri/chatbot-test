@@ -15,7 +15,7 @@
 //= require turbolinks
 //= require react
 //= require react_ujs
-
+//= require typed.min
 
 // This stays at the end of the file
 require('./components');

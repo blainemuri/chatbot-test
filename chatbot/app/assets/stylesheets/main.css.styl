@@ -1,0 +1,909 @@
+@import 'params.styl'
+
+/* Stylus declarations go here */
+@font-face
+  font-family originate-circular-medium
+  src url("/assets/Originate_Brand_Fonts/Circular/CircularPro-Medium.otf")
+
+@font-face
+  font-family originate-circular-book
+  src url("/assets/Originate_Brand_Fonts/Circular/CircularPro-Book.otf")
+
+@font-face
+  font-family originate-miller
+  src url("/assets/Originate_Brand_Fonts/Miller\ Display\ Family/Font\ Bureau\ -\ MillerDisplay-Light.otf")
+
+html, body
+  width 100%
+  height 100%
+  padding 0
+  margin 0
+  font-family originate-circular-medium
+
+iframe
+  border 0
+
+a, a:link, a:visited
+  text-decoration none
+
+input
+  line-height space*2
+  border 1px solid light-gray
+  outline none
+  transition all .25s ease-in-out
+  padding-left space*.5
+  padding-right 0
+  box-sizing border-box
+  border none
+  border-bottom 1px solid medium-gray
+  margin 0
+  &:focus
+    padding-left space
+
+h3
+  color dark-gray
+  padding 0
+  margin 0
+  vertical-align middle
+
+/* Container Data */
+
+.home-container
+  padding-left main-padding
+  padding-right main-padding
+  transition all .5s ease
+  max-width 1024px
+  margin 0 auto
+  @media only screen and (max-width: 1200px)
+    padding-right "calc(%s / 2)" % main-padding
+    padding-left "calc(%s / 2)" % main-padding
+  @media only screen and (max-width: 768px)
+    padding-right 0
+    padding-left 0
+
+.page-title
+  padding space*2
+  padding-top 0
+  font-size space*2.2
+
+.content-title
+  font-size space*1.6
+  text-align left
+
+.content-subtitle
+  font-size space*1.2
+  text-align left
+
+.content-centered
+  top 0
+  padding-top space*2.5
+
+.career-tile
+  position relative
+  width "calc(100% - (%s * 20))" % space
+  height space*15
+  float left
+  padding-left space*2
+  padding-right space*2
+  text-align left
+  @media only screen and (max-width: 768px)
+    width 100%
+
+.bottom
+  position absolute
+  bottom 0
+
+.career-btn
+  float left
+  width space*8
+  text-align center
+  height space*2.5
+  line-height space*2.5
+
+/* End Container Data*/
+
+/* Header Data */
+
+.banner
+  line-height space*6
+  width 100%
+  text-align center
+  background-color very-light-gray
+  font-size space*1.3
+  padding-left main-padding
+  padding-right main-padding
+  @media screen and (max-width: 1024px)
+    padding-left 0
+    padding-right 0
+
+.banner-title
+  display inline-block
+  margin-right - space*8
+
+.social-icon
+  float right
+  display inline-block
+  height space*3
+
+.icon-img
+  height space*2
+  margin space
+
+.custom-header
+  position relative
+  width "calc(100% - (2 * ))" % main-padding
+  box-sizing border-box
+  height header-height
+  line-height header-height
+  padding-left space
+  text-align center
+  font-size space*2
+  margin-left main-padding+space
+  margin-right main-padding+space
+  border-bottom 1px solid medium-gray
+
+.top-logo
+  height space*5
+  margin-bottom space
+
+.header
+  height 100%
+  line-height 100%
+  padding-top space*6
+
+.header-sub-title
+  font-weight:100;
+  font-size space*1.5
+
+.header-links
+  position fixed
+  z-index 3
+  text-align right
+  color white
+  height header-height
+  line-height header-height
+
+.vertical-bar
+  display inline
+  width 0px
+  height space*4
+  border-left 1px solid off-black
+
+.header-link
+  display inline-block
+  width space*10
+  text-align center
+  font-size space*1.5
+  background-color white
+  color off-black
+  -webkit-transition all 0.25s ease-in-out
+  -o-transition all 0.25s ease-in-out
+  transition all 0.25s ease-in-out
+  cursor pointer
+  &:hover, &:focus
+    background-color dark-gray
+    color white
+
+.header-menu
+  position fixed
+  width space*8
+  font-size space*1.5
+  cursor pointer
+  margin-left "calc(100% - (%s * 8))" % space
+  padding-right space-x-large
+  line-height header-height
+
+.menu-container
+  width 100%
+  height header-height
+  margin-top - space*2.5
+  margin-bottom - space*7
+
+.menu-option
+  text-decoration none
+  display inline-block
+  width "calc((100% / 6) - (%s))" % space
+  height space*2.5
+  line-height space*2.5
+  padding 0
+  box-sizing border-box
+  margin "calc(%s / 2)" % space
+  margin-bottom 0
+  border 1px solid medium-gray
+  &:link, &:hover
+    color black
+  &.current
+    background-color very-light-gray
+
+.menu-option-text
+  color black
+
+// .header-links.show-menu + .tile-container
+//   margin-top header-height*2
+
+.header-links.show-menu .header-menu .menu-caret
+  -webkit-transform: rotate(180deg);
+  -moz-transform: rotate(180deg);
+  -o-transform: rotate(180deg);
+  -ms-transform: rotate(180deg);
+  transform: rotate(180deg);
+
+// .tile-container.show-menu + .menu-items
+//   margin-top header-height
+
+.nav-bar-slide
+  position fixed
+  overflow-x auto
+  opacity .85
+  top 0
+  left 0
+  text-align center
+  line-height nav-height
+  vertical-align:middle;
+  width 100%
+  margin-top - space*5
+  background-color white
+  z-index: 5
+  -webkit-transition all 0.4s ease-in-out
+  -o-transition all 0.4s ease-in-out
+  transition all 0.4s ease-in-out
+
+.nav-inner
+  min-width space*71
+  position relative
+  overflow-x scroll
+  margin auto
+  left 0
+  top 0
+
+.show-nav
+  margin-top 0
+
+.logo-small
+  height space*2
+  margin-right - space*6
+  margin-top space*1
+
+.logo-o
+  height space*3
+  margin-top space*8
+  margin-bottom space*2
+
+.down-arrow
+  height space*2
+
+.small-header
+  height space*4
+  line-height space*4
+  text-align center
+  vertical-align middle
+
+.contact-button
+  width space*6
+
+.sub-header
+  width 100%
+  height space*15
+  line-height space*14
+  vertical-align middle
+  text-align center
+  padding-left space*10
+  padding-right space*10
+  font-size space*1.7
+  @media only screen and (max-width: 1024px)
+    padding 0
+
+.sub-header-text
+  display inline-block
+  vertical-align middle
+  line-height normal
+
+/* End Header Data */
+
+/* Tile Data */
+
+.padded-container
+  padding-top space*3
+  padding-bottom space*3
+  overflow auto
+  text-align center
+  &.top-0
+    padding-top 0
+
+.padded-container-small
+  padding-top space*1.5
+  padding-bottom space*1.5
+  overflow auto
+  text-align center
+
+.tile-tall > .fullscreen-bg > .bg-gif
+  max-height 100%
+
+.nav-tile
+  position relative
+  display block
+  float left
+  width calc((100% / 3) - 1.2rem)
+  margin calc(1.2rem / 2)
+  border 2px solid medium-gray
+
+.nav-tile-inner
+  display block
+  padding-top "calc(50% - (%s * .75))" % space
+  padding-bottom "calc(50% - (%s * .75))" % space
+  vertical-align middle
+  text-align center
+  font-size space*1.5
+  -webkit-transition all 0.25s ease-in-out
+  -o-transition all 0.25s ease-in-out
+  transition all 0.25s ease-in-out
+  &:hover
+    background-color medium-gray
+    color white
+
+.nav-tile-icon
+  height space*3
+
+/*-------------------Screen Media Queries--------------------*/
+
+/* ----------- iPhone 4 and 4S ----------- */
+
+/* Portrait and Landscape */
+// @media only screen and (min-device-width: 320px) and (max-device-width: 480px)
+//   @media only screen and (-webkit-min-device-pixel-ratio: 2)
+//     .column-half, .column-third, .column-two-thirds
+//       margin 0
+//       height wrap-content
+//       width 100%
+//       float none
+//     .tile-half, .tile-third, .tile-two-thirds, .tile-fourth, .tile-three-fourths,
+//     .tile-full, .tile-tall
+//       width 100vw
+//       margin space 0 space 0
+//     .tile-full
+//       min-height calc((9 / 21) * 100vw)
+//     .tile-third, .tile-half
+//       min-height calc((3 / 4) * 100vw)
+//     .tile-three-fourths, .tile-two-thirds
+//       min-height calc((9 / 16) * 100vw)
+//     .tile-fourth
+//       min-height 100vw
+//     //Adds a margin to the top of the first element
+//     .first-element
+//       margin-top space*2
+//
+// /* Portrait */
+// @media only screen and (min-device-width: 320px) and (max-device-width: 480px)
+//   @media only screen and (-webkit-min-device-pixel-ratio: 2)
+//     @media only screen and (orientation: portrait)
+//       .column-half, .column-third, .column-two-thirds
+//         margin 0
+//         height wrap-content
+//         width 100%
+//         float none
+//       .tile-half, .tile-third, .tile-two-thirds, .tile-fourth, .tile-three-fourths,
+//       .tile-full, .tile-tall
+//         width 100vw
+//         margin space 0 space 0
+//       .tile-full
+//         min-height calc((9 / 21) * 100vw)
+//       .tile-third, .tile-half
+//         min-height calc((3 / 4) * 100vw)
+//       .tile-three-fourths, .tile-two-thirds
+//         min-height calc((9 / 16) * 100vw)
+//       .tile-fourth
+//         min-height 100vw
+//       //Adds a margin to the top of the first element
+//       .first-element
+//         margin-top space*2
+//
+// /* Landscape */
+// @media only screen and (min-device-width: 320px) and (max-device-width: 480px)
+//   @media only screen and (-webkit-min-device-pixel-ratio: 2)
+//     @media only screen and (orientation: landscape)
+//       .column-half, .column-third, .column-two-thirds
+//         margin 0
+//         height wrap-content
+//         width 100%
+//         float none
+//       .tile-half, .tile-third, .tile-two-thirds, .tile-fourth, .tile-three-fourths,
+//       .tile-full, .tile-tall
+//         width 100vw
+//         margin space 0 space 0
+//       .tile-full
+//         min-height calc((9 / 21) * 100vw)
+//       .tile-third, .tile-half
+//         min-height calc((3 / 4) * 100vw)
+//       .tile-three-fourths, .tile-two-thirds
+//         min-height calc((9 / 16) * 100vw)
+//       .tile-fourth
+//         min-height 100vw
+//       //Adds a margin to the top of the first element
+//       .first-element
+//         margin-top space*2
+//
+//
+// /* ----------- iPhone 5 and 5S ----------- */
+//
+// /* Portrait and Landscape */
+// @media only screen and (min-device-width: 320px) and (max-device-width: 568px)
+//   @media only screen and (-webkit-min-device-pixel-ratio: 2)
+//     .column-half, .column-third, .column-two-thirds
+//       margin 0
+//       height wrap-content
+//       width 100%
+//       float none
+//     .tile-half, .tile-third, .tile-two-thirds, .tile-fourth, .tile-three-fourths,
+//     .tile-full, .tile-tall
+//       width 100vw
+//       margin space 0 space 0
+//     .tile-full
+//       min-height calc((9 / 21) * 100vw)
+//     .tile-third, .tile-half
+//       min-height calc((3 / 4) * 100vw)
+//     .tile-three-fourths, .tile-two-thirds
+//       min-height calc((9 / 16) * 100vw)
+//     .tile-fourth
+//       min-height 100vw
+//     //Adds a margin to the top of the first element
+//     .first-element
+//       margin-top space*2
+//
+//
+// /* Portrait */
+// @media only screen and (min-device-width: 320px) and (max-device-width: 568px)
+//   @media only screen and (-webkit-min-device-pixel-ratio: 2)
+//     @media only screen and (orientation: portrait)
+//       //Not necessary now
+//
+//
+// /* Landscape */
+// @media only screen and (min-device-width: 320px) and (max-device-width: 568px)
+//   @media only screen and (-webkit-min-device-pixel-ratio: 2)
+//     @media only screen and (orientation: landscape)
+//       //Not necessary now
+//
+//
+// /* ----------- iPhone 6 ----------- */
+//
+// /* Portrait and Landscape */
+// @media only screen and (min-device-width: 375px) and (max-device-width: 667px)
+//   @media only screen and (-webkit-min-device-pixel-ratio: 2)
+//     .column-half, .column-third, .column-two-thirds
+//       margin 0
+//       height wrap-content
+//       width 100%
+//       float none
+//     .tile-half, .tile-third, .tile-two-thirds, .tile-fourth, .tile-three-fourths,
+//     .tile-full, .tile-tall
+//       width 100vw
+//       margin space 0 space 0
+//     .tile-full
+//       min-height calc((9 / 21) * 100vw)
+//     .tile-third, .tile-half
+//       min-height calc((3 / 4) * 100vw)
+//     .tile-three-fourths, .tile-two-thirds
+//       min-height calc((9 / 16) * 100vw)
+//     .tile-fourth
+//       min-height 100vw
+//     //Adds a margin to the top of the first element
+//     .first-element
+//       margin-top space*2
+//
+//
+// /* Portrait */
+// @media only screen and (min-device-width: 375px) and (max-device-width: 667px)
+//   @media only screen and (-webkit-min-device-pixel-ratio: 2)
+//     @media only screen and (orientation: portrait)
+//       .column-half, .column-third, .column-two-thirds
+//         margin 0
+//         height wrap-content
+//         width 100%
+//         float none
+//       .tile-half, .tile-third, .tile-two-thirds, .tile-fourth, .tile-three-fourths,
+//       .tile-full, .tile-tall
+//         width 100vw
+//         margin space 0 space 0
+//       .tile-full
+//         min-height calc((9 / 21) * 100vw)
+//       .tile-third, .tile-half
+//         min-height calc((3 / 4) * 100vw)
+//       .tile-three-fourths, .tile-two-thirds
+//         min-height calc((9 / 16) * 100vw)
+//       .tile-fourth
+//         min-height 100vw
+//       //Adds a margin to the top of the first element
+//       .first-element
+//         margin-top space*2
+//
+//
+// /* Landscape */
+// @media only screen and (min-device-width: 375px) and (max-device-width: 667px)
+//   @media only screen and (-webkit-min-device-pixel-ratio: 2)
+//     @media only screen and (orientation: landscape)
+//       .column-half, .column-third, .column-two-thirds
+//         margin 0
+//         height wrap-content
+//         width 100%
+//         float none
+//       .tile-half, .tile-third, .tile-two-thirds, .tile-fourth, .tile-three-fourths,
+//       .tile-full, .tile-tall
+//         width 100vw
+//         margin space 0 space 0
+//       .tile-full
+//         min-height calc((9 / 21) * 100vw)
+//       .tile-third, .tile-half
+//         min-height calc((3 / 4) * 100vw)
+//       .tile-three-fourths, .tile-two-thirds
+//         min-height calc((9 / 16) * 100vw)
+//       .tile-fourth
+//         min-height 100vw
+//       //Adds a margin to the top of the first element
+//       .first-element
+//         margin-top space*2
+//
+//
+// /* ----------- iPhone 6+ ----------- */
+//
+// /* Portrait and Landscape */
+// @media only screen and (min-device-width: 414px) and (max-device-width: 736px)
+//   @media only screen and (-webkit-min-device-pixel-ratio: 3)
+//     .column-half, .column-third, .column-two-thirds
+//       margin 0
+//       height wrap-content
+//       width 100%
+//       float none
+//     .tile-half, .tile-third, .tile-two-thirds, .tile-fourth, .tile-three-fourths,
+//     .tile-full, .tile-tall
+//       width 100vw
+//       margin space 0 space 0
+//     .tile-full
+//       min-height calc((9 / 21) * 100vw)
+//     .tile-third, .tile-half
+//       min-height calc((3 / 4) * 100vw)
+//     .tile-three-fourths, .tile-two-thirds
+//       min-height calc((9 / 16) * 100vw)
+//     .tile-fourth
+//       min-height 100vw
+//     //Adds a margin to the top of the first element
+//     .first-element
+//       margin-top space*2
+//
+//
+// /* Portrait */
+// @media only screen and (min-device-width: 414px) and (max-device-width: 736px)
+//   @media only screen and (-webkit-min-device-pixel-ratio: 3)
+//     @media only screen and (orientation: portrait)
+//       .column-half, .column-third, .column-two-thirds
+//         margin 0
+//         height wrap-content
+//         width 100%
+//         float none
+//       .tile-half, .tile-third, .tile-two-thirds, .tile-fourth, .tile-three-fourths,
+//       .tile-full, .tile-tall
+//         width 100vw
+//         margin space 0 space 0
+//       .tile-full
+//         min-height calc((9 / 21) * 100vw)
+//       .tile-third, .tile-half
+//         min-height calc((3 / 4) * 100vw)
+//       .tile-three-fourths, .tile-two-thirds
+//         min-height calc((9 / 16) * 100vw)
+//       .tile-fourth
+//         min-height 100vw
+//       //Adds a margin to the top of the first element
+//       .first-element
+//         margin-top space*2
+//
+//
+// /* Landscape */
+// @media only screen and (min-device-width: 414px) and (max-device-width: 736px)
+//   @media only screen and (-webkit-min-device-pixel-ratio: 3)
+//     @media only screen and (orientation: landscape)
+//       .column-half, .column-third, .column-two-thirds
+//         margin 0
+//         height wrap-content
+//         width 100%
+//         float none
+//       .tile-half, .tile-third, .tile-two-thirds, .tile-fourth, .tile-three-fourths,
+//       .tile-full, .tile-tall
+//         width 100vw
+//         margin space 0 space 0
+//       .tile-full
+//         min-height calc((9 / 21) * 100vw)
+//       .tile-third, .tile-half
+//         min-height calc((3 / 4) * 100vw)
+//       .tile-three-fourths, .tile-two-thirds
+//         min-height calc((9 / 16) * 100vw)
+//       .tile-fourth
+//         min-height 100vw
+//       //Adds a margin to the top of the first element
+//       .first-element
+//         margin-top space*2
+//
+//
+// /* ----------- Galaxy S3 ----------- */
+//
+// /* Portrait and Landscape */
+// @media only screen and (device-width: 320px) and (device-height: 640px)
+//   @media only screen and (-webkit-device-pixel-ratio: 2)
+//     .column-half, .column-third, .column-two-thirds
+//       margin 0
+//       height wrap-content
+//       width 100%
+//       float none
+//     .tile-half, .tile-third, .tile-two-thirds, .tile-fourth, .tile-three-fourths,
+//     .tile-full, .tile-tall
+//       width 100vw
+//       margin space 0 space 0
+//     .tile-full
+//       min-height calc((9 / 21) * 100vw)
+//     .tile-third, .tile-half
+//       min-height calc((3 / 4) * 100vw)
+//     .tile-three-fourths, .tile-two-thirds
+//       min-height calc((9 / 16) * 100vw)
+//     .tile-fourth
+//       min-height 100vw
+//     //Adds a margin to the top of the first element
+//     .first-element
+//       margin-top space*2
+//
+// /* Portrait */
+// @media only screen and (device-width: 320px) and (device-height: 640px)
+//   @media only screen and (-webkit-device-pixel-ratio: 2)
+//     @media only screen and (orientation: portrait)
+//       //Nothing to do
+//
+// /* Landscape */
+// @media only screen and (device-width: 320px) and (device-height: 640px)
+//   @media only screen and (-webkit-device-pixel-ratio: 2)
+//     @media only screen and (orientation: landscape)
+//       //Nothing to do
+//
+// /* ----------- Galaxy S4 ----------- */
+//
+// /* Portrait and Landscape */
+// @media only screen and (device-width: 320px) and (device-height: 640px)
+//   @media only screen and (-webkit-device-pixel-ratio: 3)
+//     .column-half, .column-third, .column-two-thirds
+//       margin 0
+//       height wrap-content
+//       width 100%
+//       float none
+//     .tile-half, .tile-third, .tile-two-thirds, .tile-fourth, .tile-three-fourths,
+//     .tile-full, .tile-tall
+//       width 100vw
+//       margin space 0 space 0
+//     .tile-full
+//       min-height calc((9 / 21) * 100vw)
+//     .tile-third, .tile-half
+//       min-height calc((3 / 4) * 100vw)
+//     .tile-three-fourths, .tile-two-thirds
+//       min-height calc((9 / 16) * 100vw)
+//     .tile-fourth
+//       min-height 100vw
+//     //Adds a margin to the top of the first element
+//     .first-element
+//       margin-top space*2
+//
+// /* Portrait */
+// @media only screen and (device-width: 320px) and (device-height: 640px)
+//   @media only screen and (-webkit-device-pixel-ratio: 3)
+//     @media only screen and (orientation: portrait)
+//       //Nothing to do
+//
+// /* Landscape */
+// @media only screen and (device-width: 320px) and (device-height: 640px)
+//   @media only screen and (-webkit-device-pixel-ratio: 3)
+//     @media only screen and (orientation: landscape)
+//       //Nothing to do
+//
+// /* ----------- Galaxy S5 ----------- */
+//
+// /* Portrait and Landscape */
+// @media only screen and (device-width: 360px) and (device-height: 640px)
+//   @media only screen and (-webkit-device-pixel-ratio: 3)
+//     .column-half, .column-third, .column-two-thirds
+//       margin 0
+//       height wrap-content
+//       width 100%
+//       float none
+//     .tile-half, .tile-third, .tile-two-thirds, .tile-fourth, .tile-three-fourths,
+//     .tile-full, .tile-tall
+//       width 100vw
+//       margin space 0 space 0
+//     .tile-full
+//       min-height calc((9 / 21) * 100vw)
+//     .tile-third, .tile-half
+//       min-height calc((3 / 4) * 100vw)
+//     .tile-three-fourths, .tile-two-thirds
+//       min-height calc((9 / 16) * 100vw)
+//     .tile-fourth
+//       min-height 100vw
+//     //Adds a margin to the top of the first element
+//     .first-element
+//       margin-top space*2
+//
+// /* Portrait */
+// @media only screen and (device-width: 360px) and (device-height: 640px)
+//   @media only screen and (-webkit-device-pixel-ratio: 3)
+//     @media only screen and (orientation: portrait)
+//       //Nothing to do
+//
+// /* Landscape */
+// @media only screen and (device-width: 360px) and (device-height: 640px)
+//   @media only screen and (-webkit-device-pixel-ratio: 3)
+//     @media only screen and (orientation: landscape)
+//       //Nothing to do
+//
+// /* ----------- HTC One ----------- */
+//
+// /* Portrait and Landscape */
+// @media only screen and (device-width: 360px) and (device-height: 640px)
+//   @media only screen and (-webkit-device-pixel-ratio: 3)
+//     .column-half, .column-third, .column-two-thirds
+//       margin 0
+//       height wrap-content
+//       width 100%
+//       float none
+//     .tile-half, .tile-third, .tile-two-thirds, .tile-fourth, .tile-three-fourths,
+//     .tile-full, .tile-tall
+//       width 100vw
+//       margin space 0 space 0
+//     .tile-full
+//       min-height calc((9 / 21) * 100vw)
+//     .tile-third, .tile-half
+//       min-height calc((3 / 4) * 100vw)
+//     .tile-three-fourths, .tile-two-thirds
+//       min-height calc((9 / 16) * 100vw)
+//     .tile-fourth
+//       min-height 100vw
+//     //Adds a margin to the top of the first element
+//     .first-element
+//       margin-top space*2
+//
+// /* Portrait */
+// @media only screen and (device-width: 360px) and (device-height: 640px)
+//   @media only screen and (-webkit-device-pixel-ratio: 3)
+//     @media only screen and (orientation: portrait)
+//       //Nothing to do
+//
+// /* Landscape */
+// @media only screen and (device-width: 360px) and (device-height: 640px)
+//   @media only screen and (-webkit-device-pixel-ratio: 3)
+//     @media only screen and (orientation: landscape)
+//       //Nothing to do
+//
+
+
+/*------------------End Proportional Tiles----------------*/
+
+.last-element
+  margin-bottom space*2
+
+/* End Tile Data */
+
+/* Footer Data */
+
+.footer-container
+  display block
+  position relative
+  width "calc(100% - (%s * 2))" % space
+  height space*6
+  text-align center
+  line-height space*6
+  vertical-align middle
+  padding-bottom space
+  margin space
+  cursor:default;
+  font-size space*2
+  border-top 1px solid medium-gray
+  &:hover
+    box-shadow: none;
+
+/* End Footer Data */
+
+/* Finishing CSS Attributes */
+
+.white
+  color white
+
+.padded-1
+  position absolute
+  width 100%
+  height 100%
+  padding space*1
+  box-sizing border-box
+
+.padded-2
+  padding space*2
+  box-sizing border-box
+
+.padded-3
+  padding space*3
+  box-sizing border-box
+
+.clickable
+  cursor pointer
+
+.text-right
+  text-align right
+
+.follow-banner
+  font-size space*2.2
+  height space*12
+  line-height space*12
+  vertical-align middle
+  background-color off-black
+  color off-black
+
+.follow-title
+  color white
+  float left
+  margin-left space*2
+  font-size space*2.2
+  margin-right space*3
+
+.follow-input
+  width space*25
+  border 1px solid light-gray
+  height space*3
+  font-size space*2
+  float right
+  padding space
+  margin-top space*4.5
+
+.subscribe-outer
+  margin-right space*2
+
+.follow-sub
+  background-color dark-gray
+  float right
+  color white
+  height space*3
+  line-height space*3
+  margin-top space*4.5
+  padding-left space*2
+  padding-right space*2
+
+.left
+  float left
+
+.right
+  float right
+
+.white-bg
+  background-color white
+
+.black-bg
+  background-color black
+  color white
+
+.divider
+  border-bottom 2px solid medium-gray
+
+.centered-content
+  text-align center
+  vertical-align middle
+  line-height 100%
+
+.full-width
+  width 100%
+
+.full-height
+  height 100%
+
+.padding-bottom
+  padding-bottom space
+
+.border
+  border 1px solid medium-gray
+
+.hidden
+  visibility hidden
+  padding 0
+  margin 0
+  height 0
+  width 0
+
+/* End Finishing CSS Attributes*/

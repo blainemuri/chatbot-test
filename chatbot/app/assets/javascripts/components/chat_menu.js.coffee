@@ -8,7 +8,7 @@ React = require 'react'
     e.preventDefault()
     @setState active: link
 
-  goToLogin: -> window.location.href = '../chatbot'
+  goToLogin: -> window.location.href = '../'
 
   render404: -> window.location.href = '../404'
 
