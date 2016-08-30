@@ -1,0 +1,7 @@
+<%= javascript_include_tag "http://cdnjs.cloudflare.com/ajax/libs/gsap/1.19.0/TweenMax.min.js" %>
+<%= react_component 'ChatMenu',
+  {active:'history', chatbot:asset_path('chatbot.png')} %>
+<%= react_component 'ChatLog', {
+  chatbot:asset_path('chatbot.png'),
+  profile:asset_path('git.png')
+  } %>

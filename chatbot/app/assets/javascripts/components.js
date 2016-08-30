@@ -1,0 +1,9 @@
+window.Bot = require('./components/bot');
+window.BotMessage = require('./components/bot_message');
+window.Chatbot = require('./components/chatbot');
+window.ChatLog = require('./components/chat_log');
+window.ChatLogin = require('./components/chat_login');
+window.ChatMenu = require('./components/chat_menu');
+window.ChatStats = require('./components/chat_stats');
+window.LogTile = require('./components/log_tile');
+window.UserMessage = require('./components/user_message');
