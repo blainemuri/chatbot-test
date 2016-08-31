@@ -1,7 +1,5 @@
-import time
-import web
+import sys
 import json
-import thesaurus
 from watson_developer_cloud import ConversationV1
 
 #Connect to Watson Conversation
@@ -14,55 +12,66 @@ conversation = ConversationV1(
 )
 workspace_id = 'bcee86e6-d69c-4eb9-be40-a3ce769450df'
 context = {}
+watson_response = {}
+user_input = ''
 
-file = open('docs/logs.txt', 'a')
-file.write("Logs Date & Time: " + time.strftime("%c") + '\n')
-
+#Get initial response from Watson
 initial_request = conversation.message(
         workspace_id = workspace_id,
         message_input = {'text': ''},
         context = context
 )
-watson_req = {}
 
+#Use context from initial response
 context = initial_request["context"]
 
-urls = (
-  '/hello', 'Index'
-)
+user_input = sys.argv[1]
 
-app = web.application(urls, globals())
+watson_response =  conversation.message(
+        workspace_id = workspace_id,
+        message_input = {'text': user_input}
+        context = context
+    )
 
-render = web.template.render('templates/', base="layout")
+#Do something with the response (in JSON format)
+return watson_response
 
-file_name = time.strftime("%c")
-path_name = 'docs/' + file_name + '.txt'
-file = open(path_name, 'w')
-
-class Index(object):
-    def GET(self):
-        return render.hello_form()
-
-    def POST(self):
-        form = web.input(input="Hello")
-        userInput = "%s" % (form.input)
-
-        file.write("Input: " + userInput + '\n')
-
-        watson_req = conversation.message(
-            workspace_id = workspace_id,
-            message_input = {'text': userInput},
-            context = context
-        )
-
-        index = 0
-        checkString = watson_req["intents"][0]["intent"]
-        if(checkString == "show_pleasure" or checkString == "bad_chips" or checkString == "find_nutrition"):
-            index = 1
-
-        file.write("Output: " + json.dumps(watson_req["output"]["text"][index]) + '\n')
-        return render.index(output = json.dumps(watson_req["output"]["text"][index]))
-
-if __name__ == "__main__":
-    app.run()
-    file.close()
+# Example Response:
+# {
+#   "input": {
+#     "text": "Turn on the lights"
+#   },
+#   "alternate_intents": false,
+#   "context": {
+#     "conversation_id": "f1ab5f76-f41b-47b4-a8dc-e1c32b925b79",
+#     "system": {
+#       "dialog_stack": [
+#         "root"
+#       ],
+#       "dialog_turn_counter": 1,
+#       "dialog_request_counter": 1
+#     },
+#     "defaultCounter": 0
+#   },
+#   "entities": [
+#     {
+#       "entity": "appliance",
+#       "location": [12, 18],
+#       "value": "light"
+#     }
+#   ],
+#   "intents": [
+#     {
+#       "intent": "turn_on",
+#       "confidence": 0.8362587462307721
+#     }
+#   ],
+#   "output": {
+#     "text": [
+#       "Hi. It looks like a nice drive today. What would you like me to do?"
+#     ],
+#     "nodes_visited": [
+#       "node_1_1467221909631"
+#     ]
+#   }
+# }
