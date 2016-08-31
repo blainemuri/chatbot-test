@@ -13,7 +13,7 @@ conversation = ConversationV1(
 workspace_id = 'bcee86e6-d69c-4eb9-be40-a3ce769450df'
 context = {}
 watson_response = {}
-user_input = ''
+user_input = sys.argv[1]
 
 #Get initial response from Watson
 initial_request = conversation.message(
@@ -29,12 +29,12 @@ user_input = sys.argv[1]
 
 watson_response =  conversation.message(
         workspace_id = workspace_id,
-        message_input = {'text': user_input}
+        message_input = {'text': user_input},
         context = context
     )
 
 #Do something with the response (in JSON format)
-return watson_response
+print watson_response
 
 # Example Response:
 # {
