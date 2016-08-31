@@ -10,7 +10,7 @@ React = require 'react'
     e.preventDefault()
     $.ajax
       url: '/bot'
-      data: {'query': {'input': {'text': @state.text}}}
+      data: {'query': @state.text}
       method: 'POST'
     .done (response) =>
       @setState text: ""
