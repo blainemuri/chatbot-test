@@ -34,7 +34,7 @@ watson_response =  conversation.message(
     )
 
 #Do something with the response (in JSON format)
-print watson_response
+print (json.dumps(watson_response, indent=2))
 
 # Example Response:
 # {
