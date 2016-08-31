@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
 
-  get 'bot' => 'chatbot#bot'
+  get 'bot', to: 'chatbot#bot'
+
+  post 'bot', to: 'chatbot#query'
 
   root 'chatbot#login'
   # The priority is based upon order of creation: first created -> highest priority.
