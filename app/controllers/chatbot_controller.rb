@@ -1,6 +1,7 @@
 class ChatbotController < ApplicationController
   def ask_watson(query)
-    response = `python /lib/assets/python/app.py`
+    response = `python lib/assets/python/app.py #{query}`
+    # p is short for puts
     p response
   end
 
@@ -10,3 +11,5 @@ class ChatbotController < ApplicationController
     render :bot
   end
 end
+
+# python /lib/assets/python/app.py
