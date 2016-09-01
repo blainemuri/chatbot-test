@@ -4,7 +4,6 @@ class CreateComments < ActiveRecord::Migration
       t.string :user
       t.string :text
 
-      t.belongs_to :chat
       t.timestamps null: false
     end
   end
