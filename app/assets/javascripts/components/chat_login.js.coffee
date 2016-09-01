@@ -16,6 +16,11 @@ passwordPattern = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])[0-9a-zA-Z]{8,}$/;
     password: ''
     passwordClass: ''
 
+  componentDidMount: ->
+    TweenLite.fromTo('.credentials', .3,
+      {opacity: 0, transform: "rotateY(90deg)"}
+      {opacity: 1, transform: "rotateY(0)", delay: .3})
+
   login: (e) ->
     e.preventDefault()
     login = document.getElementById 'login-timeline'
@@ -59,7 +64,7 @@ passwordPattern = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])[0-9a-zA-Z]{8,}$/;
       @setState passwordClass: 'red'
 
   render: ->
-    {div, img, a, input, form} = React.DOM
+    {div, img, a, input, form, span} = React.DOM
     div
       className: 'chat-login'
       id: 'chat-container'
@@ -67,43 +72,42 @@ passwordPattern = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])[0-9a-zA-Z]{8,}$/;
         className: 'vertical-center'
         id: 'login-timeline'
         div className: 'inner-login',
-          img
-            className: 'chat-logo'
-            src: @props.chatbot
-          a
-            className: 'chat-login'
-            id: 'login-btn'
-            onClick: @showLogIn
-            'Login'
-          if @state.showLogIn
-            div className: 'credentials',
-              div className: 'inner-credentials',
-                img
-                  className: 'profile'
-                  src: @props.chatbot
-                div className: 'info', 'Sign in to view log and statistics'
-                form
-                  id: 'login'
-                  onSubmit: @login
-                  input
-                    placeholder: 'email'
-                    className: @state.emailClass
-                    name: 'email'
-                    type: 'text'
-                    value: @state.email
-                    onChange: (e) => @setEmail e.target.value
-                  input
-                    placeholder: 'password'
-                    className: @state.passwordClass
-                    name: 'password'
-                    type: 'password'
-                    value: @state.password
-                    onChange: (e) => @setPassword e.target.value
-                  input
-                    className: 'input-btn'
-                    type: 'submit'
-                    value: 'SIGN IN'
-
-
+          # img
+          #   className: 'chat-logo'
+          #   src: @props.chatbot
+          # a
+          #   className: 'chat-login'
+          #   id: 'login-btn'
+          #   onClick: @showLogIn
+          #   'Login'
+          # if @state.showLogIn
+          div className: 'credentials',
+            div className: 'inner-credentials',
+              img
+                className: 'profile'
+                src: @props.chatbot
+              div className: 'headline', 'Sign in to view log and statistics'
+              form
+                id: 'login'
+                onSubmit: @login
+                input
+                  placeholder: 'email'
+                  className: @state.emailClass
+                  name: 'email'
+                  type: 'text'
+                  value: @state.email
+                  onChange: (e) => @setEmail e.target.value
+                input
+                  placeholder: 'password'
+                  className: @state.passwordClass
+                  name: 'password'
+                  type: 'password'
+                  value: @state.password
+                  onChange: (e) => @setPassword e.target.value
+                input
+                  className: 'input-btn'
+                  type: 'submit'
+                  value: 'SIGN IN'
+              span {}, 'Forget password?'
 
 module.exports = @ChatLogin

@@ -37,11 +37,11 @@ React = require 'react'
           onClick: (e) => @setActive e, 'bot'
           # href: '../chatbot/bot'
           'New Chat'
-        div className: 'chat-logo',
-          img
-            className: 'chat-botler'
-            src: @props.chatbot
-          div className: 'chat-header', 'Chat Botler'
+        # div className: 'chat-logo',
+        #   # img
+        #   #   className: 'chat-botler'
+        #   #   src: @props.chatbot
+        div className: 'chat-header', 'Botler'
       if @state.active == 'bot'
         React.createElement Bot,
           chatbot: @props.chatbot

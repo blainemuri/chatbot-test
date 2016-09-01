@@ -1,6 +1,5 @@
 @import 'params.styl'
 
-nav-height = space*3
 header-font = space*1.1
 message-font = space*.9
 accent-font = space*.7
@@ -38,12 +37,14 @@ body
   width 100%
   position relative
   height nav-height
-  background-color white
+  background-color black
+  color white
   border-bottom 1px solid light-gray
   box-sizing border-box
   line-height nav-height
   font-size header-font
-  color #2a4a6f
+  font-family MillerDisplay
+  padding 0 main-padding
 
   .chat-btn
     width space*10
@@ -75,21 +76,22 @@ body
       height nav-height
       float left
 
-    .chat-header
-      height nav-height
-      float right
-      width "calc(100% - %s)" % nav-height
-      padding-left space
-      box-sizing border-box
+  .chat-header
+    height nav-height
+    float left
+    width space*10
+    text-align center
+    box-sizing border-box
+    font-size space*1.5
 
 .chat-login
   width 100%
   height 100%
   position fixed
   text-align center
-  background-color pastel-blue-4
-  animation fade-background 1.5s forwards
-  animation-delay .5s
+  background-color off-black
+  animation fade-background 1s forwards
+  animation-delay .2s
   z-index 1
 
   .vertical-center
@@ -99,7 +101,7 @@ body
     transform translateY(-50%) translateX(-50%)
 
     .inner-login
-      width space*20
+      width space*20.5
       padding 0
       margin 0
 
@@ -113,7 +115,7 @@ body
       .chat-login
         transform translateY(-50px)
         height nav-height
-        width space*20
+        width space*20.5
         left 0
         box-sizing border-box
         text-align center
@@ -127,7 +129,7 @@ body
         transition background-color .3s ease-in-out
         cursor pointer
         &:hover
-          background-color aq
+          background-color pale-turqoise
 
       .chat-logo, .chat-login
         animation-delay .2s
@@ -135,7 +137,7 @@ body
       .credentials
         z-index 3
         opacity 0
-        width space*20
+        width space*20.5
         height space*25
         background-color white
 
@@ -152,25 +154,40 @@ body
             margin space
             margin-top space*1.5
 
-          .info
+          .headline
             width 100%
             height space*2
             line-height space*2
+            font-family CircularPro-Book
+
+          span
+            font-family CircularPro-Book
+            font-size space-x-small
+            color grey-middle
+            cursor pointer
+            padding 0
+            margin 0
 
           form
             .input-btn
               width 50%
               height nav-height
               border-radius 4px
-              background-color light-gray
               text-shadow none
-              color white
-              background-color success-green
+              background-color white
+              border 1px solid grey-middle
               text-decoration none
-              border none
               background-image none
-              box-shadow 2px 2px 3px 1px light-gray
+              // box-shadow 2px 2px 3px 1px light-gray
+              cursor pointer
+              padding 0
+              text-align center
+              font-family CircularPro-Bold
+              color grey-middle
               &:hover
+                border none
+                background-color pale-turqoise
+                color black
                 box-shadow 2px 2px 6px 1px medium-gray
 
             input
@@ -335,7 +352,7 @@ body
       margin-left space
       max-width space*26
       box-sizing border-box
-      background-color very-light-gray
+      background-color grey-light
       min-height space*3
       border-radius 0px 10px 10px 10px
       padding space-x-small
@@ -356,7 +373,7 @@ body
         span
           font-size accent-font
           float left
-          color medium-gray
+          color grey-middle
           padding 0
           margin 0 space-x-small
 
@@ -378,7 +395,7 @@ body
       float right
       margin-left 0
       margin-right space
-      background-color bright-blue
+      background-color pale-turqoise
       border-radius 10px 0px 10px 10px
 
       .heading
@@ -386,7 +403,7 @@ body
           float right
 
         span
-          color white
+          color grey-middle
 
       p
         text-align right
@@ -545,6 +562,6 @@ body
 
 @keyframes fade-background
   from
-    background-color pastel-blue-4
+    background-color off-black
   to
-    background-color dark-pastel-blue
+    background-color black

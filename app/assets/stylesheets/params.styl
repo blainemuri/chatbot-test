@@ -1,28 +1,107 @@
-space = 1rem
-space-small = .8rem
-space-x-small = .6rem
-space-large = 1.2rem
-space-x-large = 1.4rem
-nudge = .2rem
-tiny-nudge = .1rem
+space = 16px
+space-small = 13px
+space-x-small = 10px
+space-large = 19px
+space-x-large = 21px
+nudge = 3px
+tiny-nudge = 1px
 
-main-padding = space*8
-header-height = space*16
-nav-height = space*5
-tile-padding = space-small
-
-widescreen-ration = .5625
-
-tile-prop = .6
-tile-third-prop = .9
-tile-height = 20%
-
-very-light-gray = #f2f2f2
-light-gray = #d3d3d3
-medium-gray = #a6a6a6
-dark-gray = #737373
 black = #000000
-off-black = #0d0d0d
-bright-pastel-blue = #15D9F8
-pastel-blue = #aec6cf
-pastel-red = #ff6961
+off-black = #404040
+grey-light = #dddddd
+white = #ffffff
+grey-middle = #999999
+pale-turqoise = #a6f4e0
+
+nav-height = space*4
+main-padding = space*6
+
+@font-face
+  font-family CircularPro-Bold
+  src url("/assets/Originate_Brand_Fonts/Circular/CircularPro-Bold.otf")
+
+@font-face
+  font-family CircularPro-Medium
+  src url("/assets/Originate_Brand_Fonts/Circular/CircularPro-Medium.otf")
+
+@font-face
+  font-family CircularPro-Book
+  src url("/assets/Originate_Brand_Fonts/Circular/CircularPro-Book.otf")
+
+@font-face
+  font-family MillerDisplay
+  src url("/assets/Originate_Brand_Fonts/Miller\ Display\ Family/Font\ Bureau\ -\ MillserDisplay-Roman.otf")
+
+html, body
+  width 100%
+  height 100%
+  padding 0
+  margin 0
+  font-family CircularPro-Book
+
+iframe
+  border 0
+
+a, a:link, a:visited
+  text-decoration none
+
+input
+  line-height space*2
+  border 1px solid light-grey
+  outline none
+  transition all .25s ease-in-out
+  padding-left space*.5
+  padding-right 0
+  box-sizing border-box
+  border none
+  border-bottom 1px solid grey-middle
+  margin 0
+  &:focus
+    padding-left space
+
+h3
+  color dark-grey
+  padding 0
+  margin 0
+  vertical-align middle
+
+.name
+  font-family CircularPro-Bold
+  font-size space-x-large
+  font-weight bold
+  letter-spacing -0px
+  color black
+
+.intent
+  font-family CircularPro-Medium
+  font-size space
+  font-weight 500
+  letter-spacing -0px
+  color white
+
+.date-bot
+  font-family CircularPro-Book
+  font-size space
+  letter-space -0px
+  color grey-middle
+
+.body-text
+  font-family CircularPro-Book
+  font-size space
+  line-height 1.5
+  letter-spacing -0px
+  color black
+
+.date-user
+  font-family CircularPro-Book
+  font-size space
+  letter-spacing -0px
+  text-align right
+  color white
+
+.time-marker-label
+  font-family CirularPro-Book
+  font-size space
+  letter-spacing -0px
+  text-align center
+  color grey-middle
