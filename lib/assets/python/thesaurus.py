@@ -34,8 +34,7 @@ if error == 0:
 				syn.append(dummy_string)	
 				divider = 0
 
-	for j in range(0, num_words):
-		print syn[j]
+	print syn
 
 else:
 	print 'Word not found.'
