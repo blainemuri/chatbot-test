@@ -46,6 +46,102 @@ body
   font-family MillerDisplay
   padding 0 main-padding
 
+  .time
+    position absolute
+    left 50%
+    transform translateX(-50%)
+    font-size space-small
+    color white
+    font-family CircularPro-Book
+
+  .profile
+    width space*13
+    line-height nav-height
+    height nav-height
+    box-sizing border-box
+    transition border .3s ease-in-out
+    position absolute
+    right main-padding
+    z-index 1000
+    transition all .3s ease-in-out
+    &.selected
+      box-shadow 0px 2px 10px 0px rgba(0, 0, 0, 0.15)
+
+    .profile-options
+      width space*13
+      height nav-height
+      box-sizing border-box
+      border 1px solid black
+      cursor pointer
+      transition border .3s ease-in-out
+      &.selected
+        border 1px solid #333333
+
+      .right
+        float right
+        width space*9
+        height "calc(%s - 2px)" % nav-height
+        cursor pointer
+        background-color black
+
+        span
+          font-size space-small
+          color grey-middle
+          float right
+          font-family CircularPro-Book
+          transition color .3s ease-in-out
+          letter-spacing -0px
+          padding-right space*.5
+          &.selected
+            color pale-turqoise
+
+        #down-arrow
+          float right
+          height space
+          width space*1.5
+          margin-top space*1.5
+          fill grey-middle
+          transition all .3s ease-in-out
+          margin-right space
+          &.selected
+            fill pale-turqoise
+            transform rotate(180deg)
+
+    .option
+      position absolute
+      top 0
+      left 0
+      width space*13
+      line-height nav-height*.75
+      background-color black
+      font-family CircularPro-Book
+      font-size space-small
+      color grey-middle
+      text-align right
+      padding-right space*3
+      box-sizing border-box
+      cursor pointer
+      z-index -1
+      transition all .3s ease-in-out
+      &.selected-1
+        top nav-height
+      &.selected-2
+        top "calc(%s + ((%s * .75) * 1))" % (nav-height nav-height)
+      &.selected-3
+        top "calc(%s + ((%s * .75) * 2))" % (nav-height nav-height)
+      &.selected-4
+        top "calc(%s + ((%s * .75) * 3))" % (nav-height nav-height)
+      &:hover
+        color pale-turqoise
+
+    img
+      float left
+      width space*2
+      height space*2
+      border-radius space
+      margin-top space
+      margin-left space
+
   .chat-btn
     width space*10
     height nav-height
@@ -541,7 +637,7 @@ body
   left 50%
   top 50%
   transform translateX(-50%) translateY(-50%)
-  background-color bright-blue
+  background-color pale-turqoise
 
 #loading2
   background-color white
