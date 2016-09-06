@@ -429,19 +429,21 @@ svg.profile
     position relative
     width 100%
 
-    svg, img
+    img
       width profile-size
       height profile-size
       border-radius space*1.5
+      float left
+
+    svg
+      width profile-size
+      float left
 
   .bot-message, .user-message
     float left
     width space*30
     margin-top space
     margin-bottom space
-
-    img, svg
-      float left
 
     .message
       float left
@@ -472,6 +474,38 @@ svg.profile
           color grey-middle
           padding 0
           margin 0 space-x-small
+
+        .options
+          float right
+          width space*4.5
+          height space*2
+          margin-top - space*.5
+
+          .up
+            background url('thumbs-up-disabled@3x.png')
+            &.selected
+              background url('thumbs-up-active@3x.png')
+              background-position center
+              background-repeat no-repeat
+              background-size contain
+
+          .down
+            background url('thumbs-down-disabled@3x.png')
+            margin-left space*.5
+            &.selected
+              background url('thumbs-down-active@3x.png')
+              background-position center
+              background-repeat no-repeat
+              background-size contain
+
+          .up, .down
+            cursor pointer
+            width space*1.5
+            height space*1.5
+            float right
+            background-position center
+            background-repeat no-repeat
+            background-size contain
 
       p
         font-size message-font

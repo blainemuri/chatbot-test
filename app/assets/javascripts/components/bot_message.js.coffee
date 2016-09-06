@@ -1,8 +1,36 @@
 React = require 'react'
 
 @BotMessage = React.createClass
+  getInitialState: ->
+    bot: 'neutral'
+
+  setDown: ->
+    if @state.bot == 'incorrect'
+      @setState bot: 'neutral'
+      @animateNeutral()
+    else
+      @setState bot: 'incorrect'
+      @animateUnhappy()
+
+  setUp: ->
+    if @state.bot == 'correct'
+      @setState bot: 'neutral'
+      @animateNeutral()
+    else
+      @setState bot: 'correct'
+
+  animateUnhappy: ->
+    TweenLite.to("#antenna-#{@props.id}", .3, {rotation: -60, transformOrigin: "50% 100%"})
+    TweenLite.to("#mouth-#{@props.id}", .3, {rotationX: 180, transformOrigin: "25% 25%"})
+    TweenLite.to("#bowtie-#{@props.id}", .3, {rotation: -40, transformOrigin: "100% 50%"})
+
+  animateNeutral: ->
+    TweenLite.to("#antenna-#{@props.id}", .3, {rotation: 0, transformOrigin: "50% 100%"})
+    TweenLite.to("#mouth-#{@props.id}", .3, {rotationX: 0, transformOrigin: "25% 25%"})
+    TweenLite.to("#bowtie-#{@props.id}", .3, {rotation: 0, transformOrigin: "100% 50%"})
+
   render: ->
-    {div, img, p, h3, span, svg, path, ellipse, line} = React.DOM
+    {div, img, p, h3, span, svg, path, ellipse, line, g} = React.DOM
     div className: 'bot-message',
       svg
         id: "chat-bot"
@@ -24,20 +52,24 @@ React = require 'react'
           cy: "26.55"
           rx: "2.89"
           ry: "2.87"
-        line
-          className: "cls-2"
-          x1: "19.79"
-          y1: "9.76"
-          x2: "19.79"
-          y2: "1.91"
-        ellipse
-          cx: "19.79"
-          cy: "2.26"
-          rx: "2.28"
-          ry: "2.26"
+        g
+          id: "antenna-#{@props.id}"
+          line
+            className: "cls-2"
+            x1: "19.79"
+            y1: "9.76"
+            x2: "19.79"
+            y2: "1.91"
+          ellipse
+            cx: "19.79"
+            cy: "2.26"
+            rx: "2.28"
+            ry: "2.26"
         path
+          id: "mouth-#{@props.id}"
           d: "M23.42,34.82a5.15,5.15,0,0,1-7.25,0"
         path
+          id: "bowtie-#{@props.id}"
           d: "M26.79,49.14a1.29,1.29,0,0,0-1.38-.91A9.13,9.13,0,0,0,20,50.8a9.14,9.14,0,0,0-5.41-2.58,1.28,1.28,0,0,0-1.37.9,8.83,8.83,0,0,0,0,4.95,1.29,1.29,0,0,0,1.38.91A9.13,9.13,0,0,0,20,52.42h0A9.14,9.14,0,0,0,25.41,55a1.28,1.28,0,0,0,1.37-.9A8.83,8.83,0,0,0,26.79,49.14Z"
       div
         className: 'message'
@@ -45,6 +77,13 @@ React = require 'react'
         div className: 'heading',
           h3 {}, 'Botler'
           span {}, '10:33pm'
+          div className: 'options',
+            div
+              className: "down #{'selected' if @state.bot == 'incorrect'}"
+              onClick: @setDown
+            div
+              className: "up #{'selected' if @state.bot == 'correct'}"
+              onClick: @setUp
         p {}, @props.text
         if @props.intent
           span {}, @props.intent
