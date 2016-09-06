@@ -2,6 +2,8 @@ Rails.application.routes.draw do
 
   get 'bot', to: 'chatbot#bot'
 
+  get 'admin', to: 'chatbot#admin'
+
   post 'bot', to: 'chatbot#query'
 
   root 'chatbot#login'

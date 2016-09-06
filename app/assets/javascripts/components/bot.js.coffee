@@ -10,7 +10,7 @@ React = require 'react'
     e.preventDefault()
     $.ajax
       url: '/bot'
-      data: {'query': @state.text}
+      data: {'query': {"input": {"text": @state.text}}}
       method: 'POST'
     .done (response) =>
       @setState text: ""
@@ -26,7 +26,8 @@ React = require 'react'
     TweenMax.to('#horizontal-center', .05, {opacity: 0})
 
   componentDidMount: ->
-    # $('#horizontal-center').css('opacity', '0');
+    conversation = document.getElementById 'conv-scroll'
+    conversation.scrollTop = conversation.scrollHeight
     chat = document.getElementById 'horizontal-center'
     message = document.getElementById 'message'
     tl = new TimelineMax()
@@ -36,24 +37,12 @@ React = require 'react'
       .to('#loading', .3, {scale: 1, opacity: 0}, 'start+.1')
       .to('#loading2', .4, {scale: .6, opacity: 0}, 'start+.1')
       .to(chat, .5, {top: 0, opacity: 1}, 'start+.2')
-      .staggerTo('.message', .3, {transform: "translateY(0)", opacity: 1}, .1, 'start+.2')
+      .staggerTo('.message', .2, {transform: "translateY(0)", opacity: 1}, .05, 'start+.2')
     tl.timeScale(1)
-    # loading = document.getElementById 'loading-cover'
-    # tl = new TimelineMax()
-    # tl.add('start')
-    # tl.to(loading, .3, {bottom: '110%', borderRadius: '70%', delay: .3}, 'start+.3')
-    # tl.timeScale(1)
 
   render: ->
     {div, input, img, form} = React.DOM
     div className: "bot-chat-outer #{'dark-theme' unless !@state.dark}",
-      # div
-      #   className: 'loading-cover'
-      #   id: 'loading-cover'
-      # div
-      #   className: 'toggle-theme'
-      #   onClick: @toggleDark
-      #   'Dark Theme'
       div
         id: 'loading'
       div
@@ -61,14 +50,9 @@ React = require 'react'
       div
         id: 'horizontal-center',
         div className: 'chat-container',
-          div className: 'chat-header',
-            div className: 'chat-time', 'Today'
-            div className: 'header-left', 'The Botler'
-            div className: 'header-right',
-              img
-                src: @props.profile
-                alt: 'Username'
-          div className: 'conversation',
+          div
+            className: 'conversation'
+            id: 'conv-scroll'
             React.createElement BotMessage,
               text: 'Welcome to Chat Botler, nice to meet you!'
               pic: @props.chatbot
@@ -84,12 +68,14 @@ React = require 'react'
             React.createElement BotMessage,
               text: 'How long would you like to book the room?'
               pic: @props.chatbot
+              intent: 'book-room  |  2pm  |  Marvin'
             React.createElement UserMessage,
               text: "1 hour"
               pic: @props.profile
             React.createElement BotMessage,
               text: "I've booked you Marvin for 1 hour at 2pm tomorrow!"
               pic: @props.chatbot
+              intent: 'book-room  |  2pm  |  Marvin  |  1hour'
             React.createElement UserMessage,
               text: "Thanks!"
               pic: @props.profile
@@ -121,5 +107,9 @@ React = require 'react'
                 id: 'bot-query'
                 placeholder: 'Type your message here'
                 onChange: @handleChange
+            div className: 'voice-input',
+              img
+                src: @props.mic
+                alt: 'Voice'
 
 module.exports = @Bot

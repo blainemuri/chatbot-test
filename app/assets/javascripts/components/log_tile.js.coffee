@@ -2,13 +2,13 @@ React = require 'react'
 
 @LogTile = React.createClass
   render: ->
-    {a, div, h3, h4, img, p} = React.DOM
+    {a, div, h5, h6, img, p, span} = React.DOM
     div
       className: 'log-tile'
       onClick: @props.open
       div className: 'header-left',
-        h3 {}, 'Username'
-        h4 {}, 'Jun 18, 2016'
+        div className: 'username', 'Username'
+        span {}, 'Jun 18, 2016'
       div className: 'header-right',
         img
           src: @props.profile
