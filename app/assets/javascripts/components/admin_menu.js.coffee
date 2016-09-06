@@ -1,8 +1,8 @@
 React = require 'react'
 
-@ChatMenu = React.createClass
+@AdminMenu = React.createClass
   getInitialState: ->
-    active: 'bot'
+    active: 'log'
     selected: no
 
   setActive: (e, link) ->
@@ -15,9 +15,9 @@ React = require 'react'
 
   setSelected: -> @setState selected: !@state.selected
 
-  loadAdminSettings: ->
+  loadChatbot: ->
     baseURL = window.location.host
-    url = 'http://' + baseURL + '/admin'
+    url = 'http://' + baseURL + '/bot'
     win = window.open(url, '_blank')
     win.focus()
     # var win = window.open(url, '_blank');
@@ -28,7 +28,6 @@ React = require 'react'
     div {},
       div
         id: 'chat-menu'
-        div className: 'time', 'Yesterday'
         div className: "profile #{'selected' if @state.selected}",
           div
             className: "profile-options #{'selected' if @state.selected}"
@@ -59,54 +58,26 @@ React = require 'react'
             'Settings'
           a
             className: "option #{'selected-3' if @state.selected}"
-            onClick: @loadAdminSettings
-            'Admin'
+            onClick: @loadChatbot
+            'Chatbot'
           a
             className: "option #{'selected-4' if @state.selected}"
             href: '../'
             'Sign Out'
-        # a
-        #   className: 'chat-btn 1'
-        #   onClick: (e) => @setActive e, 'login'
-        #   # href: '../chatbot'
-        #   'Sign Out'
-        # a
-        #   className: 'chat-btn 2'
-        #   onClick: (e) => @setActive e, 'stats'
-        #   # href: '../chatbot/stats'
-        #   'Stats'
-        # a
-        #   className: 'chat-btn 3'
-        #   onClick: (e) => @setActive e, 'history'
-        #   # href: '../chatbot/history'
-        #   'Chat Log'
-        # a
-        #   className: 'chat-btn 3'
-        #   onClick: (e) => @setActive e, 'bot'
-        #   # href: '../chatbot/bot'
-        #   'New Chat'
-        # div className: 'chat-logo',
-        #   # img
-        #   #   className: 'chat-botler'
-        #   #   src: @props.chatbot
+        div className: 'admin-options',
+          a
+            className: "chat-btn #{'active' if @state.active == 'stats'}"
+            onClick: (e) => @setActive e, 'stats'
+            # href: '../chatbot/stats'
+            'Stats'
+          a
+            className: "chat-btn #{'active' if @state.active == 'log'}"
+            onClick: (e) => @setActive e, 'log'
+            # href: '../chatbot/history'
+            'Chat Log'
         div className: 'chat-header', 'Botler'
-      React.createElement Bot,
+      React.createElement ChatLog,
         chatbot: @props.chatbot
         profile: @props.profile
-        mic: @props.mic
-      # if @state.active == 'bot'
-      #   React.createElement Bot,
-      #     chatbot: @props.chatbot
-      #     profile: @props.profile
-      # else if @state.active == 'history'
-      #   React.createElement ChatLog,
-      #     chatbot: @props.chatbot
-      #     profile: @props.profile
-      # else if @state.active == 'stats'
-      #   React.createElement ChatStats, null
-      # else if @state.active == 'login'
-      #   @goToLogin()
-      # else
-      #   @render404()
 
-module.exports = @ChatMenu
+module.exports = @AdminMenu

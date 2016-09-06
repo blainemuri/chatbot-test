@@ -62,7 +62,7 @@ body
     transition border .3s ease-in-out
     position absolute
     right main-padding
-    z-index 1000
+    z-index 1
     transition all .3s ease-in-out
     &.selected
       box-shadow 0px 2px 10px 0px rgba(0, 0, 0, 0.15)
@@ -142,17 +142,26 @@ body
       margin-top space
       margin-left space
 
-  .chat-btn
-    width space*10
-    height nav-height
+  .admin-options
     float right
-    line-height nav-height
-    text-align center
-    box-sizing border-box
-    cursor pointer
-    transition background-color .2s ease-in-out
-    &:hover
-      background-color bright-blue
+    margin-right space*14
+
+    .chat-btn
+      width space*8
+      height nav-height
+      float right
+      line-height nav-height
+      text-align center
+      box-sizing border-box
+      cursor pointer
+      transition background-color .2s ease-in-out
+      color grey-middle
+      font-family CircularPro-Book
+      font-size 13px
+      &.active
+        color pale-turqoise
+      &:hover
+        color pale-turqoise
     // &:nth-child(4)
     //   background-color pastel-blue-1
     // &:nth-child(3)
@@ -179,6 +188,21 @@ body
     text-align center
     box-sizing border-box
     font-size space*1.5
+
+svg.profile
+  width profile-size*2
+  height profile-size*2
+  border-radius profile-size
+  margin 0
+  padding 0
+
+  .cls-1
+    fill white
+
+  .cls-2
+    fill none
+    stroke black
+    stroke-width 0.44px
 
 .chat-login
   width 100%
@@ -243,11 +267,7 @@ body
           height 100%
           text-align center
 
-          .profile
-            width profile-size*2
-            height profile-size*2
-            border-radius profile-size
-            margin space
+          svg
             margin-top space*1.5
 
           .headline
@@ -262,7 +282,6 @@ body
             color grey-middle
             cursor pointer
             padding 0
-            margin 0
 
           form
             .input-btn
@@ -280,11 +299,14 @@ body
               text-align center
               font-family CircularPro-Bold
               color grey-middle
+              margin-bottom 0
+              transition all .3s ease-in-out
               &:hover
                 border none
                 background-color pale-turqoise
                 color black
                 box-shadow 2px 2px 6px 1px medium-gray
+                border 1px solid pale-turqoise
 
             input
               width 80%
@@ -357,49 +379,6 @@ body
       height 100%
       box-sizing border-box
 
-      .chat-header
-        position relative
-        width 100%
-        height nav-height
-        border-bottom 1px solid light-gray
-        text-align center
-        font-size header-font
-        box-sizing border-box
-        padding 0 space
-
-        .chat-time
-          position absolute
-          bottom - nudge*2.25
-          padding 0 space-small
-          z-index 1
-          border-radius nudge*2.25
-          background-color white
-          font-size accent-font
-          color light-gray
-          left 50%
-          transform translateX(-50%)
-
-        .header-left, .header-right
-          width 50%
-          height nav-height
-          line-height nav-height
-
-        .header-left
-          text-align left
-
-        .header-right
-          float right
-
-          img
-            width profile-size
-            height profile-size
-            border-radius profile-size*.5
-            float right
-            padding-top nudge*2.5
-
-        .header-left
-          float left
-
       .input
         position relative
         width 100%
@@ -407,21 +386,41 @@ body
         padding 0 space*2
         box-sizing border-box
 
+        .voice-input
+          float right
+          height nav-height*.8
+          margin-top nav-height*.1
+          width nav-height
+          background-color black
+          cursor pointer
+          color white
+          text-align center
+          vertical-align middle
+
+          img
+            height nav-height*.3
+            margin-top nav-height*.25
+
         input
-          width 100%
+          width "calc(100% - %s)" % nav-height
+          float left
+          height nav-height*.8
+          margin-top nav-height*.1
           font-size message-font
-          border-top 1px solid light-gray
-          border-bottom 1px solid light-gray
           padding-top nudge
           padding-bottom nudge
           padding-left 0
+          border 1px solid grey-light
+          padding space-x-small
+          font-style italic
           &:active, &:focus
+            font-style normal
             padding-left space
 
 .conversation
   position relative
   width 100%
-  height "calc(100% - (%s * 2))" % nav-height
+  height "calc(100% - %s)" % nav-height
   overflow-y auto
   padding 0 space*2
   box-sizing border-box
@@ -429,9 +428,8 @@ body
   .bot-message, .user-message
     position relative
     width 100%
-    padding space
 
-    img
+    svg, img
       width profile-size
       height profile-size
       border-radius space*1.5
@@ -439,8 +437,10 @@ body
   .bot-message, .user-message
     float left
     width space*30
+    margin-top space
+    margin-bottom space
 
-    img
+    img, svg
       float left
 
     .message
@@ -451,7 +451,7 @@ body
       background-color grey-light
       min-height space*3
       border-radius 0px 10px 10px 10px
-      padding space-x-small
+      padding space
       transform translateY(20px)
       opacity 0
 
@@ -480,6 +480,12 @@ body
         width 100%
         overflow auto
         white-space normal
+
+      span
+        font-size accent-font
+        color white
+        margin-top space
+        position static
 
   .user-message
     float right
@@ -514,6 +520,7 @@ body
     border-bottom 0px
     left 0
     top 0
+    z-index 1000000
     transform translateX(0) translateY(0)
     display block
     z-index 2
@@ -536,17 +543,20 @@ body
 
       .conversation
         width 100%
+        float left
         height "calc(100% - %s)" % nav-height
 
       .header
         width 100%
+        float left
         height nav-height
-        padding 0
+        line-height nav-height
         margin 0
+        padding 0 space
         vertical-align middle
-        padding space
         box-sizing border-box
-        border-bottom 1px solid light-gray
+        background-color black
+        color white
 
         h3
           float left
@@ -556,6 +566,7 @@ body
           font-size accent-font
           padding-top nudge
           cursor pointer
+          color grey-middle
 
   #horizontal-center
     width 100%
@@ -595,17 +606,25 @@ body
           box-shadow 0px 0px 12px 0px rgba(166,166,166,1)
 
         .header-left, .header-right
-          height nav-height*2
+          height nav-height
           border-bottom 1px solid light-gray
           padding 0
           margin 0
           box-sizing border-box
-          padding-top nav-height*.5
+          color white
+          background-color black
 
         .header-left
           width 67%
           float left
           padding-left space
+
+          .username
+            padding-top nudge*3
+
+          span
+            font-size message-font
+            color grey-middle
 
         .header-right
           width 33%
@@ -613,9 +632,10 @@ body
           text-align center
 
           img
-            width profile-size*1.5
-            height profile-size*1.5
-            border-radius profile-size*.75
+            width profile-size
+            height profile-size
+            border-radius profile-size*.5
+            margin-top nudge*5
 
         p
           position relative
