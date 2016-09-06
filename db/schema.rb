@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160830231745) do
+ActiveRecord::Schema.define(version: 20160831180812) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -25,7 +25,10 @@ ActiveRecord::Schema.define(version: 20160830231745) do
   create_table "comments", force: :cascade do |t|
     t.string   "user"
     t.string   "text"
+<<<<<<< HEAD
+=======
     t.integer  "chat_id"
+>>>>>>> 71cdd0c9e543c8e4f90475b2e66312d203a87b8e
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

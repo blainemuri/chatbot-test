@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg width="17px" height="10px" viewBox="0 0 17 10" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: sketchtool 39.1 (31720) - http://www.bohemiancoding.com/sketch -->
+    <title>80A47A1B-FD62-455D-B561-5488FE02282F</title>
+    <desc>Created with sketchtool.</desc>
+    <defs></defs>
+    <g id="01-Chat-Screen" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Chat-Bot-UI-vC-3-DROPDOWN" transform="translate(-1293.000000, -38.000000)" fill="#A6F4E0">
+            <g id="dropdown-HOVER" transform="translate(1112.000000, 0.000000)">
+                <g id="username-dropdown" transform="translate(42.000000, 22.000000)">
+                    <polygon id="up-arrow" transform="translate(147.094689, 21.000000) rotate(-180.000000) translate(-147.094689, -21.000000) " points="140.904633 16 139 17.9047619 147.094689 26 155.189379 17.9047619 153.284746 16 147.094689 22.1904762"></polygon>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>
