@@ -22,7 +22,12 @@ React = require 'react'
   animateUnhappy: ->
     TweenLite.to("#antenna-#{@props.id}", .3, {rotation: -60, transformOrigin: "50% 100%"})
     TweenLite.to("#mouth-#{@props.id}", .3, {rotationX: 180, transformOrigin: "25% 25%"})
-    TweenLite.to("#bowtie-#{@props.id}", .3, {rotation: -40, transformOrigin: "100% 50%"})
+    # tl = new TimelineMax()
+    # tl.add('start')
+    # tl.to("#bowtie-#{@props.id}", .3, {rotation: -60, transformOrigin: "100% 50%"}, 'start')
+    #   .to("#bowtie-#{@props.id}", .2, {rotation: -20, transformOrigin: "100% 50%"}, 'start+.3')
+    #   .to("#bowtie-#{@props.id}", .2, {rotation: -40, transformOrigin: "100% 50%"}, 'start+.5')
+    TweenLite.to("#bowtie-#{@props.id}", .8, {delay: .3, ease: Elastic.easeOut, rotation: -40, transformOrigin: "100% 50%"})
 
   animateNeutral: ->
     TweenLite.to("#antenna-#{@props.id}", .3, {rotation: 0, transformOrigin: "50% 100%"})
