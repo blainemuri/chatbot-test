@@ -1,19 +1,5 @@
 @import 'params.styl'
 
-header-font = space*1.1
-message-font = space*.9
-accent-font = space*.7
-bright-blue = #96DDE1
-error-red = #cc0000
-success-green = #49E20E
-aq = #38c0c7
-dark-pastel-blue = #779ecb
-pastel-blue-1 = #7ea3ce
-pastel-blue-2 = #90b0d5
-pastel-blue-3 = #a3bddc
-pastel-blue-4 = #b5cae3
-
-profile-size = space*2
 log-width = space*18
 log-height = space*25
 
@@ -32,163 +18,6 @@ body
 .chat-container
   width 50%
 
-
-#chat-menu
-  width 100%
-  position relative
-  height nav-height
-  background-color black
-  color white
-  border-bottom 1px solid light-gray
-  box-sizing border-box
-  line-height nav-height
-  font-size header-font
-  font-family MillerDisplay
-  padding 0 main-padding
-
-  .time
-    position absolute
-    left 50%
-    transform translateX(-50%)
-    font-size space-small
-    color white
-    font-family CircularPro-Book
-
-  .profile
-    width space*13
-    line-height nav-height
-    height nav-height
-    box-sizing border-box
-    transition border .3s ease-in-out
-    position absolute
-    right main-padding
-    z-index 1
-    transition all .3s ease-in-out
-    &.selected
-      box-shadow 0px 2px 10px 0px rgba(0, 0, 0, 0.15)
-
-    .profile-options
-      width space*13
-      height nav-height
-      box-sizing border-box
-      border 1px solid black
-      cursor pointer
-      transition border .3s ease-in-out
-      &.selected
-        border 1px solid #333333
-
-      .right
-        float right
-        width space*9
-        height "calc(%s - 2px)" % nav-height
-        cursor pointer
-        background-color black
-
-        span
-          font-size space-small
-          color grey-middle
-          float right
-          font-family CircularPro-Book
-          transition color .3s ease-in-out
-          letter-spacing -0px
-          padding-right space*.5
-          &.selected
-            color pale-turqoise
-
-        #down-arrow
-          float right
-          height space
-          width space*1.5
-          margin-top space*1.5
-          fill grey-middle
-          transition all .3s ease-in-out
-          margin-right space
-          &.selected
-            fill pale-turqoise
-            transform rotate(180deg)
-
-    .option
-      position absolute
-      top 0
-      left 0
-      width space*13
-      line-height nav-height*.75
-      background-color black
-      font-family CircularPro-Book
-      font-size space-small
-      color grey-middle
-      text-align right
-      padding-right space*3
-      box-sizing border-box
-      cursor pointer
-      z-index -1
-      transition all .3s ease-in-out
-      &.selected-1
-        top nav-height
-      &.selected-2
-        top "calc(%s + ((%s * .75) * 1))" % (nav-height nav-height)
-      &.selected-3
-        top "calc(%s + ((%s * .75) * 2))" % (nav-height nav-height)
-      &.selected-4
-        top "calc(%s + ((%s * .75) * 3))" % (nav-height nav-height)
-      &:hover
-        color pale-turqoise
-
-    img
-      float left
-      width space*2
-      height space*2
-      border-radius space
-      margin-top space
-      margin-left space
-
-  .admin-options
-    float right
-    margin-right space*14
-
-    .chat-btn
-      width space*8
-      height nav-height
-      float right
-      line-height nav-height
-      text-align center
-      box-sizing border-box
-      cursor pointer
-      transition background-color .2s ease-in-out
-      color grey-middle
-      font-family CircularPro-Book
-      font-size 13px
-      &.active
-        color pale-turqoise
-      &:hover
-        color pale-turqoise
-    // &:nth-child(4)
-    //   background-color pastel-blue-1
-    // &:nth-child(3)
-    //   background-color pastel-blue-2
-    // &:nth-child(2)
-    //   background-color pastel-blue-3
-    // &:nth-child(1)
-    //   background-color pastel-blue-4
-
-  .chat-logo
-    float left
-    width space*15
-    height nav-height
-
-    .chat-botler
-      width nav-height
-      height nav-height
-      float left
-
-  .chat-header
-    height nav-height
-    float left
-    width space*10
-    text-align center
-    box-sizing border-box
-    font-size space*1.5
-
 svg.profile
   width profile-size*2
   height profile-size*2
@@ -197,7 +26,9 @@ svg.profile
   padding 0
 
   .cls-1
-    fill white
+    fill black
+    stroke white
+    z-index 4
 
   .cls-2
     fill none
@@ -269,6 +100,10 @@ svg.profile
 
           svg
             margin-top space*1.5
+            overflow visible
+
+            #bowtie
+              cursor pointer
 
           .headline
             width 100%
@@ -335,7 +170,7 @@ svg.profile
   position absolute
   background-color white
   color black
-  height "calc(100% - %s)" % nav-height
+  height "calc(100% - (%s * 1.5))" % nav-height
   &.dark-theme
     filter invert(100%)
     -webkit-filter invert(100%)
@@ -391,7 +226,9 @@ svg.profile
           height nav-height*.8
           margin-top nav-height*.1
           width nav-height
-          background-color black
+          background-color white
+          border 1px solid grey-light
+          box-sizing border-box
           cursor pointer
           color white
           text-align center
@@ -400,6 +237,8 @@ svg.profile
           img
             height nav-height*.3
             margin-top nav-height*.25
+            filter invert(100%)
+            -webkit-filter invert(100%)
 
         input
           width "calc(100% - %s)" % nav-height
