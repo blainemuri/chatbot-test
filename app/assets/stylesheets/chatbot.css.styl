@@ -121,7 +121,7 @@ svg.profile
           form
             .input-btn
               width 50%
-              height nav-height
+              height nav-height*.8
               border-radius 4px
               text-shadow none
               background-color white
@@ -143,17 +143,52 @@ svg.profile
                 box-shadow 2px 2px 6px 1px medium-gray
                 border 1px solid pale-turqoise
 
-            input
+            div
               width 80%
-              margin space
-              font-size message-font
-              &:active, &:focus
-                &.red
-                  box-shadow 0px 0px 3px 1px error-red
-                &.gray
-                  box-shadow 0px 0px 3px 1px light-gray
-                &.green
-                  box-shadow 0px 0px 3px 1px success-green
+              height nav-height*.7
+              margin space auto
+              position relative
+              margin-bottom space*2
+              margin-top space*1.5
+
+              .placeholder
+                margin 0
+                padding 0
+                width 0
+                height 0
+                left 0
+                transform translateY(-50%)
+                top 40%
+                color grey-middle
+                text-align left
+
+              .background
+                width 110%
+                height 145%
+                position absolute
+                margin 0 auto
+                top -30%
+                left -5%
+                opacity 0
+                background-color pale-turqoise
+                z-index -1
+
+              input
+                width 100%
+                height 100%
+                position absolute
+                left 0
+                bottom 0
+                font-size message-font
+                background transparent
+                height space*2
+                &:active, &:focus
+                  &.red
+                    box-shadow 0px 0px 3px 1px error-red
+                  &.gray
+                    box-shadow 0px 0px 3px 1px light-gray
+                  &.green
+                    box-shadow 0px 0px 3px 1px success-green
 
 .chat-stats
   width 100%
@@ -170,7 +205,7 @@ svg.profile
   position absolute
   background-color white
   color black
-  height "calc(100% - (%s * 1.5))" % nav-height
+  height "calc(100% - (%s * .5))" % nav-height
   &.dark-theme
     filter invert(100%)
     -webkit-filter invert(100%)

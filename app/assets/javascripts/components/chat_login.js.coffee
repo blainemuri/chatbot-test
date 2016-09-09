@@ -48,21 +48,21 @@ passwordPattern = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])[0-9a-zA-Z]{8,}$/;
 
   setEmail: (val) ->
     @setState email: val
-    if val == ''
-      @setState emailClass: 'gray'
-    else if val.match(emailPattern)
-      @setState emailClass: 'green'
-    else
-      @setState emailClass: 'red'
+    # if val == ''
+    #   @setState emailClass: 'gray'
+    # else if val.match(emailPattern)
+    #   @setState emailClass: 'green'
+    # else
+    #   @setState emailClass: 'red'
 
   setPassword: (val) ->
     @setState password: val
-    if val == ''
-      @setState passwordClass: 'gray'
-    else if val.match(passwordPattern)
-      @setState passwordClass: 'green'
-    else
-      @setState passwordClass: 'red'
+    # if val == ''
+    #   @setState passwordClass: 'gray'
+    # else if val.match(passwordPattern)
+    #   @setState passwordClass: 'green'
+    # else
+    #   @setState passwordClass: 'red'
 
   dropBowtie: ->
     # @setState clicks: 0
@@ -101,6 +101,27 @@ passwordPattern = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])[0-9a-zA-Z]{8,}$/;
         {rotation: 20, transformOrigin: "50% 50%"}, 'start+.05')
         .to('#bowtie', .05,
         {rotation: 0, transformOrigin: "50% 50%"}, 'start+.15')
+
+  animateSelect: (e, num) ->
+    text = document.getElementById "placeholder-#{num}"
+    bg = document.getElementById "bg-#{num}"
+    input = document.getElementById "input-#{num}"
+    tl = new TimelineMax()
+    tl.add('start')
+    tl.to(text, .2, {top: "-13px", transform: "translate(0px, 0px)", color: "black"}, 'start')
+      .to(bg, .2, {opacity: 1}, 'start')
+      .to(input, .2, {backgroundColor: 'white', borderBottom: "0px", height: "32px"}, 'start')
+
+  animateDeselect: (e, num) ->
+    text = document.getElementById "placeholder-#{num}"
+    bg = document.getElementById "bg-#{num}"
+    input = document.getElementById "input-#{num}"
+    tl = new TimelineMax()
+    tl.add('start')
+    tl.to(text, .2, {top: "40%", color: "#999999"}, 'start')
+      .to(bg, .2, {opacity: 0}, 'start')
+      .to(input, .2, {background: "transparent", borderBottom: "1px solid #999999", bottom: "0", height: "100%"}, 'start')
+
 
   render: ->
     {div, img, a, input, form, span, svg, path, ellipse, line, g} = React.DOM
@@ -171,20 +192,40 @@ passwordPattern = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])[0-9a-zA-Z]{8,}$/;
               form
                 id: 'login'
                 onSubmit: @login
-                input
-                  placeholder: 'email'
-                  className: @state.emailClass
-                  name: 'email'
-                  type: 'text'
-                  value: @state.email
-                  onChange: (e) => @setEmail e.target.value
-                input
-                  placeholder: 'password'
-                  className: @state.passwordClass
-                  name: 'password'
-                  type: 'password'
-                  value: @state.password
-                  onChange: (e) => @setPassword e.target.value
+                div className: 'fancy-input',
+                  div
+                    className: 'placeholder'
+                    id: 'placeholder-1'
+                    'email'
+                  div
+                    className: 'background'
+                    id: 'bg-1'
+                  input
+                    className: @state.emailClass
+                    id: 'input-1'
+                    name: 'email'
+                    type: 'text'
+                    value: @state.email
+                    onChange: (e) => @setEmail e.target.value
+                    onFocus: (e) => @animateSelect e, 1
+                    onBlur: (e) => @animateDeselect e, 1
+                div className: 'fancy-input',
+                  div
+                    className: 'placeholder'
+                    id: 'placeholder-2'
+                    'password'
+                  div
+                    className: 'background'
+                    id: 'bg-2'
+                  input
+                    className: @state.passwordClass
+                    id: 'input-2'
+                    name: 'password'
+                    type: 'password'
+                    value: @state.password
+                    onChange: (e) => @setPassword e.target.value
+                    onFocus: (e) => @animateSelect e, 2
+                    onBlur: (e) => @animateDeselect e, 2
                 input
                   className: 'input-btn'
                   type: 'submit'
