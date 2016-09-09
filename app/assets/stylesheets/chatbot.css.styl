@@ -205,7 +205,8 @@ svg.profile
   position absolute
   background-color white
   color black
-  height "calc(100% - (%s * .5))" % nav-height
+  height 100%
+  padding-top nav-height
   &.dark-theme
     filter invert(100%)
     -webkit-filter invert(100%)
@@ -481,8 +482,8 @@ svg.profile
 
     .log-container
       width logs-5
-      height "calc(100% - %s)" % space
-      padding-top space
+      height 100%
+      padding-top nav-height
       box-sizing border-box
       margin 0 auto
       @media screen and (max-width: 1600px)

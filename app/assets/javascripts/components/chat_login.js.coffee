@@ -113,14 +113,18 @@ passwordPattern = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])[0-9a-zA-Z]{8,}$/;
       .to(input, .2, {backgroundColor: 'white', borderBottom: "0px", height: "32px"}, 'start')
 
   animateDeselect: (e, num) ->
-    text = document.getElementById "placeholder-#{num}"
-    bg = document.getElementById "bg-#{num}"
-    input = document.getElementById "input-#{num}"
-    tl = new TimelineMax()
-    tl.add('start')
-    tl.to(text, .2, {top: "40%", color: "#999999"}, 'start')
-      .to(bg, .2, {opacity: 0}, 'start')
-      .to(input, .2, {background: "transparent", borderBottom: "1px solid #999999", bottom: "0", height: "100%"}, 'start')
+    deselect = true
+    if (num == 1 && @state.email != '') || (num == 2 && @state.password != '')
+      deselect = false
+    if deselect
+      text = document.getElementById "placeholder-#{num}"
+      bg = document.getElementById "bg-#{num}"
+      input = document.getElementById "input-#{num}"
+      tl = new TimelineMax()
+      tl.add('start')
+      tl.to(text, .2, {top: "40%", color: "#999999"}, 'start')
+        .to(bg, .2, {opacity: 0}, 'start')
+        .to(input, .2, {background: "transparent", borderBottom: "1px solid #999999", bottom: "0", height: "100%"}, 'start')
 
 
   render: ->

@@ -28,6 +28,7 @@ React = require 'react'
     div {},
       div
         id: 'chat-menu'
+        div className: 'blur', ''
         div className: "profile #{'selected' if @state.selected}",
           div
             className: "profile-options #{'selected' if @state.selected}"
