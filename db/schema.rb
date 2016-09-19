@@ -11,22 +11,47 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160831180812) do
+ActiveRecord::Schema.define(version: 20160919164809) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-  create_table "chats", force: :cascade do |t|
-    t.string   "email"
+  create_table "bots", force: :cascade do |t|
+    t.text     "trainingData"
+    t.string   "name"
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
+  end
+
+  create_table "comments", force: :cascade do |t|
+    t.text     "body"
+    t.text     "context"
+    t.integer  "correct"
+    t.integer  "commentable_id"
+    t.string   "commentable_type"
+    t.integer  "conversation_id"
+    t.datetime "created_at",       null: false
+    t.datetime "updated_at",       null: false
+  end
+
+  add_index "comments", ["commentable_type", "commentable_id"], name: "index_comments_on_commentable_type_and_commentable_id", using: :btree
+  add_index "comments", ["conversation_id"], name: "index_comments_on_conversation_id", using: :btree
+
+  create_table "conversations", force: :cascade do |t|
+    t.time     "start"
+    t.time     "end"
+    t.string   "entity"
+    t.integer  "correct"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
-  create_table "comments", force: :cascade do |t|
-    t.string   "user"
-    t.string   "text"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+  create_table "users", force: :cascade do |t|
+    t.string   "username"
+    t.string   "password"
+    t.integer  "accessLevel"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
   end
 
 end

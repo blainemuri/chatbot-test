@@ -1,9 +1,11 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  user: MyString
-  text: MyString
+  body: MyText
+  context: MyText
+  correct: 1
 
 two:
-  user: MyString
-  text: MyString
+  body: MyText
+  context: MyText
+  correct: 1

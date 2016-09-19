@@ -52,6 +52,8 @@ gem 'rest-client'
 
 gem 'rubypython'
 
+gem 'annotate'
+
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'

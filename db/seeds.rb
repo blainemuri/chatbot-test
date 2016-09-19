@@ -20,18 +20,21 @@
 #   Comment.create(user: user, text: text)
 # end
 
-params = { chat: {
-  email: 'dummy@test.com', comments_attributes: [
-    {user: 'User', text: "Hey how's it going, Mr. Botler?"},
-    {user: 'Botler', text: "Well! Always a good day for a bot! What can I help you with?"},
-    {user: 'User', text: "Book me a room in Marvin for 2pm tomorrow"},
-    {user: 'Botler', text: "How long would you like to book the room?"},
-    {user: 'User', text: "1 hour"},
-    {user: 'Botler', text: "I've booked you Marvin for 1 hour at 2pm tomorrow!"}
-  ]
-}}
+# params = { chat: {
+#   email: 'dummy@test.com', comments_attributes: [
+#     {user: 'User', text: "Hey how's it going, Mr. Botler?"},
+#     {user: 'Botler', text: "Well! Always a good day for a bot! What can I help you with?"},
+#     {user: 'User', text: "Book me a room in Marvin for 2pm tomorrow"},
+#     {user: 'Botler', text: "How long would you like to book the room?"},
+#     {user: 'User', text: "1 hour"},
+#     {user: 'Botler', text: "I've booked you Marvin for 1 hour at 2pm tomorrow!"}
+#   ]
+# }}
+#
+# chat = Chat.create(params[:chat])
 
-chat = Chat.create(params[:chat])
+User.create(username: 'admin', password: 'password', accessLevel: 1)
+Bot.create(name: 'originate')
 
 
 # class Member < ActiveRecord::Base

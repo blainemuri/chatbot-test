@@ -21,7 +21,26 @@ class ChatbotController < ApplicationController
     request.body = @body
     response = http.request(request)
 
-    puts response.body
+    p response.body
+    # Eventually access currentUser through rails
+    user = User.first
+    bot = Bot.first
+
+    query = "SELECT \"conversations\".* FROM \"conversations\" INNER JOIN \"comments\" c1 ON c1.\"conversation_id\" = \"conversations\".\"id\" INNER JOIN \"comments\" c2 ON c2.\"conversation_id\" = \"conversations\".\"id\" WHERE (c1.commentable_id = #{user.id} AND c1.commentable_type = 'User') AND (c2.commentable_id = #{bot.id} AND c2.commentable_type = 'Bot') AND (\"conversations\".\"end\" IS NULL)"
+    # .first will grab the most recent element
+    conv = Conversation.find_by_sql(query).first
+
+    p conv
+    if conv.present?
+      # Add them to the current conversation
+      puts 'Conversation is present'
+    else
+      # Create a new conversation
+      new_conv = Conversation.create(:entity => "blarg", :correct => 1)
+      com_user = user.comments.create(:body => 'User Text', :context => 'User Context', :correct => 1, conversation: new_conv)
+      com_bot = bot.comments.create(:body => 'Bot Text', :context => 'Bot Context', :correct => 1, conversation: new_conv)
+    end
+
   end
 
   def query

@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  start: 2016-09-19 09:48:09
+  end: 2016-09-19 09:48:09
+  entity: MyString
+  correct: 1
+
+two:
+  start: 2016-09-19 09:48:09
+  end: 2016-09-19 09:48:09
+  entity: MyString
+  correct: 1
