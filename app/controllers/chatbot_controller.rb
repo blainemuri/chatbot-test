@@ -24,6 +24,14 @@ class ChatbotController < ApplicationController
 
     @body = query.to_json
 
+    # comments = conv.comments
+
+    # Get the context of the previous conversation
+    # if comments.present?
+    #   context = comments.last.context
+    #   p "context: " + @body
+    #   @body['context'] = context
+    # end
 
     # Query Watson API through http:post
     uri = URI.parse("https://gateway.watsonplatform.net/conversation/api/v1/workspaces/19d05bd9-53a2-427f-9091-a74b885eef26/message?version=2016-09-16")
@@ -36,14 +44,13 @@ class ChatbotController < ApplicationController
     request.body = @body
     response = http.request(request)
 
+    bot_json = ActiveSupport::JSON.decode(response.body)
+    context = bot_json['context']
+
     user = User.first
     bot = Bot.first
     # Grab the current conversation, or new if one doesn't exist
     conv = get_conv()
-
-    bot_json = ActiveSupport::JSON.decode(response.body)
-    context = bot_json['context']
-    p context
 
     com_user = user.comments.create(:body => query['input']['text'], :context => 'User Context', :correct => 1, conversation: conv)
     com_bot = bot.comments.create(:body => bot_json['output']['text'].last, :context => response.body, :correct => 1, conversation: conv)
@@ -60,6 +67,13 @@ class ChatbotController < ApplicationController
     bot = Bot.first
     conv = get_conv()
     @conversation = conv.comments
+  end
+
+  def newbot
+    # TODO: Change this to instead use the current bot
+    bot = Bot.first
+    bot.trainingData = params
+    render :admin
   end
 end
 

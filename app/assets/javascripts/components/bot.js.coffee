@@ -2,21 +2,31 @@ React = require 'react'
 
 @Bot = React.createClass
   getInitialState: ->
-    context: {}
     text: ""
     dark: no
 
   handleSubmit: (e) ->
     e.preventDefault()
+    last =  @props.conversation[..].pop()
+    context = {}
+    if last.commentable_type == "Bot"
+      context = JSON.parse(last.context).context
+      console.log context
     $.ajax
       url: '/bot'
-      data: {'query': {"input": {"text": @state.text}}}
+      data: {
+              'query': {
+                'input': {
+                  'text': @state.text
+                },
+                'context': context
+              }
+            }
       method: 'POST'
     .done (response) =>
       @setState text: ""
     .fail ->
       alert 'Error sending message!'
-    console.log @props.conversation
 
   handleChange: (e) -> @setState text: e.target.value
 
@@ -38,7 +48,7 @@ React = require 'react'
       .to('#loading', .3, {scale: 1, opacity: 0}, 'start+.1')
       .to('#loading2', .4, {scale: .6, opacity: 0}, 'start+.1')
       .to(chat, .5, {top: 0, opacity: 1}, 'start+.2')
-      .staggerTo('.message', .2, {transform: "translateY(0)", opacity: 1}, .05, 'start+.2')
+      .staggerTo('.message', .2, {transform: "translateY(0)", opacity: 1}, 0, 'start+.2')
     tl.timeScale(1)
 
   render: ->

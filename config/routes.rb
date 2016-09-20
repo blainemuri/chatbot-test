@@ -6,6 +6,8 @@ Rails.application.routes.draw do
 
   post 'bot', to: 'chatbot#query'
 
+  post 'admin', to: 'chatbot#newbot'
+
   root 'chatbot#login'
 
   resources :chats
