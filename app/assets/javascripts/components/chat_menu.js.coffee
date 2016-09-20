@@ -95,6 +95,7 @@ React = require 'react'
         chatbot: @props.chatbot
         profile: @props.profile
         mic: @props.mic
+        conversation: @props.conversation
       # if @state.active == 'bot'
       #   React.createElement Bot,
       #     chatbot: @props.chatbot

@@ -16,6 +16,7 @@ React = require 'react'
       @setState text: ""
     .fail ->
       alert 'Error sending message!'
+    console.log @props.conversation
 
   handleChange: (e) -> @setState text: e.target.value
 

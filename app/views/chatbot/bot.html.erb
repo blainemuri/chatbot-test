@@ -1,8 +1,8 @@
 <%= javascript_include_tag "http://cdnjs.cloudflare.com/ajax/libs/gsap/1.19.0/TweenMax.min.js" %>
 <%= react_component 'ChatMenu',
   {active:'', chatbot:asset_path('chatbot.png'),
-  chatbot:asset_path('chatbot.png'),
   profile:asset_path('Blank-Profile.jpg'),
   down:asset_path('down-arrow@3x.png'),
-  mic:asset_path('mic-icon-default@3x.png')
+  mic:asset_path('mic-icon-default@3x.png'),
+  conversation:@conversation
   } %>
