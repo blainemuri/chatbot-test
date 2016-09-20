@@ -9,6 +9,7 @@ class ChatbotController < ApplicationController
     conv = Conversation.find_by_sql(query).first
 
     if conv.present?
+      # Check to see if the conversation intents decreased (create new conv.)
       # Return the most recent conversation
       conv
     else
@@ -21,17 +22,18 @@ class ChatbotController < ApplicationController
     require 'net/http'
     require 'json'
 
-    body = query.to_json
+    @body = query.to_json
+
 
     # Query Watson API through http:post
-    uri = URI.parse("https://gateway.watsonplatform.net/conversation/api/v1/workspaces/19d05bd9-53a2-427f-9091-a74b885eef26/message?version=2016-07-11")
+    uri = URI.parse("https://gateway.watsonplatform.net/conversation/api/v1/workspaces/19d05bd9-53a2-427f-9091-a74b885eef26/message?version=2016-09-16")
     http = Net::HTTP.new(uri.host, uri.port)
     http.use_ssl = true
     http.verify_mode = OpenSSL::SSL::VERIFY_NONE
     request = Net::HTTP::Post.new(uri.request_uri)
     request.add_field('Content-Type', 'application/json')
     request.basic_auth("a4da0ece-5ee3-4e11-87ed-e6afe3ed8b8c", "IeUUcCDdkoMH")
-    request.body = body
+    request.body = @body
     response = http.request(request)
 
     user = User.first
@@ -39,8 +41,12 @@ class ChatbotController < ApplicationController
     # Grab the current conversation, or new if one doesn't exist
     conv = get_conv()
 
-    com_user = user.comments.create(:body => 'User Text', :context => 'User Context', :correct => 1, conversation: conv)
-    com_bot = bot.comments.create(:body => 'Bot Text', :context => 'Bot Context', :correct => 1, conversation: conv)
+    bot_json = ActiveSupport::JSON.decode(response.body)
+    context = bot_json['context']
+    p context
+
+    com_user = user.comments.create(:body => query['input']['text'], :context => 'User Context', :correct => 1, conversation: conv)
+    com_bot = bot.comments.create(:body => bot_json['output']['text'].last, :context => response.body, :correct => 1, conversation: conv)
   end
 
   def query
@@ -50,8 +56,10 @@ class ChatbotController < ApplicationController
   end
 
   def bot
+    user = User.first
+    bot = Bot.first
     conv = get_conv()
-    @conversation = Conversation.find_by_id(conv.id)
+    @conversation = conv.comments
   end
 end
 

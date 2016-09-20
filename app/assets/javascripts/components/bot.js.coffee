@@ -54,57 +54,19 @@ React = require 'react'
           div
             className: 'conversation'
             id: 'conv-scroll'
-            React.createElement BotMessage,
-              text: 'Welcome to Chat Botler, nice to meet you!'
-              pic: @props.chatbot
-              id: 1
-            React.createElement UserMessage,
-              text: "Hey how's it going, Mr. Chat Botler?"
-              pic: @props.profile
-            React.createElement BotMessage,
-              text: 'Well! Always a good day as a bot! What can I help you with?'
-              pic: @props.chatbot
-              id: 2
-            React.createElement UserMessage,
-              text: "Book me a room in Marvin for 2pm tomorrow"
-              pic: @props.profile
-            React.createElement BotMessage,
-              text: 'How long would you like to book the room?'
-              pic: @props.chatbot
-              intent: 'book-room  |  2pm  |  Marvin'
-              id: 3
-            React.createElement UserMessage,
-              text: "1 hour"
-              pic: @props.profile
-            React.createElement BotMessage,
-              text: "I've booked you Marvin for 1 hour at 2pm tomorrow!"
-              pic: @props.chatbot
-              intent: 'book-room  |  2pm  |  Marvin  |  1hour'
-              id: 4
-            React.createElement UserMessage,
-              text: "Thanks!"
-              pic: @props.profile
-            React.createElement BotMessage,
-              text: "You're welcome"
-              pic: @props.chatbot
-              id: 5
-            React.createElement UserMessage,
-              text: "/findthebots"
-              pic: @props.profile
-            React.createElement BotMessage,
-              text: "Question number 1. This famous Rapbot is named after a domesticated animal. He won a grammy in 2014."
-              pic: @props.chatbot
-              id: 6
-            React.createElement UserMessage,
-              text: "Snoop Botty Bot?"
-              pic: @props.profile
-            React.createElement BotMessage,
-              text: "Wow! That was great. Do you want to add the bot to your collection?"
-              pic: @props.chatbot
-              id: 7
-            React.createElement UserMessage,
-              text: "yes!"
-              pic: @props.profile
+            for comment, id in @props.conversation
+              if comment.commentable_type == 'User'
+                React.createElement UserMessage,
+                  text: comment.body
+                  pic: @props.profile
+                  id: id
+                  key: id
+              else if comment.commentable_type == 'Bot'
+                React.createElement BotMessage,
+                  text: comment.body
+                  pic: @props.chatbot
+                  id: id
+                  key: id
           div className: 'input',
             form
               id: 'chatbot'
