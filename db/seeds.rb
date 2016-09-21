@@ -36,6 +36,8 @@
 User.create(username: 'admin', password: 'password', accessLevel: 1)
 Bot.create(name: 'originate')
 
+# TODO: Be sure to seed in the initial json for the bot if it's not present
+
 
 # class Member < ActiveRecord::Base
 #   has_many :posts
