@@ -8,8 +8,9 @@ React = require 'react'
     reader.readAsText e.target.files[0]
 
   onReaderLoad: (e) ->
-    obj = JSON.parse(e.target.result)
+    obj = e.target.result
     # Send the data to the backend
+    console.log e.target.result
     $.ajax
       url: '/admin'
       data: obj

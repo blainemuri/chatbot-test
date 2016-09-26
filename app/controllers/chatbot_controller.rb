@@ -77,15 +77,6 @@ class ChatbotController < ApplicationController
   end
 
   def admin
-    all_bots = Bot.all
-    temp_bots = []
-    for bot in all_bots
-      p bot['trainingData']
-      # temp = bot['trainingData'].to_json
-      # p temp
-      # temp_bots.push(temp)
-    end
-    p temp_bots
     @bots = Bot.all
   end
   #
