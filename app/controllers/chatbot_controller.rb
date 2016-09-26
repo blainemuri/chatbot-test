@@ -11,8 +11,6 @@ class ChatbotController < ApplicationController
     if conv.present?
       # Check to see if the conversation intents decreased (create new conv.)
       # Return the most recent conversation
-      p "|||||||||||||||||||||||||||||||||||||"
-      p bot.trainingData
       conv
     else
       # Return a new conversation
@@ -74,9 +72,31 @@ class ChatbotController < ApplicationController
   def newbot
     # TODO: Change this to instead use the current bot
     bot = Bot.first
-    bot.update_attribute(:trainingData, params)
+    bot.update_attribute(:trainingData, params.to_json)
     render :admin
   end
+
+  def admin
+    all_bots = Bot.all
+    temp_bots = []
+    for bot in all_bots
+      p bot['trainingData']
+      # temp = bot['trainingData'].to_json
+      # p temp
+      # temp_bots.push(temp)
+    end
+    p temp_bots
+    @bots = Bot.all
+  end
+  #
+  # def newentity
+  #   entity = params
+  #   bot = Bot.first
+  #   training_data = bot.trainingData
+  #   training_data['entities'][entity] = {}
+  #   bot.update_attribute(:trainingData, training_data)
+  # end
+
 end
 
 # python /lib/assets/python/app.py

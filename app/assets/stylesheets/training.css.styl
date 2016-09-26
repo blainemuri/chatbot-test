@@ -1,0 +1,159 @@
+@import 'params.styl'
+
+.training-container
+  width 100%
+  height "calc(100% - %s)" % nav-height
+  margin 0
+  padding 0
+  position fixed
+  margin-top nav-height
+
+  .context
+    width "calc(100% - (%s * 15))" % space
+    height 100%
+    position absolute
+    right 0
+    top 0
+    padding 0 space*2
+    box-sizing border-box
+
+    .entity-container
+      width 100%
+      height 100%
+      padding 0
+      overflow auto
+
+      .intent-col-1, .intent-col-2
+        width 50%
+        height 100%
+        float left
+
+        .intent-tile
+          width "calc(100% - (%s * 2))" % space
+          background-color pale-turqoise
+          float left
+          box-shadow 2px 2px 5px 0px #cccccc
+          margin-bottom space*2
+          margin-right space
+
+          h3
+            width 100%
+            background-color black
+            margin 0
+            padding 0
+            color white
+            box-sizing border-box
+            line-height nav-height
+            padding-left space
+
+          .example
+            width 100%
+            line-height nav-height*.5
+            font-size message-font
+            color black
+            padding-left space
+            border-bottom 1px solid grey-middle
+            box-sizing border-box
+
+          .add
+            cursor pointer
+            border none
+
+      .entity-tile
+        width space*15
+        background-color pale-turqoise
+        margin-right space*2
+        float left
+        margin-top space
+        box-shadow 0px 0px 20px 0px #cccccc
+
+        h3
+          width 100%
+          background-color black
+          margin 0
+          padding 0
+          color white
+          box-sizing border-box
+          line-height nav-height
+          padding-left space
+
+        .add
+          width "calc(100% - %s)" % space
+          line-height space*2
+          margin-left space
+          box-sizing border-box
+          font-size space*.8
+          cursor pointer
+          float left
+
+        .values
+            width "calc(100% - %s)" % space
+            margin-left space
+
+          .value
+            width "calc(100% - (%s * 1.7))" % space
+            border-bottom 1px solid grey-middle
+            line-height space*2
+            height space*2
+            box-sizing border-box
+            float left
+
+          .down
+            width space*1.2
+            height space*.8
+            padding-top space*.6
+            padding-bottom space*.54
+            padding-right space*.5
+            border-bottom 1px solid grey-middle
+            float right
+            cursor pointer
+
+          .synonym-container
+            width 100%
+            float left
+
+            .synonym
+              font-size message-font
+              line-height space*1.5
+              width "calc(100% - %s)" % space
+              background-color black
+              margin-left space
+              color white
+              padding-left space
+              border-bottom 1px solid white
+              box-sizing border-box
+
+  .left-menu
+    width space*15
+    height 100%
+    background-color pale-turqoise
+    color black
+
+    .bot
+      .menu-option
+        width 100%
+        height nav-height
+        border-bottom 1px solid black
+        line-height nav-height
+        text-align left
+        padding-left space
+        box-sizing border-box
+        float right
+        background-color black
+        color white
+        cursor pointer
+
+      .menu-suboption
+        width "calc(100% - %s)" % space
+        height nav-height*.75
+        line-height nav-height*.75
+        color black
+        float right
+        padding-left space
+        box-sizing border-box
+        background-color pale-turqoise
+        border-bottom 1px solid black
+        cursor pointer
+        &:hover
+          background-color black
+          color white

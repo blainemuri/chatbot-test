@@ -2,7 +2,7 @@ React = require 'react'
 
 @AdminMenu = React.createClass
   getInitialState: ->
-    active: 'log'
+    active: 'training'
     selected: no
 
   setActive: (e, link) ->
@@ -28,31 +28,11 @@ React = require 'react'
     file = document.getElementById 'bot-json-file'
     console.log file.target
 
-  handleChange: (e) ->
-    file = e.target.value
-    reader = new FileReader()
-    reader.onload = @onReaderLoad
-    reader.readAsText e.target.files[0]
-
-  onReaderLoad: (e) ->
-    obj = JSON.parse(e.target.result)
-
-    # Send the data to the backend
-    $.ajax
-      url: '/admin'
-      data: obj
-      method: 'POST'
-    .done (response) =>
-      alert 'Successfully saved new bot info'
-    .fail ->
-      alert 'Error uploading json file'
-
   render: ->
     {div, img, a, span, svg, g, path, form, input} = React.DOM
-    div {},
+    div className: 'admin-container',
       div
         id: 'chat-menu'
-        div className: 'blur', ''
         div className: "profile #{'selected' if @state.selected}",
           div
             className: "profile-options #{'selected' if @state.selected}"
@@ -100,15 +80,20 @@ React = require 'react'
             onClick: (e) => @setActive e, 'log'
             # href: '../chatbot/history'
             'Chat Log'
-          input
-            className: 'chat-btn'
-            type: 'file'
-            name: 'botjson'
-            id: 'bot-json-file'
-            onChange: @handleChange
+          a
+            className: "chat-btn #{'active' if @state.active == 'training'}"
+            onClick: (e) => @setActive e, 'training'
+            'Training'
         div className: 'chat-header', 'Botler'
-      React.createElement ChatLog,
-        chatbot: @props.chatbot
-        profile: @props.profile
+      if @state.active == 'log'
+        React.createElement ChatLog,
+          chatbot: @props.chatbot
+          profile: @props.profile
+      else if @state.active == 'stats'
+        React.createElement ChatStats, null
+      else if @state.active == 'training'
+        React.createElement Training,
+          bots: @props.bots
+          down: @props.down
 
 module.exports = @AdminMenu
