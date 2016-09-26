@@ -97,6 +97,17 @@ class ChatbotController < ApplicationController
   #   bot.update_attribute(:trainingData, training_data)
   # end
 
+  def newEntity
+    entity = params['entity']
+    bot = Bot.first
+    training_data = bot['trainingData']
+    entity_hash = {entity: entity, values: []}
+    p training_data.as_json['entities']
+    training_data['entities'] << entity_hash.to_json
+    bot.update_attribute(:trainingData, training_data)
+    render :admin
+  end
+
 end
 
 # python /lib/assets/python/app.py

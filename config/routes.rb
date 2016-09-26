@@ -8,6 +8,8 @@ Rails.application.routes.draw do
 
   post 'admin', to: 'chatbot#newbot'
 
+  post 'newEntity', to: 'chatbot#newEntity'
+
   root 'chatbot#login'
 
   resources :chats
