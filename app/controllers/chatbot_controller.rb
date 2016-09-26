@@ -72,7 +72,8 @@ class ChatbotController < ApplicationController
   def newbot
     # TODO: Change this to instead use the current bot
     bot = Bot.first
-    bot.update_attribute(:trainingData, params.to_json)
+    p params[:data]
+    bot.update_attribute(:trainingData, params[:data])
     render :admin
   end
 

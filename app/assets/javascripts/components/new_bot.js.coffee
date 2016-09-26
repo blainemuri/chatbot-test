@@ -10,10 +10,9 @@ React = require 'react'
   onReaderLoad: (e) ->
     obj = e.target.result
     # Send the data to the backend
-    console.log e.target.result
     $.ajax
       url: '/admin'
-      data: obj
+      data: {'data': obj}
       method: 'POST'
     .done (response) =>
       alert 'Successfully saved new bot info'
