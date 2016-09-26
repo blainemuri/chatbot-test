@@ -7,18 +7,18 @@ React = require 'react'
   handleOnChange: (e) -> @setState entity: e.target.value
 
   createNewEntity: (e) ->
-    e.preventDefault()
     e.stopPropagation()
+    e.preventDefault()
 
-    $.ajax
-      method: 'POST'
-      url: '/newEntity'
-      data: {'entity': @state.entity}
+    data = @props.trainingData
+    lastKey = parseInt(Object.keys(data.entities).sort().reverse()[0]) + 1
+    data.entities[lastKey] = {'entity': @state.entity, 'values': [], 'open_list': false, 'description': null}
+    console.log JSON.stringify(data)
 
   render: ->
     {div, input, form} = React.DOM
     div className: 'entity-container',
-      for num, entity of @props.entities
+      for num, entity of @props.trainingData.entities
         React.createElement Entity,
           key: num
           entity: entity
@@ -26,7 +26,7 @@ React = require 'react'
       div
         className: 'entity-tile'
         style: cursor: 'pointer'
-        form 
+        form
           onSubmit: @createNewEntity
           input
             placeholder: '+ New Entity'

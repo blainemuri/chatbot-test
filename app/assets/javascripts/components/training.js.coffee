@@ -8,7 +8,7 @@ React = require 'react'
   showEntities: (data, e) ->
     data = JSON.parse data
     @setState show: 'entities'
-    @setState content: data.entities
+    @setState content: data
 
   showIntents: (data, e) ->
     data = JSON.parse data
@@ -21,6 +21,12 @@ React = require 'react'
     @setState content: data.dialog_nodes
 
   showNewBot: -> @setState show: 'newbot'
+
+  submitTrainingData: (json) ->
+    $.ajax
+      method: 'POST'
+      url: '/newEntity'
+      data: {'data': json}
 
   render: ->
     {div, input} = React.DOM
@@ -51,8 +57,9 @@ React = require 'react'
           React.createElement NewBot, null
         else if @state.show == 'entities'
           React.createElement Entities,
-            entities: @state.content
+            trainingData: @state.content
             down: @props.down
+            submitTrainingData: @submitTrainingData
         else if @state.show == 'intents'
           React.createElement Intents, intents: @state.content
         else if @state.show == 'dialogue'
