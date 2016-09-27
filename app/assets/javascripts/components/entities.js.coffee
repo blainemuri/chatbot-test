@@ -15,8 +15,9 @@ React = require 'react'
     data = @props.trainingData
     lastKey = @getLastKey(data.entities) + 1
     data.entities[lastKey] = {'entity': @state.entity, 'values': [], 'open_list': false, 'description': null}
-
-    @props.submitTrainingData JSON.stringify(data)
+    data =  JSON.stringify(data)
+    console.log data
+    @props.submitTrainingData data
     @setState entity: ""
 
   # value is going to be an object that needs to be appended to the values array
