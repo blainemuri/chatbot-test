@@ -6,14 +6,29 @@ React = require 'react'
 
   handleOnChange: (e) -> @setState entity: e.target.value
 
+  getLastKey: (arr) -> parseInt(Object.keys(arr).sort().reverse()[0])
+
   createNewEntity: (e) ->
     e.stopPropagation()
     e.preventDefault()
 
     data = @props.trainingData
-    lastKey = parseInt(Object.keys(data.entities).sort().reverse()[0]) + 1
+    lastKey = @getLastKey(data.entities) + 1
     data.entities[lastKey] = {'entity': @state.entity, 'values': [], 'open_list': false, 'description': null}
-    console.log JSON.stringify(data)
+
+    @props.submitTrainingData JSON.stringify(data)
+    @setState entity: ""
+
+  # value is going to be an object that needs to be appended to the values array
+  createNewValue: (entity, value, id) ->
+    data = @props.trainingData
+    lastKey = @getLastKey(entity.values) + 1
+    newEntity = entity
+
+    newEntity.values[lastKey] = {'value': value, 'metadata': null, 'synonyms': []}
+    data.entities[id] = newEntity
+
+    @props.submitTrainingData JSON.stringify(data)
 
   render: ->
     {div, input, form} = React.DOM
@@ -21,8 +36,10 @@ React = require 'react'
       for num, entity of @props.trainingData.entities
         React.createElement Entity,
           key: num
+          id: num
           entity: entity
           down: @props.down
+          createNewValue: @createNewValue
       div
         className: 'entity-tile'
         style: cursor: 'pointer'
@@ -31,6 +48,7 @@ React = require 'react'
           input
             placeholder: '+ New Entity'
             type: 'text'
+            value: @state.entity
             onChange: @handleOnChange
 
 

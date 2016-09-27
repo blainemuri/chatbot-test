@@ -25,7 +25,7 @@ React = require 'react'
   submitTrainingData: (json) ->
     $.ajax
       method: 'POST'
-      url: '/newEntity'
+      url: '/setTrainingData'
       data: {'data': json}
 
   render: ->

@@ -8,7 +8,7 @@ Rails.application.routes.draw do
 
   post 'admin', to: 'chatbot#newbot'
 
-  post 'newEntity', to: 'chatbot#newEntity'
+  post 'setTrainingData', to: 'chatbot#setTrainingData'
 
   root 'chatbot#login'
 
