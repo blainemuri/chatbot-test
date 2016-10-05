@@ -1,4 +1,19 @@
 class ChatbotController < ApplicationController
+  # require 'slack-ruby-client'
+  #
+  # Slack.configure do |config|
+  #   config.token = "xoxb-55467628436-Kq024WRGHhEtaZ3v93p9vpbW"
+  #   config.logger = Logger.new(STDOUT)
+  #   config.logger.level = Logger::INFO
+  #   fail 'Missing ENV[SLACK_API_TOEKN]!' unless config.token
+  # end
+  #
+  # client = Slack::RealTime::Client.test
+
+  def adminBot
+    p params
+  end
+
   def get_conv()
     # Eventually access currentUser through rails
     user = User.first

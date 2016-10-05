@@ -10,6 +10,8 @@ Rails.application.routes.draw do
 
   post 'setTrainingData', to: 'chatbot#setTrainingData'
 
+  post 'adminBot', to: 'chatbot#adminBot'
+
   root 'chatbot#login'
 
   resources :chats

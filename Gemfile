@@ -54,6 +54,14 @@ gem 'rubypython'
 
 gem 'annotate'
 
+##### Slack Integration
+gem 'slack-ruby-client'
+
+gem 'eventmachine'
+
+gem 'faye-websocket'
+#####
+
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
