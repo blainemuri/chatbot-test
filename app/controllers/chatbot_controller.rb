@@ -37,6 +37,8 @@ class ChatbotController < ApplicationController
     require 'net/http'
     require 'json'
 
+    p "blah!"
+
     @body = query.to_json
 
     # comments = conv.comments
