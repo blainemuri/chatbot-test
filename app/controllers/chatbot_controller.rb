@@ -1,4 +1,6 @@
 class ChatbotController < ApplicationController
+  protect_from_forgery except: :adminBot
+  skip_before_action :verify_authenticity_token, :only => :adminBot
   # require 'slack-ruby-client'
   #
   # Slack.configure do |config|
