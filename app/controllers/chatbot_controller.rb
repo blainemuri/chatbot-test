@@ -1,17 +1,9 @@
 class ChatbotController < ApplicationController
+  # Allow for adminBot to send posts to /adminBot
+  # TODO: DEFINITELY FIX THIS!!!!! ANYTHING CAN COME IN AT THIS POINT
+  # TODO: LIKE SERIOUSLY, SOME RANDOM PERSON CAN POST ANYTHING HERE
   protect_from_forgery except: :adminBot
   skip_before_action :verify_authenticity_token, :only => :adminBot
-  # TODO: DEFINITELY FIX THIS!!!!! ANYTHING CAN COME IN AT THIS POINT
-  # require 'slack-ruby-client'
-  #
-  # Slack.configure do |config|
-  #   config.token = "xoxb-55467628436-Kq024WRGHhEtaZ3v93p9vpbW"
-  #   config.logger = Logger.new(STDOUT)
-  #   config.logger.level = Logger::INFO
-  #   fail 'Missing ENV[SLACK_API_TOEKN]!' unless config.token
-  # end
-  #
-  # client = Slack::RealTime::Client.test
 
   def adminBot
     bot_name = params["botname"]
@@ -26,7 +18,7 @@ class ChatbotController < ApplicationController
       bot = currBot
     else
       # Create a new bot
-      bot = Bot.create(name: 'originate')
+      bot = Bot.create(name: bot_name)
     end
 
     # Grab the current conversation for this bot
