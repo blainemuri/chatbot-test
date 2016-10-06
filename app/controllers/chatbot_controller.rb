@@ -11,24 +11,32 @@ class ChatbotController < ApplicationController
   # client = Slack::RealTime::Client.test
 
   def adminBot
-    p ""
-    p "BLARRGGGGGGG!!!!!!!!!!!!!!!!!!!!!!"
-    p ""
     bot_name = params["botname"]
     bot_message = params["data"]["botMessage"]
     user_message = params["data"]["userMessage"]
-    p "########################################"
-    p bot_name
-    p "########################################"
-    p bot_message
-    p "########################################"
-    p user_message
+
+    user = User.first
+    bot = nil
+
+    if currBot = Bot.where(:name => bot_name).first
+      # Add to the current bot
+      bot = currBot
+    else
+      # Create a new bot
+      bot = Bot.create(name: 'originate')
+    end
+
+    # Grab the current conversation for this bot
+    conv = get_conv(Bot.first)
+
+    # Add in the messages
+    user.comments.create(:body => user_message, :context => 'User Context', :correct => 1, conversation: conv)
+    bot.comments.create(:body => bot_json['output']['text'].last, :context => 'Bot Context', :correct => 1, conversation: conv)
   end
 
-  def get_conv()
+  def get_conv(bot)
     # Eventually access currentUser through rails
     user = User.first
-    bot = Bot.first
 
     query = "SELECT \"conversations\".* FROM \"conversations\" INNER JOIN \"comments\" c1 ON c1.\"conversation_id\" = \"conversations\".\"id\" INNER JOIN \"comments\" c2 ON c2.\"conversation_id\" = \"conversations\".\"id\" WHERE (c1.commentable_id = #{user.id} AND c1.commentable_type = 'User') AND (c2.commentable_id = #{bot.id} AND c2.commentable_type = 'Bot') AND (\"conversations\".\"end\" IS NULL)"
     # .first will grab the most recent element
@@ -76,7 +84,7 @@ class ChatbotController < ApplicationController
     user = User.first
     bot = Bot.first
     # Grab the current conversation, or new if one doesn't exist
-    conv = get_conv()
+    conv = get_conv(Bot.first)
 
     com_user = user.comments.create(:body => query['input']['text'], :context => 'User Context', :correct => 1, conversation: conv)
     com_bot = bot.comments.create(:body => bot_json['output']['text'].last, :context => response.body, :correct => 1, conversation: conv)
