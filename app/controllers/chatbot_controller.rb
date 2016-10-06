@@ -11,7 +11,15 @@ class ChatbotController < ApplicationController
   # client = Slack::RealTime::Client.test
 
   def adminBot
-    p params
+    bot_name = params["botname"]
+    bot_message = params["data"]["botMessage"]
+    user_message = params["data"]["userMessage"]
+    p "########################################"
+    p bot_name
+    p "########################################"
+    p bot_message
+    p "########################################"
+    p user_message
   end
 
   def get_conv()
@@ -36,8 +44,6 @@ class ChatbotController < ApplicationController
   def ask_watson(query)
     require 'net/http'
     require 'json'
-
-    p "blah!"
 
     @body = query.to_json
 
