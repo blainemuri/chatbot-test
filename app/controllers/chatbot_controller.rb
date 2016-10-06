@@ -11,6 +11,9 @@ class ChatbotController < ApplicationController
   # client = Slack::RealTime::Client.test
 
   def adminBot
+    p ""
+    p "BLARRGGGGGGG!!!!!!!!!!!!!!!!!!!!!!"
+    p ""
     bot_name = params["botname"]
     bot_message = params["data"]["botMessage"]
     user_message = params["data"]["userMessage"]
