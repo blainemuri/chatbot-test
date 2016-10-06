@@ -1,6 +1,7 @@
 class ChatbotController < ApplicationController
   protect_from_forgery except: :adminBot
   skip_before_action :verify_authenticity_token, :only => :adminBot
+  # TODO: DEFINITELY FIX THIS!!!!! ANYTHING CAN COME IN AT THIS POINT
   # require 'slack-ruby-client'
   #
   # Slack.configure do |config|
@@ -33,7 +34,7 @@ class ChatbotController < ApplicationController
 
     # Add in the messages
     user.comments.create(:body => user_message, :context => 'User Context', :correct => 1, conversation: conv)
-    bot.comments.create(:body => bot_json['output']['text'].last, :context => 'Bot Context', :correct => 1, conversation: conv)
+    bot.comments.create(:body => bot_message, :context => 'Bot Context', :correct => 1, conversation: conv)
   end
 
   def get_conv(bot)
