@@ -13,6 +13,7 @@ window.Entity = require('./components/entity');
 window.Intents = require('./components/intents');
 window.Intent = require('./components/intent');
 window.LogTile = require('./components/log_tile');
+window.MenuBot = require('./components/menu_bot');
 window.NewBot = require('./components/new_bot');
 window.Training = require('./components/training');
 window.UserMessage = require('./components/user_message');

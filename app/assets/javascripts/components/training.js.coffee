@@ -5,22 +5,32 @@ React = require 'react'
     show: 'newbot'
     content: {}
 
-  showEntities: (data, e) ->
-    data = JSON.parse data
+  showEntities: (e, id) ->
+    data = JSON.parse @props.bots[id].trainingData
     @setState show: 'entities'
     @setState content: data
 
-  showIntents: (data, e) ->
-    data = JSON.parse data
+  showIntents: (e, id) ->
+    data = JSON.parse @props.bots[id].trainingData
     @setState show: 'intents'
     @setState content: data.intents
+    # @setCurrentBot id
 
-  showDialogue: (data, e) ->
-    data = JSON.parse data
+  showDialogue: (e, id) ->
+    data = JSON.parse @props.bots[id].trainingData
     @setState show: 'dialogue'
     @setState content: data.dialog_nodes
+    # @setCurrentBot id
 
-  showNewBot: -> @setState show: 'newbot'
+  showNewBot: (e, id) ->
+    @setState show: 'newbot'
+    # @setCurrentBot id
+
+  setCurrentBot: (id) ->
+    $.ajax
+      method: 'POST'
+      url: '/setBot'
+      data: {'id': id}
 
   submitTrainingData: (json) ->
     $.ajax
@@ -33,25 +43,14 @@ React = require 'react'
     div className: 'training-container',
       div className: 'left-menu',
         for bot, id in @props.bots
-          div
-            className: 'bot'
+          React.createElement MenuBot,
+            bot: bot
+            id: id
             key: id
-            div
-              className: 'menu-option'
-              onClick: @showNewBot
-              bot.name
-            div
-              className: 'menu-suboption'
-              onClick: (e) => @showEntities @props.bots[id-1].trainingData, e
-              'Entities'
-            div
-              className: 'menu-suboption'
-              onClick: (e) => @showIntents @props.bots[id-1].trainingData, e
-              'Intents'
-            div
-              className: 'menu-suboption'
-              onClick: (e) => @showDialogue @props.bots[id-1].trainingData, e
-              'Dialogue'
+            showEntities: @showEntities
+            showIntents: @showIntents
+            showDialogue: @showDialogue
+            showNewBot: @showNewBot
       div className: 'context',
         if @state.show == 'newbot'
           React.createElement NewBot, null
