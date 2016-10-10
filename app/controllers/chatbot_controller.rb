@@ -103,7 +103,6 @@ class ChatbotController < ApplicationController
   def newbot
     # TODO: Change this to instead use the current bot
     bot = Bot.first
-    p params[:data]
     bot.update_attribute(:trainingData, params[:data])
     render :admin
   end
@@ -122,10 +121,32 @@ class ChatbotController < ApplicationController
 
   def setTrainingData
     new_data = params[:data]
-    bot = Bot.first
+    bot = Bot.where(id: params[:botId]).first
+    p bot
     bot.update_attribute(:trainingData, new_data)
-    p bot['trainingData']
+
+    key, val = params[:type].first
+    if key == 'entity'
+      addNewEntity(params[:botId], val)
+    end
+
     render :admin
+  end
+
+  def addNewEntity(id, entity)
+    bot = Bot.where(id: id).first
+    if Entity.where(name: entity).present?
+      #The entity already exists!
+      #Just need to associate it with the current bot
+
+      # entity = Bot.where(id: id).first.entities.exists?(name: entity)
+      if !bot.entities.exists?(name: entity)
+        # Entity does not exist, so let's create it
+        bot.enitites.create(name: entity)
+      end
+    else
+      bot.entities.create(name: entity)
+    end
   end
 
 end

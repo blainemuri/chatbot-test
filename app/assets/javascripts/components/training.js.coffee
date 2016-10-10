@@ -4,39 +4,44 @@ React = require 'react'
   getInitialState: ->
     show: 'newbot'
     content: {}
+    id: 0
 
   showEntities: (e, id) ->
     data = JSON.parse @props.bots[id].trainingData
     @setState show: 'entities'
     @setState content: data
+    @setState id: id
 
   showIntents: (e, id) ->
     data = JSON.parse @props.bots[id].trainingData
     @setState show: 'intents'
     @setState content: data.intents
+    @setState id: id
     # @setCurrentBot id
 
   showDialogue: (e, id) ->
     data = JSON.parse @props.bots[id].trainingData
     @setState show: 'dialogue'
     @setState content: data.dialog_nodes
+    @setState id: id
     # @setCurrentBot id
 
   showNewBot: (e, id) ->
     @setState show: 'newbot'
+    @setState id: id
     # @setCurrentBot id
 
-  setCurrentBot: (id) ->
-    $.ajax
-      method: 'POST'
-      url: '/setBot'
-      data: {'id': id}
+  # setCurrentBot: (id) ->
+  #   $.ajax
+  #     method: 'POST'
+  #     url: '/setBot'
+  #     data: {'id': id}
 
-  submitTrainingData: (json) ->
+  submitTrainingData: (json, id, type) ->
     $.ajax
       method: 'POST'
       url: '/setTrainingData'
-      data: {'data': json}
+      data: {'data': json, 'botId': id, type}
 
   render: ->
     {div, input} = React.DOM
@@ -59,9 +64,14 @@ React = require 'react'
             trainingData: @state.content
             down: @props.down
             submitTrainingData: @submitTrainingData
+            id: id
         else if @state.show == 'intents'
-          React.createElement Intents, intents: @state.content
+          React.createElement Intents,
+            intents: @state.content
+            id: id
         else if @state.show == 'dialogue'
-          React.createElement Dialogue, dialogue: @state.content
+          React.createElement Dialogue,
+            dialogue: @state.content
+            id: id
 
 module.exports = @Training

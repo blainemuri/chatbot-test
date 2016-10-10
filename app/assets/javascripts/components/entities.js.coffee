@@ -16,8 +16,7 @@ React = require 'react'
     lastKey = @getLastKey(data.entities) + 1
     data.entities[lastKey] = {'entity': @state.entity, 'values': [], 'open_list': false, 'description': null}
     data =  JSON.stringify(data)
-    console.log data
-    @props.submitTrainingData data
+    @props.submitTrainingData data, @props.id, {'entity': @state.entity}
     @setState entity: ""
 
   # value is going to be an object that needs to be appended to the values array
@@ -29,7 +28,7 @@ React = require 'react'
     newEntity.values[lastKey] = {'value': value, 'metadata': null, 'synonyms': []}
     data.entities[id] = newEntity
 
-    @props.submitTrainingData JSON.stringify(data)
+    @props.submitTrainingData JSON.stringify(data), @props.id, {'value': value}
 
   render: ->
     {div, input, form} = React.DOM
