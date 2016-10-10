@@ -4,14 +4,14 @@ React = require 'react'
   getInitialState: ->
     intents: ""
 
-  handleOnChange: (e) -> 
+  handleOnChange: (e) ->
     @setState intent: e.target.value
 
-  getLastKey: (arr) -> 
+  getLastKey: (arr) ->
     num = parseInt(Object.keys(arr).sort().reverse()[0])
     if isNaN(num) then -1 else num
 
-  createNewIntent: (e) -> 
+  createNewIntent: (e) ->
     e.stopPropagation()
     e.preventDefault()
 
@@ -19,7 +19,7 @@ React = require 'react'
     lastKey = @getLastKey(data.intents) + 1
     data.intents[lastKey] = {'intent': @state.intent, 'examples': [], 'description': null}
     data = JSON.stringify(data)
-    @props.submitTrainingData data
+    @props.submitTrainingData data, @props.id, {'intent': @state.intent}
     @setState intent: ""
 
   createNewExample: (intent, example, id) ->
@@ -30,7 +30,7 @@ React = require 'react'
     newIntent.examples[lastKey] = {'text': example}
     data.intents[id] = newIntent
 
-    @props.submitTrainingData JSON.stringify(data)
+    @props.submitTrainingData JSON.stringify(data), @props.id, {'example', example}
 
     # console.log JSON.stringify(@props.trainingData)
 

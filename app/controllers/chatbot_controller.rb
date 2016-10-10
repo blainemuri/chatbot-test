@@ -129,6 +129,7 @@ class ChatbotController < ApplicationController
     bot.update_attribute(:trainingData, new_data)
 
     key, val = params[:type].first
+    p '######################'
     if key == 'entity'
       addNewEntity(params[:botId], val)
     elsif key == 'intent'
@@ -139,6 +140,10 @@ class ChatbotController < ApplicationController
   end
 
   private
+
+  # Possible Data Types
+  # entity -> value -> synonym
+  # intent -> example
 
   def addNewEntity(id, entity)
     bot = Bot.find_by(id: id)
@@ -155,10 +160,12 @@ class ChatbotController < ApplicationController
   end
 
   def addNewIntent(id, intent)
+    p id
     bot = Bot.find_by(id: id)
     if Intent.where(name: intent).present?
       if !bot.intents.exists?(name: intent)
         # Intent does not exists, so let's create it
+        # TODO: This needs to change to where it's associated witih the current intent
         bot.intents.create(name: intent)
       end
       # Do nothing if the intent already exists within the bot

@@ -5,6 +5,8 @@ class CreateIntents < ActiveRecord::Migration
       t.text :examples
 
       t.timestamps null: false
+
+      t.belongs_to :bot
     end
   end
 end

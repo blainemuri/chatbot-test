@@ -71,6 +71,7 @@ ActiveRecord::Schema.define(version: 20161010180439) do
     t.text     "examples"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer  "bot_id"
   end
 
   create_table "users", force: :cascade do |t|
