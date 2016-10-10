@@ -1,0 +1,620 @@
+{
+	"name": "Chip-conversation",
+	"created": "2016-09-16T16:45:54.191Z",
+	"intents": [{
+		"intent": "bad_chips",
+		"created": "2016-09-16T16:45:54.191Z",
+		"examples": [{
+			"text": "Chips are stale",
+			"created": "2016-09-16T16:45:54.191Z"
+		}, {
+			"text": "Chips did not taste good",
+			"created": "2016-09-16T16:45:54.191Z"
+		}, {
+			"text": "I don't like this flavor",
+			"created": "2016-09-16T16:45:54.191Z"
+		}, {
+			"text": "I don't like your food",
+			"created": "2016-09-16T16:45:54.191Z"
+		}, {
+			"text": "My bag was almost empty",
+			"created": "2016-09-16T16:45:54.191Z"
+		}, {
+			"text": "the chips are nasty",
+			"created": "2016-09-16T16:45:54.191Z"
+		}, {
+			"text": "The chips don't taste good",
+			"created": "2016-09-16T16:45:54.191Z"
+		}, {
+			"text": "The chips were gross",
+			"created": "2016-09-16T16:45:54.191Z"
+		}, {
+			"text": "the classic chips are bad",
+			"created": "2016-09-16T16:45:54.191Z"
+		}, {
+			"text": "This bag was bad",
+			"created": "2016-09-16T16:45:54.191Z"
+		}],
+		"description": null
+	}, {
+		"intent": "bad_service",
+		"created": "2016-09-16T16:45:54.191Z",
+		"examples": [{
+			"text": "i got yelled at by your cashier",
+			"created": "2016-09-16T16:45:54.191Z"
+		}, {
+			"text": "i hate youi",
+			"created": "2016-09-16T16:45:54.191Z"
+		}, {
+			"text": "I never got my call returned",
+			"created": "2016-09-16T16:45:54.191Z"
+		}, {
+			"text": "My chips didn't get delivered on time",
+			"created": "2016-09-16T16:45:54.191Z"
+		}, {
+			"text": "The customer service rep was mean",
+			"created": "2016-09-16T16:45:54.191Z"
+		}, {
+			"text": "The delivery person was not good",
+			"created": "2016-09-16T16:45:54.191Z"
+		}, {
+			"text": "The service is bad",
+			"created": "2016-09-16T16:45:54.191Z"
+		}, {
+			"text": "Your agents are rude",
+			"created": "2016-09-16T16:45:54.191Z"
+		}],
+		"description": null
+	}, {
+		"intent": "farewell",
+		"created": "2016-09-16T16:45:54.191Z",
+		"examples": [{
+			"text": "adios",
+			"created": "2016-09-16T16:45:54.191Z"
+		}, {
+			"text": "bye",
+			"created": "2016-09-16T16:45:54.191Z"
+		}, {
+			"text": "good bye",
+			"created": "2016-09-16T16:45:54.191Z"
+		}, {
+			"text": "peace out",
+			"created": "2016-09-16T16:45:54.191Z"
+		}, {
+			"text": "see you later",
+			"created": "2016-09-16T16:45:54.191Z"
+		}, {
+			"text": "talk to you later",
+			"created": "2016-09-16T16:45:54.191Z"
+		}],
+		"description": null
+	}, {
+		"intent": "find_location",
+		"created": "2016-09-16T16:45:54.191Z",
+		"examples": [{
+			"text": "How do I get chips?",
+			"created": "2016-09-16T16:45:54.191Z"
+		}, {
+			"text": "What stores carry these chips?",
+			"created": "2016-09-16T16:45:54.191Z"
+		}, {
+			"text": "Where can I get cheetos",
+			"created": "2016-09-16T16:45:54.191Z"
+		}, {
+			"text": "where can i get some lays?",
+			"created": "2016-09-16T16:45:54.191Z"
+		}, {
+			"text": "Where can I get these chips?",
+			"created": "2016-09-16T16:45:54.191Z"
+		}, {
+			"text": "Which stores can these?",
+			"created": "2016-09-16T16:45:54.191Z"
+		}],
+		"description": null
+	}, {
+		"intent": "find_nutrition",
+		"created": "2016-09-16T16:45:54.191Z",
+		"examples": [{
+			"text": "Are chips good for you?",
+			"created": "2016-09-16T16:45:54.191Z"
+		}, {
+			"text": "Are these healthy?",
+			"created": "2016-09-16T16:45:54.191Z"
+		}, {
+			"text": "Can I eat these when I'm trying to lose weight?",
+			"created": "2016-09-16T16:45:54.191Z"
+		}, {
+			"text": "Can I have these on a diet?",
+			"created": "2016-09-16T16:45:54.191Z"
+		}, {
+			"text": "how many calories?",
+			"created": "2016-09-16T16:45:54.191Z"
+		}, {
+			"text": "How many calories are in a bag?",
+			"created": "2016-09-16T16:45:54.191Z"
+		}, {
+			"text": "How much fat is in a bag?",
+			"created": "2016-09-16T16:45:54.191Z"
+		}],
+		"description": null
+	}, {
+		"intent": "greeting",
+		"created": "2016-09-16T16:45:54.191Z",
+		"examples": [{
+			"text": "Good afternoon",
+			"created": "2016-09-16T16:45:54.191Z"
+		}, {
+			"text": "Good morning",
+			"created": "2016-09-16T16:45:54.191Z"
+		}, {
+			"text": "Hello",
+			"created": "2016-09-16T16:45:54.191Z"
+		}, {
+			"text": "Hi there!",
+			"created": "2016-09-16T16:45:54.191Z"
+		}, {
+			"text": "How are you?",
+			"created": "2016-09-16T16:45:54.191Z"
+		}, {
+			"text": "Howdy",
+			"created": "2016-09-16T16:45:54.191Z"
+		}],
+		"description": null
+	}, {
+		"intent": "show_pleasure",
+		"created": "2016-09-16T16:45:54.191Z",
+		"examples": [{
+			"text": "bbq",
+			"created": "2016-09-16T16:45:54.191Z"
+		}, {
+			"text": "cheetos are the best",
+			"created": "2016-09-16T16:45:54.191Z"
+		}, {
+			"text": "I like the chili cheese fritos",
+			"created": "2016-09-16T16:45:54.191Z"
+		}, {
+			"text": "i like your chips",
+			"created": "2016-09-16T16:45:54.191Z"
+		}, {
+			"text": "I love cheetos!",
+			"created": "2016-09-16T16:45:54.191Z"
+		}, {
+			"text": "I love munching on potato chips.",
+			"created": "2016-09-16T16:45:54.191Z"
+		}, {
+			"text": "I love the flavor of Lays.",
+			"created": "2016-09-16T16:45:54.191Z"
+		}, {
+			"text": "I love your chips",
+			"created": "2016-09-16T16:45:54.191Z"
+		}, {
+			"text": "those were some tasty chips",
+			"created": "2016-09-16T16:45:54.191Z"
+		}, {
+			"text": "You are my favorite snack.",
+			"created": "2016-09-16T16:45:54.191Z"
+		}],
+		"description": null
+	}],
+	"updated": "2016-09-21T21:54:27.883Z",
+	"entities": [{
+		"entity": "brand",
+		"values": [{
+			"value": "cheetos",
+			"created": "2016-09-16T16:45:54.191Z",
+			"metadata": null,
+			"synonyms": ["cheese puffs", "cheetah", "chester"]
+		}, {
+			"value": "Fritos",
+			"created": "2016-09-16T16:45:54.191Z",
+			"metadata": null,
+			"synonyms": ["corn chip", "frito lays", "fritos lays"]
+		}, {
+			"value": "Lays",
+			"created": "2016-09-16T16:45:54.191Z",
+			"metadata": null,
+			"synonyms": ["chip", "potato", "potato chip"]
+		}],
+		"created": "2016-09-16T16:45:54.191Z",
+		"open_list": false,
+		"description": null
+	}, {
+		"entity": "flavor",
+		"values": [{
+			"value": "BBQ",
+			"created": "2016-09-16T16:45:54.191Z",
+			"metadata": null,
+			"synonyms": ["barbeque"]
+		}, {
+			"value": "Chili cheese",
+			"created": "2016-09-16T16:45:54.191Z",
+			"metadata": null,
+			"synonyms": ["c and c", "c&c", "chili"]
+		}, {
+			"value": "Classic",
+			"created": "2016-09-16T16:45:54.191Z",
+			"metadata": null,
+			"synonyms": ["normal", "regular", "salty", "unflavored"]
+		}, {
+			"value": "Flamin' hot",
+			"created": "2016-09-16T16:45:54.191Z",
+			"metadata": null,
+			"synonyms": ["flaming hot", "spicy"]
+		}, {
+			"value": "Salt and Vinegar",
+			"created": "2016-09-16T16:45:54.191Z",
+			"metadata": null,
+			"synonyms": ["s and v", "sour", "s&v"]
+		}, {
+			"value": "Sour Cream and Onion",
+			"created": "2016-09-16T16:45:54.191Z",
+			"metadata": null,
+			"synonyms": ["green", "sc&o"]
+		}],
+		"created": "2016-09-16T16:45:54.191Z",
+		"open_list": false,
+		"description": null
+	}, {
+		"entity": "nutritional_info",
+		"values": [{
+			"value": "calories",
+			"created": "2016-09-16T16:45:54.191Z",
+			"metadata": null,
+			"synonyms": []
+		}, {
+			"value": "fat",
+			"created": "2016-09-16T16:45:54.191Z",
+			"metadata": null,
+			"synonyms": []
+		}],
+		"created": "2016-09-16T16:45:54.191Z",
+		"open_list": false,
+		"description": null
+	}],
+	"language": "en",
+	"metadata": null,
+	"description": "Test space for chip conversation bot",
+	"dialog_nodes": [{
+		"go_to": null,
+		"output": null,
+		"parent": null,
+		"context": null,
+		"created": "2016-09-21T20:43:24.483Z",
+		"metadata": null,
+		"conditions": null,
+		"description": null,
+		"dialog_node": "node_1_1474490603511",
+		"previous_sibling": "node_8_1471364869152"
+	}, {
+		"go_to": null,
+		"output": {},
+		"parent": "node_16_1471365690518",
+		"context": null,
+		"created": "2016-09-16T16:45:54.191Z",
+		"metadata": null,
+		"conditions": "false",
+		"description": null,
+		"dialog_node": "node_20_1471366105782",
+		"previous_sibling": null
+	}, {
+		"go_to": null,
+		"output": {},
+		"parent": "node_4_1471296476787",
+		"context": null,
+		"created": "2016-09-16T16:45:54.191Z",
+		"metadata": null,
+		"conditions": "false",
+		"description": null,
+		"dialog_node": "node_10_1471365048939",
+		"previous_sibling": null
+	}, {
+		"go_to": null,
+		"output": {},
+		"parent": "node_8_1471364869152",
+		"context": null,
+		"created": "2016-09-16T16:45:54.191Z",
+		"metadata": null,
+		"conditions": "false",
+		"description": null,
+		"dialog_node": "node_13_1471365217354",
+		"previous_sibling": null
+	}, {
+		"go_to": null,
+		"output": {
+			"text": "Each bag contains 10 grams of fat."
+		},
+		"parent": "node_8_1471364869152",
+		"context": null,
+		"created": "2016-09-16T16:45:54.191Z",
+		"metadata": null,
+		"conditions": "@nutritional_info:fat",
+		"description": null,
+		"dialog_node": "node_9_1471364961763",
+		"previous_sibling": "node_12_1471365200389"
+	}, {
+		"go_to": null,
+		"output": {
+			"text": "Each bag contains 150 calories."
+		},
+		"parent": "node_8_1471364869152",
+		"context": null,
+		"created": "2016-09-16T16:45:54.191Z",
+		"metadata": null,
+		"conditions": "@nutritional_info:calories",
+		"description": null,
+		"dialog_node": "node_12_1471365200389",
+		"previous_sibling": "node_13_1471365217354"
+	}, {
+		"go_to": null,
+		"output": {
+			"text": "Good bye! It was nice talking to you."
+		},
+		"parent": null,
+		"context": null,
+		"created": "2016-09-16T16:45:54.191Z",
+		"metadata": null,
+		"conditions": "#farewell",
+		"description": null,
+		"dialog_node": "node_3_1471296245722",
+		"previous_sibling": "node_2_1471296030259"
+	}, {
+		"go_to": null,
+		"output": {
+			"text": "Hi my name is Chip!"
+		},
+		"parent": null,
+		"context": {
+			"likes_bbq": 0,
+			"has_coupon": 0,
+			"likes_chips": 0,
+			"likes_classic": 0,
+			"likes_flamin_hot": 0,
+			"likes_chili_cheese": 0,
+			"likes_salt_vinegar": 0,
+			"likes_sour_cream_onion": 0
+		},
+		"created": "2016-09-16T16:45:54.191Z",
+		"metadata": null,
+		"conditions": "conversation_start",
+		"description": null,
+		"dialog_node": "node_1_1471295791354",
+		"previous_sibling": null
+	}, {
+		"go_to": null,
+		"output": {
+			"text": "Hi my name is Chippy McChipperston!"
+		},
+		"parent": null,
+		"context": null,
+		"created": "2016-09-16T16:45:54.191Z",
+		"metadata": null,
+		"conditions": "#greeting",
+		"description": null,
+		"dialog_node": "node_2_1471296030259",
+		"previous_sibling": "node_1_1471295791354"
+	}, {
+		"go_to": null,
+		"output": {
+			"text": "I'm glad you like BBQ flavor! May I recommend our new Hickory Smoked BBQ chips?"
+		},
+		"parent": "node_4_1471296476787",
+		"context": {
+			"like_BBQ": 1
+		},
+		"created": "2016-09-16T16:45:54.191Z",
+		"metadata": null,
+		"conditions": "@flavor:BBQ",
+		"description": null,
+		"dialog_node": "node_8_1471360805711",
+		"previous_sibling": "node_7_1471360721137"
+	}, {
+		"go_to": null,
+		"output": {
+			"text": "I'm glad you like our products! Which flavor is your favorite?"
+		},
+		"parent": "node_4_1471296476787",
+		"context": null,
+		"created": "2016-09-16T16:45:54.191Z",
+		"metadata": null,
+		"conditions": "true",
+		"description": null,
+		"dialog_node": "node_9_1471360871311",
+		"previous_sibling": "node_8_1471360805711"
+	}, {
+		"go_to": null,
+		"output": {
+			"text": "I'm glad you like the Classic flavor! Might I recommend our new Low Sodium chips?"
+		},
+		"parent": "node_4_1471296476787",
+		"context": {
+			"like_classic": 1
+		},
+		"created": "2016-09-16T16:45:54.191Z",
+		"metadata": null,
+		"conditions": "@flavor:Classic",
+		"description": null,
+		"dialog_node": "node_7_1471360721137",
+		"previous_sibling": "node_10_1471365048939"
+	}, {
+		"go_to": null,
+		"output": {
+			"text": "I'm sorry, I don't know what flavor that is. I only know Classic and BBQ right now."
+		},
+		"parent": "node_9_1471360871311",
+		"context": null,
+		"created": "2016-09-16T16:45:54.191Z",
+		"metadata": null,
+		"conditions": "true",
+		"description": null,
+		"dialog_node": "node_2_1471361738599",
+		"previous_sibling": "node_1_1471361698011"
+	}, {
+		"go_to": null,
+		"output": {
+			"text": "I'm sorry, I don't understand"
+		},
+		"parent": null,
+		"context": null,
+		"created": "2016-09-16T16:45:54.191Z",
+		"metadata": null,
+		"conditions": "anything_else",
+		"description": null,
+		"dialog_node": "node_1_1471295908760",
+		"previous_sibling": "node_1_1474490603511"
+	}, {
+		"go_to": null,
+		"output": {
+			"text": "I'm sorry that you don't like classic chips. Perhaps try the BBQ?"
+		},
+		"parent": "node_16_1471365690518",
+		"context": {
+			"likes_classic": 0
+		},
+		"created": "2016-09-16T16:45:54.191Z",
+		"metadata": null,
+		"conditions": "@flavor:Classic",
+		"description": null,
+		"dialog_node": "node_18_1471365985385",
+		"previous_sibling": "node_19_1471366054958"
+	}, {
+		"go_to": null,
+		"output": {
+			"text": "I'm sorry that you don't like classic chips. Perhaps try the Classic flavor?"
+		},
+		"parent": "node_16_1471365690518",
+		"context": {
+			"likes_bbq": 0
+		},
+		"created": "2016-09-16T16:45:54.191Z",
+		"metadata": null,
+		"conditions": "@flavor:BBQ",
+		"description": null,
+		"dialog_node": "node_19_1471366054958",
+		"previous_sibling": "node_20_1471366105782"
+	}, {
+		"go_to": null,
+		"output": {
+			"text": "I'm sorry the chips weren't up to par this time. Here is a coupon for another bag, free of charge. Feel free to call our customer service line at 1-800-123-4567"
+		},
+		"parent": "node_16_1471365690518",
+		"context": {
+			"has_coupon": 1
+		},
+		"created": "2016-09-16T16:45:54.191Z",
+		"metadata": null,
+		"conditions": "anything_else",
+		"description": null,
+		"dialog_node": "node_21_1471366412583",
+		"previous_sibling": "node_18_1471365985385"
+	}, {
+		"go_to": null,
+		"output": {
+			"text": "I'm sorry the service was bad. Here is a voucher for some free chips. Feel free to call our customer service line at 1-800-123-4567"
+		},
+		"parent": null,
+		"context": {
+			"has_coupon": 1
+		},
+		"created": "2016-09-16T16:45:54.191Z",
+		"metadata": null,
+		"conditions": "#bad_service",
+		"description": null,
+		"dialog_node": "node_17_1471365864293",
+		"previous_sibling": "node_16_1471365690518"
+	}, {
+		"go_to": null,
+		"output": {
+			"text": "That's awesome! I'm glad you like BBQ flavor! What other flavors do you like?"
+		},
+		"parent": "node_9_1471360871311",
+		"context": {
+			"like_BBQ": 1
+		},
+		"created": "2016-09-16T16:45:54.191Z",
+		"metadata": null,
+		"conditions": "@flavor:BBQ",
+		"description": null,
+		"dialog_node": "node_12_1471361384789",
+		"previous_sibling": null
+	}, {
+		"go_to": null,
+		"output": {
+			"text": "That's awesome! I'm glad you like the Classic flavor! What other flavors do you like?"
+		},
+		"parent": "node_9_1471360871311",
+		"context": {
+			"like_classic": 1
+		},
+		"created": "2016-09-16T16:45:54.191Z",
+		"metadata": null,
+		"conditions": "@flavor:Classic",
+		"description": null,
+		"dialog_node": "node_1_1471361698011",
+		"previous_sibling": "node_12_1471361384789"
+	}, {
+		"go_to": null,
+		"output": {
+			"text": "Would you like to know about fat or calories?"
+		},
+		"parent": "node_8_1471364869152",
+		"context": null,
+		"created": "2016-09-16T16:45:54.191Z",
+		"metadata": null,
+		"conditions": "true",
+		"description": null,
+		"dialog_node": "node_14_1471365238562",
+		"previous_sibling": "node_9_1471364961763"
+	}, {
+		"go_to": {
+			"return": null,
+			"selector": "condition",
+			"dialog_node": "node_10_1471365048939"
+		},
+		"output": {
+			"text": ""
+		},
+		"parent": null,
+		"context": null,
+		"created": "2016-09-16T16:45:54.191Z",
+		"metadata": null,
+		"conditions": "#show_pleasure",
+		"description": null,
+		"dialog_node": "node_4_1471296476787",
+		"previous_sibling": "node_3_1471296245722"
+	}, {
+		"go_to": {
+			"return": null,
+			"selector": "condition",
+			"dialog_node": "node_13_1471365217354"
+		},
+		"output": {
+			"text": ""
+		},
+		"parent": null,
+		"context": null,
+		"created": "2016-09-16T16:45:54.191Z",
+		"metadata": null,
+		"conditions": "#find_nutrition",
+		"description": null,
+		"dialog_node": "node_8_1471364869152",
+		"previous_sibling": "node_17_1471365864293"
+	}, {
+		"go_to": {
+			"return": null,
+			"selector": "condition",
+			"dialog_node": "node_20_1471366105782"
+		},
+		"output": {
+			"text": ""
+		},
+		"parent": null,
+		"context": null,
+		"created": "2016-09-16T16:45:54.191Z",
+		"metadata": null,
+		"conditions": "#bad_chips",
+		"description": null,
+		"dialog_node": "node_16_1471365690518",
+		"previous_sibling": "node_4_1471296476787"
+	}],
+	"workspace_id": "19d05bd9-53a2-427f-9091-a74b885eef26"
+}

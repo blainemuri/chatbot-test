@@ -15,7 +15,7 @@ React = require 'react'
   showIntents: (e, id) ->
     data = JSON.parse @props.bots[id].trainingData
     @setState show: 'intents'
-    @setState content: data.intents
+    @setState content: data
     @setState id: id
     # @setCurrentBot id
 
@@ -67,7 +67,10 @@ React = require 'react'
             id: id
         else if @state.show == 'intents'
           React.createElement Intents,
-            intents: @state.content
+            # intent: @state.content
+            trainingData: @state.content
+            down: @props.down
+            submitTrainingData: @submitTrainingData
             id: id
         else if @state.show == 'dialogue'
           React.createElement Dialogue,

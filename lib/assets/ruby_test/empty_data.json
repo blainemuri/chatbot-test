@@ -1,0 +1,12 @@
+{
+	"name": "test",
+	"created": "2016-09-22T17:04:55.149Z",
+	"intents": [],
+	"updated": "2016-09-22T17:04:55.149Z",
+	"entities": [],
+	"language": "en",
+	"metadata": null,
+	"description": "test",
+	"dialog_nodes": [],
+	"workspace_id": "cdbad390-f021-4890-9525-a7a7fb9ee217"
+}
