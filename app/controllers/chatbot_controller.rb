@@ -121,31 +121,45 @@ class ChatbotController < ApplicationController
 
   def setTrainingData
     new_data = params[:data]
-    bot = Bot.where(id: params[:botId]).first
+    bot = Bot.find_by(id: params[:botId])
     p bot
     bot.update_attribute(:trainingData, new_data)
 
     key, val = params[:type].first
     if key == 'entity'
       addNewEntity(params[:botId], val)
+    elsif key == 'intent'
+      addNewIntent(params[:botId], val)
     end
 
     render :admin
   end
 
-  def addNewEntity(id, entity)
-    bot = Bot.where(id: id).first
-    if Entity.where(name: entity).present?
-      #The entity already exists!
-      #Just need to associate it with the current bot
+  private
 
-      # entity = Bot.where(id: id).first.entities.exists?(name: entity)
+  def addNewEntity(id, entity)
+    bot = Bot.find_by(id: id)
+    if Entity.where(name: entity).present?
       if !bot.entities.exists?(name: entity)
         # Entity does not exist, so let's create it
         bot.enitites.create(name: entity)
       end
+      # Do nothing if the entity already exists within the bot
     else
       bot.entities.create(name: entity)
+    end
+  end
+
+  def addNewIntent(id, intent)
+    bot = Bot.find_by(id: id)
+    if Intent.where(name: intent).present?
+      if !bot.intents.exists?(name: intent)
+        # Intent does not exists, so let's create it
+        bot.intents.create(name: intent)
+      end
+      # Do nothing if the intent already exists within the bot
+    else
+      bot.intents.create(name: intent)
     end
   end
 
