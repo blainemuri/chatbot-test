@@ -11,10 +11,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161006224937) do
+ActiveRecord::Schema.define(version: 20161010180439) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "bot_entities", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer  "bot_id"
+    t.integer  "entity_id"
+  end
 
   create_table "bots", force: :cascade do |t|
     t.text     "trainingData"
@@ -55,17 +62,13 @@ ActiveRecord::Schema.define(version: 20161006224937) do
   create_table "entity_values", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer  "entity_id"
+    t.integer  "value_id"
   end
 
   create_table "intents", force: :cascade do |t|
     t.string   "name"
     t.text     "examples"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
-  create_table "synonyms", force: :cascade do |t|
-    t.string   "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -78,13 +81,9 @@ ActiveRecord::Schema.define(version: 20161006224937) do
     t.datetime "updated_at",  null: false
   end
 
-  create_table "value_synonyms", force: :cascade do |t|
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
   create_table "values", force: :cascade do |t|
     t.string   "name"
+    t.text     "synonyms"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

@@ -11,4 +11,5 @@
 
 class Intent < ActiveRecord::Base
   serialize :examples, Array
+  belongs_to :bot
 end

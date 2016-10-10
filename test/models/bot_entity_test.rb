@@ -1,6 +1,6 @@
 require 'test_helper'
 
-class ValueSynonymTest < ActiveSupport::TestCase
+class BotEntityTest < ActiveSupport::TestCase
   # test "the truth" do
   #   assert true
   # end

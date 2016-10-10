@@ -100,6 +100,7 @@ class ChatbotController < ApplicationController
     @conversation = conv.comments
   end
 
+  # TODO: When creating a new bot, add the entities/intents to their respective records
   def newbot
     # TODO: Change this to instead use the current bot
     bot = Bot.first
@@ -142,6 +143,7 @@ class ChatbotController < ApplicationController
     if Entity.where(name: entity).present?
       if !bot.entities.exists?(name: entity)
         # Entity does not exist, so let's create it
+        # TODO: This needs to change to where it's associated with the current entity
         bot.enitites.create(name: entity)
       end
       # Do nothing if the entity already exists within the bot
