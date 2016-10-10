@@ -58,23 +58,24 @@ React = require 'react'
             showNewBot: @showNewBot
       div className: 'context',
         if @state.show == 'newbot'
-          React.createElement NewBot, null
+          React.createElement NewBot,
+            id: @state.id
         else if @state.show == 'entities'
           React.createElement Entities,
             trainingData: @state.content
             down: @props.down
             submitTrainingData: @submitTrainingData
-            id: id
+            id: @state.id
         else if @state.show == 'intents'
           React.createElement Intents,
             # intent: @state.content
             trainingData: @state.content
             down: @props.down
             submitTrainingData: @submitTrainingData
-            id: id
+            id: @state.id
         else if @state.show == 'dialogue'
           React.createElement Dialogue,
             dialogue: @state.content
-            id: id
+            id: @state.id
 
 module.exports = @Training

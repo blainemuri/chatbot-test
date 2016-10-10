@@ -24,7 +24,7 @@ class ChatbotController < ApplicationController
     end
 
     # Grab the current conversation for this bot
-    conv = get_conv(Bot.first)
+    conv = get_conv(bot)
 
     # Add in the messages
     user.comments.create(:body => user_message, :context => 'User Context', :correct => 1, conversation: conv)
@@ -83,7 +83,7 @@ class ChatbotController < ApplicationController
     user = User.first
     bot = Bot.first
     # Grab the current conversation, or new if one doesn't exist
-    conv = get_conv(Bot.first)
+    conv = get_conv(bot)
 
     com_user = user.comments.create(:body => query['input']['text'], :context => 'User Context', :correct => 1, conversation: conv)
     com_bot = bot.comments.create(:body => bot_json['output']['text'].last, :context => response.body, :correct => 1, conversation: conv)
@@ -105,7 +105,7 @@ class ChatbotController < ApplicationController
   # TODO: When creating a new bot, add the entities/intents to their respective records
   def newbot
     # TODO: Change this to instead use the current bot
-    bot = Bot.first
+    bot = Bot.find_by(id: params[:botId])
     bot.update_attribute(:trainingData, params[:data])
     render :admin
   end

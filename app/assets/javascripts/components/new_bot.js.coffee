@@ -12,7 +12,7 @@ React = require 'react'
     # Send the data to the backend
     $.ajax
       url: '/admin'
-      data: {'data': obj}
+      data: {'data': obj, 'botId': @props.id}
       method: 'POST'
     .done (response) =>
       alert 'Successfully saved new bot info'
