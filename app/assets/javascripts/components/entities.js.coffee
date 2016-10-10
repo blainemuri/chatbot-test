@@ -6,7 +6,9 @@ React = require 'react'
 
   handleOnChange: (e) -> @setState entity: e.target.value
 
-  getLastKey: (arr) -> parseInt(Object.keys(arr).sort().reverse()[0])
+  getLastKey: (arr) -> 
+    num = parseInt(Object.keys(arr).sort().reverse()[0])
+    if isNaN(num) then -1 else num
 
   createNewEntity: (e) ->
     e.stopPropagation()
@@ -24,7 +26,6 @@ React = require 'react'
     data = @props.trainingData
     lastKey = @getLastKey(entity.values) + 1
     newEntity = entity
-
     newEntity.values[lastKey] = {'value': value, 'metadata': null, 'synonyms': []}
     data.entities[id] = newEntity
 
@@ -33,6 +34,7 @@ React = require 'react'
   render: ->
     {div, input, form} = React.DOM
     div className: 'entity-container',
+      # console.log JSON.stringify(@props.trainingData)
       for num, entity of @props.trainingData.entities
         React.createElement Entity,
           key: num

@@ -1,3 +1,5 @@
+require 'json'
+
 class ChatbotController < ApplicationController
   # Allow for adminBot to send posts to /adminBot
   # TODO: DEFINITELY FIX THIS!!!!! ANYTHING CAN COME IN AT THIS POINT
@@ -96,7 +98,7 @@ class ChatbotController < ApplicationController
   def bot
     user = User.first
     bot = Bot.first
-    conv = get_conv()
+    conv = get_conv(bot)
     @conversation = conv.comments
   end
 
