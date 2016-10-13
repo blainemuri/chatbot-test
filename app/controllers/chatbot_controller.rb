@@ -124,8 +124,8 @@ class ChatbotController < ApplicationController
 
   def setTrainingData
     new_data = params[:data]
-    bot = Bot.find_by(id: params[:botId])
-    p bot
+    p Bot.all
+    bot = Bot.find params[:botId]
     bot.update_attribute(:trainingData, new_data)
 
     key, val = params[:type].first

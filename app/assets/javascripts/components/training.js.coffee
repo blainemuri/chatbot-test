@@ -6,29 +6,29 @@ React = require 'react'
     content: {}
     id: 0
 
-  showEntities: (e, id) ->
+  showEntities: (e, id, botId) ->
     data = JSON.parse @props.bots[id].trainingData
     @setState show: 'entities'
     @setState content: data
-    @setState id: id
+    @setState id: botId
 
-  showIntents: (e, id) ->
+  showIntents: (e, id, botId) ->
     data = JSON.parse @props.bots[id].trainingData
     @setState show: 'intents'
     @setState content: data
-    @setState id: id
+    @setState id: botId
     # @setCurrentBot id
 
-  showDialogue: (e, id) ->
+  showDialogue: (e, id, botId) ->
     data = JSON.parse @props.bots[id].trainingData
     @setState show: 'dialogue'
     @setState content: data.dialog_nodes
-    @setState id: id
+    @setState id: botId
     # @setCurrentBot id
 
-  showNewBot: (e, id) ->
+  showNewBot: (e, id, botId) ->
     @setState show: 'newbot'
-    @setState id: id
+    @setState id: botId
     # @setCurrentBot id
 
   # setCurrentBot: (id) ->
@@ -38,6 +38,7 @@ React = require 'react'
   #     data: {'id': id}
 
   submitTrainingData: (json, id, type) ->
+    console.log id
     $.ajax
       method: 'POST'
       url: '/setTrainingData'
