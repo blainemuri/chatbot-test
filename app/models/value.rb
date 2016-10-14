@@ -10,7 +10,6 @@
 #
 
 class Value < ActiveRecord::Base
-  has_many :entity_values
-  has_many :entities, through: :entity_values
+  belongs_to :entity
   serialize :synonyms, Array
 end

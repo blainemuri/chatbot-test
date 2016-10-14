@@ -9,9 +9,9 @@ React = require 'react'
     e.preventDefault()
     last =  @props.conversation[..].pop()
     context = {}
-    if last.commentable_type == "Bot"
-      context = JSON.parse(last.context).context
-      console.log context
+    if last?
+      if last.commentable_type == "Bot"
+        context = JSON.parse(last.context).context
     $.ajax
       url: '/bot'
       data: {

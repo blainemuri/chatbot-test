@@ -4,7 +4,7 @@ React = require 'react'
   getInitialState: ->
     show: 'newbot'
     content: {}
-    id: 0
+    id: 1
 
   showEntities: (e, id, botId) ->
     data = JSON.parse @props.bots[id].trainingData
@@ -44,6 +44,8 @@ React = require 'react'
       url: '/setTrainingData'
       data: {'data': json, 'botId': id, type}
 
+  # TODO: Make it so that newbot spits out the correct bot id
+  #       For now it's just the first id
   render: ->
     {div, input} = React.DOM
     div className: 'training-container',

@@ -11,17 +11,10 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161010180439) do
+ActiveRecord::Schema.define(version: 20161014194518) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
-
-  create_table "bot_entities", force: :cascade do |t|
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.integer  "bot_id"
-    t.integer  "entity_id"
-  end
 
   create_table "bots", force: :cascade do |t|
     t.text     "trainingData"
@@ -39,8 +32,10 @@ ActiveRecord::Schema.define(version: 20161010180439) do
     t.integer  "conversation_id"
     t.datetime "created_at",       null: false
     t.datetime "updated_at",       null: false
+    t.integer  "bot_id"
   end
 
+  add_index "comments", ["bot_id"], name: "index_comments_on_bot_id", using: :btree
   add_index "comments", ["commentable_type", "commentable_id"], name: "index_comments_on_commentable_type_and_commentable_id", using: :btree
   add_index "comments", ["conversation_id"], name: "index_comments_on_conversation_id", using: :btree
 
@@ -59,19 +54,11 @@ ActiveRecord::Schema.define(version: 20161010180439) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "entity_values", force: :cascade do |t|
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.integer  "entity_id"
-    t.integer  "value_id"
-  end
-
   create_table "intents", force: :cascade do |t|
     t.string   "name"
     t.text     "examples"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer  "bot_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -89,4 +76,5 @@ ActiveRecord::Schema.define(version: 20161010180439) do
     t.datetime "updated_at", null: false
   end
 
+  add_foreign_key "comments", "bots"
 end

@@ -33,13 +33,16 @@ class ChatbotController < ApplicationController
     render :admin
   end
 
-  def get_conv(bot)
-    # Eventually access currentUser through rails
+  def get_all_convs(bot)
     user = User.first
 
     query = "SELECT \"conversations\".* FROM \"conversations\" INNER JOIN \"comments\" c1 ON c1.\"conversation_id\" = \"conversations\".\"id\" INNER JOIN \"comments\" c2 ON c2.\"conversation_id\" = \"conversations\".\"id\" WHERE (c1.commentable_id = #{user.id} AND c1.commentable_type = 'User') AND (c2.commentable_id = #{bot.id} AND c2.commentable_type = 'Bot') AND (\"conversations\".\"end\" IS NULL)"
     # .first will grab the most recent element
-    conv = Conversation.find_by_sql(query).first
+    Conversation.find_by_sql(query)
+  end
+
+  def get_conv(bot)
+    conv = get_all_convs(bot).first
 
     if conv.present?
       # Check to see if the conversation intents decreased (create new conv.)
@@ -85,8 +88,8 @@ class ChatbotController < ApplicationController
     # Grab the current conversation, or new if one doesn't exist
     conv = get_conv(bot)
 
-    com_user = user.comments.create(:body => query['input']['text'], :context => 'User Context', :correct => 1, conversation: conv)
-    com_bot = bot.comments.create(:body => bot_json['output']['text'].last, :context => response.body, :correct => 1, conversation: conv)
+    com_user = user.comments.create(:body => query['input']['text'], :context => 'User Context', :correct => 1, conversation: conv, :bot_id => bot.id)
+    com_bot = bot.comments.create(:body => bot_json['output']['text'].last, :context => response.body, :correct => 1, conversation: conv, :bot_id => bot.id)
   end
 
   def query
@@ -104,7 +107,7 @@ class ChatbotController < ApplicationController
 
   # TODO: When creating a new bot, add the entities/intents to their respective records
   def newbot
-    # TODO: Change this to instead use the current bot
+    p params[:botId]
     bot = Bot.find_by(id: params[:botId])
     bot.update_attribute(:trainingData, params[:data])
     render :admin
@@ -112,6 +115,28 @@ class ChatbotController < ApplicationController
 
   def admin
     @bots = Bot.all
+    @convs = []
+    comments = []
+    for bot in @bots
+      conversations = get_all_convs(bot)
+      for conv in conversations
+        coms = conv.comments.all
+        coms.each do |com|
+          temp = com.as_json
+          if temp["commentable_type"] == "Bot"
+            temp["context"] = ActiveSupport::JSON.decode temp["context"]
+          end
+          comments.append temp
+        end
+      end
+      # comments = ActiveSupport::JSON.decode "#{comments}"
+      temp = {}
+      temp["bot_id"] = bot.id
+      temp["conversations"] = comments
+      @convs.append ActiveSupport::JSON.encode temp
+      # @convs[bot.id]  = {"conversations": comments}
+    end
+    # p @convs[0].as_json
   end
   #
   # def newentity
@@ -129,7 +154,6 @@ class ChatbotController < ApplicationController
     bot.update_attribute(:trainingData, new_data)
 
     key, val = params[:type].first
-    p '######################'
     if key == 'entity'
       addNewEntity(params[:botId], val)
     elsif key == 'intent'

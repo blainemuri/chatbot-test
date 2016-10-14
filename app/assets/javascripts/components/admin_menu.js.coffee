@@ -89,6 +89,8 @@ React = require 'react'
         React.createElement ChatLog,
           chatbot: @props.chatbot
           profile: @props.profile
+          bots: @props.bots
+          convs: @props.convs
       else if @state.active == 'stats'
         React.createElement ChatStats, null
       else if @state.active == 'training'

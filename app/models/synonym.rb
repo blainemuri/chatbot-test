@@ -9,6 +9,5 @@
 #
 
 class Synonym < ActiveRecord::Base
-  has_many :value_synonyms
-  has_many :synonyms, through: :value_synonyms
+  belongs_to :value
 end

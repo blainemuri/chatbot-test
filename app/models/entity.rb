@@ -9,8 +9,6 @@
 #
 
 class Entity < ActiveRecord::Base
-  has_many :entity_values
-  has_many :values, through: :entity_values
-  has_many :bot_entities
-  has_many :bots, through: :bot_entities
+  has_many :values
+  belongs_to :bot
 end

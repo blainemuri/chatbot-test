@@ -12,8 +12,6 @@
 class Bot < ActiveRecord::Base
   has_many :comments, as: :commentable
 
-  has_many :bot_entities
-  has_many :entities, through: :bot_entities
-
+  has_many :entities
   has_many :intents
 end

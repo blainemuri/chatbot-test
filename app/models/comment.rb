@@ -11,11 +11,17 @@
 #  conversation_id  :integer
 #  created_at       :datetime         not null
 #  updated_at       :datetime         not null
+#  bot_id           :integer
 #
 # Indexes
 #
+#  index_comments_on_bot_id                               (bot_id)
 #  index_comments_on_commentable_type_and_commentable_id  (commentable_type,commentable_id)
 #  index_comments_on_conversation_id                      (conversation_id)
+#
+# Foreign Keys
+#
+#  fk_rails_e7f962f827  (bot_id => bots.id)
 #
 
 class Comment < ActiveRecord::Base
