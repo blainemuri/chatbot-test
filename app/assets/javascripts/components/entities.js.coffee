@@ -31,6 +31,15 @@ React = require 'react'
 
     @props.submitTrainingData JSON.stringify(data), @props.id, {'value': value}
 
+  createNewSynonym: (value, synonym, id)->
+    data = @props.trainingData
+    lastKey = @getLastKey(value.synonyms) + 1
+    newValue = value
+    newValue.synonyms[lastKey] = synonym
+    data.entities[id].value = newValue
+
+    @props.submitTrainingData JSON.stringify(data), @props.id, {'synonyms': synonym}
+
   render: ->
     {div, input, form} = React.DOM
     div className: 'entity-container',
@@ -41,6 +50,7 @@ React = require 'react'
           entity: entity
           down: @props.down
           createNewValue: @createNewValue
+          createNewSynonym: @createNewSynonym
       div
         className: 'entity-tile'
         style: cursor: 'pointer'

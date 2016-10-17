@@ -38,11 +38,11 @@ React = require 'react'
   #     data: {'id': id}
 
   submitTrainingData: (json, id, type) ->
-    console.log id
     $.ajax
       method: 'POST'
       url: '/setTrainingData'
-      data: {'data': json, 'botId': id, type}
+      #TODO 'type':type is probably cuasing errors with entity/synonym
+      data: {'data': json, 'botId': id, 'type': type}
 
   # TODO: Make it so that newbot spits out the correct bot id
   #       For now it's just the first id

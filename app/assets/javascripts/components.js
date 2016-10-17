@@ -8,6 +8,8 @@ window.ChatMenu = require('./components/chat_menu');
 window.ChatStats = require('./components/chat_stats');
 window.Dialogue = require('./components/dialogue');
 window.Entities = require('./components/entities');
+// TODO: This for some reason needs to be above EntityValue, fix later
+window.SynonymValue = require('./components/synonym_value');
 window.EntityValue = require('./components/entity_value');
 window.Entity = require('./components/entity');
 window.Intents = require('./components/intents');

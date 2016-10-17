@@ -2,7 +2,7 @@ React = require 'react'
 
 @Intents = React.createClass
   getInitialState: ->
-    intents: ""
+    intent: ""
 
   handleOnChange: (e) ->
     @setState intent: e.target.value
