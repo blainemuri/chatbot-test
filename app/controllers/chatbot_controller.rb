@@ -110,12 +110,8 @@ class ChatbotController < ApplicationController
   def bot
     user = User.first
     bot = Bot.first
-    conv = get_all_convs(bot).last
-    if conv
-      @conversation = conv.comments
-    else
-      @conversation = []
-    end
+    conv = get_conv(bot)
+    @conversation = conv.comments
   end
 
   # TODO: When creating a new bot, add the entities/intents to their respective records
