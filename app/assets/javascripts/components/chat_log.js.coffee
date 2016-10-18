@@ -84,7 +84,7 @@ React = require 'react'
 
   sortByDate: (a, b) -> b[..].pop().created_at - a[..].pop().created_at
 
-  sortByBot: (a) -> a[..].pop().bot_id == @state.sort
+  # sortByBot: (a) -> a[..].pop().bot_id == @state.sort
 
   showConvsWithOptions: ->
     temp = @state.allConvs
@@ -93,8 +93,13 @@ React = require 'react'
     if @state.organize == 'date'
       temp = temp.sort(@sortByDate)
       if @state.sort !=  "all"
-        temp = temp.sort(@sortByBot)
+        newTemp = []
+        temp.map (conv) =>
+          if conv[0].bot_id == @state.sort
+            newTemp.push conv
+        temp = newTemp
 
+    # Return the lsit with all of the options
     temp
 
   render: ->
