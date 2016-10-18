@@ -56,6 +56,8 @@ React = require 'react'
     else
       newList = []
       for conv in list.conversations
+        console.log conv[0].bot_id
+        console.log @state.sort
         if conv[0].bot_id == @state.sort
           newList.push conv
       newList
