@@ -137,6 +137,7 @@ class ChatbotController < ApplicationController
         coms.each do |com|
           temp = com.as_json
           if temp["commentable_type"] == "Bot"
+            p temp["context"]
             temp["context"] = ActiveSupport::JSON.decode temp["context"]
           end
           comments.append temp
