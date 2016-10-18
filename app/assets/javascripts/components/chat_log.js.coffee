@@ -11,6 +11,7 @@ React = require 'react'
     ascending: false
     selectBots: false
     selectEntities: false
+    allConvs: {}
 
   showLoading: ->
     # $('#horizontal-center').css('opacity', '0');
@@ -47,26 +48,30 @@ React = require 'react'
         .staggerTo('.message', .3, {transform: "translateY(0)", opacity: 1}, .1, "start+.1")
     ), 200
 
-  getListOfConversations: (list, botId) ->
+  getListOfConversations: (conv, botId) ->
     if @state.sort == 'all'
       if @state.ascending
-        list.conversations
+        conv.conversations
       else
-        list.conversations.reverse()
+        conv.conversations.reverse()
     else
       newList = []
-      for conv in list.conversations
-        console.log conv
-        console.log @state.sort
-        if conv[0].bot_id == @state.sort
-          newList.push conv
-      newList
+      # if conv.bot_id == @state.sort
+
+      # for conv in list.conversations
+      #   console.log conv
+      #   console.log @state.sort
+      #   if conv.bot_id == @state.sort
+      #     newList.push conv
+      # newList
 
   selectBots: -> @setState selectBots: !@state.selectBots
 
   selectEntities: -> @setState selectEntities: !@state.selectEntities
 
   setBot: (id, e) -> @setState sort: id
+
+  # organizeParsedConversations: (parsed) ->
 
   render: ->
     {div, a, h3, img, span} = React.DOM
@@ -133,9 +138,10 @@ React = require 'react'
         div className: 'log-container',
           @props.convs.map (conversation) =>
             console.log "CONVS"
-            console.log @props.convs
-            parsedConversation = JSON.parse conversation
-            list = @getListOfConversations parsedConversation, parsedConversation.bot_id
+            parsed = JSON.parse conversation
+            console.log parsed
+            # allConvs = @organizeParsedConversations parsed
+            list = @getListOfConversations parsed, parsed.bot_id
             for conv, id in list
               React.createFactory(LogTile)
                 profile: @props.profile
@@ -144,12 +150,5 @@ React = require 'react'
                 conversation: conv
                 bots: @props.bots
                 botId: parsedConversation.bot_id
-              # profile: @props.profile
-              # open: @props.openLog
-            # React.createElement LogTile
-            #   profile: @props.profile
-            #   open: @openLog
-            #   key: id
-            #   conversation: conversation
 
 module.exports = @ChatLog
