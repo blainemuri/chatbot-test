@@ -21,9 +21,9 @@ React = require 'react'
       when 11 then 'December'
 
   componentWillMount: ->
-    conv = JSON.parse @props.conversation
+    conv = @props.conversation
 
-    date = new Date(conv.conversations[0].created_at)
+    date = new Date(conv[0].created_at)
     day = date.getUTCDate()
     month = @getMonth(date.getUTCMonth())
     year = date.getUTCFullYear()
@@ -31,7 +31,7 @@ React = require 'react'
     @setState date: dateTime
 
     @props.bots.map (bot) =>
-      if bot.id == conv.bot_id
+      if bot.id == @props.botId
         @setState botName: bot.name
 
   handleClick: (e) ->

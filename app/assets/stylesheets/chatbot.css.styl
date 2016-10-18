@@ -18,6 +18,10 @@ body
 .chat-container
   width 50%
 
+span.clear
+  clear: both
+  display: block
+
 svg.profile
   width profile-size*2
   height profile-size*2
@@ -202,11 +206,9 @@ svg.profile
 
 .bot-chat-outer, .bot-log-outer
   width 100%
-  position absolute
   background-color white
   color black
-  height 100%
-  padding-top nav-height
+  float: left
   &.dark-theme
     filter invert(100%)
     -webkit-filter invert(100%)
@@ -420,6 +422,48 @@ svg.profile
         text-align right
 
 .bot-log-outer
+  .log-options
+    position: fixed
+    left: 0
+    top: 0
+    height: nav-height*.5
+    margin-top: nav-height
+    width: 100%
+    background-color: grey-light
+    z-index: 2
+    line-height: nav-height*.5
+
+    .floated-inner
+      height: nav-height*.5
+      width: 100%
+      float: left
+      padding: 0 nav-height*2
+      box-sizing: border-box
+
+      .inner-sort
+        width: 100%
+        height: nav-height*.5
+        float: left
+        z-index: 2
+        background-color: grey-light
+        padding-left: space-x-small
+
+      .sort-by
+        width: nav-height*2.5
+        height: 100%
+        float: right
+        display: inline-table
+        cursor: pointer
+
+        .type
+          float: left
+
+        .arrow
+          float: right
+          height: nav-height*.2
+          padding-top: nav-height*.15
+          padding-right: space-small
+
   .show-log
     opacity 0
     position fixed
@@ -483,7 +527,7 @@ svg.profile
     .log-container
       width logs-5
       height 100%
-      padding-top nav-height
+      padding-top nav-height*1.5
       box-sizing border-box
       margin 0 auto
       @media screen and (max-width: 1600px)

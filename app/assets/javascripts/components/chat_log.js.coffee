@@ -7,8 +7,12 @@ React = require 'react'
     showLog: no
     conversation: null
     date: null
+    sort: 'all'
+    ascending: false
+    selectBots: false
+    selectEntities: false
 
-  componentDidMount: ->
+  showLoading: ->
     # $('#horizontal-center').css('opacity', '0');
     chat = document.getElementById 'horizontal-center'
     message = document.getElementById 'message'
@@ -22,6 +26,8 @@ React = require 'react'
       .to(chat, .5, {top: 0, opacity: 1}, 'start+.2')
       .staggerTo('.log-tile', .2, {transform: "translateY(0)", opacity: 1}, .1, 'start+.2')
     tl.timeScale(1)
+
+  componentDidMount: -> @showLoading()
 
   closeLog: ->
     TweenMax.to('.show-log', .2, {opacity: 0, transform: "rotateY(90deg)"})
@@ -41,9 +47,61 @@ React = require 'react'
         .staggerTo('.message', .3, {transform: "translateY(0)", opacity: 1}, .1, "start+.1")
     ), 200
 
+  getListOfConversations: (list, botId) ->
+    if @state.sort == 'all'
+      if @state.ascending
+        list.conversations
+      else
+        list.conversations.reverse()
+    else
+      newList = []
+      for conv in list.conversations
+        if conv[0].bot_id == botId
+          newList.push conv
+      newList
+
+  selectBots: -> @setState selectBots: !@state.selectBots
+
+  selectEntities: -> @setState selectEntities: !@state.selectEntities
+
+  setBot: (name, e) ->
+    e.stopPropagation()
+    e.preventDefault()
+    @setState sort: name
+
   render: ->
-    {div, a, h3} = React.DOM
+    {div, a, h3, img, span} = React.DOM
     div className: "bot-log-outer",
+      div className: 'log-options',
+        div className: 'floated-inner',
+          div
+            className: 'sort-by'
+            onClick: @selectBots
+            div className: 'inner-sort',
+              div className: 'type', 'All Bots'
+              img
+                className: 'arrow'
+                src: @props.down
+                alt: ''
+            if @state.selectBots
+              for bot, id in @props.bots
+                React.createFactory(BotOption)
+                  name: bot.name
+                  key: id
+                  setOption: @setBot
+                  img: null
+                  down: @props.down
+          div
+            className: 'sort-by'
+            onClick: @selectEntities
+            div className: 'inner-sort',
+              div className: 'type', 'All Entities'
+              img
+                className: 'arrow'
+                src: @props.down
+                alt: ''
+            # if @state.selectEntities
+            #   console.log JSON.parse(conversation)
       if @state.showLog
         div className: 'show-log',
           div className: 'log-mask', ''
@@ -55,7 +113,7 @@ React = require 'react'
                 onClick: @closeLog
                 'Close'
             div className: 'conversation',
-              JSON.parse(@state.conversation).conversations.map (comment, id) =>
+              @state.conversation.map (comment, id) =>
                 if comment.commentable_type == "Bot"
                   React.createElement BotMessage,
                     text: comment.body
@@ -73,13 +131,17 @@ React = require 'react'
       div
         id: 'horizontal-center',
         div className: 'log-container',
-          @props.convs.map (conversation, id) =>
-            React.createFactory(LogTile)
-              profile: @props.profile
-              open: @openLog
-              key: id
-              conversation: conversation
-              bots: @props.bots
+          @props.convs.map (conversation) =>
+            parsedConversation = JSON.parse conversation
+            list = @getListOfConversations parsedConversation, parsedConversation.bot_id
+            for conv, id in list
+              React.createFactory(LogTile)
+                profile: @props.profile
+                open: @openLog
+                key: id
+                conversation: conv
+                bots: @props.bots
+                botId: parsedConversation.bot_id
               # profile: @props.profile
               # open: @props.openLog
             # React.createElement LogTile

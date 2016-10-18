@@ -91,6 +91,7 @@ React = require 'react'
           profile: @props.profile
           bots: @props.bots
           convs: @props.convs
+          down: @props.down
       else if @state.active == 'stats'
         React.createElement ChatStats, null
       else if @state.active == 'training'

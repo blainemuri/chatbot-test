@@ -1,4 +1,5 @@
 require 'json'
+require 'time'
 
 class ChatbotController < ApplicationController
   # Allow for adminBot to send posts to /adminBot
@@ -36,18 +37,26 @@ class ChatbotController < ApplicationController
   def get_all_convs(bot)
     user = User.first
 
-    query = "SELECT \"conversations\".* FROM \"conversations\" INNER JOIN \"comments\" c1 ON c1.\"conversation_id\" = \"conversations\".\"id\" INNER JOIN \"comments\" c2 ON c2.\"conversation_id\" = \"conversations\".\"id\" WHERE (c1.commentable_id = #{user.id} AND c1.commentable_type = 'User') AND (c2.commentable_id = #{bot.id} AND c2.commentable_type = 'Bot') AND (\"conversations\".\"end\" IS NULL)"
-    # .first will grab the most recent element
+    query = "SELECT DISTINCT \"conversations\".* FROM \"conversations\" INNER JOIN \"comments\" c1 ON c1.\"conversation_id\" = \"conversations\".\"id\" INNER JOIN \"comments\" c2 ON c2.\"conversation_id\" = \"conversations\".\"id\" WHERE (c1.commentable_id = #{user.id} AND c1.commentable_type = 'User') AND (c2.commentable_id = #{bot.id} AND c2.commentable_type = 'Bot') AND (\"conversations\".\"end\" IS NULL) ORDER BY id ASC"
     Conversation.find_by_sql(query)
   end
 
   def get_conv(bot)
-    conv = get_all_convs(bot).first
+    # This grabs the most recent conversation
+    conv = get_all_convs(bot).last
 
     if conv.present?
       # Check to see if the conversation intents decreased (create new conv.)
-      # Return the most recent conversation
-      conv
+      # Or create a new one based off of time stamps (current implementation)
+      elapsed_seconds = Time.now - Time.parse(conv.comments.last.created_at.to_s)
+      if (elapsed_seconds / 60) > 5
+        # Greater than 5 minutes, create a new conversation
+        Conversation.create(entity: "conversation", correct: 1)
+      else
+        # Current conversation is still going
+        # Return the most recent conversation
+        conv
+      end
     else
       # Return a new conversation
       Conversation.create(entity: "blarg", correct: 1)
@@ -101,13 +110,12 @@ class ChatbotController < ApplicationController
   def bot
     user = User.first
     bot = Bot.first
-    conv = get_conv(bot)
+    conv = get_all_convs(bot).last
     @conversation = conv.comments
   end
 
   # TODO: When creating a new bot, add the entities/intents to their respective records
   def newbot
-    p params[:botId]
     bot = Bot.find_by(id: params[:botId])
     bot.update_attribute(:trainingData, params[:data])
     render :admin
@@ -116,11 +124,16 @@ class ChatbotController < ApplicationController
   def admin
     @bots = Bot.all
     @convs = []
-    comments = []
     for bot in @bots
       conversations = get_all_convs(bot)
+      hash = {}
+      hash["bot_id"] = bot.id
+      hash["conversations"] = []
+
       for conv in conversations
+        comments = []
         coms = conv.comments.all
+
         coms.each do |com|
           temp = com.as_json
           if temp["commentable_type"] == "Bot"
@@ -128,13 +141,13 @@ class ChatbotController < ApplicationController
           end
           comments.append temp
         end
+
+        # Add in the comments to the list of conversations for that bot
+        hash["conversations"].append comments
+
       end
-      # comments = ActiveSupport::JSON.decode "#{comments}"
-      temp = {}
-      temp["bot_id"] = bot.id
-      temp["conversations"] = comments
-      @convs.append ActiveSupport::JSON.encode temp
-      # @convs[bot.id]  = {"conversations": comments}
+
+      @convs.append ActiveSupport::JSON.encode hash
     end
     # p @convs[0].as_json
   end
@@ -149,7 +162,6 @@ class ChatbotController < ApplicationController
 
   def setTrainingData
     new_data = params[:data]
-    p Bot.all
     bot = Bot.find params[:botId]
     bot.update_attribute(:trainingData, new_data)
 
@@ -184,7 +196,6 @@ class ChatbotController < ApplicationController
   end
 
   def addNewIntent(id, intent)
-    p id
     bot = Bot.find_by(id: id)
     if Intent.where(name: intent).present?
       if !bot.intents.exists?(name: intent)
