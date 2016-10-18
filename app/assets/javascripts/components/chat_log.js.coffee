@@ -55,10 +55,8 @@ React = require 'react'
         list.conversations.reverse()
     else
       newList = []
-      console.log botId
-      console.log list.conversations
       for conv in list.conversations
-        if conv[0].bot_id == botId
+        if conv[0].bot_id == @state.sort
           newList.push conv
       newList
 
@@ -66,10 +64,10 @@ React = require 'react'
 
   selectEntities: -> @setState selectEntities: !@state.selectEntities
 
-  setBot: (name, e) ->
+  setBot: (id, e) ->
     e.stopPropagation()
     e.preventDefault()
-    @setState sort: name
+    @setState sort: id
 
   render: ->
     {div, a, h3, img, span} = React.DOM
@@ -90,6 +88,7 @@ React = require 'react'
                 React.createFactory(BotOption)
                   name: bot.name
                   key: id
+                  id: bot.id
                   setOption: @setBot
                   img: null
                   down: @props.down
