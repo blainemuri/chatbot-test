@@ -56,7 +56,7 @@ React = require 'react'
     else
       newList = []
       console.log botId
-      console.log list.conversations[0][0].bot_id
+      console.log list.conversations
       for conv in list.conversations
         if conv[0].bot_id == botId
           newList.push conv
