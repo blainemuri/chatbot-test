@@ -84,11 +84,18 @@ React = require 'react'
 
   sortByDate: (a, b) -> b[..].pop().created_at - a[..].pop().created_at
 
+  sortByBot: (a) -> a[..].pop().bot_id == @state.sort
+
   showConvsWithOptions: ->
+    temp = @state.allConvs
+
     # Organize all conversations by date, not bot
     if @state.organize == 'date'
-      temp = @state.allConvs
-      temp.sort(@sortByDate)
+      temp = temp.sort(@sortByDate)
+      if @state.sort !=  "all"
+        temp = temp.sort(@sortByBot)
+
+    temp
 
   render: ->
     {div, a, h3, img, span} = React.DOM
