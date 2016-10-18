@@ -28,8 +28,8 @@ class ChatbotController < ApplicationController
     conv = get_conv(bot)
 
     # Add in the messages
-    user.comments.create(:body => user_message, :context => 'User Context', :correct => 1, conversation: conv)
-    bot.comments.create(:body => bot_message, :context => 'Bot Context', :correct => 1, conversation: conv)
+    user.comments.create(:body => user_message, :context => 'User Context', :correct => 1, conversation: conv, bot_id: bot.id)
+    bot.comments.create(:body => bot_message, :context => 'Bot Context', :correct => 1, conversation: conv, bot_id: bot.id)
 
     render :admin
   end
