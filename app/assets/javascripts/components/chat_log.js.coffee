@@ -149,6 +149,6 @@ React = require 'react'
                 key: id
                 conversation: conv
                 bots: @props.bots
-                botId: parsedConversation.bot_id
+                botId: parsed.bot_id
 
 module.exports = @ChatLog
