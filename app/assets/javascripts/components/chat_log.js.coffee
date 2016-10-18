@@ -11,7 +11,8 @@ React = require 'react'
     ascending: false
     selectBots: false
     selectEntities: false
-    allConvs: {}
+    allConvs: []
+    organize: 'date'
 
   showLoading: ->
     # $('#horizontal-center').css('opacity', '0');
@@ -27,6 +28,16 @@ React = require 'react'
       .to(chat, .5, {top: 0, opacity: 1}, 'start+.2')
       .staggerTo('.log-tile', .2, {transform: "translateY(0)", opacity: 1}, .1, 'start+.2')
     tl.timeScale(1)
+
+  componentWillMount: ->
+    temp = []
+    @props.convs.map (conversation) ->
+      parsed = JSON.parse conversation
+      parsed.conversations.map (singleConv) ->
+        temp.push singleConv
+    # Store all conversations as a double array, no bot associated other than
+    # with each comment itself
+    @setState allConvs: temp
 
   componentDidMount: -> @showLoading()
 
@@ -71,7 +82,13 @@ React = require 'react'
 
   setBot: (id, e) -> @setState sort: id
 
-  # organizeParsedConversations: (parsed) ->
+  sortByDate: (a, b) -> b[..].pop().created_at - a[..].pop().created_at
+
+  showConvsWithOptions: ->
+    # Organize all conversations by date, not bot
+    if @state.organize == 'date'
+      temp = @state.allConvs
+      temp.sort(@sortByDate)
 
   render: ->
     {div, a, h3, img, span} = React.DOM
@@ -136,19 +153,13 @@ React = require 'react'
       div
         id: 'horizontal-center',
         div className: 'log-container',
-          @props.convs.map (conversation) =>
-            console.log "CONVS"
-            parsed = JSON.parse conversation
-            console.log parsed
-            # allConvs = @organizeParsedConversations parsed
-            list = @getListOfConversations parsed, parsed.bot_id
-            for conv, id in list
-              React.createFactory(LogTile)
-                profile: @props.profile
-                open: @openLog
-                key: id
-                conversation: conv
-                bots: @props.bots
-                botId: parsed.bot_id
+          @showConvsWithOptions().map (conversation, id) =>
+            React.createFactory(LogTile)
+              profile: @props.profile
+              open: @openLog
+              key: id
+              conversation: conversation
+              bots: @props.bots
+              botId: conversation[0].bot_id
 
 module.exports = @ChatLog

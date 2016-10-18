@@ -1,5 +1,6 @@
 require 'json'
 require 'time'
+require 'date'
 
 class ChatbotController < ApplicationController
   # Allow for adminBot to send posts to /adminBot
@@ -136,6 +137,7 @@ class ChatbotController < ApplicationController
 
         coms.each do |com|
           temp = com.as_json
+          temp["created_at"] = temp["created_at"].to_f * 1000
           # TODO: Need to fix this later so that it parses it only if it can
           # if temp["commentable_type"] == "Bot"
           #   p '##########################'
