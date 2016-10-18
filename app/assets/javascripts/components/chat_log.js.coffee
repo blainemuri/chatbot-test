@@ -56,7 +56,7 @@ React = require 'react'
     else
       newList = []
       for conv in list.conversations
-        console.log conv[0].bot_id
+        console.log conv
         console.log @state.sort
         if conv[0].bot_id == @state.sort
           newList.push conv
@@ -66,10 +66,7 @@ React = require 'react'
 
   selectEntities: -> @setState selectEntities: !@state.selectEntities
 
-  setBot: (id, e) ->
-    e.stopPropagation()
-    e.preventDefault()
-    @setState sort: id
+  setBot: (id, e) -> @setState sort: id
 
   render: ->
     {div, a, h3, img, span} = React.DOM
@@ -135,6 +132,8 @@ React = require 'react'
         id: 'horizontal-center',
         div className: 'log-container',
           @props.convs.map (conversation) =>
+            console.log "CONVS"
+            console.log @props.convs
             parsedConversation = JSON.parse conversation
             list = @getListOfConversations parsedConversation, parsedConversation.bot_id
             for conv, id in list
