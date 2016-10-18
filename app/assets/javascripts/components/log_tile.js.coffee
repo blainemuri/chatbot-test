@@ -23,7 +23,6 @@ React = require 'react'
   componentWillMount: ->
     conv = @props.conversation
 
-    console.log conv
     date = new Date(conv[0].created_at)
     day = date.getUTCDate()
     month = @getMonth(date.getUTCMonth())

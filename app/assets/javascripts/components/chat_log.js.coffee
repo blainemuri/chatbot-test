@@ -55,6 +55,8 @@ React = require 'react'
         list.conversations.reverse()
     else
       newList = []
+      console.log botId
+      console.log list.conversations[0][0].bot_id
       for conv in list.conversations
         if conv[0].bot_id == botId
           newList.push conv
