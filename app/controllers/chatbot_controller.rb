@@ -117,7 +117,9 @@ class ChatbotController < ApplicationController
 
   def bot
     hostname = Socket.gethostname
+    p "HOSTNAME: ####################"
     p hostname
+    p "IP: ####################"
     p Resolv.getname(request.remote_ip)
     user = User.first
     bot = Bot.find_by(name: 'originate')
