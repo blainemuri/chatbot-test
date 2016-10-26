@@ -19,7 +19,7 @@ class ChatbotController < ApplicationController
     bot = getBot(bot_name)
 
     # Grab the current conversation for this bot
-    conv = get_recent_conv(bot)
+    conv = get_recent_conv(bot, user)
 
     # Add in the messages
     user.comments.create(:body => user_message, :context => 'User Context', :correct => 1, conversation: conv, bot_id: bot.id)
@@ -44,12 +44,12 @@ class ChatbotController < ApplicationController
 
   def get_bot_user_convs(bot, user)
     query = "SELECT DISTINCT \"conversations\".* FROM \"conversations\" INNER JOIN \"comments\" c1 ON c1.\"conversation_id\" = \"conversations\".\"id\" INNER JOIN \"comments\" c2 ON c2.\"conversation_id\" = \"conversations\".\"id\" WHERE (c1.commentable_id = #{user.id} AND c1.commentable_type = 'User') AND (c2.commentable_id = #{bot.id} AND c2.commentable_type = 'Bot') AND (\"conversations\".\"end\" IS NULL) ORDER BY id ASC"
-    Conversation.find_by_sql(query)
+    conv = Conversation.find_by_sql(query)
   end
 
-  def get_recent_conv(bot)
+  def get_recent_conv(bot, user)
     # This grabs the most recent conversation
-    conv = get_all_convs_for_bot(bot).last
+    conv = get_bot_user_convs(bot, user).last
 
     if conv.present?
       # Check to see if the conversation intents decreased (create new conv.)
@@ -101,10 +101,10 @@ class ChatbotController < ApplicationController
     user = User.first
     bot = Bot.first
     # Grab the current conversation, or new if one doesn't exist
-    conv = get_recent_conv(bot)
+    conv = get_recent_conv(bot, user)
 
-    com_user = user.comments.create(:body => query['input']['text'], :context => 'User Context', :correct => 1, conversation: conv, :bot_id => bot.id)
-    com_bot = bot.comments.create(:body => bot_json['output']['text'].last, :context => response.body, :correct => 1, conversation: conv, :bot_id => bot.id)
+    user.comments.create(:body => query['input']['text'], :context => 'User Context', :correct => 1, conversation: conv, :bot_id => bot.id)
+    bot.comments.create(:body => bot_json['output']['text'].last, :context => response.body, :correct => 1, conversation: conv, :bot_id => bot.id)
   end
 
   def query
@@ -116,7 +116,7 @@ class ChatbotController < ApplicationController
   def bot
     user = User.first
     bot = Bot.find_by(name: 'originate')
-    conv = get_bot_user_convs(bot, user)
+    conv = get_recent_conv(bot, user)
     @conversation = conv.comments
   end
 
