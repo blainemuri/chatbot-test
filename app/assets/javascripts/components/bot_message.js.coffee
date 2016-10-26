@@ -3,13 +3,25 @@ React = require 'react'
 @BotMessage = React.createClass
   getInitialState: ->
     bot: 'neutral'
+    time: ""
+
+  componentWillMount: ->
+    date = new Date(@props.comment.created_at)
+    hours = date.getHours()
+    minutes = date.getMinutes()
+    ampm = if hours >= 12 then 'pm' else 'am'
+    hours = hours%12
+    hours = if hours == 0 then 12 else hours
+    minutes = if minutes < 10 then '0'+minutes else minutes
+
+    dateTime = hours + ':' + minutes + ' ' + ampm
+    @setState time: dateTime
 
   componentDidMount: ->
-    console.log @props.correct
-    if @props.correct == 0
+    if @props.comment.correct == 0
       @setState bot: 'incorrect'
       @animateUnhappy()
-    else if @props.correct == 2
+    else if @props.comment.correct == 2
       @setState bot: 'correct'
       @animateNeutral()
 
@@ -36,21 +48,21 @@ React = require 'react'
         @rateComment 2
 
   rateComment: (rating) ->
-
-    $.ajax
-      url: '/rateComment'
-      data: {'correct': rating, 'id': @props.id, 'conversation': @props.conversationId}
-      method: 'POST'
+    if !@props.admin
+      $.ajax
+        url: '/rateComment'
+        data: {'correct': rating, 'id': @props.comment.id, 'conversation': @props.comment.conversation_id}
+        method: 'POST'
 
   animateUnhappy: ->
-    TweenLite.to("#antenna-#{@props.id}", .3, {rotation: -60, transformOrigin: "50% 100%"})
-    TweenLite.to("#mouth-#{@props.id}", .3, {rotationX: 180, transformOrigin: "25% 25%"})
-    TweenLite.to("#bowtie-#{@props.id}", .8, {delay: .3, ease: Elastic.easeOut, rotation: -40, transformOrigin: "100% 50%"})
+    TweenLite.to("#antenna-#{@props.animate}", .3, {rotation: -60, transformOrigin: "50% 100%"})
+    TweenLite.to("#mouth-#{@props.animate}", .3, {rotationX: 180, transformOrigin: "25% 25%"})
+    TweenLite.to("#bowtie-#{@props.animate}", .8, {delay: .3, ease: Elastic.easeOut, rotation: -40, transformOrigin: "100% 50%"})
 
   animateNeutral: ->
-    TweenLite.to("#antenna-#{@props.id}", .3, {rotation: 0, transformOrigin: "50% 100%"})
-    TweenLite.to("#mouth-#{@props.id}", .3, {rotationX: 0, transformOrigin: "25% 25%"})
-    TweenLite.to("#bowtie-#{@props.id}", .3, {rotation: 0, transformOrigin: "100% 50%"})
+    TweenLite.to("#antenna-#{@props.animate}", .3, {rotation: 0, transformOrigin: "50% 100%"})
+    TweenLite.to("#mouth-#{@props.animate}", .3, {rotationX: 0, transformOrigin: "25% 25%"})
+    TweenLite.to("#bowtie-#{@props.animate}", .3, {rotation: 0, transformOrigin: "100% 50%"})
 
   render: ->
     {div, img, p, h3, span, svg, path, ellipse, line, g} = React.DOM
@@ -76,7 +88,7 @@ React = require 'react'
           rx: "2.89"
           ry: "2.87"
         g
-          id: "antenna-#{@props.id}"
+          id: "antenna-#{@props.animate}"
           line
             className: "cls-2"
             x1: "19.79"
@@ -89,17 +101,17 @@ React = require 'react'
             rx: "2.28"
             ry: "2.26"
         path
-          id: "mouth-#{@props.id}"
+          id: "mouth-#{@props.animate}"
           d: "M23.42,34.82a5.15,5.15,0,0,1-7.25,0"
         path
-          id: "bowtie-#{@props.id}"
+          id: "bowtie-#{@props.animate}"
           d: "M26.79,49.14a1.29,1.29,0,0,0-1.38-.91A9.13,9.13,0,0,0,20,50.8a9.14,9.14,0,0,0-5.41-2.58,1.28,1.28,0,0,0-1.37.9,8.83,8.83,0,0,0,0,4.95,1.29,1.29,0,0,0,1.38.91A9.13,9.13,0,0,0,20,52.42h0A9.14,9.14,0,0,0,25.41,55a1.28,1.28,0,0,0,1.37-.9A8.83,8.83,0,0,0,26.79,49.14Z"
       div
         className: 'message'
         id: 'message'
         div className: 'heading',
           h3 {}, 'Botler'
-          span {}, '10:33pm'
+          span {}, @state.time
           div className: 'options',
             div
               className: "down #{'selected' if @state.bot == 'incorrect'}"
@@ -107,7 +119,7 @@ React = require 'react'
             div
               className: "up #{'selected' if @state.bot == 'correct'}"
               onClick: @setUp
-        p {}, @props.text
+        p {}, @props.comment.body
         if @props.intent
           span {}, @props.intent
 

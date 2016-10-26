@@ -152,15 +152,14 @@ React = require 'react'
               @state.conversation.map (comment, id) =>
                 if comment.commentable_type == "Bot"
                   React.createElement BotMessage,
-                    text: comment.body
+                    comment: comment
                     pic: @props.chatbot
-                    id: comment.id
-                    correct: comment.correct
                     admin: yes
                     key: id
+                    animate: id
                 else
                   React.createElement UserMessage,
-                    text: comment.body
+                    comment: comment
                     pic: @props.profile
                     key: id
       div

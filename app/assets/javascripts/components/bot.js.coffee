@@ -68,19 +68,16 @@ React = require 'react'
             for comment, id in @props.conversation
               if comment.commentable_type == 'User'
                 React.createElement UserMessage,
-                  text: comment.body
+                  comment: comment
                   pic: @props.profile
-                  id: id
                   key: id
               else if comment.commentable_type == 'Bot'
                 React.createElement BotMessage,
-                  text: comment.body
                   pic: @props.chatbot
-                  id: comment.id
-                  conversationId: comment.conversation_id
-                  correct: comment.correct
+                  comment: comment
                   admin: no
                   key: id
+                  animate: id
           div className: 'input',
             form
               id: 'chatbot'
