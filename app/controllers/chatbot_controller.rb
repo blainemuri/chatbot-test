@@ -29,10 +29,10 @@ class ChatbotController < ApplicationController
   end
 
   def getUser(username)
-    if user = User.where(:username => key).first
+    if user = User.where(:username => username).first
       user
     else
-      user = User.create(username: key, accessLevel: 'user')
+      user = User.create(username: username, accessLevel: 'user')
       p user
       user
     end
