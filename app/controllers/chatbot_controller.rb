@@ -19,35 +19,13 @@ class ChatbotController < ApplicationController
     bot = getBot(bot_name)
 
     # Grab the current conversation for this bot
-    conv = get_conv(bot)
+    conv = get_recent_conv(bot)
 
     # Add in the messages
     user.comments.create(:body => user_message, :context => 'User Context', :correct => 1, conversation: conv, bot_id: bot.id)
     bot.comments.create(:body => bot_message, :context => 'Bot Context', :correct => 1, conversation: conv, bot_id: bot.id)
 
     render :admin
-  end
-
-  def getUser(username)
-    if user = User.where(:username => username).first
-      user
-    else
-      user = User.create(username: username, accessLevel: 0)
-      p user
-      user
-    end
-  end
-
-  def getBot(name)
-    bot = nil
-
-    if currBot = Bot.where(:name => name).first
-      # Add to the current bot
-      bot = currBot
-    else
-      # Create a new bot
-      bot = Bot.create(name: name)
-    end
   end
 
   def rateComment
@@ -58,16 +36,20 @@ class ChatbotController < ApplicationController
     render :bot
   end
 
-  def get_all_convs(bot)
-    user = User.first
+  def get_all_convs_for_bot(bot)
+    # User.all.each do |user|
+    query = "SELECT DISTINCT \"conversations\".* FROM \"conversations\" INNER JOIN \"comments\" c1 ON c1.\"conversation_id\" = \"conversations\".\"id\" INNER JOIN \"comments\" c2 ON c2.\"conversation_id\" = \"conversations\".\"id\" WHERE (c1.commentable_type = 'User') AND (c2.commentable_id = #{bot.id} AND c2.commentable_type = 'Bot') AND (\"conversations\".\"end\" IS NULL) ORDER BY id ASC"
+    Conversation.find_by_sql(query)
+  end
 
+  def get_bot_user_convs(bot, user)
     query = "SELECT DISTINCT \"conversations\".* FROM \"conversations\" INNER JOIN \"comments\" c1 ON c1.\"conversation_id\" = \"conversations\".\"id\" INNER JOIN \"comments\" c2 ON c2.\"conversation_id\" = \"conversations\".\"id\" WHERE (c1.commentable_id = #{user.id} AND c1.commentable_type = 'User') AND (c2.commentable_id = #{bot.id} AND c2.commentable_type = 'Bot') AND (\"conversations\".\"end\" IS NULL) ORDER BY id ASC"
     Conversation.find_by_sql(query)
   end
 
-  def get_conv(bot)
+  def get_recent_conv(bot)
     # This grabs the most recent conversation
-    conv = get_all_convs(bot).last
+    conv = get_all_convs_for_bot(bot).last
 
     if conv.present?
       # Check to see if the conversation intents decreased (create new conv.)
@@ -119,7 +101,7 @@ class ChatbotController < ApplicationController
     user = User.first
     bot = Bot.first
     # Grab the current conversation, or new if one doesn't exist
-    conv = get_conv(bot)
+    conv = get_recent_conv(bot)
 
     com_user = user.comments.create(:body => query['input']['text'], :context => 'User Context', :correct => 1, conversation: conv, :bot_id => bot.id)
     com_bot = bot.comments.create(:body => bot_json['output']['text'].last, :context => response.body, :correct => 1, conversation: conv, :bot_id => bot.id)
@@ -133,8 +115,8 @@ class ChatbotController < ApplicationController
 
   def bot
     user = User.first
-    bot = Bot.first
-    conv = get_conv(bot)
+    bot = Bot.find_by(name: 'originate')
+    conv = get_bot_user_convs(bot, user)
     @conversation = conv.comments
   end
 
@@ -149,7 +131,7 @@ class ChatbotController < ApplicationController
     @bots = Bot.all
     @convs = []
     for bot in @bots
-      conversations = get_all_convs(bot)
+      conversations = get_all_convs_for_bot(bot)
       hash = {}
       hash["bot_id"] = bot.id
       hash["conversations"] = []
@@ -205,10 +187,6 @@ class ChatbotController < ApplicationController
 
   private
 
-  # Possible Data Types
-  # entity -> value -> synonym
-  # intent -> example
-
   def addNewEntity(id, entity)
     bot = Bot.find_by(id: id)
     if Entity.where(name: entity).present?
@@ -234,6 +212,28 @@ class ChatbotController < ApplicationController
       # Do nothing if the intent already exists within the bot
     else
       bot.intents.create(name: intent)
+    end
+  end
+
+  def getUser(username)
+    if user = User.where(:username => username).first
+      user
+    else
+      user = User.create(username: username, accessLevel: 0)
+      p user
+      user
+    end
+  end
+
+  def getBot(name)
+    bot = nil
+
+    if currBot = Bot.where(:name => name).first
+      # Add to the current bot
+      bot = currBot
+    else
+      # Create a new bot
+      bot = Bot.create(name: name)
     end
   end
 
