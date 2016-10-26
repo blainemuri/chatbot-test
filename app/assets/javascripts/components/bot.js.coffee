@@ -8,12 +8,6 @@ React = require 'react'
   handleSubmit: (e) ->
     e.preventDefault()
 
-    # Check to see if a cookie exists
-    $.getJSON('//api.ipify.org?format=jsonp&callback=?', (data) ->
-      console.log(JSON.stringify(data, null, 2))
-    )
-    document.cookie = "username=temp"
-
     last =  @props.conversation[..].pop()
     context = {}
     if last?

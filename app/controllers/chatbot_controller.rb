@@ -1,6 +1,8 @@
 require 'json'
 require 'time'
 require 'date'
+require 'socket'
+require 'resolv'
 
 class ChatbotController < ApplicationController
   # Allow for adminBot to send posts to /adminBot
@@ -114,6 +116,9 @@ class ChatbotController < ApplicationController
   end
 
   def bot
+    hostname = Socket.gethostname
+    p hostname
+    p Resolv.getname(request.remote_ip)
     user = User.first
     bot = Bot.find_by(name: 'originate')
     conv = get_recent_conv(bot, user)
