@@ -45,7 +45,7 @@ React = require 'react'
       className: 'log-tile'
       onClick: @handleClick
       div className: 'header-left',
-        div className: 'username', 'Username'
+        div className: 'username', "User: #{@props.conversation[0].user}"
         span {}, @state.date
       div className: 'header-right',
         img

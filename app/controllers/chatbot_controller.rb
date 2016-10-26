@@ -129,35 +129,40 @@ class ChatbotController < ApplicationController
 
   def admin
     @bots = Bot.all
+    users = User.all
     @convs = []
-    for bot in @bots
-      conversations = get_all_convs_for_bot(bot)
-      hash = {}
-      hash["bot_id"] = bot.id
-      hash["conversations"] = []
+    for user in users
+      for bot in @bots
+        conversations = get_bot_user_convs(bot, user)
+        p conversations
+        hash = {}
+        hash["bot_id"] = bot.id
+        hash["user"] = user.id
+        hash["conversations"] = []
 
-      for conv in conversations
-        comments = []
-        coms = conv.comments.all
+        for conv in conversations
+          comments = []
+          coms = conv.comments.all
 
-        coms.each do |com|
-          temp = com.as_json
-          temp["created_at"] = temp["created_at"].to_f * 1000
-          # TODO: Need to fix this later so that it parses it only if it can
-          # if temp["commentable_type"] == "Bot"
-          #   p '##########################'
-          #   p temp["context"]
-          #   temp["context"] = ActiveSupport::JSON.decode temp["context"]
-          # end
-          comments.append temp
+          coms.each do |com|
+            temp = com.as_json
+            temp["created_at"] = temp["created_at"].to_f * 1000
+            # TODO: Need to fix this later so that it parses it only if it can
+            # if temp["commentable_type"] == "Bot"
+            #   p '##########################'
+            #   p temp["context"]
+            #   temp["context"] = ActiveSupport::JSON.decode temp["context"]
+            # end
+            comments.append temp
+          end
+
+          # Add in the comments to the list of conversations for that bot
+          hash["conversations"].append comments
+
         end
 
-        # Add in the comments to the list of conversations for that bot
-        hash["conversations"].append comments
-
+        @convs.append ActiveSupport::JSON.encode hash
       end
-
-      @convs.append ActiveSupport::JSON.encode hash
     end
     # p @convs[0].as_json
   end

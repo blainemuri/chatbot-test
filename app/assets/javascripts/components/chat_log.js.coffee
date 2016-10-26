@@ -33,7 +33,9 @@ React = require 'react'
     temp = []
     @props.convs.map (conversation) ->
       parsed = JSON.parse conversation
+      user = parsed.user
       parsed.conversations.map (singleConv) ->
+        singleConv[0].user = user
         temp.push singleConv
     # Store all conversations as a double array, no bot associated other than
     # with each comment itself
