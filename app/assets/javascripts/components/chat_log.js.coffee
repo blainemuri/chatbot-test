@@ -152,6 +152,9 @@ React = require 'react'
                   React.createElement BotMessage,
                     text: comment.body
                     pic: @props.chatbot
+                    id: comment.id
+                    correct: comment.correct
+                    admin: yes
                     key: id
                 else
                   React.createElement UserMessage,

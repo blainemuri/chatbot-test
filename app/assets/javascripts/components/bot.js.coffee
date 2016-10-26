@@ -27,6 +27,7 @@ React = require 'react'
       @setState text: ""
     .fail ->
       alert 'Error sending message!'
+    @setState text: ''
 
   handleChange: (e) -> @setState text: e.target.value
 
@@ -75,7 +76,10 @@ React = require 'react'
                 React.createElement BotMessage,
                   text: comment.body
                   pic: @props.chatbot
-                  id: id
+                  id: comment.id
+                  conversationId: comment.conversation_id
+                  correct: comment.correct
+                  admin: no
                   key: id
           div className: 'input',
             form
@@ -87,6 +91,7 @@ React = require 'react'
                 id: 'bot-query'
                 placeholder: 'Type your message here'
                 onChange: @handleChange
+                value: @state.text
             div className: 'voice-input',
               img
                 src: @props.mic

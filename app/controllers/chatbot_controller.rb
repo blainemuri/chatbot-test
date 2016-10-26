@@ -13,17 +13,10 @@ class ChatbotController < ApplicationController
     bot_name = params["botname"]
     bot_message = params["data"]["botMessage"]
     user_message = params["data"]["userMessage"]
+    email = params["data"]["email"]
 
-    user = User.first
-    bot = nil
-
-    if currBot = Bot.where(:name => bot_name).first
-      # Add to the current bot
-      bot = currBot
-    else
-      # Create a new bot
-      bot = Bot.create(name: bot_name)
-    end
+    user = getUser(email)
+    bot = getBot(bot_name)
 
     # Grab the current conversation for this bot
     conv = get_conv(bot)
@@ -33,6 +26,36 @@ class ChatbotController < ApplicationController
     bot.comments.create(:body => bot_message, :context => 'Bot Context', :correct => 1, conversation: conv, bot_id: bot.id)
 
     render :admin
+  end
+
+  def getUser(username)
+    if user = User.where(:username => key).first
+      user
+    else
+      user = User.create(username: key, accessLevel: 'user')
+      p user
+      user
+    end
+  end
+
+  def getBot(name)
+    bot = nil
+
+    if currBot = Bot.where(:name => bot_name).first
+      # Add to the current bot
+      bot = currBot
+    else
+      # Create a new bot
+      bot = Bot.create(name: bot_name)
+    end
+  end
+
+  def rateComment
+    p params["correct"]
+    comment = Conversation.find(params["conversation"]).comments.find(params["id"])
+    comment.update_attribute(:correct, params["correct"])
+
+    render :bot
   end
 
   def get_all_convs(bot)
@@ -50,7 +73,7 @@ class ChatbotController < ApplicationController
       # Check to see if the conversation intents decreased (create new conv.)
       # Or create a new one based off of time stamps (current implementation)
       elapsed_seconds = Time.now - Time.parse(conv.comments.last.created_at.to_s)
-      if (elapsed_seconds / 60) > 5
+      if (elapsed_seconds / 60) > 15
         # Greater than 5 minutes, create a new conversation
         Conversation.create(entity: "conversation", correct: 1)
       else

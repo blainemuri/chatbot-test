@@ -12,6 +12,8 @@ Rails.application.routes.draw do
 
   post 'adminBot', to: 'chatbot#adminBot'
 
+  post 'rateComment', to: 'chatbot#rateComment'
+
   root 'chatbot#login'
 
   resources :chats

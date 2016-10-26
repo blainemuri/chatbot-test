@@ -4,29 +4,47 @@ React = require 'react'
   getInitialState: ->
     bot: 'neutral'
 
-  setDown: ->
-    if @state.bot == 'incorrect'
-      @setState bot: 'neutral'
-      @animateNeutral()
-    else
+  componentDidMount: ->
+    console.log @props.correct
+    if @props.correct == 0
       @setState bot: 'incorrect'
       @animateUnhappy()
+    else if @props.correct == 2
+      @setState bot: 'correct'
+      @animateNeutral()
+
+  setDown: ->
+    if !@props.admin
+      if @state.bot == 'incorrect'
+        @setState bot: 'neutral'
+        @animateNeutral()
+        @rateComment 1
+      else
+        @setState bot: 'incorrect'
+        @animateUnhappy()
+        @rateComment 0
 
   setUp: ->
-    if @state.bot == 'correct'
-      @setState bot: 'neutral'
-      @animateNeutral()
-    else
-      @setState bot: 'correct'
+    if !@props.admin
+      if @state.bot == 'correct'
+        @setState bot: 'neutral'
+        @animateNeutral()
+        @rateComment 1
+      else
+        @setState bot: 'correct'
+        @animateNeutral()
+        @rateComment 2
+
+  rateComment: (rating) ->
+
+    $.ajax
+      url: '/rateComment'
+      data: {'correct': rating, 'id': @props.id, 'conversation': @props.conversationId}
+      method: 'POST'
 
   animateUnhappy: ->
     TweenLite.to("#antenna-#{@props.id}", .3, {rotation: -60, transformOrigin: "50% 100%"})
     TweenLite.to("#mouth-#{@props.id}", .3, {rotationX: 180, transformOrigin: "25% 25%"})
-    # tl = new TimelineMax()
-    # tl.add('start')
-    # tl.to("#bowtie-#{@props.id}", .3, {rotation: -60, transformOrigin: "100% 50%"}, 'start')
-    #   .to("#bowtie-#{@props.id}", .2, {rotation: -20, transformOrigin: "100% 50%"}, 'start+.3')
-    #   .to("#bowtie-#{@props.id}", .2, {rotation: -40, transformOrigin: "100% 50%"}, 'start+.5')
     TweenLite.to("#bowtie-#{@props.id}", .8, {delay: .3, ease: Elastic.easeOut, rotation: -40, transformOrigin: "100% 50%"})
 
   animateNeutral: ->
