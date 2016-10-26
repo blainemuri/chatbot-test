@@ -32,7 +32,7 @@ class ChatbotController < ApplicationController
     if user = User.where(:username => username).first
       user
     else
-      user = User.create(username: username, accessLevel: 'user')
+      user = User.create(username: username, accessLevel: 0)
       p user
       user
     end
@@ -41,12 +41,12 @@ class ChatbotController < ApplicationController
   def getBot(name)
     bot = nil
 
-    if currBot = Bot.where(:name => bot_name).first
+    if currBot = Bot.where(:name => name).first
       # Add to the current bot
       bot = currBot
     else
       # Create a new bot
-      bot = Bot.create(name: bot_name)
+      bot = Bot.create(name: name)
     end
   end
 
