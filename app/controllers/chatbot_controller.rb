@@ -52,6 +52,8 @@ class ChatbotController < ApplicationController
   def get_recent_conv(bot, user)
     # This grabs the most recent conversation
     conv = get_bot_user_convs(bot, user).last
+    p 'GETTING THE LAST CONVERSATION'
+    p conv
 
     if conv.present?
       # Check to see if the conversation intents decreased (create new conv.)
@@ -100,8 +102,8 @@ class ChatbotController < ApplicationController
     bot_json = ActiveSupport::JSON.decode(response.body)
     context = bot_json['context']
 
-    user = User.first
-    bot = Bot.first
+    user = get_user_by_cookie()
+    bot = Bot.find_by(name: 'originate')
     # Grab the current conversation, or new if one doesn't exist
     conv = get_recent_conv(bot, user)
 
@@ -116,12 +118,8 @@ class ChatbotController < ApplicationController
   end
 
   def bot
-    hostname = Socket.gethostname
-    p "HOSTNAME: ####################"
-    p hostname
-    p "IP: ####################"
-    p Resolv.getname(request.remote_ip)
-    user = User.first
+    user = get_user_by_cookie()
+    # user = User.first
     bot = Bot.find_by(name: 'originate')
     conv = get_recent_conv(bot, user)
     @conversation = conv.comments
@@ -232,8 +230,18 @@ class ChatbotController < ApplicationController
       user
     else
       user = User.create(username: username, accessLevel: 0)
-      p user
       user
+    end
+  end
+
+  def get_user_by_cookie
+    if user = cookies.permanent.signed[:user_id]
+      currUser = User.find_by(id: user)
+      currUser
+    else
+      newUser = User.create(accessLevel: 1)
+      cookies.permanent.signed[:user_id] = newUser.id
+      newUser
     end
   end
 
