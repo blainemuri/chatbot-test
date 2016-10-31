@@ -65,7 +65,6 @@ class ChatbotController < ApplicationController
 
   def ask_watson(query)
     require 'net/http'
-    require 'json'
 
     @body = query.to_json
 
@@ -107,6 +106,44 @@ class ChatbotController < ApplicationController
     botComment = bot.comments.create(:body => bot_json['output']['text'].last, :context => response.body, :correct => 1, conversation: conv, :bot_id => bot.id)
     data = {message: botComment}
     broadcast(channel, data)
+
+    p '##############################'
+    newContext = JSON.parse botComment['context']
+    if newContext['intents'][0]['intent'] == 'create_timer'
+      num = newContext['entities'][0]['value'].to_i
+      sleep(num)
+
+      newContext['timer_done'] = 1
+      newBody = JSON.parse @body
+      newBody['context'] = newContext
+
+      botComment = bot.comments.create(:body => 'Time is up!', :context => newBody, :correct => 1, conversation: conv, :bot_id => bot.id)
+      data = {message: botComment}
+      broadcast(channel, data)
+
+      # # Query watson again to get the response
+      # newContext['timer_done'] = 1
+      # new_http = Net::HTTP.new(uri.host, uri.port)
+      # new_http.use_ssl = true
+      # new_http.verify_mode = OpenSSL::SSL::VERIFY_NONE
+      #
+      # # request.body =
+      # newBody = JSON.parse @body
+      # newBody['context'] = newContext
+      # newBody['input']['text'] = ''
+      # newRequest = request
+      # newRequest.body = ActiveSupport::JSON.encode(newBody)
+      # newResponse = new_http.request(newRequest)
+      # decoded = ActiveSupport::JSON.decode(newResponse.body)
+    end
+    # if context["intents"][0]["intent"] == 'create_timer'
+    #   p '##############################'
+    # end
+    # if data.message.commentable_type == 'Bot'
+    #   context = JSON.parse data.message.context
+    #   if context.intents[0].intent == 'create_timer'
+    #     num = parseInt context.entities[0].value
+    #     setTimeout
   end
 
   def query
