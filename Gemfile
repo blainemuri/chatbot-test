@@ -22,10 +22,6 @@ gem 'coffee-rails', '~> 4.1.0'
 gem 'react-rails', '~> 1.0'
 # Stylus
 gem 'stylus'
-# Active Admin
-gem 'activeadmin', github: 'activeadmin'
-# Devise for use with activeadmin?
-gem 'devise'
 
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
@@ -61,6 +57,10 @@ gem 'eventmachine'
 
 gem 'faye-websocket'
 #####
+
+gem 'faye-rails', '~> 2.0'
+gem 'thin'
+gem 'mailboxer'
 
 
 # Use ActiveModel has_secure_password

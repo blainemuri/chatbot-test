@@ -8,6 +8,8 @@ Rails.application.routes.draw do
 
   post 'admin', to: 'chatbot#newbot'
 
+  match 'faye', to: 'chatbot#faye', via: [:get, :post]
+
   post 'setTrainingData', to: 'chatbot#setTrainingData'
 
   post 'adminBot', to: 'chatbot#adminBot'

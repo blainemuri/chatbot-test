@@ -3,6 +3,7 @@ require 'time'
 require 'date'
 require 'socket'
 require 'resolv'
+require 'faye'
 
 class ChatbotController < ApplicationController
   # Allow for adminBot to send posts to /adminBot
@@ -38,41 +39,6 @@ class ChatbotController < ApplicationController
     render :bot
   end
 
-  def get_all_convs_for_bot(bot)
-    # User.all.each do |user|
-    query = "SELECT DISTINCT \"conversations\".* FROM \"conversations\" INNER JOIN \"comments\" c1 ON c1.\"conversation_id\" = \"conversations\".\"id\" INNER JOIN \"comments\" c2 ON c2.\"conversation_id\" = \"conversations\".\"id\" WHERE (c1.commentable_type = 'User') AND (c2.commentable_id = #{bot.id} AND c2.commentable_type = 'Bot') AND (\"conversations\".\"end\" IS NULL) ORDER BY id ASC"
-    Conversation.find_by_sql(query)
-  end
-
-  def get_bot_user_convs(bot, user)
-    query = "SELECT DISTINCT \"conversations\".* FROM \"conversations\" INNER JOIN \"comments\" c1 ON c1.\"conversation_id\" = \"conversations\".\"id\" INNER JOIN \"comments\" c2 ON c2.\"conversation_id\" = \"conversations\".\"id\" WHERE (c1.commentable_id = #{user.id} AND c1.commentable_type = 'User') AND (c2.commentable_id = #{bot.id} AND c2.commentable_type = 'Bot') AND (\"conversations\".\"end\" IS NULL) ORDER BY id ASC"
-    conv = Conversation.find_by_sql(query)
-  end
-
-  def get_recent_conv(bot, user)
-    # This grabs the most recent conversation
-    conv = get_bot_user_convs(bot, user).last
-    p 'GETTING THE LAST CONVERSATION'
-    p conv
-
-    if conv.present?
-      # Check to see if the conversation intents decreased (create new conv.)
-      # Or create a new one based off of time stamps (current implementation)
-      elapsed_seconds = Time.now - Time.parse(conv.comments.last.created_at.to_s)
-      if (elapsed_seconds / 60) > 15
-        # Greater than 5 minutes, create a new conversation
-        Conversation.create(entity: "conversation", correct: 1)
-      else
-        # Current conversation is still going
-        # Return the most recent conversation
-        conv
-      end
-    else
-      # Return a new conversation
-      Conversation.create(entity: "blarg", correct: 1)
-    end
-  end
-
   def ask_watson(query)
     require 'net/http'
     require 'json'
@@ -88,6 +54,18 @@ class ChatbotController < ApplicationController
     #   @body['context'] = context
     # end
 
+    user = get_user_by_cookie()
+    bot = Bot.find_by(name: 'originate')
+    # Grab the current conversation, or new if one doesn't exist
+    conv = get_recent_conv(bot, user)
+
+    # For now just broadcast to a single channel
+    channel = '/bot'
+
+    userComment = user.comments.create(:body => query['input']['text'], :context => 'User Context', :correct => 1, conversation: conv, :bot_id => bot.id)
+    data = {message: userComment}
+    broadcast(channel, data)
+
     # Query Watson API through http:post
     uri = URI.parse("https://gateway.watsonplatform.net/conversation/api/v1/workspaces/19d05bd9-53a2-427f-9091-a74b885eef26/message?version=2016-09-16")
     http = Net::HTTP.new(uri.host, uri.port)
@@ -102,13 +80,9 @@ class ChatbotController < ApplicationController
     bot_json = ActiveSupport::JSON.decode(response.body)
     context = bot_json['context']
 
-    user = get_user_by_cookie()
-    bot = Bot.find_by(name: 'originate')
-    # Grab the current conversation, or new if one doesn't exist
-    conv = get_recent_conv(bot, user)
-
-    user.comments.create(:body => query['input']['text'], :context => 'User Context', :correct => 1, conversation: conv, :bot_id => bot.id)
-    bot.comments.create(:body => bot_json['output']['text'].last, :context => response.body, :correct => 1, conversation: conv, :bot_id => bot.id)
+    botComment = bot.comments.create(:body => bot_json['output']['text'].last, :context => response.body, :correct => 1, conversation: conv, :bot_id => bot.id)
+    data = {message: botComment}
+    broadcast(channel, data)
   end
 
   def query
@@ -254,6 +228,54 @@ class ChatbotController < ApplicationController
     else
       # Create a new bot
       bot = Bot.create(name: name)
+    end
+  end
+
+  def get_user_stats
+    users = Users.all
+    for user in users
+      p user.comments
+    end
+  end
+
+  def broadcast(channel, data)
+    base_url = request ? request.base_url : "http://localhost:3000"
+    client = Faye::Client.new("#{base_url}/faye")
+    client.publish(channel, data)
+  end
+
+  def get_all_convs_for_bot(bot)
+    # User.all.each do |user|
+    query = "SELECT DISTINCT \"conversations\".* FROM \"conversations\" INNER JOIN \"comments\" c1 ON c1.\"conversation_id\" = \"conversations\".\"id\" INNER JOIN \"comments\" c2 ON c2.\"conversation_id\" = \"conversations\".\"id\" WHERE (c1.commentable_type = 'User') AND (c2.commentable_id = #{bot.id} AND c2.commentable_type = 'Bot') AND (\"conversations\".\"end\" IS NULL) ORDER BY id ASC"
+    Conversation.find_by_sql(query)
+  end
+
+  def get_bot_user_convs(bot, user)
+    query = "SELECT DISTINCT \"conversations\".* FROM \"conversations\" INNER JOIN \"comments\" c1 ON c1.\"conversation_id\" = \"conversations\".\"id\" INNER JOIN \"comments\" c2 ON c2.\"conversation_id\" = \"conversations\".\"id\" WHERE (c1.commentable_id = #{user.id} AND c1.commentable_type = 'User') AND (c2.commentable_id = #{bot.id} AND c2.commentable_type = 'Bot') AND (\"conversations\".\"end\" IS NULL) ORDER BY id ASC"
+    conv = Conversation.find_by_sql(query)
+  end
+
+  def get_recent_conv(bot, user)
+    # This grabs the most recent conversation
+    conv = get_bot_user_convs(bot, user).last
+    p 'GETTING THE LAST CONVERSATION'
+    p conv
+
+    if conv.present?
+      # Check to see if the conversation intents decreased (create new conv.)
+      # Or create a new one based off of time stamps (current implementation)
+      elapsed_seconds = Time.now - Time.parse(conv.comments.last.created_at.to_s)
+      if (elapsed_seconds / 60) > 15
+        # Greater than 5 minutes, create a new conversation
+        Conversation.create(entity: "conversation", correct: 1)
+      else
+        # Current conversation is still going
+        # Return the most recent conversation
+        conv
+      end
+    else
+      # Return a new conversation
+      Conversation.create(entity: "blarg", correct: 1)
     end
   end
 
