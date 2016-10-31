@@ -73,7 +73,6 @@ gem 'mailboxer'
 # gem 'thin', require: false
 # gem 'sync'
 
-
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 
