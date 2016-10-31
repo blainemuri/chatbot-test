@@ -1,0 +1,2544 @@
+
+/* line 637 : /Users/blainemuri/Documents/chatbot/app/assets/stylesheets/chatbot.css.styl */
+
+@media -stylus-debug-info{filename{font-family:file\:\/\/\/Users\/blainemuri\/Documents\/chatbot\/app\/assets\/stylesheets\/chatbot\.css\.styl}line{font-family:\00003637}}
+
+/* line 1 : /Users/blainemuri/.rvm/gems/ruby-2.3.1/gems/stylus-source-0.54.5/vendor/lib/functions/index.styl */
+
+@media -stylus-debug-info{filename{font-family:file\:\/\/\/Users\/blainemuri\/\.rvm\/gems\/ruby-2\.3\.1\/gems\/stylus-source-0\.54\.5\/vendor\/lib\/functions\/index\.styl}line{font-family:\000031}}
+
+/* line 297 : /Users/blainemuri/.rvm/gems/ruby-2.3.1/gems/stylus-source-0.54.5/vendor/lib/functions/index.styl */
+
+@media -stylus-debug-info{filename{font-family:file\:\/\/\/Users\/blainemuri\/\.rvm\/gems\/ruby-2\.3\.1\/gems\/stylus-source-0\.54\.5\/vendor\/lib\/functions\/index\.styl}line{font-family:\00003297}}
+
+/* line 1 : /Users/blainemuri/Documents/chatbot/app/assets/stylesheets/params.styl */
+
+@media -stylus-debug-info{filename{font-family:file\:\/\/\/Users\/blainemuri\/Documents\/chatbot\/app\/assets\/stylesheets\/params\.styl}line{font-family:\000031}}
+@font-face {
+  font-family: CircularPro-Bold;
+  src: url("/assets/Originate_Brand_Fonts/Circular/CircularPro-Bold.otf");
+}
+@font-face {
+  font-family: CircularPro-Medium;
+  src: url("/assets/Originate_Brand_Fonts/Circular/CircularPro-Medium.otf");
+}
+@font-face {
+  font-family: CircularPro-Book;
+  src: url("/assets/Originate_Brand_Fonts/Circular/CircularPro-Book.otf");
+}
+@font-face {
+  font-family: MillerDisplay;
+  src: url("/assets/Originate_Brand_Fonts/Miller\ Display\ Family/Font\ Bureau\ -\ MillerDisplay-Roman.otf");
+}
+
+/* line 57 : /Users/blainemuri/Documents/chatbot/app/assets/stylesheets/params.styl */
+
+@media -stylus-debug-info{filename{font-family:file\:\/\/\/Users\/blainemuri\/Documents\/chatbot\/app\/assets\/stylesheets\/params\.styl}line{font-family:\0000357}}
+html,
+body {
+  width: 100%;
+  height: 100%;
+  padding: 0;
+  margin: 0;
+  font-family: CircularPro-Book;
+}
+
+/* line 64 : /Users/blainemuri/Documents/chatbot/app/assets/stylesheets/params.styl */
+
+@media -stylus-debug-info{filename{font-family:file\:\/\/\/Users\/blainemuri\/Documents\/chatbot\/app\/assets\/stylesheets\/params\.styl}line{font-family:\0000364}}
+iframe {
+  border: 0;
+}
+
+/* line 67 : /Users/blainemuri/Documents/chatbot/app/assets/stylesheets/params.styl */
+
+@media -stylus-debug-info{filename{font-family:file\:\/\/\/Users\/blainemuri\/Documents\/chatbot\/app\/assets\/stylesheets\/params\.styl}line{font-family:\0000367}}
+a,
+a:link,
+a:visited {
+  text-decoration: none;
+}
+
+/* line 70 : /Users/blainemuri/Documents/chatbot/app/assets/stylesheets/params.styl */
+
+@media -stylus-debug-info{filename{font-family:file\:\/\/\/Users\/blainemuri\/Documents\/chatbot\/app\/assets\/stylesheets\/params\.styl}line{font-family:\0000370}}
+input {
+  line-height: 32px;
+  border: 1px solid light-grey;
+  outline: none;
+  transition: all 0.25s ease-in-out;
+  padding-left: 8px;
+  padding-right: 0;
+  box-sizing: border-box;
+  border: none;
+  border-bottom: 1px solid #999;
+  margin: 0;
+}
+
+/* line 81 : /Users/blainemuri/Documents/chatbot/app/assets/stylesheets/params.styl */
+
+@media -stylus-debug-info{filename{font-family:file\:\/\/\/Users\/blainemuri\/Documents\/chatbot\/app\/assets\/stylesheets\/params\.styl}line{font-family:\0000381}}
+input:focus {
+  padding-left: 16px;
+}
+
+/* line 84 : /Users/blainemuri/Documents/chatbot/app/assets/stylesheets/params.styl */
+
+@media -stylus-debug-info{filename{font-family:file\:\/\/\/Users\/blainemuri\/Documents\/chatbot\/app\/assets\/stylesheets\/params\.styl}line{font-family:\0000384}}
+h3 {
+  color: dark-grey;
+  padding: 0;
+  margin: 0;
+  vertical-align: middle;
+}
+
+/* line 90 : /Users/blainemuri/Documents/chatbot/app/assets/stylesheets/params.styl */
+
+@media -stylus-debug-info{filename{font-family:file\:\/\/\/Users\/blainemuri\/Documents\/chatbot\/app\/assets\/stylesheets\/params\.styl}line{font-family:\0000390}}
+.name {
+  font-family: CircularPro-Bold;
+  font-size: 21px;
+  font-weight: bold;
+  letter-spacing: 0px;
+  color: #000;
+}
+
+/* line 97 : /Users/blainemuri/Documents/chatbot/app/assets/stylesheets/params.styl */
+
+@media -stylus-debug-info{filename{font-family:file\:\/\/\/Users\/blainemuri\/Documents\/chatbot\/app\/assets\/stylesheets\/params\.styl}line{font-family:\0000397}}
+.intent {
+  font-family: CircularPro-Medium;
+  font-size: 16px;
+  font-weight: 500;
+  letter-spacing: 0px;
+  color: #fff;
+}
+
+/* line 104 : /Users/blainemuri/Documents/chatbot/app/assets/stylesheets/params.styl */
+
+@media -stylus-debug-info{filename{font-family:file\:\/\/\/Users\/blainemuri\/Documents\/chatbot\/app\/assets\/stylesheets\/params\.styl}line{font-family:\00003104}}
+.date-bot {
+  font-family: CircularPro-Book;
+  font-size: 16px;
+  letter-space: 0px;
+  color: #999;
+}
+
+/* line 110 : /Users/blainemuri/Documents/chatbot/app/assets/stylesheets/params.styl */
+
+@media -stylus-debug-info{filename{font-family:file\:\/\/\/Users\/blainemuri\/Documents\/chatbot\/app\/assets\/stylesheets\/params\.styl}line{font-family:\00003110}}
+.body-text {
+  font-family: CircularPro-Book;
+  font-size: 16px;
+  line-height: 1.5;
+  letter-spacing: 0px;
+  color: #000;
+}
+
+/* line 117 : /Users/blainemuri/Documents/chatbot/app/assets/stylesheets/params.styl */
+
+@media -stylus-debug-info{filename{font-family:file\:\/\/\/Users\/blainemuri\/Documents\/chatbot\/app\/assets\/stylesheets\/params\.styl}line{font-family:\00003117}}
+.date-user {
+  font-family: CircularPro-Book;
+  font-size: 16px;
+  letter-spacing: 0px;
+  text-align: right;
+  color: #fff;
+}
+
+/* line 124 : /Users/blainemuri/Documents/chatbot/app/assets/stylesheets/params.styl */
+
+@media -stylus-debug-info{filename{font-family:file\:\/\/\/Users\/blainemuri\/Documents\/chatbot\/app\/assets\/stylesheets\/params\.styl}line{font-family:\00003124}}
+.time-marker-label {
+  font-family: CirularPro-Book;
+  font-size: 16px;
+  letter-spacing: 0px;
+  text-align: center;
+  color: #999;
+}
+
+/* line 12 : /Users/blainemuri/Documents/chatbot/app/assets/stylesheets/chatbot.css.styl */
+
+@media -stylus-debug-info{filename{font-family:file\:\/\/\/Users\/blainemuri\/Documents\/chatbot\/app\/assets\/stylesheets\/chatbot\.css\.styl}line{font-family:\0000312}}
+body {
+  -o-backface-visibility: hidden;
+  -moz-backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+}
+
+/* line 18 : /Users/blainemuri/Documents/chatbot/app/assets/stylesheets/chatbot.css.styl */
+
+@media -stylus-debug-info{filename{font-family:file\:\/\/\/Users\/blainemuri\/Documents\/chatbot\/app\/assets\/stylesheets\/chatbot\.css\.styl}line{font-family:\0000318}}
+.chat-container {
+  width: 50%;
+}
+
+/* line 21 : /Users/blainemuri/Documents/chatbot/app/assets/stylesheets/chatbot.css.styl */
+
+@media -stylus-debug-info{filename{font-family:file\:\/\/\/Users\/blainemuri\/Documents\/chatbot\/app\/assets\/stylesheets\/chatbot\.css\.styl}line{font-family:\0000321}}
+span.clear {
+  clear: both;
+  display: block;
+}
+
+/* line 25 : /Users/blainemuri/Documents/chatbot/app/assets/stylesheets/chatbot.css.styl */
+
+@media -stylus-debug-info{filename{font-family:file\:\/\/\/Users\/blainemuri\/Documents\/chatbot\/app\/assets\/stylesheets\/chatbot\.css\.styl}line{font-family:\0000325}}
+svg.profile {
+  width: 64px;
+  height: 64px;
+  border-radius: 32px;
+  margin: 0;
+  padding: 0;
+}
+
+/* line 32 : /Users/blainemuri/Documents/chatbot/app/assets/stylesheets/chatbot.css.styl */
+
+@media -stylus-debug-info{filename{font-family:file\:\/\/\/Users\/blainemuri\/Documents\/chatbot\/app\/assets\/stylesheets\/chatbot\.css\.styl}line{font-family:\0000332}}
+svg.profile .cls-1 {
+  fill: #000;
+  stroke: #fff;
+  z-index: 4;
+}
+
+/* line 37 : /Users/blainemuri/Documents/chatbot/app/assets/stylesheets/chatbot.css.styl */
+
+@media -stylus-debug-info{filename{font-family:file\:\/\/\/Users\/blainemuri\/Documents\/chatbot\/app\/assets\/stylesheets\/chatbot\.css\.styl}line{font-family:\0000337}}
+svg.profile .cls-2 {
+  fill: none;
+  stroke: #000;
+  stroke-width: 0.44px;
+}
+
+/* line 42 : /Users/blainemuri/Documents/chatbot/app/assets/stylesheets/chatbot.css.styl */
+
+@media -stylus-debug-info{filename{font-family:file\:\/\/\/Users\/blainemuri\/Documents\/chatbot\/app\/assets\/stylesheets\/chatbot\.css\.styl}line{font-family:\0000342}}
+.chat-login {
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  text-align: center;
+  background-color: #404040;
+  animation: fade-background 1s forwards;
+  animation-delay: 0.2s;
+  z-index: 1;
+}
+
+/* line 52 : /Users/blainemuri/Documents/chatbot/app/assets/stylesheets/chatbot.css.styl */
+
+@media -stylus-debug-info{filename{font-family:file\:\/\/\/Users\/blainemuri\/Documents\/chatbot\/app\/assets\/stylesheets\/chatbot\.css\.styl}line{font-family:\0000352}}
+.chat-login .vertical-center {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translateY(-50%) translateX(-50%);
+}
+
+/* line 58 : /Users/blainemuri/Documents/chatbot/app/assets/stylesheets/chatbot.css.styl */
+
+@media -stylus-debug-info{filename{font-family:file\:\/\/\/Users\/blainemuri\/Documents\/chatbot\/app\/assets\/stylesheets\/chatbot\.css\.styl}line{font-family:\0000358}}
+.chat-login .vertical-center .inner-login {
+  width: 328px;
+  padding: 0;
+  margin: 0;
+}
+
+/* line 63 : /Users/blainemuri/Documents/chatbot/app/assets/stylesheets/chatbot.css.styl */
+
+@media -stylus-debug-info{filename{font-family:file\:\/\/\/Users\/blainemuri\/Documents\/chatbot\/app\/assets\/stylesheets\/chatbot\.css\.styl}line{font-family:\0000363}}
+.chat-login .vertical-center .inner-login .chat-logo {
+  transform: translateY(-20px);
+  animation: move-down 0.6s forwards;
+  z-index: 1;
+  width: 320px;
+  float: left;
+}
+
+/* line 70 : /Users/blainemuri/Documents/chatbot/app/assets/stylesheets/chatbot.css.styl */
+
+@media -stylus-debug-info{filename{font-family:file\:\/\/\/Users\/blainemuri\/Documents\/chatbot\/app\/assets\/stylesheets\/chatbot\.css\.styl}line{font-family:\0000370}}
+.chat-login .vertical-center .inner-login .chat-login {
+  transform: translateY(-50px);
+  height: 64px;
+  width: 328px;
+  left: 0;
+  box-sizing: border-box;
+  text-align: center;
+  animation: move-login 0.6s forwards;
+  float: left;
+  line-height: 64px;
+  font-size: 17.6px;
+  border: none;
+  margin: 0;
+  padding: 0;
+  transition: background-color 0.3s ease-in-out;
+  cursor: pointer;
+}
+
+/* line 86 : /Users/blainemuri/Documents/chatbot/app/assets/stylesheets/chatbot.css.styl */
+
+@media -stylus-debug-info{filename{font-family:file\:\/\/\/Users\/blainemuri\/Documents\/chatbot\/app\/assets\/stylesheets\/chatbot\.css\.styl}line{font-family:\0000386}}
+.chat-login .vertical-center .inner-login .chat-login:hover {
+  background-color: #a6f4e0;
+}
+
+/* line 89 : /Users/blainemuri/Documents/chatbot/app/assets/stylesheets/chatbot.css.styl */
+
+@media -stylus-debug-info{filename{font-family:file\:\/\/\/Users\/blainemuri\/Documents\/chatbot\/app\/assets\/stylesheets\/chatbot\.css\.styl}line{font-family:\0000389}}
+.chat-login .vertical-center .inner-login .chat-logo,
+.chat-login .vertical-center .inner-login .chat-login {
+  animation-delay: 0.2s;
+}
+
+/* line 92 : /Users/blainemuri/Documents/chatbot/app/assets/stylesheets/chatbot.css.styl */
+
+@media -stylus-debug-info{filename{font-family:file\:\/\/\/Users\/blainemuri\/Documents\/chatbot\/app\/assets\/stylesheets\/chatbot\.css\.styl}line{font-family:\0000392}}
+.chat-login .vertical-center .inner-login .credentials {
+  z-index: 3;
+  opacity: 0;
+  width: 328px;
+  height: 400px;
+  background-color: #fff;
+}
+
+/* line 99 : /Users/blainemuri/Documents/chatbot/app/assets/stylesheets/chatbot.css.styl */
+
+@media -stylus-debug-info{filename{font-family:file\:\/\/\/Users\/blainemuri\/Documents\/chatbot\/app\/assets\/stylesheets\/chatbot\.css\.styl}line{font-family:\0000399}}
+.chat-login .vertical-center .inner-login .credentials .inner-credentials {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  text-align: center;
+}
+
+/* line 105 : /Users/blainemuri/Documents/chatbot/app/assets/stylesheets/chatbot.css.styl */
+
+@media -stylus-debug-info{filename{font-family:file\:\/\/\/Users\/blainemuri\/Documents\/chatbot\/app\/assets\/stylesheets\/chatbot\.css\.styl}line{font-family:\00003105}}
+.chat-login .vertical-center .inner-login .credentials .inner-credentials svg {
+  margin-top: 24px;
+  overflow: visible;
+}
+
+/* line 109 : /Users/blainemuri/Documents/chatbot/app/assets/stylesheets/chatbot.css.styl */
+
+@media -stylus-debug-info{filename{font-family:file\:\/\/\/Users\/blainemuri\/Documents\/chatbot\/app\/assets\/stylesheets\/chatbot\.css\.styl}line{font-family:\00003109}}
+.chat-login .vertical-center .inner-login .credentials .inner-credentials svg #bowtie {
+  cursor: pointer;
+}
+
+/* line 112 : /Users/blainemuri/Documents/chatbot/app/assets/stylesheets/chatbot.css.styl */
+
+@media -stylus-debug-info{filename{font-family:file\:\/\/\/Users\/blainemuri\/Documents\/chatbot\/app\/assets\/stylesheets\/chatbot\.css\.styl}line{font-family:\00003112}}
+.chat-login .vertical-center .inner-login .credentials .inner-credentials .headline {
+  width: 100%;
+  height: 32px;
+  line-height: 32px;
+  font-family: CircularPro-Book;
+}
+
+/* line 118 : /Users/blainemuri/Documents/chatbot/app/assets/stylesheets/chatbot.css.styl */
+
+@media -stylus-debug-info{filename{font-family:file\:\/\/\/Users\/blainemuri\/Documents\/chatbot\/app\/assets\/stylesheets\/chatbot\.css\.styl}line{font-family:\00003118}}
+.chat-login .vertical-center .inner-login .credentials .inner-credentials span {
+  font-family: CircularPro-Book;
+  font-size: 10px;
+  color: #999;
+  cursor: pointer;
+  padding: 0;
+}
+
+/* line 125 : /Users/blainemuri/Documents/chatbot/app/assets/stylesheets/chatbot.css.styl */
+
+@media -stylus-debug-info{filename{font-family:file\:\/\/\/Users\/blainemuri\/Documents\/chatbot\/app\/assets\/stylesheets\/chatbot\.css\.styl}line{font-family:\00003125}}
+
+/* line 126 : /Users/blainemuri/Documents/chatbot/app/assets/stylesheets/chatbot.css.styl */
+
+@media -stylus-debug-info{filename{font-family:file\:\/\/\/Users\/blainemuri\/Documents\/chatbot\/app\/assets\/stylesheets\/chatbot\.css\.styl}line{font-family:\00003126}}
+.chat-login .vertical-center .inner-login .credentials .inner-credentials form .input-btn {
+  width: 50%;
+  height: 51.2px;
+  border-radius: 4px;
+  text-shadow: none;
+  background-color: #fff;
+  border: 1px solid #999;
+  text-decoration: none;
+  background-image: none;
+  cursor: pointer;
+  padding: 0;
+  text-align: center;
+  font-family: CircularPro-Bold;
+  color: #999;
+  margin-bottom: 0;
+  transition: all 0.3s ease-in-out;
+}
+
+/* line 143 : /Users/blainemuri/Documents/chatbot/app/assets/stylesheets/chatbot.css.styl */
+
+@media -stylus-debug-info{filename{font-family:file\:\/\/\/Users\/blainemuri\/Documents\/chatbot\/app\/assets\/stylesheets\/chatbot\.css\.styl}line{font-family:\00003143}}
+.chat-login .vertical-center .inner-login .credentials .inner-credentials form .input-btn:hover {
+  border: none;
+  background-color: #a6f4e0;
+  color: #000;
+  box-shadow: 2px 2px 6px 1px medium-gray;
+  border: 1px solid #a6f4e0;
+}
+
+/* line 150 : /Users/blainemuri/Documents/chatbot/app/assets/stylesheets/chatbot.css.styl */
+
+@media -stylus-debug-info{filename{font-family:file\:\/\/\/Users\/blainemuri\/Documents\/chatbot\/app\/assets\/stylesheets\/chatbot\.css\.styl}line{font-family:\00003150}}
+.chat-login .vertical-center .inner-login .credentials .inner-credentials form div {
+  width: 80%;
+  height: 44.8px;
+  margin: 16px auto;
+  position: relative;
+  margin-bottom: 32px;
+  margin-top: 24px;
+}
+
+/* line 158 : /Users/blainemuri/Documents/chatbot/app/assets/stylesheets/chatbot.css.styl */
+
+@media -stylus-debug-info{filename{font-family:file\:\/\/\/Users\/blainemuri\/Documents\/chatbot\/app\/assets\/stylesheets\/chatbot\.css\.styl}line{font-family:\00003158}}
+.chat-login .vertical-center .inner-login .credentials .inner-credentials form div .placeholder {
+  margin: 0;
+  padding: 0;
+  width: 0;
+  height: 0;
+  left: 0;
+  transform: translateY(-50%);
+  top: 40%;
+  color: #999;
+  text-align: left;
+}
+
+/* line 169 : /Users/blainemuri/Documents/chatbot/app/assets/stylesheets/chatbot.css.styl */
+
+@media -stylus-debug-info{filename{font-family:file\:\/\/\/Users\/blainemuri\/Documents\/chatbot\/app\/assets\/stylesheets\/chatbot\.css\.styl}line{font-family:\00003169}}
+.chat-login .vertical-center .inner-login .credentials .inner-credentials form div .background {
+  width: 110%;
+  height: 145%;
+  position: absolute;
+  margin: 0 auto;
+  top: -30%;
+  left: -5%;
+  opacity: 0;
+  background-color: #a6f4e0;
+  z-index: -1;
+}
+
+/* line 180 : /Users/blainemuri/Documents/chatbot/app/assets/stylesheets/chatbot.css.styl */
+
+@media -stylus-debug-info{filename{font-family:file\:\/\/\/Users\/blainemuri\/Documents\/chatbot\/app\/assets\/stylesheets\/chatbot\.css\.styl}line{font-family:\00003180}}
+.chat-login .vertical-center .inner-login .credentials .inner-credentials form div input {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  font-size: 14.4px;
+  background: transparent;
+  height: 32px;
+}
+
+/* line 189 : /Users/blainemuri/Documents/chatbot/app/assets/stylesheets/chatbot.css.styl */
+
+@media -stylus-debug-info{filename{font-family:file\:\/\/\/Users\/blainemuri\/Documents\/chatbot\/app\/assets\/stylesheets\/chatbot\.css\.styl}line{font-family:\00003189}}
+
+/* line 190 : /Users/blainemuri/Documents/chatbot/app/assets/stylesheets/chatbot.css.styl */
+
+@media -stylus-debug-info{filename{font-family:file\:\/\/\/Users\/blainemuri\/Documents\/chatbot\/app\/assets\/stylesheets\/chatbot\.css\.styl}line{font-family:\00003190}}
+.chat-login .vertical-center .inner-login .credentials .inner-credentials form div input:active.red,
+.chat-login .vertical-center .inner-login .credentials .inner-credentials form div input:focus.red {
+  box-shadow: 0px 0px 3px 1px #c00;
+}
+
+/* line 192 : /Users/blainemuri/Documents/chatbot/app/assets/stylesheets/chatbot.css.styl */
+
+@media -stylus-debug-info{filename{font-family:file\:\/\/\/Users\/blainemuri\/Documents\/chatbot\/app\/assets\/stylesheets\/chatbot\.css\.styl}line{font-family:\00003192}}
+.chat-login .vertical-center .inner-login .credentials .inner-credentials form div input:active.gray,
+.chat-login .vertical-center .inner-login .credentials .inner-credentials form div input:focus.gray {
+  box-shadow: 0px 0px 3px 1px light-gray;
+}
+
+/* line 194 : /Users/blainemuri/Documents/chatbot/app/assets/stylesheets/chatbot.css.styl */
+
+@media -stylus-debug-info{filename{font-family:file\:\/\/\/Users\/blainemuri\/Documents\/chatbot\/app\/assets\/stylesheets\/chatbot\.css\.styl}line{font-family:\00003194}}
+.chat-login .vertical-center .inner-login .credentials .inner-credentials form div input:active.green,
+.chat-login .vertical-center .inner-login .credentials .inner-credentials form div input:focus.green {
+  box-shadow: 0px 0px 3px 1px #49e20e;
+}
+
+/* line 197 : /Users/blainemuri/Documents/chatbot/app/assets/stylesheets/chatbot.css.styl */
+
+@media -stylus-debug-info{filename{font-family:file\:\/\/\/Users\/blainemuri\/Documents\/chatbot\/app\/assets\/stylesheets\/chatbot\.css\.styl}line{font-family:\00003197}}
+.chat-stats {
+  width: 100%;
+  height: calc(100% - 64px);
+}
+
+/* line 201 : /Users/blainemuri/Documents/chatbot/app/assets/stylesheets/chatbot.css.styl */
+
+@media -stylus-debug-info{filename{font-family:file\:\/\/\/Users\/blainemuri\/Documents\/chatbot\/app\/assets\/stylesheets\/chatbot\.css\.styl}line{font-family:\00003201}}
+.chat-stats h2 {
+  height: 128px;
+  border-bottom: 1px solid light-gray;
+  line-height: 128px;
+  padding-left: 64px;
+}
+
+/* line 207 : /Users/blainemuri/Documents/chatbot/app/assets/stylesheets/chatbot.css.styl */
+
+@media -stylus-debug-info{filename{font-family:file\:\/\/\/Users\/blainemuri\/Documents\/chatbot\/app\/assets\/stylesheets\/chatbot\.css\.styl}line{font-family:\00003207}}
+.bot-chat-outer,
+.bot-log-outer {
+  width: 100%;
+  background-color: #fff;
+  color: #000;
+  float: left;
+}
+
+/* line 212 : /Users/blainemuri/Documents/chatbot/app/assets/stylesheets/chatbot.css.styl */
+
+@media -stylus-debug-info{filename{font-family:file\:\/\/\/Users\/blainemuri\/Documents\/chatbot\/app\/assets\/stylesheets\/chatbot\.css\.styl}line{font-family:\00003212}}
+.bot-chat-outer.dark-theme,
+.bot-log-outer.dark-theme {
+  filter: invert(100%);
+  -webkit-filter: invert(100%);
+}
+
+/* line 216 : /Users/blainemuri/Documents/chatbot/app/assets/stylesheets/chatbot.css.styl */
+
+@media -stylus-debug-info{filename{font-family:file\:\/\/\/Users\/blainemuri\/Documents\/chatbot\/app\/assets\/stylesheets\/chatbot\.css\.styl}line{font-family:\00003216}}
+.bot-chat-outer .loading-cover,
+.bot-log-outer .loading-cover {
+  background-color: #779ecb;
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  z-index: 2;
+}
+
+/* line 223 : /Users/blainemuri/Documents/chatbot/app/assets/stylesheets/chatbot.css.styl */
+
+@media -stylus-debug-info{filename{font-family:file\:\/\/\/Users\/blainemuri\/Documents\/chatbot\/app\/assets\/stylesheets\/chatbot\.css\.styl}line{font-family:\00003223}}
+.bot-chat-outer .toggle-theme,
+.bot-log-outer .toggle-theme {
+  position: absolute;
+  top: 0;
+  right: 0;
+  margin: 10px;
+  width: 80px;
+  line-height: 64px;
+  text-align: center;
+  height: 64px;
+  font-size: 11.2px;
+  background-color: #000;
+  color: #fff;
+  transition: background-color 0.3s ease-in-out;
+  z-index: 1;
+  cursor: pointer;
+  border-radius: 32px;
+}
+
+/* line 239 : /Users/blainemuri/Documents/chatbot/app/assets/stylesheets/chatbot.css.styl */
+
+@media -stylus-debug-info{filename{font-family:file\:\/\/\/Users\/blainemuri\/Documents\/chatbot\/app\/assets\/stylesheets\/chatbot\.css\.styl}line{font-family:\00003239}}
+.bot-chat-outer .toggle-theme:hover,
+.bot-log-outer .toggle-theme:hover {
+  background-color: dark-gray;
+}
+
+/* line 242 : /Users/blainemuri/Documents/chatbot/app/assets/stylesheets/chatbot.css.styl */
+
+@media -stylus-debug-info{filename{font-family:file\:\/\/\/Users\/blainemuri\/Documents\/chatbot\/app\/assets\/stylesheets\/chatbot\.css\.styl}line{font-family:\00003242}}
+.bot-chat-outer #horizontal-center,
+.bot-log-outer #horizontal-center {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  top: 20px;
+  opacity: 0;
+  height: 100%;
+}
+
+/* line 250 : /Users/blainemuri/Documents/chatbot/app/assets/stylesheets/chatbot.css.styl */
+
+@media -stylus-debug-info{filename{font-family:file\:\/\/\/Users\/blainemuri\/Documents\/chatbot\/app\/assets\/stylesheets\/chatbot\.css\.styl}line{font-family:\00003250}}
+.bot-chat-outer #horizontal-center .chat-container,
+.bot-log-outer #horizontal-center .chat-container {
+  width: 800px;
+  height: calc(100% - 64px);
+  margin-top: 64px;
+  box-sizing: border-box;
+}
+
+/* line 256 : /Users/blainemuri/Documents/chatbot/app/assets/stylesheets/chatbot.css.styl */
+
+@media -stylus-debug-info{filename{font-family:file\:\/\/\/Users\/blainemuri\/Documents\/chatbot\/app\/assets\/stylesheets\/chatbot\.css\.styl}line{font-family:\00003256}}
+.bot-chat-outer #horizontal-center .chat-container .input,
+.bot-log-outer #horizontal-center .chat-container .input {
+  position: relative;
+  width: 100%;
+  height: 64px;
+  padding: 0 32px;
+  box-sizing: border-box;
+}
+
+/* line 263 : /Users/blainemuri/Documents/chatbot/app/assets/stylesheets/chatbot.css.styl */
+
+@media -stylus-debug-info{filename{font-family:file\:\/\/\/Users\/blainemuri\/Documents\/chatbot\/app\/assets\/stylesheets\/chatbot\.css\.styl}line{font-family:\00003263}}
+.bot-chat-outer #horizontal-center .chat-container .input .voice-input,
+.bot-log-outer #horizontal-center .chat-container .input .voice-input {
+  float: right;
+  height: 51.2px;
+  margin-top: 6.4px;
+  width: 64px;
+  background-color: #fff;
+  border: 1px solid #ddd;
+  box-sizing: border-box;
+  cursor: pointer;
+  color: #fff;
+  text-align: center;
+  vertical-align: middle;
+}
+
+/* line 276 : /Users/blainemuri/Documents/chatbot/app/assets/stylesheets/chatbot.css.styl */
+
+@media -stylus-debug-info{filename{font-family:file\:\/\/\/Users\/blainemuri\/Documents\/chatbot\/app\/assets\/stylesheets\/chatbot\.css\.styl}line{font-family:\00003276}}
+.bot-chat-outer #horizontal-center .chat-container .input .voice-input img,
+.bot-log-outer #horizontal-center .chat-container .input .voice-input img {
+  height: 19.2px;
+  margin-top: 16px;
+  filter: invert(100%);
+  -webkit-filter: invert(100%);
+}
+
+/* line 282 : /Users/blainemuri/Documents/chatbot/app/assets/stylesheets/chatbot.css.styl */
+
+@media -stylus-debug-info{filename{font-family:file\:\/\/\/Users\/blainemuri\/Documents\/chatbot\/app\/assets\/stylesheets\/chatbot\.css\.styl}line{font-family:\00003282}}
+.bot-chat-outer #horizontal-center .chat-container .input input,
+.bot-log-outer #horizontal-center .chat-container .input input {
+  width: calc(100% - 64px);
+  float: left;
+  height: 51.2px;
+  margin-top: 6.4px;
+  font-size: 14.4px;
+  padding-top: 3px;
+  padding-bottom: 3px;
+  padding-left: 0;
+  border: 1px solid #ddd;
+  padding: 10px;
+  font-style: italic;
+}
+
+/* line 294 : /Users/blainemuri/Documents/chatbot/app/assets/stylesheets/chatbot.css.styl */
+
+@media -stylus-debug-info{filename{font-family:file\:\/\/\/Users\/blainemuri\/Documents\/chatbot\/app\/assets\/stylesheets\/chatbot\.css\.styl}line{font-family:\00003294}}
+.bot-chat-outer #horizontal-center .chat-container .input input:active,
+.bot-log-outer #horizontal-center .chat-container .input input:active,
+.bot-chat-outer #horizontal-center .chat-container .input input:focus,
+.bot-log-outer #horizontal-center .chat-container .input input:focus {
+  font-style: normal;
+  padding-left: 16px;
+}
+
+/* line 298 : /Users/blainemuri/Documents/chatbot/app/assets/stylesheets/chatbot.css.styl */
+
+@media -stylus-debug-info{filename{font-family:file\:\/\/\/Users\/blainemuri\/Documents\/chatbot\/app\/assets\/stylesheets\/chatbot\.css\.styl}line{font-family:\00003298}}
+.conversation {
+  position: relative;
+  width: 100%;
+  height: calc(100% - 64px);
+  overflow-y: auto;
+  padding: 0 32px;
+  box-sizing: border-box;
+}
+
+/* line 306 : /Users/blainemuri/Documents/chatbot/app/assets/stylesheets/chatbot.css.styl */
+
+@media -stylus-debug-info{filename{font-family:file\:\/\/\/Users\/blainemuri\/Documents\/chatbot\/app\/assets\/stylesheets\/chatbot\.css\.styl}line{font-family:\00003306}}
+.conversation .bot-message,
+.conversation .user-message {
+  position: relative;
+  width: 100%;
+}
+
+/* line 310 : /Users/blainemuri/Documents/chatbot/app/assets/stylesheets/chatbot.css.styl */
+
+@media -stylus-debug-info{filename{font-family:file\:\/\/\/Users\/blainemuri\/Documents\/chatbot\/app\/assets\/stylesheets\/chatbot\.css\.styl}line{font-family:\00003310}}
+.conversation .bot-message img,
+.conversation .user-message img {
+  width: 32px;
+  height: 32px;
+  border-radius: 24px;
+  float: left;
+}
+
+/* line 316 : /Users/blainemuri/Documents/chatbot/app/assets/stylesheets/chatbot.css.styl */
+
+@media -stylus-debug-info{filename{font-family:file\:\/\/\/Users\/blainemuri\/Documents\/chatbot\/app\/assets\/stylesheets\/chatbot\.css\.styl}line{font-family:\00003316}}
+.conversation .bot-message svg,
+.conversation .user-message svg {
+  width: 32px;
+  float: left;
+}
+
+/* line 320 : /Users/blainemuri/Documents/chatbot/app/assets/stylesheets/chatbot.css.styl */
+
+@media -stylus-debug-info{filename{font-family:file\:\/\/\/Users\/blainemuri\/Documents\/chatbot\/app\/assets\/stylesheets\/chatbot\.css\.styl}line{font-family:\00003320}}
+.conversation .bot-message,
+.conversation .user-message {
+  float: left;
+  width: 480px;
+  margin-top: 16px;
+  margin-bottom: 16px;
+}
+
+/* line 326 : /Users/blainemuri/Documents/chatbot/app/assets/stylesheets/chatbot.css.styl */
+
+@media -stylus-debug-info{filename{font-family:file\:\/\/\/Users\/blainemuri\/Documents\/chatbot\/app\/assets\/stylesheets\/chatbot\.css\.styl}line{font-family:\00003326}}
+.conversation .bot-message .message,
+.conversation .user-message .message {
+  float: left;
+  margin-left: 16px;
+  max-width: 416px;
+  box-sizing: border-box;
+  background-color: #ddd;
+  min-height: 48px;
+  border-radius: 0px 10px 10px 10px;
+  padding: 16px;
+  transform: translateY(20px);
+  opacity: 0;
+}
+
+/* line 338 : /Users/blainemuri/Documents/chatbot/app/assets/stylesheets/chatbot.css.styl */
+
+@media -stylus-debug-info{filename{font-family:file\:\/\/\/Users\/blainemuri\/Documents\/chatbot\/app\/assets\/stylesheets\/chatbot\.css\.styl}line{font-family:\00003338}}
+.conversation .bot-message .message .heading,
+.conversation .user-message .message .heading {
+  width: 100%;
+  height: 16px;
+  line-height: 16px;
+  vertical-align: middle;
+}
+
+/* line 344 : /Users/blainemuri/Documents/chatbot/app/assets/stylesheets/chatbot.css.styl */
+
+@media -stylus-debug-info{filename{font-family:file\:\/\/\/Users\/blainemuri\/Documents\/chatbot\/app\/assets\/stylesheets\/chatbot\.css\.styl}line{font-family:\00003344}}
+.conversation .bot-message .message .heading h3,
+.conversation .user-message .message .heading h3 {
+  font-size: 17.6px;
+  float: left;
+  margin: 0;
+}
+
+/* line 349 : /Users/blainemuri/Documents/chatbot/app/assets/stylesheets/chatbot.css.styl */
+
+@media -stylus-debug-info{filename{font-family:file\:\/\/\/Users\/blainemuri\/Documents\/chatbot\/app\/assets\/stylesheets\/chatbot\.css\.styl}line{font-family:\00003349}}
+.conversation .bot-message .message .heading span,
+.conversation .user-message .message .heading span {
+  font-size: 11.2px;
+  float: left;
+  color: #999;
+  padding: 0;
+  margin: 0 10px;
+}
+
+/* line 356 : /Users/blainemuri/Documents/chatbot/app/assets/stylesheets/chatbot.css.styl */
+
+@media -stylus-debug-info{filename{font-family:file\:\/\/\/Users\/blainemuri\/Documents\/chatbot\/app\/assets\/stylesheets\/chatbot\.css\.styl}line{font-family:\00003356}}
+.conversation .bot-message .message .heading .options,
+.conversation .user-message .message .heading .options {
+  float: right;
+  width: 72px;
+  height: 32px;
+  margin-top: -8px;
+}
+
+/* line 362 : /Users/blainemuri/Documents/chatbot/app/assets/stylesheets/chatbot.css.styl */
+
+@media -stylus-debug-info{filename{font-family:file\:\/\/\/Users\/blainemuri\/Documents\/chatbot\/app\/assets\/stylesheets\/chatbot\.css\.styl}line{font-family:\00003362}}
+.conversation .bot-message .message .heading .options .up,
+.conversation .user-message .message .heading .options .up {
+  background: url("thumbs-up-disabled@3x.png");
+}
+
+/* line 364 : /Users/blainemuri/Documents/chatbot/app/assets/stylesheets/chatbot.css.styl */
+
+@media -stylus-debug-info{filename{font-family:file\:\/\/\/Users\/blainemuri\/Documents\/chatbot\/app\/assets\/stylesheets\/chatbot\.css\.styl}line{font-family:\00003364}}
+.conversation .bot-message .message .heading .options .up.selected,
+.conversation .user-message .message .heading .options .up.selected {
+  background: url("thumbs-up-active@3x.png");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: contain;
+}
+
+/* line 370 : /Users/blainemuri/Documents/chatbot/app/assets/stylesheets/chatbot.css.styl */
+
+@media -stylus-debug-info{filename{font-family:file\:\/\/\/Users\/blainemuri\/Documents\/chatbot\/app\/assets\/stylesheets\/chatbot\.css\.styl}line{font-family:\00003370}}
+.conversation .bot-message .message .heading .options .down,
+.conversation .user-message .message .heading .options .down {
+  background: url("thumbs-down-disabled@3x.png");
+  margin-left: 8px;
+}
+
+/* line 373 : /Users/blainemuri/Documents/chatbot/app/assets/stylesheets/chatbot.css.styl */
+
+@media -stylus-debug-info{filename{font-family:file\:\/\/\/Users\/blainemuri\/Documents\/chatbot\/app\/assets\/stylesheets\/chatbot\.css\.styl}line{font-family:\00003373}}
+.conversation .bot-message .message .heading .options .down.selected,
+.conversation .user-message .message .heading .options .down.selected {
+  background: url("thumbs-down-active@3x.png");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: contain;
+}
+
+/* line 379 : /Users/blainemuri/Documents/chatbot/app/assets/stylesheets/chatbot.css.styl */
+
+@media -stylus-debug-info{filename{font-family:file\:\/\/\/Users\/blainemuri\/Documents\/chatbot\/app\/assets\/stylesheets\/chatbot\.css\.styl}line{font-family:\00003379}}
+.conversation .bot-message .message .heading .options .up,
+.conversation .user-message .message .heading .options .up,
+.conversation .bot-message .message .heading .options .down,
+.conversation .user-message .message .heading .options .down {
+  cursor: pointer;
+  width: 24px;
+  height: 24px;
+  float: right;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: contain;
+}
+
+/* line 388 : /Users/blainemuri/Documents/chatbot/app/assets/stylesheets/chatbot.css.styl */
+
+@media -stylus-debug-info{filename{font-family:file\:\/\/\/Users\/blainemuri\/Documents\/chatbot\/app\/assets\/stylesheets\/chatbot\.css\.styl}line{font-family:\00003388}}
+.conversation .bot-message .message p,
+.conversation .user-message .message p {
+  font-size: 14.4px;
+  margin-top: 10px;
+  margin-bottom: 0;
+  width: 100%;
+  overflow: auto;
+  white-space: normal;
+}
+
+/* line 396 : /Users/blainemuri/Documents/chatbot/app/assets/stylesheets/chatbot.css.styl */
+
+@media -stylus-debug-info{filename{font-family:file\:\/\/\/Users\/blainemuri\/Documents\/chatbot\/app\/assets\/stylesheets\/chatbot\.css\.styl}line{font-family:\00003396}}
+.conversation .bot-message .message span,
+.conversation .user-message .message span {
+  font-size: 11.2px;
+  color: #fff;
+  margin-top: 16px;
+  position: static;
+}
+
+/* line 402 : /Users/blainemuri/Documents/chatbot/app/assets/stylesheets/chatbot.css.styl */
+
+@media -stylus-debug-info{filename{font-family:file\:\/\/\/Users\/blainemuri\/Documents\/chatbot\/app\/assets\/stylesheets\/chatbot\.css\.styl}line{font-family:\00003402}}
+.conversation .user-message {
+  float: right;
+}
+
+/* line 405 : /Users/blainemuri/Documents/chatbot/app/assets/stylesheets/chatbot.css.styl */
+
+@media -stylus-debug-info{filename{font-family:file\:\/\/\/Users\/blainemuri\/Documents\/chatbot\/app\/assets\/stylesheets\/chatbot\.css\.styl}line{font-family:\00003405}}
+.conversation .user-message img {
+  float: right;
+}
+
+/* line 408 : /Users/blainemuri/Documents/chatbot/app/assets/stylesheets/chatbot.css.styl */
+
+@media -stylus-debug-info{filename{font-family:file\:\/\/\/Users\/blainemuri\/Documents\/chatbot\/app\/assets\/stylesheets\/chatbot\.css\.styl}line{font-family:\00003408}}
+.conversation .user-message .message {
+  float: right;
+  margin-left: 0;
+  margin-right: 16px;
+  background-color: #a6f4e0;
+  border-radius: 10px 0px 10px 10px;
+}
+
+/* line 415 : /Users/blainemuri/Documents/chatbot/app/assets/stylesheets/chatbot.css.styl */
+
+@media -stylus-debug-info{filename{font-family:file\:\/\/\/Users\/blainemuri\/Documents\/chatbot\/app\/assets\/stylesheets\/chatbot\.css\.styl}line{font-family:\00003415}}
+
+/* line 416 : /Users/blainemuri/Documents/chatbot/app/assets/stylesheets/chatbot.css.styl */
+
+@media -stylus-debug-info{filename{font-family:file\:\/\/\/Users\/blainemuri\/Documents\/chatbot\/app\/assets\/stylesheets\/chatbot\.css\.styl}line{font-family:\00003416}}
+.conversation .user-message .message .heading h3,
+.conversation .user-message .message .heading span {
+  float: right;
+}
+
+/* line 419 : /Users/blainemuri/Documents/chatbot/app/assets/stylesheets/chatbot.css.styl */
+
+@media -stylus-debug-info{filename{font-family:file\:\/\/\/Users\/blainemuri\/Documents\/chatbot\/app\/assets\/stylesheets\/chatbot\.css\.styl}line{font-family:\00003419}}
+.conversation .user-message .message .heading span {
+  color: #999;
+}
+
+/* line 422 : /Users/blainemuri/Documents/chatbot/app/assets/stylesheets/chatbot.css.styl */
+
+@media -stylus-debug-info{filename{font-family:file\:\/\/\/Users\/blainemuri\/Documents\/chatbot\/app\/assets\/stylesheets\/chatbot\.css\.styl}line{font-family:\00003422}}
+.conversation .user-message .message p {
+  text-align: right;
+}
+
+/* line 425 : /Users/blainemuri/Documents/chatbot/app/assets/stylesheets/chatbot.css.styl */
+
+@media -stylus-debug-info{filename{font-family:file\:\/\/\/Users\/blainemuri\/Documents\/chatbot\/app\/assets\/stylesheets\/chatbot\.css\.styl}line{font-family:\00003425}}
+
+/* line 426 : /Users/blainemuri/Documents/chatbot/app/assets/stylesheets/chatbot.css.styl */
+
+@media -stylus-debug-info{filename{font-family:file\:\/\/\/Users\/blainemuri\/Documents\/chatbot\/app\/assets\/stylesheets\/chatbot\.css\.styl}line{font-family:\00003426}}
+.bot-log-outer .log-options {
+  position: fixed;
+  left: 0;
+  top: 0;
+  height: 32px;
+  margin-top: 64px;
+  width: 100%;
+  background-color: #ddd;
+  z-index: 2;
+  line-height: 32px;
+}
+
+/* line 437 : /Users/blainemuri/Documents/chatbot/app/assets/stylesheets/chatbot.css.styl */
+
+@media -stylus-debug-info{filename{font-family:file\:\/\/\/Users\/blainemuri\/Documents\/chatbot\/app\/assets\/stylesheets\/chatbot\.css\.styl}line{font-family:\00003437}}
+.bot-log-outer .log-options .floated-inner {
+  height: 32px;
+  width: 100%;
+  float: left;
+  padding: 0 128px;
+  box-sizing: border-box;
+}
+
+/* line 444 : /Users/blainemuri/Documents/chatbot/app/assets/stylesheets/chatbot.css.styl */
+
+@media -stylus-debug-info{filename{font-family:file\:\/\/\/Users\/blainemuri\/Documents\/chatbot\/app\/assets\/stylesheets\/chatbot\.css\.styl}line{font-family:\00003444}}
+.bot-log-outer .log-options .floated-inner .inner-sort {
+  width: 100%;
+  height: 32px;
+  float: left;
+  z-index: 2;
+  background-color: #ddd;
+  padding-left: 10px;
+}
+
+/* line 452 : /Users/blainemuri/Documents/chatbot/app/assets/stylesheets/chatbot.css.styl */
+
+@media -stylus-debug-info{filename{font-family:file\:\/\/\/Users\/blainemuri\/Documents\/chatbot\/app\/assets\/stylesheets\/chatbot\.css\.styl}line{font-family:\00003452}}
+.bot-log-outer .log-options .floated-inner .sort-by {
+  width: 160px;
+  height: 100%;
+  float: right;
+  display: inline-table;
+  cursor: pointer;
+}
+
+/* line 459 : /Users/blainemuri/Documents/chatbot/app/assets/stylesheets/chatbot.css.styl */
+
+@media -stylus-debug-info{filename{font-family:file\:\/\/\/Users\/blainemuri\/Documents\/chatbot\/app\/assets\/stylesheets\/chatbot\.css\.styl}line{font-family:\00003459}}
+.bot-log-outer .log-options .floated-inner .sort-by .type {
+  float: left;
+}
+
+/* line 462 : /Users/blainemuri/Documents/chatbot/app/assets/stylesheets/chatbot.css.styl */
+
+@media -stylus-debug-info{filename{font-family:file\:\/\/\/Users\/blainemuri\/Documents\/chatbot\/app\/assets\/stylesheets\/chatbot\.css\.styl}line{font-family:\00003462}}
+.bot-log-outer .log-options .floated-inner .sort-by .arrow {
+  float: right;
+  height: 12.8px;
+  padding-top: 9.6px;
+  padding-right: 13px;
+}
+
+/* line 468 : /Users/blainemuri/Documents/chatbot/app/assets/stylesheets/chatbot.css.styl */
+
+@media -stylus-debug-info{filename{font-family:file\:\/\/\/Users\/blainemuri\/Documents\/chatbot\/app\/assets\/stylesheets\/chatbot\.css\.styl}line{font-family:\00003468}}
+.bot-log-outer .show-log {
+  opacity: 0;
+  position: fixed;
+  width: 100vw;
+  height: 100vh;
+  padding: 0;
+  border-bottom: 0px;
+  left: 0;
+  top: 0;
+  z-index: 1000000;
+  transform: translateX(0) translateY(0);
+  display: block;
+  z-index: 2;
+}
+
+/* line 482 : /Users/blainemuri/Documents/chatbot/app/assets/stylesheets/chatbot.css.styl */
+
+@media -stylus-debug-info{filename{font-family:file\:\/\/\/Users\/blainemuri\/Documents\/chatbot\/app\/assets\/stylesheets\/chatbot\.css\.styl}line{font-family:\00003482}}
+.bot-log-outer .show-log .log-mask {
+  width: 100%;
+  height: 100%;
+  background-color: #fff;
+  opacity: 0.85;
+}
+
+/* line 488 : /Users/blainemuri/Documents/chatbot/app/assets/stylesheets/chatbot.css.styl */
+
+@media -stylus-debug-info{filename{font-family:file\:\/\/\/Users\/blainemuri\/Documents\/chatbot\/app\/assets\/stylesheets\/chatbot\.css\.styl}line{font-family:\00003488}}
+.bot-log-outer .show-log .show-log-container {
+  position: absolute;
+  width: 800px;
+  height: calc(100% - (64px * 2));
+  left: 50%;
+  top: 50%;
+  transform: translateX(-50%) translateY(-50%);
+  background-color: #fff;
+  box-shadow: 0px 0px 4px 0px #a6a6a6;
+}
+
+/* line 498 : /Users/blainemuri/Documents/chatbot/app/assets/stylesheets/chatbot.css.styl */
+
+@media -stylus-debug-info{filename{font-family:file\:\/\/\/Users\/blainemuri\/Documents\/chatbot\/app\/assets\/stylesheets\/chatbot\.css\.styl}line{font-family:\00003498}}
+.bot-log-outer .show-log .show-log-container .conversation {
+  width: 100%;
+  float: left;
+  height: calc(100% - 64px);
+}
+
+/* line 503 : /Users/blainemuri/Documents/chatbot/app/assets/stylesheets/chatbot.css.styl */
+
+@media -stylus-debug-info{filename{font-family:file\:\/\/\/Users\/blainemuri\/Documents\/chatbot\/app\/assets\/stylesheets\/chatbot\.css\.styl}line{font-family:\00003503}}
+.bot-log-outer .show-log .show-log-container .header {
+  width: 100%;
+  float: left;
+  height: 64px;
+  line-height: 64px;
+  margin: 0;
+  padding: 0 16px;
+  vertical-align: middle;
+  box-sizing: border-box;
+  background-color: #000;
+  color: #fff;
+}
+
+/* line 515 : /Users/blainemuri/Documents/chatbot/app/assets/stylesheets/chatbot.css.styl */
+
+@media -stylus-debug-info{filename{font-family:file\:\/\/\/Users\/blainemuri\/Documents\/chatbot\/app\/assets\/stylesheets\/chatbot\.css\.styl}line{font-family:\00003515}}
+.bot-log-outer .show-log .show-log-container .header h3 {
+  float: left;
+}
+
+/* line 518 : /Users/blainemuri/Documents/chatbot/app/assets/stylesheets/chatbot.css.styl */
+
+@media -stylus-debug-info{filename{font-family:file\:\/\/\/Users\/blainemuri\/Documents\/chatbot\/app\/assets\/stylesheets\/chatbot\.css\.styl}line{font-family:\00003518}}
+.bot-log-outer .show-log .show-log-container .header .close {
+  float: right;
+  font-size: 11.2px;
+  padding-top: 3px;
+  cursor: pointer;
+  color: #999;
+}
+
+/* line 525 : /Users/blainemuri/Documents/chatbot/app/assets/stylesheets/chatbot.css.styl */
+
+@media -stylus-debug-info{filename{font-family:file\:\/\/\/Users\/blainemuri\/Documents\/chatbot\/app\/assets\/stylesheets\/chatbot\.css\.styl}line{font-family:\00003525}}
+.bot-log-outer #horizontal-center {
+  width: 100%;
+}
+
+/* line 528 : /Users/blainemuri/Documents/chatbot/app/assets/stylesheets/chatbot.css.styl */
+
+@media -stylus-debug-info{filename{font-family:file\:\/\/\/Users\/blainemuri\/Documents\/chatbot\/app\/assets\/stylesheets\/chatbot\.css\.styl}line{font-family:\00003528}}
+.bot-log-outer #horizontal-center .log-container {
+  width: calc((288px + (16px * 2)) * 5);
+  height: 100%;
+  padding-top: 96px;
+  box-sizing: border-box;
+  margin: 0 auto;
+}
+@media screen and (max-width: 1600px) {
+
+/* line 534 : /Users/blainemuri/Documents/chatbot/app/assets/stylesheets/chatbot.css.styl */
+
+@media -stylus-debug-info{filename{font-family:file\:\/\/\/Users\/blainemuri\/Documents\/chatbot\/app\/assets\/stylesheets\/chatbot\.css\.styl}line{font-family:\00003534}}
+  .bot-log-outer #horizontal-center .log-container {
+    width: calc((288px + (16px * 2)) * 4);
+  }
+}
+@media screen and (max-width: 1280px) {
+
+/* line 536 : /Users/blainemuri/Documents/chatbot/app/assets/stylesheets/chatbot.css.styl */
+
+@media -stylus-debug-info{filename{font-family:file\:\/\/\/Users\/blainemuri\/Documents\/chatbot\/app\/assets\/stylesheets\/chatbot\.css\.styl}line{font-family:\00003536}}
+  .bot-log-outer #horizontal-center .log-container {
+    width: calc((288px + (16px * 2)) * 3);
+  }
+}
+@media screen and (max-width: 960px) {
+
+/* line 538 : /Users/blainemuri/Documents/chatbot/app/assets/stylesheets/chatbot.css.styl */
+
+@media -stylus-debug-info{filename{font-family:file\:\/\/\/Users\/blainemuri\/Documents\/chatbot\/app\/assets\/stylesheets\/chatbot\.css\.styl}line{font-family:\00003538}}
+  .bot-log-outer #horizontal-center .log-container {
+    width: calc((288px + (16px * 2)) * 2);
+  }
+}
+@media screen and (max-width: 640px) {
+
+/* line 540 : /Users/blainemuri/Documents/chatbot/app/assets/stylesheets/chatbot.css.styl */
+
+@media -stylus-debug-info{filename{font-family:file\:\/\/\/Users\/blainemuri\/Documents\/chatbot\/app\/assets\/stylesheets\/chatbot\.css\.styl}line{font-family:\00003540}}
+  .bot-log-outer #horizontal-center .log-container {
+    width: calc((288px + (16px * 2)) * 1);
+  }
+}
+
+/* line 543 : /Users/blainemuri/Documents/chatbot/app/assets/stylesheets/chatbot.css.styl */
+
+@media -stylus-debug-info{filename{font-family:file\:\/\/\/Users\/blainemuri\/Documents\/chatbot\/app\/assets\/stylesheets\/chatbot\.css\.styl}line{font-family:\00003543}}
+.bot-log-outer #horizontal-center .log-container .log-tile {
+  width: 288px;
+  height: 400px;
+  margin: 16px;
+  opacity: 0;
+  transform: translateY(30px);
+  border: 1px solid light-gray;
+  box-sizing: border-box;
+  display: inline-block;
+  cursor: pointer;
+  box-shadow: 0px 0px 4px 0px #a6a6a6;
+  transition: box-shadow 0.3s ease;
+  -o-backface-visibility: hidden;
+  -moz-backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+}
+
+/* line 559 : /Users/blainemuri/Documents/chatbot/app/assets/stylesheets/chatbot.css.styl */
+
+@media -stylus-debug-info{filename{font-family:file\:\/\/\/Users\/blainemuri\/Documents\/chatbot\/app\/assets\/stylesheets\/chatbot\.css\.styl}line{font-family:\00003559}}
+.bot-log-outer #horizontal-center .log-container .log-tile:hover {
+  box-shadow: 0px 0px 12px 0px #a6a6a6;
+}
+
+/* line 562 : /Users/blainemuri/Documents/chatbot/app/assets/stylesheets/chatbot.css.styl */
+
+@media -stylus-debug-info{filename{font-family:file\:\/\/\/Users\/blainemuri\/Documents\/chatbot\/app\/assets\/stylesheets\/chatbot\.css\.styl}line{font-family:\00003562}}
+.bot-log-outer #horizontal-center .log-container .log-tile .header-left,
+.bot-log-outer #horizontal-center .log-container .log-tile .header-right {
+  height: 64px;
+  border-bottom: 1px solid light-gray;
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  color: #fff;
+  background-color: #000;
+}
+
+/* line 571 : /Users/blainemuri/Documents/chatbot/app/assets/stylesheets/chatbot.css.styl */
+
+@media -stylus-debug-info{filename{font-family:file\:\/\/\/Users\/blainemuri\/Documents\/chatbot\/app\/assets\/stylesheets\/chatbot\.css\.styl}line{font-family:\00003571}}
+.bot-log-outer #horizontal-center .log-container .log-tile .header-left {
+  width: 67%;
+  float: left;
+  padding-left: 16px;
+}
+
+/* line 576 : /Users/blainemuri/Documents/chatbot/app/assets/stylesheets/chatbot.css.styl */
+
+@media -stylus-debug-info{filename{font-family:file\:\/\/\/Users\/blainemuri\/Documents\/chatbot\/app\/assets\/stylesheets\/chatbot\.css\.styl}line{font-family:\00003576}}
+.bot-log-outer #horizontal-center .log-container .log-tile .header-left .username {
+  padding-top: 9px;
+}
+
+/* line 579 : /Users/blainemuri/Documents/chatbot/app/assets/stylesheets/chatbot.css.styl */
+
+@media -stylus-debug-info{filename{font-family:file\:\/\/\/Users\/blainemuri\/Documents\/chatbot\/app\/assets\/stylesheets\/chatbot\.css\.styl}line{font-family:\00003579}}
+.bot-log-outer #horizontal-center .log-container .log-tile .header-left span {
+  font-size: 14.4px;
+  color: #999;
+}
+
+/* line 583 : /Users/blainemuri/Documents/chatbot/app/assets/stylesheets/chatbot.css.styl */
+
+@media -stylus-debug-info{filename{font-family:file\:\/\/\/Users\/blainemuri\/Documents\/chatbot\/app\/assets\/stylesheets\/chatbot\.css\.styl}line{font-family:\00003583}}
+.bot-log-outer #horizontal-center .log-container .log-tile .header-right {
+  width: 33%;
+  float: right;
+  text-align: center;
+}
+
+/* line 588 : /Users/blainemuri/Documents/chatbot/app/assets/stylesheets/chatbot.css.styl */
+
+@media -stylus-debug-info{filename{font-family:file\:\/\/\/Users\/blainemuri\/Documents\/chatbot\/app\/assets\/stylesheets\/chatbot\.css\.styl}line{font-family:\00003588}}
+.bot-log-outer #horizontal-center .log-container .log-tile .header-right img {
+  width: 32px;
+  height: 32px;
+  border-radius: 16px;
+  margin-top: 15px;
+}
+
+/* line 594 : /Users/blainemuri/Documents/chatbot/app/assets/stylesheets/chatbot.css.styl */
+
+@media -stylus-debug-info{filename{font-family:file\:\/\/\/Users\/blainemuri\/Documents\/chatbot\/app\/assets\/stylesheets\/chatbot\.css\.styl}line{font-family:\00003594}}
+.bot-log-outer #horizontal-center .log-container .log-tile p {
+  position: relative;
+  float: left;
+  font-size: 14.4px;
+  width: 288px;
+  height: calc(400px - (64px * 2));
+  overflow: visible;
+  white-space: normal;
+  box-sizing: border-box;
+  padding: 16px;
+  color: #000;
+}
+
+/* line 606 : /Users/blainemuri/Documents/chatbot/app/assets/stylesheets/chatbot.css.styl */
+
+@media -stylus-debug-info{filename{font-family:file\:\/\/\/Users\/blainemuri\/Documents\/chatbot\/app\/assets\/stylesheets\/chatbot\.css\.styl}line{font-family:\00003606}}
+#loading,
+#loading2 {
+  width: 64px;
+  height: 64px;
+  border-radius: 32px;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translateX(-50%) translateY(-50%);
+  background-color: #a6f4e0;
+}
+
+/* line 616 : /Users/blainemuri/Documents/chatbot/app/assets/stylesheets/chatbot.css.styl */
+
+@media -stylus-debug-info{filename{font-family:file\:\/\/\/Users\/blainemuri\/Documents\/chatbot\/app\/assets\/stylesheets\/chatbot\.css\.styl}line{font-family:\00003616}}
+#loading2 {
+  background-color: #fff;
+}
+
+/* line 619 : /Users/blainemuri/Documents/chatbot/app/assets/stylesheets/chatbot.css.styl */
+
+@media -stylus-debug-info{filename{font-family:file\:\/\/\/Users\/blainemuri\/Documents\/chatbot\/app\/assets\/stylesheets\/chatbot\.css\.styl}line{font-family:\00003619}}
+@-moz-keyframes move-login {
+
+/* line 620 : /Users/blainemuri/Documents/chatbot/app/assets/stylesheets/chatbot.css.styl */
+
+@media -stylus-debug-info{filename{font-family:file\:\/\/\/Users\/blainemuri\/Documents\/chatbot\/app\/assets\/stylesheets\/chatbot\.css\.styl}line{font-family:\00003620}}
+  from {
+    transform: translateY(-50px);
+    background-color: #b5cae3;
+  }
+
+/* line 623 : /Users/blainemuri/Documents/chatbot/app/assets/stylesheets/chatbot.css.styl */
+
+@media -stylus-debug-info{filename{font-family:file\:\/\/\/Users\/blainemuri\/Documents\/chatbot\/app\/assets\/stylesheets\/chatbot\.css\.styl}line{font-family:\00003623}}
+  to {
+    transform: translateY(0px);
+    background-color: #96dde1;
+  }
+}
+
+/* line 619 : /Users/blainemuri/Documents/chatbot/app/assets/stylesheets/chatbot.css.styl */
+
+@media -stylus-debug-info{filename{font-family:file\:\/\/\/Users\/blainemuri\/Documents\/chatbot\/app\/assets\/stylesheets\/chatbot\.css\.styl}line{font-family:\00003619}}
+@-webkit-keyframes move-login {
+
+/* line 620 : /Users/blainemuri/Documents/chatbot/app/assets/stylesheets/chatbot.css.styl */
+
+@media -stylus-debug-info{filename{font-family:file\:\/\/\/Users\/blainemuri\/Documents\/chatbot\/app\/assets\/stylesheets\/chatbot\.css\.styl}line{font-family:\00003620}}
+  from {
+    transform: translateY(-50px);
+    background-color: #b5cae3;
+  }
+
+/* line 623 : /Users/blainemuri/Documents/chatbot/app/assets/stylesheets/chatbot.css.styl */
+
+@media -stylus-debug-info{filename{font-family:file\:\/\/\/Users\/blainemuri\/Documents\/chatbot\/app\/assets\/stylesheets\/chatbot\.css\.styl}line{font-family:\00003623}}
+  to {
+    transform: translateY(0px);
+    background-color: #96dde1;
+  }
+}
+
+/* line 619 : /Users/blainemuri/Documents/chatbot/app/assets/stylesheets/chatbot.css.styl */
+
+@media -stylus-debug-info{filename{font-family:file\:\/\/\/Users\/blainemuri\/Documents\/chatbot\/app\/assets\/stylesheets\/chatbot\.css\.styl}line{font-family:\00003619}}
+@-o-keyframes move-login {
+
+/* line 620 : /Users/blainemuri/Documents/chatbot/app/assets/stylesheets/chatbot.css.styl */
+
+@media -stylus-debug-info{filename{font-family:file\:\/\/\/Users\/blainemuri\/Documents\/chatbot\/app\/assets\/stylesheets\/chatbot\.css\.styl}line{font-family:\00003620}}
+  from {
+    transform: translateY(-50px);
+    background-color: #b5cae3;
+  }
+
+/* line 623 : /Users/blainemuri/Documents/chatbot/app/assets/stylesheets/chatbot.css.styl */
+
+@media -stylus-debug-info{filename{font-family:file\:\/\/\/Users\/blainemuri\/Documents\/chatbot\/app\/assets\/stylesheets\/chatbot\.css\.styl}line{font-family:\00003623}}
+  to {
+    transform: translateY(0px);
+    background-color: #96dde1;
+  }
+}
+
+/* line 619 : /Users/blainemuri/Documents/chatbot/app/assets/stylesheets/chatbot.css.styl */
+
+@media -stylus-debug-info{filename{font-family:file\:\/\/\/Users\/blainemuri\/Documents\/chatbot\/app\/assets\/stylesheets\/chatbot\.css\.styl}line{font-family:\00003619}}
+@keyframes move-login {
+
+/* line 620 : /Users/blainemuri/Documents/chatbot/app/assets/stylesheets/chatbot.css.styl */
+
+@media -stylus-debug-info{filename{font-family:file\:\/\/\/Users\/blainemuri\/Documents\/chatbot\/app\/assets\/stylesheets\/chatbot\.css\.styl}line{font-family:\00003620}}
+  from {
+    transform: translateY(-50px);
+    background-color: #b5cae3;
+  }
+
+/* line 623 : /Users/blainemuri/Documents/chatbot/app/assets/stylesheets/chatbot.css.styl */
+
+@media -stylus-debug-info{filename{font-family:file\:\/\/\/Users\/blainemuri\/Documents\/chatbot\/app\/assets\/stylesheets\/chatbot\.css\.styl}line{font-family:\00003623}}
+  to {
+    transform: translateY(0px);
+    background-color: #96dde1;
+  }
+}
+
+/* line 627 : /Users/blainemuri/Documents/chatbot/app/assets/stylesheets/chatbot.css.styl */
+
+@media -stylus-debug-info{filename{font-family:file\:\/\/\/Users\/blainemuri\/Documents\/chatbot\/app\/assets\/stylesheets\/chatbot\.css\.styl}line{font-family:\00003627}}
+@-moz-keyframes move-down {
+
+/* line 628 : /Users/blainemuri/Documents/chatbot/app/assets/stylesheets/chatbot.css.styl */
+
+@media -stylus-debug-info{filename{font-family:file\:\/\/\/Users\/blainemuri\/Documents\/chatbot\/app\/assets\/stylesheets\/chatbot\.css\.styl}line{font-family:\00003628}}
+  from {
+    transform: translateY(-20px);
+  }
+
+/* line 630 : /Users/blainemuri/Documents/chatbot/app/assets/stylesheets/chatbot.css.styl */
+
+@media -stylus-debug-info{filename{font-family:file\:\/\/\/Users\/blainemuri\/Documents\/chatbot\/app\/assets\/stylesheets\/chatbot\.css\.styl}line{font-family:\00003630}}
+  to {
+    transform: translateY(0px);
+  }
+}
+
+/* line 627 : /Users/blainemuri/Documents/chatbot/app/assets/stylesheets/chatbot.css.styl */
+
+@media -stylus-debug-info{filename{font-family:file\:\/\/\/Users\/blainemuri\/Documents\/chatbot\/app\/assets\/stylesheets\/chatbot\.css\.styl}line{font-family:\00003627}}
+@-webkit-keyframes move-down {
+
+/* line 628 : /Users/blainemuri/Documents/chatbot/app/assets/stylesheets/chatbot.css.styl */
+
+@media -stylus-debug-info{filename{font-family:file\:\/\/\/Users\/blainemuri\/Documents\/chatbot\/app\/assets\/stylesheets\/chatbot\.css\.styl}line{font-family:\00003628}}
+  from {
+    transform: translateY(-20px);
+  }
+
+/* line 630 : /Users/blainemuri/Documents/chatbot/app/assets/stylesheets/chatbot.css.styl */
+
+@media -stylus-debug-info{filename{font-family:file\:\/\/\/Users\/blainemuri\/Documents\/chatbot\/app\/assets\/stylesheets\/chatbot\.css\.styl}line{font-family:\00003630}}
+  to {
+    transform: translateY(0px);
+  }
+}
+
+/* line 627 : /Users/blainemuri/Documents/chatbot/app/assets/stylesheets/chatbot.css.styl */
+
+@media -stylus-debug-info{filename{font-family:file\:\/\/\/Users\/blainemuri\/Documents\/chatbot\/app\/assets\/stylesheets\/chatbot\.css\.styl}line{font-family:\00003627}}
+@-o-keyframes move-down {
+
+/* line 628 : /Users/blainemuri/Documents/chatbot/app/assets/stylesheets/chatbot.css.styl */
+
+@media -stylus-debug-info{filename{font-family:file\:\/\/\/Users\/blainemuri\/Documents\/chatbot\/app\/assets\/stylesheets\/chatbot\.css\.styl}line{font-family:\00003628}}
+  from {
+    transform: translateY(-20px);
+  }
+
+/* line 630 : /Users/blainemuri/Documents/chatbot/app/assets/stylesheets/chatbot.css.styl */
+
+@media -stylus-debug-info{filename{font-family:file\:\/\/\/Users\/blainemuri\/Documents\/chatbot\/app\/assets\/stylesheets\/chatbot\.css\.styl}line{font-family:\00003630}}
+  to {
+    transform: translateY(0px);
+  }
+}
+
+/* line 627 : /Users/blainemuri/Documents/chatbot/app/assets/stylesheets/chatbot.css.styl */
+
+@media -stylus-debug-info{filename{font-family:file\:\/\/\/Users\/blainemuri\/Documents\/chatbot\/app\/assets\/stylesheets\/chatbot\.css\.styl}line{font-family:\00003627}}
+@keyframes move-down {
+
+/* line 628 : /Users/blainemuri/Documents/chatbot/app/assets/stylesheets/chatbot.css.styl */
+
+@media -stylus-debug-info{filename{font-family:file\:\/\/\/Users\/blainemuri\/Documents\/chatbot\/app\/assets\/stylesheets\/chatbot\.css\.styl}line{font-family:\00003628}}
+  from {
+    transform: translateY(-20px);
+  }
+
+/* line 630 : /Users/blainemuri/Documents/chatbot/app/assets/stylesheets/chatbot.css.styl */
+
+@media -stylus-debug-info{filename{font-family:file\:\/\/\/Users\/blainemuri\/Documents\/chatbot\/app\/assets\/stylesheets\/chatbot\.css\.styl}line{font-family:\00003630}}
+  to {
+    transform: translateY(0px);
+  }
+}
+
+/* line 633 : /Users/blainemuri/Documents/chatbot/app/assets/stylesheets/chatbot.css.styl */
+
+@media -stylus-debug-info{filename{font-family:file\:\/\/\/Users\/blainemuri\/Documents\/chatbot\/app\/assets\/stylesheets\/chatbot\.css\.styl}line{font-family:\00003633}}
+@-moz-keyframes fade-background {
+
+/* line 634 : /Users/blainemuri/Documents/chatbot/app/assets/stylesheets/chatbot.css.styl */
+
+@media -stylus-debug-info{filename{font-family:file\:\/\/\/Users\/blainemuri\/Documents\/chatbot\/app\/assets\/stylesheets\/chatbot\.css\.styl}line{font-family:\00003634}}
+  from {
+    background-color: #404040;
+  }
+
+/* line 636 : /Users/blainemuri/Documents/chatbot/app/assets/stylesheets/chatbot.css.styl */
+
+@media -stylus-debug-info{filename{font-family:file\:\/\/\/Users\/blainemuri\/Documents\/chatbot\/app\/assets\/stylesheets\/chatbot\.css\.styl}line{font-family:\00003636}}
+  to {
+    background-color: #000;
+  }
+}
+
+/* line 633 : /Users/blainemuri/Documents/chatbot/app/assets/stylesheets/chatbot.css.styl */
+
+@media -stylus-debug-info{filename{font-family:file\:\/\/\/Users\/blainemuri\/Documents\/chatbot\/app\/assets\/stylesheets\/chatbot\.css\.styl}line{font-family:\00003633}}
+@-webkit-keyframes fade-background {
+
+/* line 634 : /Users/blainemuri/Documents/chatbot/app/assets/stylesheets/chatbot.css.styl */
+
+@media -stylus-debug-info{filename{font-family:file\:\/\/\/Users\/blainemuri\/Documents\/chatbot\/app\/assets\/stylesheets\/chatbot\.css\.styl}line{font-family:\00003634}}
+  from {
+    background-color: #404040;
+  }
+
+/* line 636 : /Users/blainemuri/Documents/chatbot/app/assets/stylesheets/chatbot.css.styl */
+
+@media -stylus-debug-info{filename{font-family:file\:\/\/\/Users\/blainemuri\/Documents\/chatbot\/app\/assets\/stylesheets\/chatbot\.css\.styl}line{font-family:\00003636}}
+  to {
+    background-color: #000;
+  }
+}
+
+/* line 633 : /Users/blainemuri/Documents/chatbot/app/assets/stylesheets/chatbot.css.styl */
+
+@media -stylus-debug-info{filename{font-family:file\:\/\/\/Users\/blainemuri\/Documents\/chatbot\/app\/assets\/stylesheets\/chatbot\.css\.styl}line{font-family:\00003633}}
+@-o-keyframes fade-background {
+
+/* line 634 : /Users/blainemuri/Documents/chatbot/app/assets/stylesheets/chatbot.css.styl */
+
+@media -stylus-debug-info{filename{font-family:file\:\/\/\/Users\/blainemuri\/Documents\/chatbot\/app\/assets\/stylesheets\/chatbot\.css\.styl}line{font-family:\00003634}}
+  from {
+    background-color: #404040;
+  }
+
+/* line 636 : /Users/blainemuri/Documents/chatbot/app/assets/stylesheets/chatbot.css.styl */
+
+@media -stylus-debug-info{filename{font-family:file\:\/\/\/Users\/blainemuri\/Documents\/chatbot\/app\/assets\/stylesheets\/chatbot\.css\.styl}line{font-family:\00003636}}
+  to {
+    background-color: #000;
+  }
+}
+
+/* line 633 : /Users/blainemuri/Documents/chatbot/app/assets/stylesheets/chatbot.css.styl */
+
+@media -stylus-debug-info{filename{font-family:file\:\/\/\/Users\/blainemuri\/Documents\/chatbot\/app\/assets\/stylesheets\/chatbot\.css\.styl}line{font-family:\00003633}}
+@keyframes fade-background {
+
+/* line 634 : /Users/blainemuri/Documents/chatbot/app/assets/stylesheets/chatbot.css.styl */
+
+@media -stylus-debug-info{filename{font-family:file\:\/\/\/Users\/blainemuri\/Documents\/chatbot\/app\/assets\/stylesheets\/chatbot\.css\.styl}line{font-family:\00003634}}
+  from {
+    background-color: #404040;
+  }
+
+/* line 636 : /Users/blainemuri/Documents/chatbot/app/assets/stylesheets/chatbot.css.styl */
+
+@media -stylus-debug-info{filename{font-family:file\:\/\/\/Users\/blainemuri\/Documents\/chatbot\/app\/assets\/stylesheets\/chatbot\.css\.styl}line{font-family:\00003636}}
+  to {
+    background-color: #000;
+  }
+}
+
+/* line 909 : /Users/blainemuri/Documents/chatbot/app/assets/stylesheets/main.css.styl */
+
+@media -stylus-debug-info{filename{font-family:file\:\/\/\/Users\/blainemuri\/Documents\/chatbot\/app\/assets\/stylesheets\/main\.css\.styl}line{font-family:\00003909}}
+
+/* line 1 : /Users/blainemuri/.rvm/gems/ruby-2.3.1/gems/stylus-source-0.54.5/vendor/lib/functions/index.styl */
+
+@media -stylus-debug-info{filename{font-family:file\:\/\/\/Users\/blainemuri\/\.rvm\/gems\/ruby-2\.3\.1\/gems\/stylus-source-0\.54\.5\/vendor\/lib\/functions\/index\.styl}line{font-family:\000031}}
+
+/* line 200 : /Users/blainemuri/Documents/chatbot/app/assets/stylesheets/menu.css.styl */
+
+@media -stylus-debug-info{filename{font-family:file\:\/\/\/Users\/blainemuri\/Documents\/chatbot\/app\/assets\/stylesheets\/menu\.css\.styl}line{font-family:\00003200}}
+
+/* line 1 : /Users/blainemuri/.rvm/gems/ruby-2.3.1/gems/stylus-source-0.54.5/vendor/lib/functions/index.styl */
+
+@media -stylus-debug-info{filename{font-family:file\:\/\/\/Users\/blainemuri\/\.rvm\/gems\/ruby-2\.3\.1\/gems\/stylus-source-0\.54\.5\/vendor\/lib\/functions\/index\.styl}line{font-family:\000031}}
+
+/* line 297 : /Users/blainemuri/.rvm/gems/ruby-2.3.1/gems/stylus-source-0.54.5/vendor/lib/functions/index.styl */
+
+@media -stylus-debug-info{filename{font-family:file\:\/\/\/Users\/blainemuri\/\.rvm\/gems\/ruby-2\.3\.1\/gems\/stylus-source-0\.54\.5\/vendor\/lib\/functions\/index\.styl}line{font-family:\00003297}}
+
+/* line 1 : /Users/blainemuri/Documents/chatbot/app/assets/stylesheets/params.styl */
+
+@media -stylus-debug-info{filename{font-family:file\:\/\/\/Users\/blainemuri\/Documents\/chatbot\/app\/assets\/stylesheets\/params\.styl}line{font-family:\000031}}
+@font-face {
+  font-family: CircularPro-Bold;
+  src: url("/assets/Originate_Brand_Fonts/Circular/CircularPro-Bold.otf");
+}
+@font-face {
+  font-family: CircularPro-Medium;
+  src: url("/assets/Originate_Brand_Fonts/Circular/CircularPro-Medium.otf");
+}
+@font-face {
+  font-family: CircularPro-Book;
+  src: url("/assets/Originate_Brand_Fonts/Circular/CircularPro-Book.otf");
+}
+@font-face {
+  font-family: MillerDisplay;
+  src: url("/assets/Originate_Brand_Fonts/Miller\ Display\ Family/Font\ Bureau\ -\ MillerDisplay-Roman.otf");
+}
+
+/* line 57 : /Users/blainemuri/Documents/chatbot/app/assets/stylesheets/params.styl */
+
+@media -stylus-debug-info{filename{font-family:file\:\/\/\/Users\/blainemuri\/Documents\/chatbot\/app\/assets\/stylesheets\/params\.styl}line{font-family:\0000357}}
+html,
+body {
+  width: 100%;
+  height: 100%;
+  padding: 0;
+  margin: 0;
+  font-family: CircularPro-Book;
+}
+
+/* line 64 : /Users/blainemuri/Documents/chatbot/app/assets/stylesheets/params.styl */
+
+@media -stylus-debug-info{filename{font-family:file\:\/\/\/Users\/blainemuri\/Documents\/chatbot\/app\/assets\/stylesheets\/params\.styl}line{font-family:\0000364}}
+iframe {
+  border: 0;
+}
+
+/* line 67 : /Users/blainemuri/Documents/chatbot/app/assets/stylesheets/params.styl */
+
+@media -stylus-debug-info{filename{font-family:file\:\/\/\/Users\/blainemuri\/Documents\/chatbot\/app\/assets\/stylesheets\/params\.styl}line{font-family:\0000367}}
+a,
+a:link,
+a:visited {
+  text-decoration: none;
+}
+
+/* line 70 : /Users/blainemuri/Documents/chatbot/app/assets/stylesheets/params.styl */
+
+@media -stylus-debug-info{filename{font-family:file\:\/\/\/Users\/blainemuri\/Documents\/chatbot\/app\/assets\/stylesheets\/params\.styl}line{font-family:\0000370}}
+input {
+  line-height: 32px;
+  border: 1px solid light-grey;
+  outline: none;
+  transition: all 0.25s ease-in-out;
+  padding-left: 8px;
+  padding-right: 0;
+  box-sizing: border-box;
+  border: none;
+  border-bottom: 1px solid #999;
+  margin: 0;
+}
+
+/* line 81 : /Users/blainemuri/Documents/chatbot/app/assets/stylesheets/params.styl */
+
+@media -stylus-debug-info{filename{font-family:file\:\/\/\/Users\/blainemuri\/Documents\/chatbot\/app\/assets\/stylesheets\/params\.styl}line{font-family:\0000381}}
+input:focus {
+  padding-left: 16px;
+}
+
+/* line 84 : /Users/blainemuri/Documents/chatbot/app/assets/stylesheets/params.styl */
+
+@media -stylus-debug-info{filename{font-family:file\:\/\/\/Users\/blainemuri\/Documents\/chatbot\/app\/assets\/stylesheets\/params\.styl}line{font-family:\0000384}}
+h3 {
+  color: dark-grey;
+  padding: 0;
+  margin: 0;
+  vertical-align: middle;
+}
+
+/* line 90 : /Users/blainemuri/Documents/chatbot/app/assets/stylesheets/params.styl */
+
+@media -stylus-debug-info{filename{font-family:file\:\/\/\/Users\/blainemuri\/Documents\/chatbot\/app\/assets\/stylesheets\/params\.styl}line{font-family:\0000390}}
+.name {
+  font-family: CircularPro-Bold;
+  font-size: 21px;
+  font-weight: bold;
+  letter-spacing: 0px;
+  color: #000;
+}
+
+/* line 97 : /Users/blainemuri/Documents/chatbot/app/assets/stylesheets/params.styl */
+
+@media -stylus-debug-info{filename{font-family:file\:\/\/\/Users\/blainemuri\/Documents\/chatbot\/app\/assets\/stylesheets\/params\.styl}line{font-family:\0000397}}
+.intent {
+  font-family: CircularPro-Medium;
+  font-size: 16px;
+  font-weight: 500;
+  letter-spacing: 0px;
+  color: #fff;
+}
+
+/* line 104 : /Users/blainemuri/Documents/chatbot/app/assets/stylesheets/params.styl */
+
+@media -stylus-debug-info{filename{font-family:file\:\/\/\/Users\/blainemuri\/Documents\/chatbot\/app\/assets\/stylesheets\/params\.styl}line{font-family:\00003104}}
+.date-bot {
+  font-family: CircularPro-Book;
+  font-size: 16px;
+  letter-space: 0px;
+  color: #999;
+}
+
+/* line 110 : /Users/blainemuri/Documents/chatbot/app/assets/stylesheets/params.styl */
+
+@media -stylus-debug-info{filename{font-family:file\:\/\/\/Users\/blainemuri\/Documents\/chatbot\/app\/assets\/stylesheets\/params\.styl}line{font-family:\00003110}}
+.body-text {
+  font-family: CircularPro-Book;
+  font-size: 16px;
+  line-height: 1.5;
+  letter-spacing: 0px;
+  color: #000;
+}
+
+/* line 117 : /Users/blainemuri/Documents/chatbot/app/assets/stylesheets/params.styl */
+
+@media -stylus-debug-info{filename{font-family:file\:\/\/\/Users\/blainemuri\/Documents\/chatbot\/app\/assets\/stylesheets\/params\.styl}line{font-family:\00003117}}
+.date-user {
+  font-family: CircularPro-Book;
+  font-size: 16px;
+  letter-spacing: 0px;
+  text-align: right;
+  color: #fff;
+}
+
+/* line 124 : /Users/blainemuri/Documents/chatbot/app/assets/stylesheets/params.styl */
+
+@media -stylus-debug-info{filename{font-family:file\:\/\/\/Users\/blainemuri\/Documents\/chatbot\/app\/assets\/stylesheets\/params\.styl}line{font-family:\00003124}}
+.time-marker-label {
+  font-family: CirularPro-Book;
+  font-size: 16px;
+  letter-spacing: 0px;
+  text-align: center;
+  color: #999;
+}
+
+/* line 3 : /Users/blainemuri/Documents/chatbot/app/assets/stylesheets/menu.css.styl */
+
+@media -stylus-debug-info{filename{font-family:file\:\/\/\/Users\/blainemuri\/Documents\/chatbot\/app\/assets\/stylesheets\/menu\.css\.styl}line{font-family:\000033}}
+#chat-menu {
+  width: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 64px;
+  background-color: transparent;
+  color: #000;
+  border-bottom: 1px solid #ddd;
+  box-sizing: border-box;
+  line-height: 64px;
+  font-size: 17.6px;
+  font-family: MillerDisplay;
+  padding: 0 96px;
+  z-index: 1;
+}
+
+/* line 19 : /Users/blainemuri/Documents/chatbot/app/assets/stylesheets/menu.css.styl */
+
+@media -stylus-debug-info{filename{font-family:file\:\/\/\/Users\/blainemuri\/Documents\/chatbot\/app\/assets\/stylesheets\/menu\.css\.styl}line{font-family:\0000319}}
+#chat-menu .blur {
+  z-index: -1;
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  opacity: 0.9;
+  background-color: #fff;
+}
+
+/* line 27 : /Users/blainemuri/Documents/chatbot/app/assets/stylesheets/menu.css.styl */
+
+@media -stylus-debug-info{filename{font-family:file\:\/\/\/Users\/blainemuri\/Documents\/chatbot\/app\/assets\/stylesheets\/menu\.css\.styl}line{font-family:\0000327}}
+#chat-menu .time {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 13px;
+  color: #999;
+  font-family: CircularPro-Book;
+}
+
+/* line 35 : /Users/blainemuri/Documents/chatbot/app/assets/stylesheets/menu.css.styl */
+
+@media -stylus-debug-info{filename{font-family:file\:\/\/\/Users\/blainemuri\/Documents\/chatbot\/app\/assets\/stylesheets\/menu\.css\.styl}line{font-family:\0000335}}
+#chat-menu .profile {
+  width: 208px;
+  line-height: 64px;
+  height: 64px;
+  box-sizing: border-box;
+  transition: border 0.3s ease-in-out;
+  position: absolute;
+  right: 96px;
+  z-index: 1;
+  transition: all 0.3s ease-in-out;
+}
+
+/* line 45 : /Users/blainemuri/Documents/chatbot/app/assets/stylesheets/menu.css.styl */
+
+@media -stylus-debug-info{filename{font-family:file\:\/\/\/Users\/blainemuri\/Documents\/chatbot\/app\/assets\/stylesheets\/menu\.css\.styl}line{font-family:\0000345}}
+#chat-menu .profile.selected {
+  box-shadow: 0px 2px 10px 0px rgba(0,0,0,0.15);
+}
+
+/* line 48 : /Users/blainemuri/Documents/chatbot/app/assets/stylesheets/menu.css.styl */
+
+@media -stylus-debug-info{filename{font-family:file\:\/\/\/Users\/blainemuri\/Documents\/chatbot\/app\/assets\/stylesheets\/menu\.css\.styl}line{font-family:\0000348}}
+#chat-menu .profile .profile-options {
+  width: 208px;
+  height: 64px;
+  box-sizing: border-box;
+  cursor: pointer;
+  transition: border 0.3s ease-in-out;
+  transition: all 0.3s ease-in-out;
+}
+
+/* line 55 : /Users/blainemuri/Documents/chatbot/app/assets/stylesheets/menu.css.styl */
+
+@media -stylus-debug-info{filename{font-family:file\:\/\/\/Users\/blainemuri\/Documents\/chatbot\/app\/assets\/stylesheets\/menu\.css\.styl}line{font-family:\0000355}}
+#chat-menu .profile .profile-options.selected {
+  background-color: rgba(255,255,255,0.6);
+}
+
+/* line 58 : /Users/blainemuri/Documents/chatbot/app/assets/stylesheets/menu.css.styl */
+
+@media -stylus-debug-info{filename{font-family:file\:\/\/\/Users\/blainemuri\/Documents\/chatbot\/app\/assets\/stylesheets\/menu\.css\.styl}line{font-family:\0000358}}
+#chat-menu .profile .profile-options .right {
+  float: right;
+  width: 144px;
+  height: calc(64px - 2px);
+  cursor: pointer;
+}
+
+/* line 65 : /Users/blainemuri/Documents/chatbot/app/assets/stylesheets/menu.css.styl */
+
+@media -stylus-debug-info{filename{font-family:file\:\/\/\/Users\/blainemuri\/Documents\/chatbot\/app\/assets\/stylesheets\/menu\.css\.styl}line{font-family:\0000365}}
+#chat-menu .profile .profile-options .right span {
+  font-size: 13px;
+  color: #999;
+  float: right;
+  font-family: CircularPro-Book;
+  transition: color 0.3s ease-in-out;
+  letter-spacing: 0px;
+  padding-right: 8px;
+}
+
+/* line 73 : /Users/blainemuri/Documents/chatbot/app/assets/stylesheets/menu.css.styl */
+
+@media -stylus-debug-info{filename{font-family:file\:\/\/\/Users\/blainemuri\/Documents\/chatbot\/app\/assets\/stylesheets\/menu\.css\.styl}line{font-family:\0000373}}
+#chat-menu .profile .profile-options .right span.selected {
+  color: #a6f4e0;
+}
+
+/* line 76 : /Users/blainemuri/Documents/chatbot/app/assets/stylesheets/menu.css.styl */
+
+@media -stylus-debug-info{filename{font-family:file\:\/\/\/Users\/blainemuri\/Documents\/chatbot\/app\/assets\/stylesheets\/menu\.css\.styl}line{font-family:\0000376}}
+#chat-menu .profile .profile-options .right #down-arrow {
+  float: right;
+  height: 16px;
+  width: 24px;
+  margin-top: 24px;
+  fill: #999;
+  transition: all 0.3s ease-in-out;
+  margin-right: 16px;
+}
+
+/* line 84 : /Users/blainemuri/Documents/chatbot/app/assets/stylesheets/menu.css.styl */
+
+@media -stylus-debug-info{filename{font-family:file\:\/\/\/Users\/blainemuri\/Documents\/chatbot\/app\/assets\/stylesheets\/menu\.css\.styl}line{font-family:\0000384}}
+#chat-menu .profile .profile-options .right #down-arrow.selected {
+  fill: #a6f4e0;
+  transform: rotate(180deg);
+}
+
+/* line 88 : /Users/blainemuri/Documents/chatbot/app/assets/stylesheets/menu.css.styl */
+
+@media -stylus-debug-info{filename{font-family:file\:\/\/\/Users\/blainemuri\/Documents\/chatbot\/app\/assets\/stylesheets\/menu\.css\.styl}line{font-family:\0000388}}
+#chat-menu .profile .option {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 208px;
+  line-height: 48px;
+  background-color: rgba(255,255,255,0.9);
+  font-family: CircularPro-Book;
+  font-size: 13px;
+  color: #000;
+  text-align: right;
+  padding-right: 48px;
+  box-sizing: border-box;
+  cursor: pointer;
+  z-index: -1;
+  transition: all 0.3s ease-in-out;
+  opacity: 0;
+}
+
+/* line 105 : /Users/blainemuri/Documents/chatbot/app/assets/stylesheets/menu.css.styl */
+
+@media -stylus-debug-info{filename{font-family:file\:\/\/\/Users\/blainemuri\/Documents\/chatbot\/app\/assets\/stylesheets\/menu\.css\.styl}line{font-family:\00003105}}
+#chat-menu .profile .option.selected-1 {
+  top: calc(64px - 1px);
+  box-shadow: 0px 5px 10px 0px rgba(0,0,0,0.15);
+  opacity: 1;
+}
+
+/* line 109 : /Users/blainemuri/Documents/chatbot/app/assets/stylesheets/menu.css.styl */
+
+@media -stylus-debug-info{filename{font-family:file\:\/\/\/Users\/blainemuri\/Documents\/chatbot\/app\/assets\/stylesheets\/menu\.css\.styl}line{font-family:\00003109}}
+#chat-menu .profile .option.selected-2 {
+  top: calc(64px + ((64px * .75) * 1) - 1px);
+  box-shadow: 0px 7px 10px 0px rgba(0,0,0,0.15);
+  opacity: 1;
+}
+
+/* line 113 : /Users/blainemuri/Documents/chatbot/app/assets/stylesheets/menu.css.styl */
+
+@media -stylus-debug-info{filename{font-family:file\:\/\/\/Users\/blainemuri\/Documents\/chatbot\/app\/assets\/stylesheets\/menu\.css\.styl}line{font-family:\00003113}}
+#chat-menu .profile .option.selected-3 {
+  top: calc(64px + ((64px * .75) * 2) - 1px);
+  box-shadow: 0px 7px 10px 0px rgba(0,0,0,0.15);
+  opacity: 1;
+}
+
+/* line 117 : /Users/blainemuri/Documents/chatbot/app/assets/stylesheets/menu.css.styl */
+
+@media -stylus-debug-info{filename{font-family:file\:\/\/\/Users\/blainemuri\/Documents\/chatbot\/app\/assets\/stylesheets\/menu\.css\.styl}line{font-family:\00003117}}
+#chat-menu .profile .option.selected-4 {
+  top: calc(64px + ((64px * .75) * 3) - 1px);
+  box-shadow: 0px 7px 10px 0px rgba(0,0,0,0.15);
+  opacity: 1;
+}
+
+/* line 121 : /Users/blainemuri/Documents/chatbot/app/assets/stylesheets/menu.css.styl */
+
+@media -stylus-debug-info{filename{font-family:file\:\/\/\/Users\/blainemuri\/Documents\/chatbot\/app\/assets\/stylesheets\/menu\.css\.styl}line{font-family:\00003121}}
+#chat-menu .profile .option:hover {
+  color: #a6f4e0;
+}
+
+/* line 124 : /Users/blainemuri/Documents/chatbot/app/assets/stylesheets/menu.css.styl */
+
+@media -stylus-debug-info{filename{font-family:file\:\/\/\/Users\/blainemuri\/Documents\/chatbot\/app\/assets\/stylesheets\/menu\.css\.styl}line{font-family:\00003124}}
+#chat-menu .profile img {
+  float: left;
+  width: 32px;
+  height: 32px;
+  border-radius: 16px;
+  margin-top: 16px;
+  margin-left: 16px;
+}
+
+/* line 132 : /Users/blainemuri/Documents/chatbot/app/assets/stylesheets/menu.css.styl */
+
+@media -stylus-debug-info{filename{font-family:file\:\/\/\/Users\/blainemuri\/Documents\/chatbot\/app\/assets\/stylesheets\/menu\.css\.styl}line{font-family:\00003132}}
+#chat-menu .admin-options {
+  float: right;
+  margin-right: 224px;
+}
+
+/* line 136 : /Users/blainemuri/Documents/chatbot/app/assets/stylesheets/menu.css.styl */
+
+@media -stylus-debug-info{filename{font-family:file\:\/\/\/Users\/blainemuri\/Documents\/chatbot\/app\/assets\/stylesheets\/menu\.css\.styl}line{font-family:\00003136}}
+#chat-menu .admin-options .chat-btn {
+  width: 128px;
+  height: 64px;
+  float: right;
+  line-height: 64px;
+  text-align: center;
+  box-sizing: border-box;
+  cursor: pointer;
+  transition: background-color 0.2s ease-in-out;
+  color: #999;
+  font-family: CircularPro-Book;
+  font-size: 13px;
+}
+
+/* line 148 : /Users/blainemuri/Documents/chatbot/app/assets/stylesheets/menu.css.styl */
+
+@media -stylus-debug-info{filename{font-family:file\:\/\/\/Users\/blainemuri\/Documents\/chatbot\/app\/assets\/stylesheets\/menu\.css\.styl}line{font-family:\00003148}}
+#chat-menu .admin-options .chat-btn.active {
+  color: #a6f4e0;
+}
+
+/* line 150 : /Users/blainemuri/Documents/chatbot/app/assets/stylesheets/menu.css.styl */
+
+@media -stylus-debug-info{filename{font-family:file\:\/\/\/Users\/blainemuri\/Documents\/chatbot\/app\/assets\/stylesheets\/menu\.css\.styl}line{font-family:\00003150}}
+#chat-menu .admin-options .chat-btn:hover {
+  color: #a6f4e0;
+}
+
+/* line 153 : /Users/blainemuri/Documents/chatbot/app/assets/stylesheets/menu.css.styl */
+
+@media -stylus-debug-info{filename{font-family:file\:\/\/\/Users\/blainemuri\/Documents\/chatbot\/app\/assets\/stylesheets\/menu\.css\.styl}line{font-family:\00003153}}
+#chat-menu .admin-options input {
+  text-align: center;
+}
+
+/* line 164 : /Users/blainemuri/Documents/chatbot/app/assets/stylesheets/menu.css.styl */
+
+@media -stylus-debug-info{filename{font-family:file\:\/\/\/Users\/blainemuri\/Documents\/chatbot\/app\/assets\/stylesheets\/menu\.css\.styl}line{font-family:\00003164}}
+#chat-menu .chat-logo {
+  float: left;
+  width: 240px;
+  height: 64px;
+}
+
+/* line 169 : /Users/blainemuri/Documents/chatbot/app/assets/stylesheets/menu.css.styl */
+
+@media -stylus-debug-info{filename{font-family:file\:\/\/\/Users\/blainemuri\/Documents\/chatbot\/app\/assets\/stylesheets\/menu\.css\.styl}line{font-family:\00003169}}
+#chat-menu .chat-logo .chat-botler {
+  width: 64px;
+  height: 64px;
+  float: left;
+}
+
+/* line 174 : /Users/blainemuri/Documents/chatbot/app/assets/stylesheets/menu.css.styl */
+
+@media -stylus-debug-info{filename{font-family:file\:\/\/\/Users\/blainemuri\/Documents\/chatbot\/app\/assets\/stylesheets\/menu\.css\.styl}line{font-family:\00003174}}
+#chat-menu .chat-header {
+  height: 64px;
+  float: left;
+  width: 160px;
+  text-align: center;
+  box-sizing: border-box;
+  font-size: 24px;
+}
+
+/* line 182 : /Users/blainemuri/Documents/chatbot/app/assets/stylesheets/menu.css.styl */
+
+@media -stylus-debug-info{filename{font-family:file\:\/\/\/Users\/blainemuri\/Documents\/chatbot\/app\/assets\/stylesheets\/menu\.css\.styl}line{font-family:\00003182}}
+svg.profile {
+  width: 64px;
+  height: 64px;
+  border-radius: 32px;
+  margin: 0;
+  padding: 0;
+}
+
+/* line 189 : /Users/blainemuri/Documents/chatbot/app/assets/stylesheets/menu.css.styl */
+
+@media -stylus-debug-info{filename{font-family:file\:\/\/\/Users\/blainemuri\/Documents\/chatbot\/app\/assets\/stylesheets\/menu\.css\.styl}line{font-family:\00003189}}
+svg.profile .cls-1 {
+  fill: #fff;
+}
+
+/* line 192 : /Users/blainemuri/Documents/chatbot/app/assets/stylesheets/menu.css.styl */
+
+@media -stylus-debug-info{filename{font-family:file\:\/\/\/Users\/blainemuri\/Documents\/chatbot\/app\/assets\/stylesheets\/menu\.css\.styl}line{font-family:\00003192}}
+svg.profile .cls-2 {
+  fill: none;
+  stroke: #000;
+  stroke-width: 0.44px;
+}
+
+/* line 197 : /Users/blainemuri/Documents/chatbot/app/assets/stylesheets/menu.css.styl */
+
+@media -stylus-debug-info{filename{font-family:file\:\/\/\/Users\/blainemuri\/Documents\/chatbot\/app\/assets\/stylesheets\/menu\.css\.styl}line{font-family:\00003197}}
+
+/* line 198 : /Users/blainemuri/Documents/chatbot/app/assets/stylesheets/menu.css.styl */
+
+@media -stylus-debug-info{filename{font-family:file\:\/\/\/Users\/blainemuri\/Documents\/chatbot\/app\/assets\/stylesheets\/menu\.css\.styl}line{font-family:\00003198}}
+.admin-container #chat-menu {
+  background-color: #000;
+  color: #fff;
+}
+
+/* line 129 : /Users/blainemuri/Documents/chatbot/app/assets/stylesheets/params.styl */
+
+@media -stylus-debug-info{filename{font-family:file\:\/\/\/Users\/blainemuri\/Documents\/chatbot\/app\/assets\/stylesheets\/params\.styl}line{font-family:\00003129}}
+
+/* line 1 : /Users/blainemuri/.rvm/gems/ruby-2.3.1/gems/stylus-source-0.54.5/vendor/lib/functions/index.styl */
+
+@media -stylus-debug-info{filename{font-family:file\:\/\/\/Users\/blainemuri\/\.rvm\/gems\/ruby-2\.3\.1\/gems\/stylus-source-0\.54\.5\/vendor\/lib\/functions\/index\.styl}line{font-family:\000031}}
+
+/* line 41 : /Users/blainemuri/Documents/chatbot/app/assets/stylesheets/params.styl */
+
+@media -stylus-debug-info{filename{font-family:file\:\/\/\/Users\/blainemuri\/Documents\/chatbot\/app\/assets\/stylesheets\/params\.styl}line{font-family:\0000341}}
+@font-face {
+  font-family: CircularPro-Bold;
+  src: url("/assets/Originate_Brand_Fonts/Circular/CircularPro-Bold.otf");
+}
+
+/* line 45 : /Users/blainemuri/Documents/chatbot/app/assets/stylesheets/params.styl */
+
+@media -stylus-debug-info{filename{font-family:file\:\/\/\/Users\/blainemuri\/Documents\/chatbot\/app\/assets\/stylesheets\/params\.styl}line{font-family:\0000345}}
+@font-face {
+  font-family: CircularPro-Medium;
+  src: url("/assets/Originate_Brand_Fonts/Circular/CircularPro-Medium.otf");
+}
+
+/* line 49 : /Users/blainemuri/Documents/chatbot/app/assets/stylesheets/params.styl */
+
+@media -stylus-debug-info{filename{font-family:file\:\/\/\/Users\/blainemuri\/Documents\/chatbot\/app\/assets\/stylesheets\/params\.styl}line{font-family:\0000349}}
+@font-face {
+  font-family: CircularPro-Book;
+  src: url("/assets/Originate_Brand_Fonts/Circular/CircularPro-Book.otf");
+}
+
+/* line 53 : /Users/blainemuri/Documents/chatbot/app/assets/stylesheets/params.styl */
+
+@media -stylus-debug-info{filename{font-family:file\:\/\/\/Users\/blainemuri\/Documents\/chatbot\/app\/assets\/stylesheets\/params\.styl}line{font-family:\0000353}}
+@font-face {
+  font-family: MillerDisplay;
+  src: url("/assets/Originate_Brand_Fonts/Miller\ Display\ Family/Font\ Bureau\ -\ MillerDisplay-Roman.otf");
+}
+
+/* line 57 : /Users/blainemuri/Documents/chatbot/app/assets/stylesheets/params.styl */
+
+@media -stylus-debug-info{filename{font-family:file\:\/\/\/Users\/blainemuri\/Documents\/chatbot\/app\/assets\/stylesheets\/params\.styl}line{font-family:\0000357}}
+html,
+body {
+  width: 100%;
+  height: 100%;
+  padding: 0;
+  margin: 0;
+  font-family: CircularPro-Book;
+}
+
+/* line 64 : /Users/blainemuri/Documents/chatbot/app/assets/stylesheets/params.styl */
+
+@media -stylus-debug-info{filename{font-family:file\:\/\/\/Users\/blainemuri\/Documents\/chatbot\/app\/assets\/stylesheets\/params\.styl}line{font-family:\0000364}}
+iframe {
+  border: 0;
+}
+
+/* line 67 : /Users/blainemuri/Documents/chatbot/app/assets/stylesheets/params.styl */
+
+@media -stylus-debug-info{filename{font-family:file\:\/\/\/Users\/blainemuri\/Documents\/chatbot\/app\/assets\/stylesheets\/params\.styl}line{font-family:\0000367}}
+a,
+a:link,
+a:visited {
+  text-decoration: none;
+}
+
+/* line 70 : /Users/blainemuri/Documents/chatbot/app/assets/stylesheets/params.styl */
+
+@media -stylus-debug-info{filename{font-family:file\:\/\/\/Users\/blainemuri\/Documents\/chatbot\/app\/assets\/stylesheets\/params\.styl}line{font-family:\0000370}}
+input {
+  line-height: 32px;
+  border: 1px solid light-grey;
+  outline: none;
+  transition: all 0.25s ease-in-out;
+  padding-left: 8px;
+  padding-right: 0;
+  box-sizing: border-box;
+  border: none;
+  border-bottom: 1px solid #999;
+  margin: 0;
+}
+
+/* line 81 : /Users/blainemuri/Documents/chatbot/app/assets/stylesheets/params.styl */
+
+@media -stylus-debug-info{filename{font-family:file\:\/\/\/Users\/blainemuri\/Documents\/chatbot\/app\/assets\/stylesheets\/params\.styl}line{font-family:\0000381}}
+input:focus {
+  padding-left: 16px;
+}
+
+/* line 84 : /Users/blainemuri/Documents/chatbot/app/assets/stylesheets/params.styl */
+
+@media -stylus-debug-info{filename{font-family:file\:\/\/\/Users\/blainemuri\/Documents\/chatbot\/app\/assets\/stylesheets\/params\.styl}line{font-family:\0000384}}
+h3 {
+  color: dark-grey;
+  padding: 0;
+  margin: 0;
+  vertical-align: middle;
+}
+
+/* line 90 : /Users/blainemuri/Documents/chatbot/app/assets/stylesheets/params.styl */
+
+@media -stylus-debug-info{filename{font-family:file\:\/\/\/Users\/blainemuri\/Documents\/chatbot\/app\/assets\/stylesheets\/params\.styl}line{font-family:\0000390}}
+.name {
+  font-family: CircularPro-Bold;
+  font-size: 21px;
+  font-weight: bold;
+  letter-spacing: 0px;
+  color: #000;
+}
+
+/* line 97 : /Users/blainemuri/Documents/chatbot/app/assets/stylesheets/params.styl */
+
+@media -stylus-debug-info{filename{font-family:file\:\/\/\/Users\/blainemuri\/Documents\/chatbot\/app\/assets\/stylesheets\/params\.styl}line{font-family:\0000397}}
+.intent {
+  font-family: CircularPro-Medium;
+  font-size: 16px;
+  font-weight: 500;
+  letter-spacing: 0px;
+  color: #fff;
+}
+
+/* line 104 : /Users/blainemuri/Documents/chatbot/app/assets/stylesheets/params.styl */
+
+@media -stylus-debug-info{filename{font-family:file\:\/\/\/Users\/blainemuri\/Documents\/chatbot\/app\/assets\/stylesheets\/params\.styl}line{font-family:\00003104}}
+.date-bot {
+  font-family: CircularPro-Book;
+  font-size: 16px;
+  letter-space: 0px;
+  color: #999;
+}
+
+/* line 110 : /Users/blainemuri/Documents/chatbot/app/assets/stylesheets/params.styl */
+
+@media -stylus-debug-info{filename{font-family:file\:\/\/\/Users\/blainemuri\/Documents\/chatbot\/app\/assets\/stylesheets\/params\.styl}line{font-family:\00003110}}
+.body-text {
+  font-family: CircularPro-Book;
+  font-size: 16px;
+  line-height: 1.5;
+  letter-spacing: 0px;
+  color: #000;
+}
+
+/* line 117 : /Users/blainemuri/Documents/chatbot/app/assets/stylesheets/params.styl */
+
+@media -stylus-debug-info{filename{font-family:file\:\/\/\/Users\/blainemuri\/Documents\/chatbot\/app\/assets\/stylesheets\/params\.styl}line{font-family:\00003117}}
+.date-user {
+  font-family: CircularPro-Book;
+  font-size: 16px;
+  letter-spacing: 0px;
+  text-align: right;
+  color: #fff;
+}
+
+/* line 124 : /Users/blainemuri/Documents/chatbot/app/assets/stylesheets/params.styl */
+
+@media -stylus-debug-info{filename{font-family:file\:\/\/\/Users\/blainemuri\/Documents\/chatbot\/app\/assets\/stylesheets\/params\.styl}line{font-family:\00003124}}
+.time-marker-label {
+  font-family: CirularPro-Book;
+  font-size: 16px;
+  letter-spacing: 0px;
+  text-align: center;
+  color: #999;
+}
+
+/* line 161 : /Users/blainemuri/Documents/chatbot/app/assets/stylesheets/training.css.styl */
+
+@media -stylus-debug-info{filename{font-family:file\:\/\/\/Users\/blainemuri\/Documents\/chatbot\/app\/assets\/stylesheets\/training\.css\.styl}line{font-family:\00003161}}
+
+/* line 1 : /Users/blainemuri/.rvm/gems/ruby-2.3.1/gems/stylus-source-0.54.5/vendor/lib/functions/index.styl */
+
+@media -stylus-debug-info{filename{font-family:file\:\/\/\/Users\/blainemuri\/\.rvm\/gems\/ruby-2\.3\.1\/gems\/stylus-source-0\.54\.5\/vendor\/lib\/functions\/index\.styl}line{font-family:\000031}}
+
+/* line 297 : /Users/blainemuri/.rvm/gems/ruby-2.3.1/gems/stylus-source-0.54.5/vendor/lib/functions/index.styl */
+
+@media -stylus-debug-info{filename{font-family:file\:\/\/\/Users\/blainemuri\/\.rvm\/gems\/ruby-2\.3\.1\/gems\/stylus-source-0\.54\.5\/vendor\/lib\/functions\/index\.styl}line{font-family:\00003297}}
+
+/* line 1 : /Users/blainemuri/Documents/chatbot/app/assets/stylesheets/params.styl */
+
+@media -stylus-debug-info{filename{font-family:file\:\/\/\/Users\/blainemuri\/Documents\/chatbot\/app\/assets\/stylesheets\/params\.styl}line{font-family:\000031}}
+@font-face {
+  font-family: CircularPro-Bold;
+  src: url("/assets/Originate_Brand_Fonts/Circular/CircularPro-Bold.otf");
+}
+@font-face {
+  font-family: CircularPro-Medium;
+  src: url("/assets/Originate_Brand_Fonts/Circular/CircularPro-Medium.otf");
+}
+@font-face {
+  font-family: CircularPro-Book;
+  src: url("/assets/Originate_Brand_Fonts/Circular/CircularPro-Book.otf");
+}
+@font-face {
+  font-family: MillerDisplay;
+  src: url("/assets/Originate_Brand_Fonts/Miller\ Display\ Family/Font\ Bureau\ -\ MillerDisplay-Roman.otf");
+}
+
+/* line 57 : /Users/blainemuri/Documents/chatbot/app/assets/stylesheets/params.styl */
+
+@media -stylus-debug-info{filename{font-family:file\:\/\/\/Users\/blainemuri\/Documents\/chatbot\/app\/assets\/stylesheets\/params\.styl}line{font-family:\0000357}}
+html,
+body {
+  width: 100%;
+  height: 100%;
+  padding: 0;
+  margin: 0;
+  font-family: CircularPro-Book;
+}
+
+/* line 64 : /Users/blainemuri/Documents/chatbot/app/assets/stylesheets/params.styl */
+
+@media -stylus-debug-info{filename{font-family:file\:\/\/\/Users\/blainemuri\/Documents\/chatbot\/app\/assets\/stylesheets\/params\.styl}line{font-family:\0000364}}
+iframe {
+  border: 0;
+}
+
+/* line 67 : /Users/blainemuri/Documents/chatbot/app/assets/stylesheets/params.styl */
+
+@media -stylus-debug-info{filename{font-family:file\:\/\/\/Users\/blainemuri\/Documents\/chatbot\/app\/assets\/stylesheets\/params\.styl}line{font-family:\0000367}}
+a,
+a:link,
+a:visited {
+  text-decoration: none;
+}
+
+/* line 70 : /Users/blainemuri/Documents/chatbot/app/assets/stylesheets/params.styl */
+
+@media -stylus-debug-info{filename{font-family:file\:\/\/\/Users\/blainemuri\/Documents\/chatbot\/app\/assets\/stylesheets\/params\.styl}line{font-family:\0000370}}
+input {
+  line-height: 32px;
+  border: 1px solid light-grey;
+  outline: none;
+  transition: all 0.25s ease-in-out;
+  padding-left: 8px;
+  padding-right: 0;
+  box-sizing: border-box;
+  border: none;
+  border-bottom: 1px solid #999;
+  margin: 0;
+}
+
+/* line 81 : /Users/blainemuri/Documents/chatbot/app/assets/stylesheets/params.styl */
+
+@media -stylus-debug-info{filename{font-family:file\:\/\/\/Users\/blainemuri\/Documents\/chatbot\/app\/assets\/stylesheets\/params\.styl}line{font-family:\0000381}}
+input:focus {
+  padding-left: 16px;
+}
+
+/* line 84 : /Users/blainemuri/Documents/chatbot/app/assets/stylesheets/params.styl */
+
+@media -stylus-debug-info{filename{font-family:file\:\/\/\/Users\/blainemuri\/Documents\/chatbot\/app\/assets\/stylesheets\/params\.styl}line{font-family:\0000384}}
+h3 {
+  color: dark-grey;
+  padding: 0;
+  margin: 0;
+  vertical-align: middle;
+}
+
+/* line 90 : /Users/blainemuri/Documents/chatbot/app/assets/stylesheets/params.styl */
+
+@media -stylus-debug-info{filename{font-family:file\:\/\/\/Users\/blainemuri\/Documents\/chatbot\/app\/assets\/stylesheets\/params\.styl}line{font-family:\0000390}}
+.name {
+  font-family: CircularPro-Bold;
+  font-size: 21px;
+  font-weight: bold;
+  letter-spacing: 0px;
+  color: #000;
+}
+
+/* line 97 : /Users/blainemuri/Documents/chatbot/app/assets/stylesheets/params.styl */
+
+@media -stylus-debug-info{filename{font-family:file\:\/\/\/Users\/blainemuri\/Documents\/chatbot\/app\/assets\/stylesheets\/params\.styl}line{font-family:\0000397}}
+.intent {
+  font-family: CircularPro-Medium;
+  font-size: 16px;
+  font-weight: 500;
+  letter-spacing: 0px;
+  color: #fff;
+}
+
+/* line 104 : /Users/blainemuri/Documents/chatbot/app/assets/stylesheets/params.styl */
+
+@media -stylus-debug-info{filename{font-family:file\:\/\/\/Users\/blainemuri\/Documents\/chatbot\/app\/assets\/stylesheets\/params\.styl}line{font-family:\00003104}}
+.date-bot {
+  font-family: CircularPro-Book;
+  font-size: 16px;
+  letter-space: 0px;
+  color: #999;
+}
+
+/* line 110 : /Users/blainemuri/Documents/chatbot/app/assets/stylesheets/params.styl */
+
+@media -stylus-debug-info{filename{font-family:file\:\/\/\/Users\/blainemuri\/Documents\/chatbot\/app\/assets\/stylesheets\/params\.styl}line{font-family:\00003110}}
+.body-text {
+  font-family: CircularPro-Book;
+  font-size: 16px;
+  line-height: 1.5;
+  letter-spacing: 0px;
+  color: #000;
+}
+
+/* line 117 : /Users/blainemuri/Documents/chatbot/app/assets/stylesheets/params.styl */
+
+@media -stylus-debug-info{filename{font-family:file\:\/\/\/Users\/blainemuri\/Documents\/chatbot\/app\/assets\/stylesheets\/params\.styl}line{font-family:\00003117}}
+.date-user {
+  font-family: CircularPro-Book;
+  font-size: 16px;
+  letter-spacing: 0px;
+  text-align: right;
+  color: #fff;
+}
+
+/* line 124 : /Users/blainemuri/Documents/chatbot/app/assets/stylesheets/params.styl */
+
+@media -stylus-debug-info{filename{font-family:file\:\/\/\/Users\/blainemuri\/Documents\/chatbot\/app\/assets\/stylesheets\/params\.styl}line{font-family:\00003124}}
+.time-marker-label {
+  font-family: CirularPro-Book;
+  font-size: 16px;
+  letter-spacing: 0px;
+  text-align: center;
+  color: #999;
+}
+
+/* line 3 : /Users/blainemuri/Documents/chatbot/app/assets/stylesheets/training.css.styl */
+
+@media -stylus-debug-info{filename{font-family:file\:\/\/\/Users\/blainemuri\/Documents\/chatbot\/app\/assets\/stylesheets\/training\.css\.styl}line{font-family:\000033}}
+.training-container {
+  width: 100%;
+  height: calc(100% - 64px);
+  margin: 0;
+  padding: 0;
+  position: fixed;
+  margin-top: 64px;
+}
+
+/* line 11 : /Users/blainemuri/Documents/chatbot/app/assets/stylesheets/training.css.styl */
+
+@media -stylus-debug-info{filename{font-family:file\:\/\/\/Users\/blainemuri\/Documents\/chatbot\/app\/assets\/stylesheets\/training\.css\.styl}line{font-family:\0000311}}
+.training-container .context {
+  width: calc(100% - (16px * 15));
+  height: 100%;
+  position: absolute;
+  right: 0;
+  top: 0;
+  padding: 0 32px;
+  box-sizing: border-box;
+}
+
+/* line 20 : /Users/blainemuri/Documents/chatbot/app/assets/stylesheets/training.css.styl */
+
+@media -stylus-debug-info{filename{font-family:file\:\/\/\/Users\/blainemuri\/Documents\/chatbot\/app\/assets\/stylesheets\/training\.css\.styl}line{font-family:\0000320}}
+.training-container .context .entity-container {
+  width: 100%;
+  height: 100%;
+  padding: 0;
+  overflow: auto;
+}
+
+/* line 26 : /Users/blainemuri/Documents/chatbot/app/assets/stylesheets/training.css.styl */
+
+@media -stylus-debug-info{filename{font-family:file\:\/\/\/Users\/blainemuri\/Documents\/chatbot\/app\/assets\/stylesheets\/training\.css\.styl}line{font-family:\0000326}}
+.training-container .context .entity-container .intent-col {
+  width: 50%;
+  height: 100%;
+  float: left;
+}
+
+/* line 31 : /Users/blainemuri/Documents/chatbot/app/assets/stylesheets/training.css.styl */
+
+@media -stylus-debug-info{filename{font-family:file\:\/\/\/Users\/blainemuri\/Documents\/chatbot\/app\/assets\/stylesheets\/training\.css\.styl}line{font-family:\0000331}}
+.training-container .context .entity-container .intent-col .intent-tile {
+  width: calc(100% - (16px * 2));
+  background-color: #a6f4e0;
+  float: left;
+  box-shadow: 2px 2px 5px 0px #ccc;
+  margin-bottom: 32px;
+  margin-right: 16px;
+}
+
+/* line 39 : /Users/blainemuri/Documents/chatbot/app/assets/stylesheets/training.css.styl */
+
+@media -stylus-debug-info{filename{font-family:file\:\/\/\/Users\/blainemuri\/Documents\/chatbot\/app\/assets\/stylesheets\/training\.css\.styl}line{font-family:\0000339}}
+.training-container .context .entity-container .intent-col .intent-tile h3 {
+  width: 100%;
+  background-color: #000;
+  margin: 0;
+  padding: 0;
+  color: #fff;
+  box-sizing: border-box;
+  line-height: 64px;
+  padding-left: 16px;
+}
+
+/* line 49 : /Users/blainemuri/Documents/chatbot/app/assets/stylesheets/training.css.styl */
+
+@media -stylus-debug-info{filename{font-family:file\:\/\/\/Users\/blainemuri\/Documents\/chatbot\/app\/assets\/stylesheets\/training\.css\.styl}line{font-family:\0000349}}
+.training-container .context .entity-container .intent-col .intent-tile .example {
+  width: 100%;
+  line-height: 32px;
+  font-size: 14.4px;
+  color: #000;
+  padding-left: 16px;
+  border-bottom: 1px solid #999;
+  box-sizing: border-box;
+}
+
+/* line 58 : /Users/blainemuri/Documents/chatbot/app/assets/stylesheets/training.css.styl */
+
+@media -stylus-debug-info{filename{font-family:file\:\/\/\/Users\/blainemuri\/Documents\/chatbot\/app\/assets\/stylesheets\/training\.css\.styl}line{font-family:\0000358}}
+.training-container .context .entity-container .intent-col .intent-tile .add {
+  cursor: pointer;
+  border: none;
+}
+
+/* line 62 : /Users/blainemuri/Documents/chatbot/app/assets/stylesheets/training.css.styl */
+
+@media -stylus-debug-info{filename{font-family:file\:\/\/\/Users\/blainemuri\/Documents\/chatbot\/app\/assets\/stylesheets\/training\.css\.styl}line{font-family:\0000362}}
+.training-container .context .entity-container .entity-tile {
+  width: 240px;
+  background-color: #a6f4e0;
+  margin-right: 32px;
+  float: left;
+  margin-top: 16px;
+  box-shadow: 0px 0px 20px 0px #ccc;
+}
+
+/* line 70 : /Users/blainemuri/Documents/chatbot/app/assets/stylesheets/training.css.styl */
+
+@media -stylus-debug-info{filename{font-family:file\:\/\/\/Users\/blainemuri\/Documents\/chatbot\/app\/assets\/stylesheets\/training\.css\.styl}line{font-family:\0000370}}
+.training-container .context .entity-container .entity-tile h3 {
+  width: 100%;
+  background-color: #000;
+  margin: 0;
+  padding: 0;
+  color: #fff;
+  box-sizing: border-box;
+  line-height: 64px;
+  padding-left: 16px;
+}
+
+/* line 80 : /Users/blainemuri/Documents/chatbot/app/assets/stylesheets/training.css.styl */
+
+@media -stylus-debug-info{filename{font-family:file\:\/\/\/Users\/blainemuri\/Documents\/chatbot\/app\/assets\/stylesheets\/training\.css\.styl}line{font-family:\0000380}}
+.training-container .context .entity-container .entity-tile .add {
+  width: calc(100% - 16px);
+  line-height: 32px;
+  margin-left: 16px;
+  box-sizing: border-box;
+  font-size: 12.8px;
+  cursor: pointer;
+  float: left;
+}
+
+/* line 89 : /Users/blainemuri/Documents/chatbot/app/assets/stylesheets/training.css.styl */
+
+@media -stylus-debug-info{filename{font-family:file\:\/\/\/Users\/blainemuri\/Documents\/chatbot\/app\/assets\/stylesheets\/training\.css\.styl}line{font-family:\0000389}}
+.training-container .context .entity-container .entity-tile .values {
+  width: calc(100% - 16px);
+  margin-left: 16px;
+}
+
+/* line 93 : /Users/blainemuri/Documents/chatbot/app/assets/stylesheets/training.css.styl */
+
+@media -stylus-debug-info{filename{font-family:file\:\/\/\/Users\/blainemuri\/Documents\/chatbot\/app\/assets\/stylesheets\/training\.css\.styl}line{font-family:\0000393}}
+.training-container .context .entity-container .entity-tile .value {
+  width: calc(100% - (16px * 1.7));
+  border-bottom: 1px solid #999;
+  line-height: 32px;
+  height: 32px;
+  box-sizing: border-box;
+  float: left;
+}
+
+/* line 101 : /Users/blainemuri/Documents/chatbot/app/assets/stylesheets/training.css.styl */
+
+@media -stylus-debug-info{filename{font-family:file\:\/\/\/Users\/blainemuri\/Documents\/chatbot\/app\/assets\/stylesheets\/training\.css\.styl}line{font-family:\00003101}}
+.training-container .context .entity-container .entity-tile .down {
+  width: 19.2px;
+  height: 12.8px;
+  padding-top: 9.6px;
+  padding-bottom: 8.64px;
+  padding-right: 8px;
+  border-bottom: 1px solid #999;
+  float: right;
+  cursor: pointer;
+}
+
+/* line 111 : /Users/blainemuri/Documents/chatbot/app/assets/stylesheets/training.css.styl */
+
+@media -stylus-debug-info{filename{font-family:file\:\/\/\/Users\/blainemuri\/Documents\/chatbot\/app\/assets\/stylesheets\/training\.css\.styl}line{font-family:\00003111}}
+.training-container .context .entity-container .entity-tile .synonym-container {
+  width: 100%;
+  float: left;
+}
+
+/* line 115 : /Users/blainemuri/Documents/chatbot/app/assets/stylesheets/training.css.styl */
+
+@media -stylus-debug-info{filename{font-family:file\:\/\/\/Users\/blainemuri\/Documents\/chatbot\/app\/assets\/stylesheets\/training\.css\.styl}line{font-family:\00003115}}
+.training-container .context .entity-container .entity-tile .synonym-container .synonym {
+  font-size: 14.4px;
+  line-height: 24px;
+  width: calc(100% - 16px);
+  background-color: #000;
+  margin-left: 16px;
+  color: #fff;
+  padding-left: 16px;
+  border-bottom: 1px solid #fff;
+  box-sizing: border-box;
+}
+
+/* line 126 : /Users/blainemuri/Documents/chatbot/app/assets/stylesheets/training.css.styl */
+
+@media -stylus-debug-info{filename{font-family:file\:\/\/\/Users\/blainemuri\/Documents\/chatbot\/app\/assets\/stylesheets\/training\.css\.styl}line{font-family:\00003126}}
+.training-container .left-menu {
+  width: 240px;
+  height: 100%;
+  background-color: #a6f4e0;
+  color: #000;
+  overflow-x: hidden;
+  overflow-y: auto;
+}
+
+/* line 134 : /Users/blainemuri/Documents/chatbot/app/assets/stylesheets/training.css.styl */
+
+@media -stylus-debug-info{filename{font-family:file\:\/\/\/Users\/blainemuri\/Documents\/chatbot\/app\/assets\/stylesheets\/training\.css\.styl}line{font-family:\00003134}}
+
+/* line 135 : /Users/blainemuri/Documents/chatbot/app/assets/stylesheets/training.css.styl */
+
+@media -stylus-debug-info{filename{font-family:file\:\/\/\/Users\/blainemuri\/Documents\/chatbot\/app\/assets\/stylesheets\/training\.css\.styl}line{font-family:\00003135}}
+.training-container .left-menu .bot .menu-option {
+  width: 100%;
+  height: 64px;
+  border-bottom: 1px solid #000;
+  line-height: 64px;
+  text-align: left;
+  padding-left: 16px;
+  box-sizing: border-box;
+  float: right;
+  background-color: #000;
+  color: #fff;
+  cursor: pointer;
+}
+
+/* line 148 : /Users/blainemuri/Documents/chatbot/app/assets/stylesheets/training.css.styl */
+
+@media -stylus-debug-info{filename{font-family:file\:\/\/\/Users\/blainemuri\/Documents\/chatbot\/app\/assets\/stylesheets\/training\.css\.styl}line{font-family:\00003148}}
+.training-container .left-menu .bot .menu-suboption {
+  width: calc(100% - 16px);
+  height: 48px;
+  line-height: 48px;
+  color: #000;
+  float: right;
+  padding-left: 16px;
+  box-sizing: border-box;
+  background-color: #a6f4e0;
+  border-bottom: 1px solid #000;
+  cursor: pointer;
+}
+
+/* line 159 : /Users/blainemuri/Documents/chatbot/app/assets/stylesheets/training.css.styl */
+
+@media -stylus-debug-info{filename{font-family:file\:\/\/\/Users\/blainemuri\/Documents\/chatbot\/app\/assets\/stylesheets\/training\.css\.styl}line{font-family:\00003159}}
+.training-container .left-menu .bot .menu-suboption:hover {
+  background-color: #000;
+  color: #fff;
+}
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
+ * or any plugin's vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any styles
+ * defined in the other CSS/SCSS files in this directory. It is generally better to create a new
+ * file per style scope.
+ *
+
+
+ */
+
