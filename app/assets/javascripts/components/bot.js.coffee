@@ -1,14 +1,17 @@
 React = require 'react'
+# CableMixin = require('action-cable-react').CableMixin
+# ChannelMixin = require('action-cable-react').ChannelMixin
 
 @Bot = React.createClass
   getInitialState: ->
     text: ""
     dark: no
+    messages: []
 
   handleSubmit: (e) ->
     e.preventDefault()
 
-    last =  @props.conversation[..].pop()
+    last =  @state.messages[..].pop()
     context = {}
     if last?
       if last.commentable_type == "Bot"
@@ -26,6 +29,7 @@ React = require 'react'
       method: 'POST'
     .done (response) =>
       @setState text: ""
+      @forceUpdate()
     .fail ->
       alert 'Error sending message!'
     @setState text: ''
@@ -35,8 +39,10 @@ React = require 'react'
   toggleDark: -> @setState dark: !@state.dark
 
   componentWillUnmount: ->
-    console.log "blah"
     TweenMax.to('#horizontal-center', .05, {opacity: 0})
+
+  componentWillMount: ->
+    @setState messages: @props.conversation
 
   componentDidMount: ->
     conversation = document.getElementById 'conv-scroll'
@@ -53,6 +59,15 @@ React = require 'react'
       .staggerTo('.message', .2, {transform: "translateY(0)", opacity: 1}, 0, 'start+.2')
     tl.timeScale(1)
 
+    # Set up the faye websocket client to listen to /bot
+    client = new Faye.Client(window.location.protocol + "//" + window.location.host + "/faye")
+    client.subscribe '/bot', (data) =>
+      messages = @state.messages
+      messages.push data.message
+      @setState messages: messages
+      conversation.scrollTop = conversation.scrollHeight
+      TweenLite.to('.message', .4, {transform: "translateY(0)", opacity: 1})
+
   render: ->
     {div, input, img, form} = React.DOM
     div className: "bot-chat-outer #{'dark-theme' unless !@state.dark}",
@@ -66,7 +81,7 @@ React = require 'react'
           div
             className: 'conversation'
             id: 'conv-scroll'
-            for comment, id in @props.conversation
+            for comment, id in @state.messages
               if comment.commentable_type == 'User'
                 React.createElement UserMessage,
                   comment: comment

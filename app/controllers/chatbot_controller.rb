@@ -3,6 +3,7 @@ require 'time'
 require 'date'
 require 'socket'
 require 'resolv'
+require 'faye'
 
 class ChatbotController < ApplicationController
   # Allow for adminBot to send posts to /adminBot
@@ -36,17 +37,6 @@ class ChatbotController < ApplicationController
     comment.update_attribute(:correct, params["correct"])
 
     render :bot
-  end
-
-  def get_all_convs_for_bot(bot)
-    # User.all.each do |user|
-    query = "SELECT DISTINCT \"conversations\".* FROM \"conversations\" INNER JOIN \"comments\" c1 ON c1.\"conversation_id\" = \"conversations\".\"id\" INNER JOIN \"comments\" c2 ON c2.\"conversation_id\" = \"conversations\".\"id\" WHERE (c1.commentable_type = 'User') AND (c2.commentable_id = #{bot.id} AND c2.commentable_type = 'Bot') AND (\"conversations\".\"end\" IS NULL) ORDER BY id ASC"
-    Conversation.find_by_sql(query)
-  end
-
-  def get_bot_user_convs(bot, user)
-    query = "SELECT DISTINCT \"conversations\".* FROM \"conversations\" INNER JOIN \"comments\" c1 ON c1.\"conversation_id\" = \"conversations\".\"id\" INNER JOIN \"comments\" c2 ON c2.\"conversation_id\" = \"conversations\".\"id\" WHERE (c1.commentable_id = #{user.id} AND c1.commentable_type = 'User') AND (c2.commentable_id = #{bot.id} AND c2.commentable_type = 'Bot') AND (\"conversations\".\"end\" IS NULL) ORDER BY id ASC"
-    conv = Conversation.find_by_sql(query)
   end
 
   def get_recent_conv(bot, user)
@@ -88,6 +78,18 @@ class ChatbotController < ApplicationController
     #   @body['context'] = context
     # end
 
+    user = get_user_by_cookie()
+    bot = Bot.find_by(name: 'originate')
+    # Grab the current conversation, or new if one doesn't exist
+    conv = get_recent_conv(bot, user)
+
+    # For now just broadcast to a single channel
+    channel = '/bot'
+
+    userComment = user.comments.create(:body => query['input']['text'], :context => 'User Context', :correct => 1, conversation: conv, :bot_id => bot.id)
+    data = {message: userComment}
+    broadcast(channel, data)
+
     # Query Watson API through http:post
     uri = URI.parse("https://gateway.watsonplatform.net/conversation/api/v1/workspaces/19d05bd9-53a2-427f-9091-a74b885eef26/message?version=2016-09-16")
     http = Net::HTTP.new(uri.host, uri.port)
@@ -102,13 +104,9 @@ class ChatbotController < ApplicationController
     bot_json = ActiveSupport::JSON.decode(response.body)
     context = bot_json['context']
 
-    user = get_user_by_cookie()
-    bot = Bot.find_by(name: 'originate')
-    # Grab the current conversation, or new if one doesn't exist
-    conv = get_recent_conv(bot, user)
-
-    user.comments.create(:body => query['input']['text'], :context => 'User Context', :correct => 1, conversation: conv, :bot_id => bot.id)
-    bot.comments.create(:body => bot_json['output']['text'].last, :context => response.body, :correct => 1, conversation: conv, :bot_id => bot.id)
+    botComment = bot.comments.create(:body => bot_json['output']['text'].last, :context => response.body, :correct => 1, conversation: conv, :bot_id => bot.id)
+    data = {message: botComment}
+    broadcast(channel, data)
   end
 
   def query
@@ -136,10 +134,11 @@ class ChatbotController < ApplicationController
     @bots = Bot.all
     users = User.all
     @convs = []
+    # get_user_stats()
+    # @stats = get_user_stats()
     for user in users
       for bot in @bots
         conversations = get_bot_user_convs(bot, user)
-        p conversations
         hash = {}
         hash["bot_id"] = bot.id
         hash["user"] = user.id
@@ -255,6 +254,35 @@ class ChatbotController < ApplicationController
       # Create a new bot
       bot = Bot.create(name: name)
     end
+  end
+
+  def get_user_stats
+    users = User.all
+    for user in users
+      p user.comments
+    end
+  end
+
+  # def get_all_user_convs(user)
+  #   query = "SELECT DISTINCT \"conversations\".* FROM \"conversations\" INNER JOIN \"comments\" c1 ON c1.\"conversation_id\" = \"conversations\".\"id\" INNER JOIN \"comments\" c2 ON c2.\"conversation_id\" = \"conversations\".\"id\" WHERE (c1.commentable_type = 'User') AND (c2.commentable_id = #{bot.id} AND c2.commentable_type = 'Bot') AND (\"conversations\".\"end\" IS NULL) ORDER BY id ASC"
+  #   Conversation.find_by_sql(query)
+  # end
+
+  def get_all_convs_for_bot(bot)
+    # User.all.each do |user|
+    query = "SELECT DISTINCT \"conversations\".* FROM \"conversations\" INNER JOIN \"comments\" c1 ON c1.\"conversation_id\" = \"conversations\".\"id\" INNER JOIN \"comments\" c2 ON c2.\"conversation_id\" = \"conversations\".\"id\" WHERE (c1.commentable_type = 'User') AND (c2.commentable_id = #{bot.id} AND c2.commentable_type = 'Bot') AND (\"conversations\".\"end\" IS NULL) ORDER BY id ASC"
+    Conversation.find_by_sql(query)
+  end
+
+  def get_bot_user_convs(bot, user)
+    query = "SELECT DISTINCT \"conversations\".* FROM \"conversations\" INNER JOIN \"comments\" c1 ON c1.\"conversation_id\" = \"conversations\".\"id\" INNER JOIN \"comments\" c2 ON c2.\"conversation_id\" = \"conversations\".\"id\" WHERE (c1.commentable_id = #{user.id} AND c1.commentable_type = 'User') AND (c2.commentable_id = #{bot.id} AND c2.commentable_type = 'Bot') AND (\"conversations\".\"end\" IS NULL) ORDER BY id ASC"
+    conv = Conversation.find_by_sql(query)
+  end
+
+  def broadcast(channel, data)
+    base_url = request ? request.base_url : "http://localhost:3000"
+    client = Faye::Client.new("#{base_url}/faye")
+    client.publish(channel, data)
   end
 
 end

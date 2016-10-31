@@ -93,7 +93,10 @@ React = require 'react'
           convs: @props.convs
           down: @props.down
       else if @state.active == 'stats'
-        React.createElement ChatStats, null
+        React.createElement ChatStats,
+          bots: @props.bots
+          convs: @props.convs
+          down: @props.down
       else if @state.active == 'training'
         React.createElement Training,
           bots: @props.bots

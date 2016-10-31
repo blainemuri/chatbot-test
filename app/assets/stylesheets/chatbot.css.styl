@@ -249,7 +249,8 @@ svg.profile
 
     .chat-container
       width space*50
-      height 100%
+      height "calc(100% - %s)" % nav-height
+      margin-top: nav-height
       box-sizing border-box
 
       .input

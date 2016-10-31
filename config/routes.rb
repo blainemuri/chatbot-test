@@ -12,6 +12,8 @@ Rails.application.routes.draw do
 
   post 'adminBot', to: 'chatbot#adminBot'
 
+  match 'faye', to: 'chatbot#faye', via: [:get, :post]
+
   post 'rateComment', to: 'chatbot#rateComment'
 
   root 'chatbot#login'

@@ -6,7 +6,7 @@ end
 
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '4.2.6'
+gem 'rails', '5.0.0.1'
 # Use sqlite3 as the database for Active Record
 gem 'pg'
 # Use SCSS for stylesheets
@@ -22,10 +22,12 @@ gem 'coffee-rails', '~> 4.1.0'
 gem 'react-rails', '~> 1.0'
 # Stylus
 gem 'stylus'
+
+gem 'websocket-rails'
 # Active Admin
-gem 'activeadmin', github: 'activeadmin'
-# Devise for use with activeadmin?
-gem 'devise'
+# gem 'activeadmin', github: 'activeadmin'
+# # Devise for use with activeadmin for user authentication
+# gem 'devise'
 
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
@@ -61,6 +63,15 @@ gem 'eventmachine'
 
 gem 'faye-websocket'
 #####
+
+gem 'faye-rails', '~> 2.0'
+gem 'thin'
+gem 'mailboxer'
+
+# # Internal websocket integration
+# gem 'faye'
+# gem 'thin', require: false
+# gem 'sync'
 
 
 # Use ActiveModel has_secure_password

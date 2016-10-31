@@ -26,5 +26,7 @@ module Chatbot
     config.active_record.raise_in_transactional_callbacks = true
     config.serve_static_files = true
     config.browserify_rails.commandline_options = '-t coffeeify --extension=".js.coffee"'
+    config.middleware.delete Rack::Lock
+    config.middleware.use FayeRails::Middleware, mount: '/faye', :timeout => 25
   end
 end
