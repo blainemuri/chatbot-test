@@ -16,7 +16,6 @@
 //= require react
 //= require react_ujs
 //= require typed.min
-//= require websocket_rails/main
 //= require faye
 
 // This stays at the end of the file

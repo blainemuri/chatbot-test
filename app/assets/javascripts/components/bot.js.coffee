@@ -41,8 +41,7 @@ React = require 'react'
   componentWillUnmount: ->
     TweenMax.to('#horizontal-center', .05, {opacity: 0})
 
-  componentWillMount: ->
-    @setState messages: @props.conversation
+  componentWillMount: -> @setState messages: @props.conversation
 
   componentDidMount: ->
     conversation = document.getElementById 'conv-scroll'

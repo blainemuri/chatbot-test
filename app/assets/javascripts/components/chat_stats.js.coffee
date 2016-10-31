@@ -44,4 +44,4 @@ React = require 'react'
     div className: 'chat-stats',
       div id: 'chart-1', ''
 
-module.exports = @ChatStats
+  module.exports = @ChatStats
