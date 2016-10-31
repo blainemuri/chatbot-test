@@ -39,6 +39,30 @@ class ChatbotController < ApplicationController
     render :bot
   end
 
+  def get_recent_conv(bot, user)
+    # This grabs the most recent conversation
+    conv = get_bot_user_convs(bot, user).last
+    p 'GETTING THE LAST CONVERSATION'
+    p conv
+
+    if conv.present?
+      # Check to see if the conversation intents decreased (create new conv.)
+      # Or create a new one based off of time stamps (current implementation)
+      elapsed_seconds = Time.now - Time.parse(conv.comments.last.created_at.to_s)
+      if (elapsed_seconds / 60) > 15
+        # Greater than 5 minutes, create a new conversation
+        Conversation.create(entity: "conversation", correct: 1)
+      else
+        # Current conversation is still going
+        # Return the most recent conversation
+        conv
+      end
+    else
+      # Return a new conversation
+      Conversation.create(entity: "blarg", correct: 1)
+    end
+  end
+
   def ask_watson(query)
     require 'net/http'
     require 'json'
@@ -110,10 +134,11 @@ class ChatbotController < ApplicationController
     @bots = Bot.all
     users = User.all
     @convs = []
+    # get_user_stats()
+    # @stats = get_user_stats()
     for user in users
       for bot in @bots
         conversations = get_bot_user_convs(bot, user)
-        p conversations
         hash = {}
         hash["bot_id"] = bot.id
         hash["user"] = user.id
@@ -232,17 +257,16 @@ class ChatbotController < ApplicationController
   end
 
   def get_user_stats
-    users = Users.all
+    users = User.all
     for user in users
       p user.comments
     end
   end
 
-  def broadcast(channel, data)
-    base_url = request ? request.base_url : "http://localhost:3000"
-    client = Faye::Client.new("#{base_url}/faye")
-    client.publish(channel, data)
-  end
+  # def get_all_user_convs(user)
+  #   query = "SELECT DISTINCT \"conversations\".* FROM \"conversations\" INNER JOIN \"comments\" c1 ON c1.\"conversation_id\" = \"conversations\".\"id\" INNER JOIN \"comments\" c2 ON c2.\"conversation_id\" = \"conversations\".\"id\" WHERE (c1.commentable_type = 'User') AND (c2.commentable_id = #{bot.id} AND c2.commentable_type = 'Bot') AND (\"conversations\".\"end\" IS NULL) ORDER BY id ASC"
+  #   Conversation.find_by_sql(query)
+  # end
 
   def get_all_convs_for_bot(bot)
     # User.all.each do |user|
@@ -255,28 +279,10 @@ class ChatbotController < ApplicationController
     conv = Conversation.find_by_sql(query)
   end
 
-  def get_recent_conv(bot, user)
-    # This grabs the most recent conversation
-    conv = get_bot_user_convs(bot, user).last
-    p 'GETTING THE LAST CONVERSATION'
-    p conv
-
-    if conv.present?
-      # Check to see if the conversation intents decreased (create new conv.)
-      # Or create a new one based off of time stamps (current implementation)
-      elapsed_seconds = Time.now - Time.parse(conv.comments.last.created_at.to_s)
-      if (elapsed_seconds / 60) > 15
-        # Greater than 5 minutes, create a new conversation
-        Conversation.create(entity: "conversation", correct: 1)
-      else
-        # Current conversation is still going
-        # Return the most recent conversation
-        conv
-      end
-    else
-      # Return a new conversation
-      Conversation.create(entity: "blarg", correct: 1)
-    end
+  def broadcast(channel, data)
+    base_url = request ? request.base_url : "http://localhost:3000"
+    client = Faye::Client.new("#{base_url}/faye")
+    client.publish(channel, data)
   end
 
 end
