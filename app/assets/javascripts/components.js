@@ -1,5 +1,7 @@
 window.AdminMenu = require('./components/admin_menu');
 window.Bot = require('./components/bot');
+window.Botler = require('./components/botler');
+window.BotMenu = require('./components/bot_menu');
 window.BotMessage = require('./components/bot_message');
 window.BotOption = require('./components/bot_option');
 window.Chatbot = require('./components/chatbot');
@@ -16,7 +18,9 @@ window.Entity = require('./components/entity');
 window.Intents = require('./components/intents');
 window.Intent = require('./components/intent');
 window.LogTile = require('./components/log_tile');
+window.Logo = require('./components/logo');
 window.MenuBot = require('./components/menu_bot');
 window.NewBot = require('./components/new_bot');
+window.Overview = require('./components/overview');
 window.Training = require('./components/training');
 window.UserMessage = require('./components/user_message');

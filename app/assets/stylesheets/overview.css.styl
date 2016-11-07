@@ -1,0 +1,43 @@
+@import 'mixins.styl'
+
+tile-width = space*24
+tile-height = space*28
+title-height = space*4
+
+#overview
+  width: 100%
+  height: 100%
+  overflow: auto
+
+  .tile-container
+    top: space*3
+    margin: 0 auto
+    display: table
+
+    .tile
+      width: tile-width
+      height: tile-height
+      float: left
+      margin-right: space-x-large
+      cursor: pointer
+      transition: margin 0.1s
+      &:last-child
+        margin-right: 0
+      &:hover
+        margin-top: - nudge
+
+      .title
+        height: title-height
+        width: 100%
+        color: white
+        background-color: black
+        line-height: title-height
+        text-align: center
+        text-transform: uppercase
+        letter-spacing: 4px
+
+      .overview
+        width: 100%
+        height: (tile-height - title-height)
+        background-color: white
+        border-bottom: 2px solid medium-grey
