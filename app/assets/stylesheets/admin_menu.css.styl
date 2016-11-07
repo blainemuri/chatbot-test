@@ -1,0 +1,106 @@
+@import 'mixins.styl'
+
+profile-size = nav-height*.5
+
+#admin
+  width: 100%
+  height: 100%
+
+  .nav
+    position: fixed
+    height: nav-height
+    width: 100%
+    background-color: white
+    top: 0
+    left: 0
+
+    .title
+      float: left
+      height: 100%
+      width: title-width
+      background-color: black
+
+      #Logo
+        width: 60%
+        fill: white
+        position: absolute
+        left: 50%
+        top: 50%
+        transform: translateY(-50%) translateX(-50%)
+
+      h1
+        color: white
+        width: 100%
+        text-align: center
+        text-transform: uppercase
+        font-size: space*.9
+        position: absolute
+        left: 50%
+        top: 40%
+        transform: translateY(-40%) translateX(-50%)
+        letter-spacing: 5px
+
+    .portal
+      float: left
+      width: "calc(100% - %s)" % title-width
+      height: nav-height
+      line-height: nav-height
+
+      .option
+        float: left
+        margin-left: space*2
+        font-size: space*.9
+        color: dark-grey
+        cursor: pointer
+
+      .user
+        float: right
+        margin-right: space*2
+        width: title-width
+        height: profile-size
+        margin-top: profile-size*.5
+        cursor: pointer
+
+        img
+          float: left
+          width: profile-size
+          height: profile-size
+          border-radius: profile-size*.5
+          margin-right: space-small
+
+        .user-info
+          width: "calc(100% - %s - %s - %s)" % (profile-size space space-small)
+          position: absolute
+          left: (space-small+profile-size)
+          top: 50%
+          transform: translateY(-50%)
+
+          .name
+            font-size: space*.9
+            line-height: space*.9
+            font-weight: bold
+            margin-bottom: nudge
+
+          .email
+            font-size: space*.8
+            line-height: space*.8
+            font-weight: bold
+            color: dark-grey
+
+        .down
+          position: absolute
+          top: 50%
+          transform: translateY(-50%)
+          fill: dark-grey
+          right: 0
+          font-weight: bold
+          width: 15px
+
+  .main
+    position: fixed
+    height: "calc(100% - %s)" % nav-height
+    background-color: light-grey
+    width: 100%
+    top: nav-height
+    left: 0
+    overflow: hidden
