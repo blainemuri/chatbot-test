@@ -90,7 +90,7 @@ class ChatbotController < ApplicationController
     broadcast(channel, data)
 
     # Query Watson API through http:post
-    uri = URI.parse("https://gateway.watsonplatform.net/conversation/api/v1/workspaces/19d05bd9-53a2-427f-9091-a74b885eef26/message?version=2016-09-16")
+    uri = URI.parse("https://gateway.watsonplatform.net/conversation/api/v1/workspaces/c930657b-7d1f-4947-b8f2-8d24a933ba71/message?version=2016-09-20")
     http = Net::HTTP.new(uri.host, uri.port)
     http.use_ssl = true
     http.verify_mode = OpenSSL::SSL::VERIFY_NONE
