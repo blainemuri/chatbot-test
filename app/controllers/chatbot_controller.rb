@@ -90,7 +90,7 @@ class ChatbotController < ApplicationController
     broadcast(channel, data)
 
     # Query Watson API through http:post
-    uri = URI.parse("https://gateway.watsonplatform.net/conversation/api/v1/workspaces/c930657b-7d1f-4947-b8f2-8d24a933ba71/message?version=2016-09-20")
+    uri = URI.parse("https://gateway.watsonplatform.net/conversation/api/v1/workspaces/c930657b-7d1f-4947-b8f2-8d24a933ba71/message?version=2016-09-16")
     http = Net::HTTP.new(uri.host, uri.port)
     http.use_ssl = true
     http.verify_mode = OpenSSL::SSL::VERIFY_NONE
@@ -100,6 +100,10 @@ class ChatbotController < ApplicationController
     request.body = @body
     response = http.request(request)
 
+    # First message returns nothing useful. Just use it to grab the context
+    # if conv.comments.size == 0
+    #
+
     bot_json = ActiveSupport::JSON.decode(response.body)
     context = bot_json['context']
 
@@ -107,7 +111,6 @@ class ChatbotController < ApplicationController
     data = {message: botComment}
     broadcast(channel, data)
 
-    p '##############################'
     newContext = JSON.parse botComment['context']
     if newContext['intents'][0]['intent'] == 'create_timer'
       num = newContext['entities'][0]['value'].to_i
