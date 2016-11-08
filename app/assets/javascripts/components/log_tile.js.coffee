@@ -37,7 +37,7 @@ React = require 'react'
   handleClick: (e) ->
     e.stopPropagation()
     e.preventDefault()
-    @props.open @props.conversation, @state.date
+    @props.setConv @props.conversation, @state.date, 'Conversation'
 
   render: ->
     {a, div, h5, h6, img, p, span} = React.DOM
@@ -45,12 +45,21 @@ React = require 'react'
       className: 'log-tile'
       onClick: @handleClick
       div className: 'header-left',
-        div className: 'username', "User: #{@props.conversation[0].user}"
+        div className: 'username', 'Blaine Muri'# "User: #{@props.conversation[0].user}"
         span {}, @state.date
       div className: 'header-right',
         img
           src: @props.profile
           alt: 'User'
-      p {}, "Conversation with bot: #{@state.botName}"
+      div className: 'content',
+        div className: 'topic', 'Bot Name:'
+        div className: 'answer', @state.botName
+        div className: 'topic', 'Message Count:'
+        div className: 'answer', @props.conversation.length
+        div className: 'topic', 'Intent:'
+        div className: 'answer', 'Chip Inquiry'
+      div className: 'details', 'View Details'
+
+      # p {}, "Conversation with bot: #{@state.botName}"
 
 module.exports = @LogTile

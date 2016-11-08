@@ -208,7 +208,8 @@ svg.profile
   width 100%
   background-color white
   color black
-  float: left
+  position: fixed
+  height: 100%
   &.dark-theme
     filter invert(100%)
     -webkit-filter invert(100%)
@@ -274,6 +275,9 @@ svg.profile
           vertical-align middle
 
           img
+            position: absolute
+            left: 50%
+            transform: translateX(-50%)
             height nav-height*.3
             margin-top nav-height*.25
             filter invert(100%)
@@ -417,7 +421,7 @@ svg.profile
           float right
 
         span
-          color grey-middle
+          color white
 
       p
         text-align right

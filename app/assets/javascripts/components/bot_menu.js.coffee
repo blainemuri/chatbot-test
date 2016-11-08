@@ -9,17 +9,29 @@ React = require 'react'
   render: ->
     {div, img} = React.DOM
     div className: 'bot',
-      div className: 'title-wrapper',
-        div
-          className: 'title'
-          onClick: @showOptions
-          @props.title
+      div
+        className: 'title-wrapper'
+        onClick: @showOptions
+        div className: 'title', @props.title
         img
           src: @props.down
           alt: ''
       div className: "options #{'show' if @state.showOptions}",
-        div className: 'entities', 'Entities'
-        div className: 'Intents', 'Intents'
-        div className: 'Dialogue', 'Dialogue'
+        div
+          className: 'option'
+          onClick: (e) => @props.showNewBot e, @props.id, @props.bot.id
+          'Upload JSON'
+        div
+          className: 'option'
+          onClick: (e) => @props.showEntities e, @props.id, @props.bot.id
+          'Entities'
+        div
+          className: 'option'
+          onClick: (e) => @props.showIntents e, @props.id, @props.id
+          'Intents'
+        div
+          className: 'option'
+          onClick: (e) => @props.showDialogue e, @props.id, @props.bot.id
+          'Dialogue'
 
 module.exports = @BotMenu

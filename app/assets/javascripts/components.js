@@ -9,6 +9,7 @@ window.ChatLog = require('./components/chat_log');
 window.ChatLogin = require('./components/chat_login');
 window.ChatMenu = require('./components/chat_menu');
 window.ChatStats = require('./components/chat_stats');
+window.Dashboard = require('./components/dashboard');
 window.Dialogue = require('./components/dialogue');
 window.Entities = require('./components/entities');
 // TODO: This for some reason needs to be above EntityValue, fix later

@@ -3,7 +3,7 @@ React = require 'react'
 @AdminMenu = React.createClass
   getInitialState: ->
     logo: no
-    page: 'Botler'
+    page: 'Chatbots'
 
   setOption: (page) ->
     if page == 'Overview'
@@ -14,6 +14,7 @@ React = require 'react'
 
   render: ->
     {div, h1, img} = React.DOM
+    console.log @props.bots
     div id: 'admin',
       div className: 'nav',
         div className: 'title',
@@ -36,8 +37,8 @@ React = require 'react'
             'XMS'
           div
             className: 'option'
-            onClick: (e) => @setOption 'Botler'
-            'Botler'
+            onClick: (e) => @setOption 'Chatbots'
+            'Chatbots'
           div className: 'user',
             img
               src: @props.profile
@@ -56,10 +57,13 @@ React = require 'react'
           React.createElement Exosphere, null
         else if @state.page == 'XMS'
           React.createElement XMS, null
-        else if @state.page == 'Botler'
+        else if @state.page == 'Chatbots'
           React.createElement Botler,
             down: @props.down
-
+            chatbot: @props.chatbot
+            profile: @props.profile
+            bots: @props.bots
+            convs: @props.convs
 
 module.exports = @AdminMenu
 #

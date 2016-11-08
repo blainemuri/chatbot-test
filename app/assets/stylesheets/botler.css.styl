@@ -11,6 +11,7 @@ heading-height = space*3
     background-color: off-black
     height: 100%
     color: white
+    float: left
 
     .inner-nav
       width: 100%
@@ -24,6 +25,7 @@ heading-height = space*3
         height: heading-height
         line-height: heading-height
         font-family: CircularPro-Book
+        cursor: pointer
 
       .line
         margin-top: space
@@ -37,11 +39,14 @@ heading-height = space*3
         margin-top: space
         width: 100%
         float: left
+        background-color: off-black
 
         .title-wrapper
           width: 100%
           float: left
           line-height: space*2
+          cursor: pointer
+          background-color: off-black
 
           .title
             font-size: space*1.2
@@ -58,7 +63,306 @@ heading-height = space*3
 
         .options
           font-size: space
-          line-height: space*1.8
           float: left
           width: 100%
           padding-left: space
+          height: 0
+          background-color: off-black
+          opacity: 0
+          transition: opacity 0.2s ease-out, height 0.2s ease-out
+          &.show
+            opacity: 1
+            height: space*5.4
+
+          .option
+            line-height: space*1.8
+            width: 100%
+            float: left
+            background-color: off-black
+            cursor: pointer
+
+  .right-content
+    width: "calc(100% - %s)" % title-width
+    float: right
+    height: 100%
+    overflow: auto
+
+    .chat-container
+      width: 100%
+      height: 100%
+      padding: space*2
+      float: left
+
+      .show-log-container
+        width: 100%
+        max-width: space*45
+        height: 100%
+        float: left
+        background-color: white
+
+        .header
+          width: 100%
+          height: nav-height*.6
+          background-color: black
+          color: white
+          line-height: nav-height*.6
+          padding-left: space
+
+    .entity-container
+      width 100%
+      height 100%
+      padding space 0 0 space*2
+      overflow auto
+
+      .intent-col
+        width 50%
+        height 100%
+        float left
+
+        .intent-tile
+          width "calc(100% - (%s * 2))" % space
+          background-color white
+          float left
+          margin-bottom space*2
+          margin-right space
+
+          h3
+            width 100%
+            background-color black
+            margin 0
+            padding 0
+            color white
+            box-sizing border-box
+            line-height nav-height*.5
+            padding-left space
+
+          .example
+            width 100%
+            line-height nav-height*.5
+            font-size message-font
+            color black
+            padding-left space
+            border-bottom 1px solid grey-middle
+            box-sizing border-box
+
+          .add
+            cursor pointer
+            border none
+
+      .entity-tile
+        width space*15
+        background-color white
+        margin-right space*2
+        float left
+        margin-top space
+
+        h3
+          width 100%
+          background-color black
+          margin 0
+          padding 0
+          color white
+          box-sizing border-box
+          line-height nav-height*.5
+          padding-left space
+
+        .add
+          width "calc(100% - %s)" % space
+          line-height space*2
+          margin-left space
+          box-sizing border-box
+          font-size space*.8
+          cursor pointer
+          float left
+
+        .values
+            width "calc(100% - %s)" % space
+            margin-left space
+
+          .value
+            width "calc(100% - (%s * 1.7))" % space
+            border-bottom 1px solid grey-middle
+            line-height space*2
+            height space*2
+            box-sizing border-box
+            float left
+
+          .down
+            width space*1.2
+            height space*.8
+            padding-top space*.6
+            padding-bottom space*.54
+            padding-right space*.5
+            border-bottom 1px solid grey-middle
+            float right
+            cursor pointer
+
+          .synonym-container
+            width 100%
+            float left
+
+            .synonym
+              font-size message-font
+              line-height space*1.5
+              width "calc(100% - %s)" % space
+              background-color black
+              margin-left space
+              color white
+              padding-left space
+              border-bottom 1px solid white
+              box-sizing border-box
+
+    .bot-log-outer
+      float: left
+      width: 100%
+      height: 100%
+      position: relative
+      background-color: transparent
+
+      .log-options
+        float: left
+        position: relative
+        margin-top: 0
+        height: nav-height*.5
+        width: 100%
+        background-color: grey-light
+        z-index: 2
+        line-height: nav-height*.5
+
+        .floated-inner
+          height: nav-height*.5
+          width: 100%
+          float: left
+          box-sizing: border-box
+          padding: 0
+
+          .inner-sort
+            width: 100%
+            height: nav-height*.5
+            float: left
+            z-index: 2
+            background-color: grey-light
+            padding-left: space-x-small
+
+          .sort-by
+            width: nav-height*2.5
+            height: 100%
+            float: right
+            display: inline-table
+            cursor: pointer
+
+            .type
+              float: left
+
+            .arrow
+              float: right
+              height: nav-height*.2
+              padding-top: nav-height*.15
+              padding-right: space-small
+
+    #log-container
+      height 100%
+      padding: space space 0 space
+      display: inline-block
+      margin 0 auto
+
+      .log-tile
+        width log-width
+        height log-height
+        margin space
+        opacity 0
+        transform translateY(30px)
+        border 1px solid light-gray
+        box-sizing border-box
+        display inline-block
+        cursor pointer
+        box-shadow 0px 0px 4px 0px rgba(166,166,166,1)
+        transition box-shadow .3s ease
+        -o-backface-visibility: hidden;
+        -moz-backface-visibility: hidden;
+        -webkit-backface-visibility: hidden;
+        backface-visibility: hidden;
+        background-color: white
+        &:hover
+          box-shadow 0px 0px 12px 0px rgba(166,166,166,1)
+
+        .header-left, .header-right
+          height nav-height*.6
+          border-bottom 1px solid light-gray
+          padding 0
+          margin 0
+          box-sizing border-box
+          color white
+          background-color black
+
+        .header-left
+          width 67%
+          float left
+          padding-left space
+
+          .username
+            padding-top nudge*3
+
+          span
+            font-size message-font
+            color grey-middle
+
+        .header-right
+          width 33%
+          float right
+          text-align center
+
+          img
+            width profile-size
+            height profile-size
+            border-radius profile-size*.5
+            margin-top nudge*5
+            float: right
+            margin-right: space
+
+        .content
+          float: left
+          position: relative
+          width: log-width
+          height: "calc(%s - %s)" % (log-height nav-height)
+          overflow: hidden
+          padding: space-small
+
+          .topic
+            font-weight: bold
+            padding-left: space
+            font-size: space
+            width: 100%
+            float: left
+            line-height: space*1.2
+            text-decoration: underline
+
+          .answer
+            font-weight: normal
+            padding-left: space*2
+            font-size: space
+            width: 100%
+            float: left
+            padding-bottom: space-x-small
+
+        .details
+          width: 100%
+          height: nav-height*.4
+          background-color: pale-turqoise
+          line-height: nav-height*.4
+          text-align: center
+          font-size: space*1.1
+          float: left
+          color: white
+
+        p
+          position relative
+          float left
+          font-size message-font
+          width log-width
+          height "calc(%s - (%s * 2))" % (log-height nav-height)
+          overflow visible
+          white-space normal
+          box-sizing border-box
+          padding space
+          color black

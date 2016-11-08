@@ -16,7 +16,7 @@ React = require 'react'
 
   showLoading: ->
     # $('#horizontal-center').css('opacity', '0');
-    chat = document.getElementById 'horizontal-center'
+    chat = document.getElementById 'log-container'
     message = document.getElementById 'message'
     TweenMax.staggerTo('.message', .3, {transform: "translateY(0)", opacity: 1}, .1)
     tl = new TimelineMax()
@@ -25,7 +25,6 @@ React = require 'react'
       .fromTo('#loading2', .3, {scale: .8}, {scale: 1.75}, ease:Expo.easeInOut, 'start')
       .to('#loading', .3, {scale: 1, opacity: 0}, 'start+.1')
       .to('#loading2', .4, {scale: .6, opacity: 0}, 'start+.1')
-      .to(chat, .5, {top: 0, opacity: 1}, 'start+.2')
       .staggerTo('.log-tile', .2, {transform: "translateY(0)", opacity: 1}, .1, 'start+.2')
     tl.timeScale(1)
 
@@ -166,16 +165,15 @@ React = require 'react'
         id: 'loading'
       div
         id: 'loading2'
-      div
-        id: 'horizontal-center',
-        div className: 'log-container',
-          @showConvsWithOptions().map (conversation, id) =>
-            React.createFactory(LogTile)
-              profile: @props.profile
-              open: @openLog
-              key: id
-              conversation: conversation
-              bots: @props.bots
-              botId: conversation[0].bot_id
+      div id: 'log-container',
+        @showConvsWithOptions().map (conversation, id) =>
+          React.createFactory(LogTile)
+            profile: @props.profile
+            open: @openLog
+            key: id
+            conversation: conversation
+            bots: @props.bots
+            botId: conversation[0].bot_id
+            setConv: @props.setConv
 
 module.exports = @ChatLog
