@@ -2,7 +2,9 @@ React = require 'react'
 
 @Dashboard = React.createClass
   render: ->
-    {div} = React.DOM
-    div {}, 'Dashboard!'
+    {div, img} = React.DOM
+    div id: 'dashboard',
+      img
+        src: @props.overview
 
 module.exports = @Dashboard

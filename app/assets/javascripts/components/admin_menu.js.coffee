@@ -14,7 +14,6 @@ React = require 'react'
 
   render: ->
     {div, h1, img} = React.DOM
-    console.log @props.bots
     div id: 'admin',
       div className: 'nav',
         div className: 'title',
@@ -46,13 +45,14 @@ React = require 'react'
             div className: 'user-info',
               div className: 'name', 'Brian Beckman'
               div className: 'email', 'brian.beckman@originate.com'
-            img
-              className: 'down'
-              src: @props.down
-              alt: '>'
+            React.createElement Down, null
       div className: 'main',
         if @state.page == 'Overview'
-          React.createElement Overview, setPage: @setOption
+          React.createElement Overview,
+            setPage: @setOption
+            home1: @props.home1
+            home2: @props.home2
+            home3: @props.home3
         else if @state.page == 'Exosphere'
           React.createElement Exosphere, null
         else if @state.page == 'XMS'
@@ -64,6 +64,8 @@ React = require 'react'
             profile: @props.profile
             bots: @props.bots
             convs: @props.convs
+            overview: @props.overview
+            dialogue: @props.dialogue
 
 module.exports = @AdminMenu
 #

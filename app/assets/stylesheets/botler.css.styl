@@ -52,7 +52,7 @@ heading-height = space*3
             font-size: space*1.2
             float: left
 
-          img
+          .down
             width: 15px
             stroke: white
             fill: white
@@ -72,7 +72,7 @@ heading-height = space*3
           transition: opacity 0.2s ease-out, height 0.2s ease-out
           &.show
             opacity: 1
-            height: space*5.4
+            height: space*7.2
 
           .option
             line-height: space*1.8
@@ -115,16 +115,26 @@ heading-height = space*3
       overflow auto
 
       .intent-col
-        width 50%
+        width 100%
         height 100%
         float left
+        margin-top: space
 
         .intent-tile
-          width "calc(100% - (%s * 2))" % space
+          width "calc(50% - (%s * 2))" % space
           background-color white
           float left
           margin-bottom space*2
           margin-right space
+
+          form
+            width: 100%
+            height: nav-height*.5
+            float: left
+
+            input
+              width: 100%
+
 
           h3
             width 100%
@@ -150,11 +160,19 @@ heading-height = space*3
             border none
 
       .entity-tile
-        width space*15
+        width (100%/3 - space*4)
         background-color white
         margin-right space*2
         float left
         margin-top space
+
+        form
+          height: nav-height*.5
+          width: 100%
+          float: left
+
+          input
+            width: 100%
 
         h3
           width 100%
@@ -188,14 +206,15 @@ heading-height = space*3
             float left
 
           .down
-            width space*1.2
             height space*.8
+            width: space*1.2
             padding-top space*.6
             padding-bottom space*.54
             padding-right space*.5
-            border-bottom 1px solid grey-middle
             float right
             cursor pointer
+            fill: black
+
 
           .synonym-container
             width 100%

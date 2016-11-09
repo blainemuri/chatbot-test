@@ -35,7 +35,7 @@ React = require 'react'
     # console.log JSON.stringify(@props.trainingData)
 
   render: ->
-    {div, input, form} = React.DOM
+    {div, input, form, h3} = React.DOM
     div className: 'entity-container',
       div className: 'intent-col',
         for num, intent of @props.trainingData.intents
@@ -43,17 +43,17 @@ React = require 'react'
             key: num
             id: num
             intent: intent
-            down: @props.down
             createNewExample: @createNewExample
-      div
-        className: 'intent-tile'
-        style: cursor: 'pointer'
-        form
-          onSubmit: @createNewIntent
-          input
-            placeholder: '+ New Intent'
-            type: 'text'
-            value: @state.intent
-            onChange: @handleOnChange
+        div
+          className: 'intent-tile'
+          style: cursor: 'pointer'
+          h3 {}, 'Create New Intent'
+          form
+            onSubmit: @createNewIntent
+            input
+              placeholder: '+ New Intent'
+              type: 'text'
+              value: @state.intent
+              onChange: @handleOnChange
 
 module.exports = @Intents

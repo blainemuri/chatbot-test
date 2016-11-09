@@ -11,6 +11,7 @@ window.ChatMenu = require('./components/chat_menu');
 window.ChatStats = require('./components/chat_stats');
 window.Dashboard = require('./components/dashboard');
 window.Dialogue = require('./components/dialogue');
+window.Down = require('./components/down');
 window.Entities = require('./components/entities');
 // TODO: This for some reason needs to be above EntityValue, fix later
 window.SynonymValue = require('./components/synonym_value');

@@ -73,17 +73,25 @@ React = require 'react'
           for bot, id in @props.bots
             React.createElement BotMenu,
               key: id
-              title: bot.name
-              down: @props.down
+              title: 'Originate' #bot.name
               bot: bot
               id: id
               showEntities: @showEntities
               showIntents: @showIntents
               showDialogue: @showDialogue
               showNewBot: @showNewBot
+          React.createElement BotMenu,
+            key: id
+            title: 'Originate-adminbot' #bot.name
+            bot: bot
+            id: id
+            showEntities: @showEntities
+            showIntents: @showIntents
+            showDialogue: @showDialogue
+            showNewBot: @showNewBot
       div className: 'right-content',
         if @state.page == 'Dashboard'
-          React.createElement Dashboard, null
+          React.createElement Dashboard, overview: @props.overview
         else if @state.page == 'Log'
           React.createElement ChatLog,
             chatbot: @props.chatbot
@@ -114,7 +122,7 @@ React = require 'react'
             id: @state.id
         else if @state.page == 'Dialogue'
           React.createElement Dialogue,
-            dialogue: @state.content
+            dialogue: @props.dialogue
             id: @state.id
         else if @state.page == 'Conversation'
           div className: 'chat-container',

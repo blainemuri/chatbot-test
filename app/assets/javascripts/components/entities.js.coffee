@@ -41,19 +41,19 @@ React = require 'react'
     @props.submitTrainingData JSON.stringify(data), @props.id, {'synonyms': synonym}
 
   render: ->
-    {div, input, form} = React.DOM
+    {div, input, form, h3} = React.DOM
     div className: 'entity-container',
       for num, entity of @props.trainingData.entities
         React.createElement Entity,
           key: num
           id: num
           entity: entity
-          down: @props.down
           createNewValue: @createNewValue
           createNewSynonym: @createNewSynonym
       div
         className: 'entity-tile'
         style: cursor: 'pointer'
+        h3 {}, 'Create New Entity'
         form
           onSubmit: @createNewEntity
           input

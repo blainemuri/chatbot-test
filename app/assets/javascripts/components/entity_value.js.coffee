@@ -22,7 +22,7 @@ React = require 'react'
     # url += word
     # url += '/'
     # console.log url
-    # $.ajax 
+    # $.ajax
     #   url: url,
     #   method: 'POST',
     # .done (response) =>
@@ -37,11 +37,10 @@ React = require 'react'
       div
         className: 'value'
         @props.value.value
-      img
-        src: @props.down
+      div
         className: 'down'
-        alt: '+'
         onClick: @showSynonyms
+        React.createElement Down, null
       if @state.showSynonyms
         div className: 'synonym-container',
           if @props.value.synonyms?

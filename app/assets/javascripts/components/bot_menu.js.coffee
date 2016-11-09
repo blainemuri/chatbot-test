@@ -13,14 +13,12 @@ React = require 'react'
         className: 'title-wrapper'
         onClick: @showOptions
         div className: 'title', @props.title
-        img
-          src: @props.down
-          alt: ''
+        React.createElement Down, null
       div className: "options #{'show' if @state.showOptions}",
         div
           className: 'option'
           onClick: (e) => @props.showNewBot e, @props.id, @props.bot.id
-          'Upload JSON'
+          'New'
         div
           className: 'option'
           onClick: (e) => @props.showEntities e, @props.id, @props.bot.id

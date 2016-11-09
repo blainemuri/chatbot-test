@@ -26,7 +26,6 @@ React = require 'react'
       h3 {}, @props.entity.entity
       for num, value of @props.entity.values
         React.createElement EntityValue,
-          down: @props.down
           value: value
           key: num
           createNewSynonym: @createNewSynonym
