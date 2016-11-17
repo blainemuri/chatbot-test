@@ -104,9 +104,5 @@ React = require 'react'
                 placeholder: 'Type your message here'
                 onChange: @handleChange
                 value: @state.text
-            div className: 'voice-input',
-              img
-                src: @props.mic
-                alt: 'Voice'
 
 module.exports = @Bot
