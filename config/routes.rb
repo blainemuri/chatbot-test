@@ -2,7 +2,7 @@ Rails.application.routes.draw do
 
   get 'bot', to: 'chatbot#bot'
 
-  get 'admin', to: 'chatbot#admin'
+  # get 'admin', to: 'chatbot#admin'
 
   post 'bot', to: 'chatbot#query'
 
@@ -16,7 +16,7 @@ Rails.application.routes.draw do
 
   post 'rateComment', to: 'chatbot#rateComment'
 
-  root 'chatbot#login'
+  root 'chatbot#bot'
 
   resources :chats
   # The priority is based upon order of creation: first created -> highest priority.
