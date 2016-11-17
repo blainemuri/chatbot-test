@@ -112,13 +112,6 @@ React = require 'react'
         div className: 'heading',
           h3 {}, 'Originate Chatbot'
           span {}, @state.time
-          div className: 'options',
-            div
-              className: "down #{'selected' if @state.bot == 'incorrect'}"
-              onClick: @setDown
-            div
-              className: "up #{'selected' if @state.bot == 'correct'}"
-              onClick: @setUp
         p {}, @props.comment.body
         if @props.intent
           span {}, @props.intent
