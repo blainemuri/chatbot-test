@@ -15,7 +15,7 @@ React = require 'react'
     context = {}
     if last?
       if last.commentable_type == "Bot"
-        context = JSON.parse(last.context).context
+        context = {} # JSON.parse(last.context).context
     $.ajax
       url: '/bot'
       data: {

@@ -42,8 +42,6 @@ class ChatbotController < ApplicationController
   def get_recent_conv(bot, user)
     # This grabs the most recent conversation
     conv = get_bot_user_convs(bot, user).last
-    p 'GETTING THE LAST CONVERSATION'
-    p conv
 
     if conv.present?
       # Check to see if the conversation intents decreased (create new conv.)
@@ -78,7 +76,7 @@ class ChatbotController < ApplicationController
     # end
 
     user = get_user_by_cookie()
-    bot = Bot.find_by(name: 'originate')
+    bot = Bot.find_by(name: 'originate-questions')
     # Grab the current conversation, or new if one doesn't exist
     conv = get_recent_conv(bot, user)
 
@@ -150,15 +148,48 @@ class ChatbotController < ApplicationController
   end
 
   def query
-    @query = params[:query]
-    ask_watson(@query)
+    require 'wit'
+    query = params[:query][:input][:text]
+    # ask_watson(@query)
+    actions = {
+      send: -> (request, response) {
+        puts("sending... #{response['text']}")
+      }
+    }
+
+    channel = '/bot'
+
+    access_token = 'KMCUKA6A2FY4BXHPULMG3ZVHBY55OEEN'
+    client = Wit.new(access_token: access_token, actions: actions)
+
+    user = get_user_by_cookie()
+    bot = Bot.find_by(name: 'originate-questions')
+    # Grab the current conversation, or new if one doesn't exist
+    conv = get_recent_conv(bot, user)
+
+    userComment = user.comments.create(:body => query, :context => 'User Context', :correct => 1, conversation: conv, :bot_id => bot.id)
+    data = {message: userComment}
+    broadcast(channel, data)
+
+    response = client.converse(conv.id, query, {})
+    # Second time to actually grab the response. It waits for you to perform actions
+    # response = client.converse('user-session-1', query, {})
+    if response["msg"] == '' || response["msg"] == nil
+      # Couldn't find an entity, so the conversation ended. Start it again
+      response = client.converse(conv.id, query, {})
+    end
+
+    botComment = bot.comments.create(:body => response["msg"], :context => response["entities"], :correct => 1, conversation: conv, :bot_id => bot.id)
+    data = {message: botComment}
+    broadcast(channel, data)
+
     render :bot
   end
 
   def bot
     user = get_user_by_cookie()
     # user = User.first
-    bot = Bot.find_by(name: 'originate')
+    bot = Bot.find_by(name: 'originate-questions')
     conv = get_recent_conv(bot, user)
     @conversation = conv.comments
   end

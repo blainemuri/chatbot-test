@@ -34,7 +34,7 @@
 # chat = Chat.create(params[:chat])
 
 User.create(username: 'admin', password: 'password', accessLevel: 1)
-Bot.create(name: 'originate')
+Bot.create(name: 'originate-questions')
 
 # TODO: Be sure to seed in the initial json for the bot if it's not present
 

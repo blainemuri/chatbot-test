@@ -64,6 +64,8 @@ gem 'eventmachine'
 gem 'faye-websocket'
 #####
 
+gem 'wit'
+
 gem 'faye-rails', '~> 2.0'
 gem 'thin'
 gem 'mailboxer'
