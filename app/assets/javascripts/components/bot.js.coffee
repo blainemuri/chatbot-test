@@ -101,7 +101,7 @@ React = require 'react'
                 type: 'text'
                 name: 'botquery'
                 id: 'bot-query'
-                placeholder: 'Type your message here'
+                placeholder: 'Ask a question...'
                 onChange: @handleChange
                 value: @state.text
 

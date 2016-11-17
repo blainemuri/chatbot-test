@@ -49,7 +49,9 @@ class ChatbotController < ApplicationController
       elapsed_seconds = Time.now - Time.parse(conv.comments.last.created_at.to_s)
       if (elapsed_seconds / 60) > 15
         # Greater than 5 minutes, create a new conversation
-        Conversation.create(entity: "conversation", correct: 1)
+        newConv = Conversation.create(entity: "blarg", correct: 1)
+        botComment = bot.comments.create(:body => "Hi, I'm the Originate chatbot. I want to eventually be able to answer questions about the company, but for now I'm crowdsourcing the questions from users like you. Ask me anything about Originate!", :context => response["entities"], :correct => 1, conversation: newConv, :bot_id => bot.id)
+        newConv
       else
         # Current conversation is still going
         # Return the most recent conversation
@@ -57,7 +59,9 @@ class ChatbotController < ApplicationController
       end
     else
       # Return a new conversation
-      Conversation.create(entity: "blarg", correct: 1)
+      newConv = Conversation.create(entity: "blarg", correct: 1)
+      botComment = bot.comments.create(:body => "Hi, I'm the Originate chatbot. I want to eventually be able to answer questions about the company, but for now I'm crowdsourcing the questions from users like you. Ask me anything about Originate!", :context => response["entities"], :correct => 1, conversation: newConv, :bot_id => bot.id)
+      newConv
     end
   end
 
