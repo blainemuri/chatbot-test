@@ -28,44 +28,6 @@ React = require 'react'
     div {},
       div
         id: 'chat-menu'
-        div className: 'blur', ''
-        div className: 'time', 'Yesterday'
-        div className: "profile #{'selected' if @state.selected}",
-          div
-            className: "profile-options #{'selected' if @state.selected}"
-            onClick: @setSelected
-            img
-              src: @props.profile
-              alt: 'User'
-            div className: 'right',
-              svg
-                version: "1.1"
-                xmlns: "http://www.w3.org/2000/svg"
-                xmlns:xlink: "http://www.w3.org/1999/xlink"
-                x: "0px"
-                y: "0px"
-                viewBox: "0 0 1000 1000"
-                enableBackground: "new 0 0 1000 1000"
-                id: 'down-arrow'
-                className: "#{'selected' if @state.selected}"
-                g
-                  path
-                    d: "M887.2,209.2L499.7,589.1L112.8,209.7L10,310.5l489.7,480.3L990,310L887.2,209.2z"
-              span className: "#{'selected' if @state.selected}", 'Username'
-          a
-            className: "option #{'selected-1' if @state.selected}"
-            'Profile'
-          a
-            className: "option #{'selected-2' if @state.selected}"
-            'Settings'
-          a
-            className: "option #{'selected-3' if @state.selected}"
-            onClick: @loadAdminSettings
-            'Admin'
-          a
-            className: "option #{'selected-4' if @state.selected}"
-            href: '../'
-            'Sign Out'
         # a
         #   className: 'chat-btn 1'
         #   onClick: (e) => @setActive e, 'login'
@@ -90,7 +52,8 @@ React = require 'react'
         #   # img
         #   #   className: 'chat-botler'
         #   #   src: @props.chatbot
-        div className: 'chat-header', 'Botler'
+        div className: 'chat-header',
+          React.createElement Logo, null
       React.createElement Bot,
         chatbot: @props.chatbot
         profile: @props.profile

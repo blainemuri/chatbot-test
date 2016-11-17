@@ -24,7 +24,7 @@ React = require 'react'
         alt: 'Botler'
       div className: 'message',
         div className: 'heading',
-          h3 {}, 'User'
+          h3 {}, 'Originator'
           span {}, @state.time
         p {}, @props.comment.body
 

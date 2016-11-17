@@ -110,7 +110,7 @@ React = require 'react'
         className: 'message'
         id: 'message'
         div className: 'heading',
-          h3 {}, 'Botler'
+          h3 {}, 'Originate Chatbot'
           span {}, @state.time
           div className: 'options',
             div
