@@ -16,8 +16,19 @@ React = require 'react'
     dateTime = hours + ':' + minutes + ' ' + ampm
     @setState time: dateTime
 
+  componentDidMount: ->
+    tl = new TimelineMax({repeat:-1, repeatDelay:.2})
+    tl.add('start')
+    if @props.loading
+      tl.to('#circle-1', .3, {transform: "translateY(5px)"}, 'start')
+        .to('#circle-2', .3, {transform: "translateY(5px)"}, 'start+=.15')
+        .to('#circle-3', .3, {transform: "translateY(5px)"}, 'start+=.3')
+        .to('#circle-1', .3, {transform: "translateY(0px)"}, 'start+=.6')
+        .to('#circle-2', .3, {transform: "translateY(0px)"}, 'start+=.75')
+        .to('#circle-3', .3, {transform: "translateY(0px)"}, 'start+=.9')
+
   render: ->
-    {div, img, p, h3, span} = React.DOM
+    {div, img, p, h3, span, svg, circle} = React.DOM
     div className: 'user-message',
       img
         src: @props.pic
@@ -27,5 +38,29 @@ React = require 'react'
           h3 {}, 'Originator'
           span {}, @state.time
         p {}, @props.comment.body
+      if @props.loading
+        svg
+          version: "1.1"
+          id: "Layer_1"
+          xmlns: "http://www.w3.org/2000/svg"
+          x: "0px"
+          y: "0px"
+          viewBox: "0 0 20 12"
+          className: 'loading-dots'
+          circle
+            id: 'circle-1'
+            cx: "3"
+            cy: "3"
+            r: "2"
+          circle
+            id: 'circle-2'
+            cx: "10"
+            cy: "3"
+            r: "2"
+          circle
+            id: 'circle-3'
+            cx: "17"
+            cy: "3"
+            r: "2"
 
 module.exports = @UserMessage

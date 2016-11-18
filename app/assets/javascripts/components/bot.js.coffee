@@ -87,11 +87,13 @@ React = require 'react'
             className: 'conversation'
             id: 'conv-scroll'
             for comment, id in @state.messages
+              last = (id == @state.messages.length-1 && comment.commentable_type == 'User')
               if comment.commentable_type == 'User'
                 React.createElement UserMessage,
                   comment: comment
                   pic: @props.profile
                   key: id
+                  loading: last
               else if comment.commentable_type == 'Bot'
                 if comment.context?
                   if JSON.parse(comment.context).gif
@@ -102,6 +104,7 @@ React = require 'react'
                       key: id
                       animate: id
                       gif: yes
+                      loading: no
                   else
                     React.createElement BotMessage,
                       pic: @props.chatbot
@@ -110,6 +113,7 @@ React = require 'react'
                       key: id
                       animate: id
                       gif: no
+                      loading: no
                 else
                   React.createElement BotMessage,
                     pic: @props.chatbot
@@ -118,6 +122,7 @@ React = require 'react'
                     key: id
                     animate: id
                     gif: no
+                    loading: no
             # iframe
             #   src: @state.url
             #   height: "200"

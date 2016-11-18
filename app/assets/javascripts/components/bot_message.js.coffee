@@ -79,7 +79,7 @@ Giphy = require('giphy-api')('dc6zaTOxFJmzC')
     )
 
   render: ->
-    {div, img, p, h3, span, svg, path, ellipse, line, g, iframe} = React.DOM
+    {div, img, p, h3, span, svg, path, ellipse, circle, line, g, iframe} = React.DOM
     div className: 'bot-message',
       svg
         id: "chat-bot"
