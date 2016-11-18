@@ -12,6 +12,8 @@ class ChatbotController < ApplicationController
   protect_from_forgery except: :adminBot
   skip_before_action :verify_authenticity_token, :only => :adminBot
 
+  $lightsOut = false
+
   def adminBot
     bot_name = params["botname"]
     bot_message = params["data"]["botMessage"]
@@ -47,10 +49,10 @@ class ChatbotController < ApplicationController
       # Check to see if the conversation intents decreased (create new conv.)
       # Or create a new one based off of time stamps (current implementation)
       elapsed_seconds = Time.now - Time.parse(conv.comments.last.created_at.to_s)
-      if (elapsed_seconds / 60) > 15
+      if (elapsed_seconds / 60) > 5
         # Greater than 5 minutes, create a new conversation
         newConv = Conversation.create(entity: "blarg", correct: 1)
-        botComment = bot.comments.create(:body => "Hi, I'm the Originate chatbot. I want to eventually be able to answer questions about the company, but for now I'm crowdsourcing the questions from users like you. Ask me anything about Originate!", :context => response["entities"], :correct => 1, conversation: newConv, :bot_id => bot.id)
+        botComment = bot.comments.create(:body => "Hi, I'm the Originate chatbot. I want to eventually be able to answer questions about the company, but for now I need each person to ask 5 questions they would want answered for his/her particular field of work.", :context => response["entities"], :correct => 1, conversation: newConv, :bot_id => bot.id)
         newConv
       else
         # Current conversation is still going
@@ -60,7 +62,7 @@ class ChatbotController < ApplicationController
     else
       # Return a new conversation
       newConv = Conversation.create(entity: "blarg", correct: 1)
-      botComment = bot.comments.create(:body => "Hi, I'm the Originate chatbot. I want to eventually be able to answer questions about the company, but for now I'm crowdsourcing the questions from users like you. Ask me anything about Originate!", :context => response["entities"], :correct => 1, conversation: newConv, :bot_id => bot.id)
+      botComment = bot.comments.create(:body => "Hi, I'm the Originate chatbot. I want to eventually be able to answer questions about the company, but for now I need each person to ask 5 questions they would want answered for his/her particular field of work.", :context => response["entities"], :correct => 1, conversation: newConv, :bot_id => bot.id)
       newConv
     end
   end
@@ -155,37 +157,70 @@ class ChatbotController < ApplicationController
     require 'wit'
     query = params[:query][:input][:text]
     # ask_watson(@query)
-    actions = {
-      send: -> (request, response) {
-        puts("sending... #{response['text']}")
-      }
-    }
-
     channel = '/bot'
-
-    access_token = 'KMCUKA6A2FY4BXHPULMG3ZVHBY55OEEN'
-    client = Wit.new(access_token: access_token, actions: actions)
 
     user = get_user_by_cookie()
     bot = Bot.find_by(name: 'originate-questions')
     # Grab the current conversation, or new if one doesn't exist
     conv = get_recent_conv(bot, user)
 
+    actions = {
+      send: -> (request, response) {
+        botComment = bot.comments.create(:body => response["text"], :context => response["entities"], :correct => 1, conversation: conv, :bot_id => bot.id)
+        data = {message: botComment}
+        broadcast(channel, data)
+        puts("sending... #{response['text']}")
+      },
+      getGif: -> (request) {
+        botComment = bot.comments.create(:body => '', :context => "{\"gif\": true}", :correct => 1, conversation: conv, :bot_id => bot.id)
+        data = {message: botComment}
+        broadcast(channel, data)
+        p request
+      },
+      lightsOut: -> (request) {
+        entity = request['entities']['yesno'][0]['value']
+        context = request['context']
+
+        lightChannel = '/lights'
+
+        if entity == 'Yes'
+          lightData = {lightsOut: true}
+          context['yes'] = true
+        else
+          lightData = {lightsOut: false}
+          context['no'] = true
+        end
+
+        broadcast(lightChannel, lightData)
+
+        #Return the context now
+        return context
+      }
+    }
+
+    access_token = 'KMCUKA6A2FY4BXHPULMG3ZVHBY55OEEN'
+    wit = Wit.new(access_token: access_token, actions: actions)
+
     userComment = user.comments.create(:body => query, :context => 'User Context', :correct => 1, conversation: conv, :bot_id => bot.id)
     data = {message: userComment}
     broadcast(channel, data)
 
-    response = client.converse(conv.id, query, {})
-    # Second time to actually grab the response. It waits for you to perform actions
-    # response = client.converse('user-session-1', query, {})
-    if response["msg"] == '' || response["msg"] == nil
-      # Couldn't find an entity, so the conversation ended. Start it again
-      response = client.converse(conv.id, query, {})
-    end
+    wit.run_actions(conv.id, query, {})
 
-    botComment = bot.comments.create(:body => response["msg"], :context => response["entities"], :correct => 1, conversation: conv, :bot_id => bot.id)
-    data = {message: botComment}
-    broadcast(channel, data)
+    # response = $wit.converse(conv.id, query, {})
+    # p 'RESPONSE'
+    # p '##################'
+    # p response
+    # # Second time to actually grab the response. It waits for you to perform actions
+    # # response = client.converse('user-session-1', query, {})
+    # if response["msg"] == '' || response["msg"] == nil
+    #   # Couldn't find an entity, so the conversation ended. Start it again
+    #   response = $wit.converse(conv.id, query, {})
+    # end
+    #
+    # botComment = bot.comments.create(:body => response["msg"], :context => response["entities"], :correct => 1, conversation: conv, :bot_id => bot.id)
+    # data = {message: botComment}
+    # broadcast(channel, data)
 
     render :bot
   end

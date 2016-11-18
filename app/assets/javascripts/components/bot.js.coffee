@@ -1,4 +1,5 @@
 React = require 'react'
+Giphy = require('giphy-api')('dc6zaTOxFJmzC')
 # CableMixin = require('action-cable-react').CableMixin
 # ChannelMixin = require('action-cable-react').ChannelMixin
 
@@ -7,6 +8,7 @@ React = require 'react'
     text: ""
     dark: no
     messages: []
+    url: ''
 
   handleSubmit: (e) ->
     e.preventDefault()
@@ -41,7 +43,9 @@ React = require 'react'
   componentWillUnmount: ->
     TweenMax.to('#horizontal-center', .05, {opacity: 0})
 
-  componentWillMount: -> @setState messages: @props.conversation
+  componentWillMount: ->
+    @getGiphyImage()
+    @setState messages: @props.conversation
 
   componentDidMount: ->
     conversation = document.getElementById 'conv-scroll'
@@ -67,8 +71,18 @@ React = require 'react'
       conversation.scrollTop = conversation.scrollHeight
       TweenLite.to('.message', .4, {transform: "translateY(0)", opacity: 1})
 
+  getGiphyImage: ->
+    url = ''
+    Giphy.search({
+      q: 'funny+cat',
+      rating: 'g'
+    }, (err, res) =>
+       url = res.data[Math.floor(Math.random() * 25)].embed_url.toString() + '?html5=true'
+       @setState url: url
+    )
+
   render: ->
-    {div, input, img, form} = React.DOM
+    {div, input, img, form, iframe} = React.DOM
     div className: "bot-chat-outer #{'dark-theme' unless !@state.dark}",
       div
         id: 'loading'
@@ -87,12 +101,27 @@ React = require 'react'
                   pic: @props.profile
                   key: id
               else if comment.commentable_type == 'Bot'
-                React.createElement BotMessage,
-                  pic: @props.chatbot
-                  comment: comment
-                  admin: no
-                  key: id
-                  animate: id
+                if comment.context?
+                  if JSON.parse(comment.context).gif
+                    iframe
+                      src: @state.url
+                      height: "200"
+                      frameBorder: "0"
+                      className: "giphy-embed"
+                      key: id
+                else
+                  React.createElement BotMessage,
+                    pic: @props.chatbot
+                    comment: comment
+                    admin: no
+                    key: id
+                    animate: id
+            # iframe
+            #   src: @state.url
+            #   height: "200"
+            #   frameBorder: "0"
+            #   className: "giphy-embed"
+            #   allowFullScreen: false
           div className: 'input',
             form
               id: 'chatbot'

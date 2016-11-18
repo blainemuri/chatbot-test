@@ -4,6 +4,7 @@ React = require 'react'
   getInitialState: ->
     active: 'bot'
     selected: no
+    lightsOut: no
 
   setActive: (e, link) ->
     e.preventDefault()
@@ -23,9 +24,14 @@ React = require 'react'
     # var win = window.open(url, '_blank');
     # win.focus();
 
+  componentDidMount: ->
+    client = new Faye.Client(window.location.protocol + "//" + window.location.host + "/faye")
+    client.subscribe '/lights', (data) =>
+      @setState lightsOut: data.lightsOut
+
   render: ->
     {div, img, a, span, svg, g, path} = React.DOM
-    div {},
+    div className: "#{'dark' if @state.lightsOut}",
       div
         id: 'chat-menu'
         # a
