@@ -193,7 +193,7 @@ class ChatbotController < ApplicationController
 
         broadcast(lightChannel, lightData)
 
-        #Return the context now
+        #Return the context so that it continues normally
         return context
       }
     }

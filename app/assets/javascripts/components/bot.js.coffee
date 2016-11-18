@@ -69,7 +69,8 @@ Giphy = require('giphy-api')('dc6zaTOxFJmzC')
       messages.push data.message
       @setState messages: messages
       conversation.scrollTop = conversation.scrollHeight
-      TweenLite.to('.message', .4, {transform: "translateY(0)", opacity: 1})
+      message = $('.message:last')
+      TweenLite.fromTo(message, .4, {zoom: '50%', opacity: 0, marginTop: 20}, {transform: "translateY(0)", opacity: 1, zoom: '100%', marginTop: 0})
 
   getGiphyImage: ->
     url = ''
