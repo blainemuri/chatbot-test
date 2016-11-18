@@ -1,9 +1,11 @@
 React = require 'react'
+Giphy = require('giphy-api')('dc6zaTOxFJmzC')
 
 @BotMessage = React.createClass
   getInitialState: ->
     bot: 'neutral'
     time: ""
+    url: ''
 
   componentWillMount: ->
     date = new Date(@props.comment.created_at)
@@ -16,6 +18,8 @@ React = require 'react'
 
     dateTime = hours + ':' + minutes + ' ' + ampm
     @setState time: dateTime
+
+    @getGiphyImage()
 
   componentDidMount: ->
     if @props.comment.correct == 0
@@ -64,8 +68,18 @@ React = require 'react'
     TweenLite.to("#mouth-#{@props.animate}", .3, {rotationX: 0, transformOrigin: "25% 25%"})
     TweenLite.to("#bowtie-#{@props.animate}", .3, {rotation: 0, transformOrigin: "100% 50%"})
 
+  getGiphyImage: ->
+    url = ''
+    Giphy.search({
+      q: 'funny+cat',
+      rating: 'g'
+    }, (err, res) =>
+       url = res.data[Math.floor(Math.random() * 25)].embed_url.toString() + '?html5=true'
+       @setState url: url
+    )
+
   render: ->
-    {div, img, p, h3, span, svg, path, ellipse, line, g} = React.DOM
+    {div, img, p, h3, span, svg, path, ellipse, line, g, iframe} = React.DOM
     div className: 'bot-message',
       svg
         id: "chat-bot"
@@ -115,5 +129,11 @@ React = require 'react'
         p {}, @props.comment.body
         if @props.intent
           span {}, @props.intent
+        if @props.gif
+          iframe
+            src: @state.url
+            height: "200"
+            frameBorder: "0"
+            className: "giphy-embed"
 
 module.exports = @BotMessage

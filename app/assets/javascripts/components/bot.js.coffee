@@ -1,5 +1,4 @@
 React = require 'react'
-Giphy = require('giphy-api')('dc6zaTOxFJmzC')
 # CableMixin = require('action-cable-react').CableMixin
 # ChannelMixin = require('action-cable-react').ChannelMixin
 
@@ -43,9 +42,7 @@ Giphy = require('giphy-api')('dc6zaTOxFJmzC')
   componentWillUnmount: ->
     TweenMax.to('#horizontal-center', .05, {opacity: 0})
 
-  componentWillMount: ->
-    @getGiphyImage()
-    @setState messages: @props.conversation
+  componentWillMount: -> @setState messages: @props.conversation
 
   componentDidMount: ->
     conversation = document.getElementById 'conv-scroll'
@@ -70,17 +67,11 @@ Giphy = require('giphy-api')('dc6zaTOxFJmzC')
       @setState messages: messages
       conversation.scrollTop = conversation.scrollHeight
       message = $('.message:last')
-      TweenLite.fromTo(message, .4, {zoom: '50%', opacity: 0, marginTop: 20}, {transform: "translateY(0)", opacity: 1, zoom: '100%', marginTop: 0})
-
-  getGiphyImage: ->
-    url = ''
-    Giphy.search({
-      q: 'funny+cat',
-      rating: 'g'
-    }, (err, res) =>
-       url = res.data[Math.floor(Math.random() * 25)].embed_url.toString() + '?html5=true'
-       @setState url: url
-    )
+      tl = new TimelineMax()
+      tl.add('start')
+      tl.fromTo(message, .25, {zoom: '50%', opacity: 0, marginTop: 20}, {transform: "translateY(0)", opacity: 1, zoom: '100%', marginTop: 0}, 'start')
+        .to(conversation, .25, {scrollTop: conversation.scrollHeight}, 'start')
+      # TweenLite.fromTo(message, .4, {zoom: '50%', opacity: 0, marginTop: 20}, {transform: "translateY(0)", opacity: 1, zoom: '100%', marginTop: 0})
 
   render: ->
     {div, input, img, form, iframe} = React.DOM
@@ -104,12 +95,21 @@ Giphy = require('giphy-api')('dc6zaTOxFJmzC')
               else if comment.commentable_type == 'Bot'
                 if comment.context?
                   if JSON.parse(comment.context).gif
-                    iframe
-                      src: @state.url
-                      height: "200"
-                      frameBorder: "0"
-                      className: "giphy-embed"
+                    React.createElement BotMessage,
+                      pic: @props.chatbot
+                      comment: comment
+                      admin: no
                       key: id
+                      animate: id
+                      gif: yes
+                  else
+                    React.createElement BotMessage,
+                      pic: @props.chatbot
+                      comment: comment
+                      admin: no
+                      key: id
+                      animate: id
+                      gif: no
                 else
                   React.createElement BotMessage,
                     pic: @props.chatbot
@@ -117,6 +117,7 @@ Giphy = require('giphy-api')('dc6zaTOxFJmzC')
                     admin: no
                     key: id
                     animate: id
+                    gif: no
             # iframe
             #   src: @state.url
             #   height: "200"

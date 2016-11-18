@@ -166,16 +166,21 @@ class ChatbotController < ApplicationController
 
     actions = {
       send: -> (request, response) {
-        botComment = bot.comments.create(:body => response["text"], :context => response["entities"], :correct => 1, conversation: conv, :bot_id => bot.id)
+        context = {}
+        if response['text'] == "I can't answer yet, but now I have a gift for you! Well, actually, it's a gif for you. :P"
+          context = "{\"gif\": true}"
+        end
+        botComment = bot.comments.create(:body => response["text"], :context => context, :correct => 1, conversation: conv, :bot_id => bot.id)
         data = {message: botComment}
         broadcast(channel, data)
         puts("sending... #{response['text']}")
       },
       getGif: -> (request) {
-        botComment = bot.comments.create(:body => '', :context => "{\"gif\": true}", :correct => 1, conversation: conv, :bot_id => bot.id)
-        data = {message: botComment}
-        broadcast(channel, data)
-        p request
+        # botComment = bot.comments.create(:body => '', :context => "{\"gif\": true}", :correct => 1, conversation: conv, :bot_id => bot.id)
+        # data = {message: botComment}
+        # broadcast(channel, data)
+        sleep(4)
+        return {}
       },
       lightsOut: -> (request) {
         entity = request['entities']['yesno'][0]['value']
@@ -183,6 +188,7 @@ class ChatbotController < ApplicationController
 
         lightChannel = '/lights'
 
+        #Broadcast the entity and context
         if entity == 'Yes'
           lightData = {lightsOut: true}
           context['yes'] = true
