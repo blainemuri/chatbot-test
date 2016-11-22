@@ -1,5 +1,13 @@
 @import 'mixins.styl'
 
+@media screen and (-webkit-min-device-pixel-ratio:0) {
+  select:focus,
+  textarea:focus,
+  input:focus {
+    font-size: space
+  }
+}
+
 .bot-chat-outer
   width: 100%
   height: "calc(100% - %s)" % nav-height
@@ -36,6 +44,7 @@
 
           input
             width: 100%
+            font-size: space
             background-color: transparent
 
 // @import 'params.styl'
