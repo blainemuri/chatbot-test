@@ -31,7 +31,7 @@ React = require 'react'
 
   render: ->
     {div, img, a, span, svg, g, path} = React.DOM
-    div className: "#{'dark' if @state.lightsOut}",
+    div className: "main #{'dark' if @state.lightsOut}",
       div
         id: 'chat-menu'
         # a
@@ -59,7 +59,7 @@ React = require 'react'
         #   #   className: 'chat-botler'
         #   #   src: @props.chatbot
         div className: 'chat-header',
-          React.createElement Logo, null
+          React.createElement Butler, null
       React.createElement Bot,
         chatbot: @props.chatbot
         profile: @props.profile

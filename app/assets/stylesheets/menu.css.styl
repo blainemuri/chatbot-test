@@ -1,206 +1,223 @@
-@import 'params.styl'
-
-.dark
-  filter: invert(100%)
-  -webkit-filter: invert(100%)
+@import 'mixins.styl'
 
 #chat-menu
-  width 100%
-  position fixed
-  top 0
-  left 0
-  height nav-height
-  background-color white
-  color black
-  border-bottom 1px solid grey-light
-  box-sizing border-box
-  line-height nav-height
-  font-size header-font
-  font-family MillerDisplay
-  padding 0 main-padding
-  z-index 1
+  width: 100%
+  height: nav-height
+  float: left
+  border-bottom: 1px solid medium-grey
+  text-align: center
 
-  .blur
-    z-index -1
-    width 100%
-    height 100%
-    position absolute
-    opacity .9
-    background-color white
+  #bot-logo-svg
+    height: nav-height*.6
+    position: absolute
+    left: 50%
+    top: 50%
+    transform: translateX(-50%)
+    margin-top: nav-height*.1
 
-  .time
-    position absolute
-    left 50%
-    transform translateX(-50%)
-    font-size space-small
-    color grey-middle
-    font-family CircularPro-Book
-
-  .profile
-    width space*13
-    line-height nav-height
-    height nav-height
-    box-sizing border-box
-    transition border .3s ease-in-out
-    position absolute
-    right main-padding
-    z-index 1
-    transition all .3s ease-in-out
-    &.selected
-      box-shadow 0px 2px 10px 0px rgba(0, 0, 0, 0.15)
-
-    .profile-options
-      width space*13
-      height nav-height
-      box-sizing border-box
-      cursor pointer
-      transition border .3s ease-in-out
-      transition all .3s ease-in-out
-      &.selected
-        background-color rgba(256, 256, 256, 0.6)
-
-      .right
-        float right
-        width space*9
-        height "calc(%s - 2px)" % nav-height
-        cursor pointer
-        // background-color rgba(256, 256, 256, .9)
-
-        span
-          font-size space-small
-          color grey-middle
-          float right
-          font-family CircularPro-Book
-          transition color .3s ease-in-out
-          letter-spacing -0px
-          padding-right space*.5
-          &.selected
-            color pale-turqoise
-
-        #down-arrow
-          float right
-          height space
-          width space*1.5
-          margin-top space*1.5
-          fill grey-middle
-          transition all .3s ease-in-out
-          margin-right space
-          &.selected
-            fill pale-turqoise
-            transform rotate(180deg)
-
-    .option
-      position absolute
-      top 0
-      left 0
-      width space*13
-      line-height nav-height*.75
-      background-color rgba(256, 256, 256, .9)
-      font-family CircularPro-Book
-      font-size space-small
-      color black
-      text-align right
-      padding-right space*3
-      box-sizing border-box
-      cursor pointer
-      z-index -1
-      transition all .3s ease-in-out
-      opacity 0
-      &.selected-1
-        top "calc(%s - 1px)" % nav-height
-        box-shadow 0px 5px 10px 0px rgba(0, 0, 0, 0.15)
-        opacity 1
-      &.selected-2
-        top "calc(%s + ((%s * .75) * 1) - 1px)" % (nav-height nav-height)
-        box-shadow 0px 7px 10px 0px rgba(0, 0, 0, 0.15)
-        opacity 1
-      &.selected-3
-        top "calc(%s + ((%s * .75) * 2) - 1px)" % (nav-height nav-height)
-        box-shadow 0px 7px 10px 0px rgba(0, 0, 0, 0.15)
-        opacity 1
-      &.selected-4
-        top "calc(%s + ((%s * .75) * 3) - 1px)" % (nav-height nav-height)
-        box-shadow 0px 7px 10px 0px rgba(0, 0, 0, 0.15)
-        opacity 1
-      &:hover
-        color pale-turqoise
-
-    img
-      float left
-      width space*2
-      height space*2
-      border-radius space
-      margin-top space
-      margin-left space
-
-  .admin-options
-    float right
-    margin-right space*14
-
-    .chat-btn
-      width space*8
-      height nav-height
-      float right
-      line-height nav-height
-      text-align center
-      box-sizing border-box
-      cursor pointer
-      transition background-color .2s ease-in-out
-      color grey-middle
-      font-family CircularPro-Book
-      font-size 13px
-      &.active
-        color pale-turqoise
-      &:hover
-        color pale-turqoise
-
-    input
-      text-align center
-    // &:nth-child(4)
-    //   background-color pastel-blue-1
-    // &:nth-child(3)
-    //   background-color pastel-blue-2
-    // &:nth-child(2)
-    //   background-color pastel-blue-3
-    // &:nth-child(1)
-    //   background-color pastel-blue-4
-
-  .chat-logo
-    float left
-    width space*15
-    height nav-height
-
-    .chat-botler
-      width nav-height
-      height nav-height
-      float left
-
-  .chat-header
-    position absolute
-    left 50%
-    transform translateX(-50%)
-    height: nav-height
-
-    #Logo
-      height: 65%
-      margin-top: 8.75%
-
-svg.profile
-  width profile-size*2
-  height profile-size*2
-  border-radius profile-size
-  margin 0
-  padding 0
-
-  .cls-1
-    fill white
-
-  .cls-2
-    fill none
-    stroke black
-    stroke-width 0.44px
-
-.admin-container
-  #chat-menu
-    background-color black
-    color white
+// @import 'params.styl'
+//
+// .dark
+//   filter: invert(100%)
+//   -webkit-filter: invert(100%)
+//
+// #chat-menu
+//   width 100%
+//   position fixed
+//   top 0
+//   left 0
+//   height nav-height
+//   background-color white
+//   color black
+//   border-bottom 1px solid grey-light
+//   box-sizing border-box
+//   line-height nav-height
+//   font-size header-font
+//   font-family MillerDisplay
+//   padding 0 main-padding
+//   z-index 1
+//
+//   .blur
+//     z-index -1
+//     width 100%
+//     height 100%
+//     position absolute
+//     opacity .9
+//     background-color white
+//
+//   .time
+//     position absolute
+//     left 50%
+//     transform translateX(-50%)
+//     font-size space-small
+//     color grey-middle
+//     font-family CircularPro-Book
+//
+//   .profile
+//     width space*13
+//     line-height nav-height
+//     height nav-height
+//     box-sizing border-box
+//     transition border .3s ease-in-out
+//     position absolute
+//     right main-padding
+//     z-index 1
+//     transition all .3s ease-in-out
+//     &.selected
+//       box-shadow 0px 2px 10px 0px rgba(0, 0, 0, 0.15)
+//
+//     .profile-options
+//       width space*13
+//       height nav-height
+//       box-sizing border-box
+//       cursor pointer
+//       transition border .3s ease-in-out
+//       transition all .3s ease-in-out
+//       &.selected
+//         background-color rgba(256, 256, 256, 0.6)
+//
+//       .right
+//         float right
+//         width space*9
+//         height "calc(%s - 2px)" % nav-height
+//         cursor pointer
+//         // background-color rgba(256, 256, 256, .9)
+//
+//         span
+//           font-size space-small
+//           color grey-middle
+//           float right
+//           font-family CircularPro-Book
+//           transition color .3s ease-in-out
+//           letter-spacing -0px
+//           padding-right space*.5
+//           &.selected
+//             color pale-turqoise
+//
+//         #down-arrow
+//           float right
+//           height space
+//           width space*1.5
+//           margin-top space*1.5
+//           fill grey-middle
+//           transition all .3s ease-in-out
+//           margin-right space
+//           &.selected
+//             fill pale-turqoise
+//             transform rotate(180deg)
+//
+//     .option
+//       position absolute
+//       top 0
+//       left 0
+//       width space*13
+//       line-height nav-height*.75
+//       background-color rgba(256, 256, 256, .9)
+//       font-family CircularPro-Book
+//       font-size space-small
+//       color black
+//       text-align right
+//       padding-right space*3
+//       box-sizing border-box
+//       cursor pointer
+//       z-index -1
+//       transition all .3s ease-in-out
+//       opacity 0
+//       &.selected-1
+//         top "calc(%s - 1px)" % nav-height
+//         box-shadow 0px 5px 10px 0px rgba(0, 0, 0, 0.15)
+//         opacity 1
+//       &.selected-2
+//         top "calc(%s + ((%s * .75) * 1) - 1px)" % (nav-height nav-height)
+//         box-shadow 0px 7px 10px 0px rgba(0, 0, 0, 0.15)
+//         opacity 1
+//       &.selected-3
+//         top "calc(%s + ((%s * .75) * 2) - 1px)" % (nav-height nav-height)
+//         box-shadow 0px 7px 10px 0px rgba(0, 0, 0, 0.15)
+//         opacity 1
+//       &.selected-4
+//         top "calc(%s + ((%s * .75) * 3) - 1px)" % (nav-height nav-height)
+//         box-shadow 0px 7px 10px 0px rgba(0, 0, 0, 0.15)
+//         opacity 1
+//       &:hover
+//         color pale-turqoise
+//
+//     img
+//       float left
+//       width space*2
+//       height space*2
+//       border-radius space
+//       margin-top space
+//       margin-left space
+//
+//   .admin-options
+//     float right
+//     margin-right space*14
+//
+//     .chat-btn
+//       width space*8
+//       height nav-height
+//       float right
+//       line-height nav-height
+//       text-align center
+//       box-sizing border-box
+//       cursor pointer
+//       transition background-color .2s ease-in-out
+//       color grey-middle
+//       font-family CircularPro-Book
+//       font-size 13px
+//       &.active
+//         color pale-turqoise
+//       &:hover
+//         color pale-turqoise
+//
+//     input
+//       text-align center
+//     // &:nth-child(4)
+//     //   background-color pastel-blue-1
+//     // &:nth-child(3)
+//     //   background-color pastel-blue-2
+//     // &:nth-child(2)
+//     //   background-color pastel-blue-3
+//     // &:nth-child(1)
+//     //   background-color pastel-blue-4
+//
+//   .chat-logo
+//     float left
+//     width space*15
+//     height nav-height
+//
+//     .chat-botler
+//       width nav-height
+//       height nav-height
+//       float left
+//
+//   .chat-header
+//     position absolute
+//     left 50%
+//     transform translateX(-50%)
+//     height: nav-height
+//
+//     #Logo
+//       height: 65%
+//       margin-top: 8.75%
+//
+// svg.profile
+//   width profile-size*2
+//   height profile-size*2
+//   border-radius profile-size
+//   margin 0
+//   padding 0
+//
+//   .cls-1
+//     fill white
+//
+//   .cls-2
+//     fill none
+//     stroke black
+//     stroke-width 0.44px
+//
+// .admin-container
+//   #chat-menu
+//     background-color black
+//     color white

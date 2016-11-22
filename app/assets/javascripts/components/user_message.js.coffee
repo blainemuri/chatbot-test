@@ -30,9 +30,6 @@ React = require 'react'
   render: ->
     {div, img, p, h3, span, svg, circle} = React.DOM
     div className: 'user-message',
-      img
-        src: @props.pic
-        alt: 'Botler'
       div className: 'message',
         div className: 'heading',
           h3 {}, 'Originator'

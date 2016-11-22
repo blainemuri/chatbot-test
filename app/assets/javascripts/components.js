@@ -5,6 +5,7 @@ window.Botler = require('./components/botler');
 window.BotMenu = require('./components/bot_menu');
 window.BotMessage = require('./components/bot_message');
 window.BotOption = require('./components/bot_option');
+window.Butler = require('./components/butler');
 window.Chatbot = require('./components/chatbot');
 window.ChatLog = require('./components/chat_log');
 window.ChatLogin = require('./components/chat_login');

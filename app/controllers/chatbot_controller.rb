@@ -234,6 +234,8 @@ class ChatbotController < ApplicationController
         context = request['context']
         contact = getLastEntity(request, 'finish')
 
+        context = {}
+
         context['numMessages'] = 8
 
         return context
