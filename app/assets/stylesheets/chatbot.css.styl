@@ -5,6 +5,39 @@
   height: "calc(100% - %s)" % nav-height
   float: left
 
+  #horizontal-center
+    responsiveWidth()
+    position: absolute
+    left: 50%
+    transform: translateX(-50%)
+    height: 100%
+
+    .chat-container
+      width: 100%
+      height: 100%
+      float: left
+
+      .conversation
+        width: 100%
+        float: left
+        height: "calc(100% - %s)" % input-height
+
+      .input
+        width: 100%
+        float: left
+        height: input-height
+        border-top: 1px solid medium-grey
+
+        form
+          width: 100%
+          position: absolute
+          top: 50%
+          transform: translateY(-50%)
+
+          input
+            width: 100%
+            background-color: transparent
+
 // @import 'params.styl'
 //
 // log-width = space*18

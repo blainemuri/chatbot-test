@@ -13,6 +13,7 @@ title-width = nav-height*3
 profile-size = space*2
 log-width = space*18
 log-height = space*22
+input-height = space*8
 
 // Default Colors
 light-grey = #f5f5f5
@@ -55,3 +56,8 @@ body
   padding: 0
   margin: 0
   background-color: light-grey
+
+responsiveWidth()
+  width: 960px
+  @media screen and (max-width: 960px)
+    width: 100%
