@@ -1,6 +1,7 @@
 window.AdminMenu = require('./components/admin_menu');
 window.Bot = require('./components/bot');
 window.Botler = require('./components/botler');
+// window.BotLogo = require('./components/bot_logo');
 window.BotMenu = require('./components/bot_menu');
 window.BotMessage = require('./components/bot_message');
 window.BotOption = require('./components/bot_option');

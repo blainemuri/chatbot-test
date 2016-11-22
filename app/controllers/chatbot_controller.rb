@@ -49,10 +49,11 @@ class ChatbotController < ApplicationController
       # Check to see if the conversation intents decreased (create new conv.)
       # Or create a new one based off of time stamps (current implementation)
       elapsed_seconds = Time.now - Time.parse(conv.comments.last.created_at.to_s)
-      if (elapsed_seconds / 60) > 5
+      if (elapsed_seconds / 60) > 1
         # Greater than 5 minutes, create a new conversation
         newConv = Conversation.create(entity: "blarg", correct: 1)
-        botComment = bot.comments.create(:body => "Hi, I'm the Originate chatbot. I want to eventually be able to answer questions about the company, but for now I need each person to ask 5 questions they would want answered for his/her particular field of work.", :context => response["entities"], :correct => 1, conversation: newConv, :bot_id => bot.id)
+        bot.comments.create(:body => "Hi there, I'm the Originate Bot. I came online 2 days ago so right now everything about me is new. But I'm learning every day to become a useful member of the team! Sort of like that movie Her, but with not so many moustaches...", :context => response["entities"], :correct => 1, conversation: newConv, :bot_id => bot.id)
+        bot.comments.create(:body => "Let's get to know each other. What's your name?", :context => response["entities"], :correct => 1, conversation: newConv, :bot_id => bot.id)
         newConv
       else
         # Current conversation is still going
@@ -62,7 +63,8 @@ class ChatbotController < ApplicationController
     else
       # Return a new conversation
       newConv = Conversation.create(entity: "blarg", correct: 1)
-      botComment = bot.comments.create(:body => "Hi, I'm the Originate chatbot. I want to eventually be able to answer questions about the company, but for now I need each person to ask 5 questions they would want answered for his/her particular field of work.", :context => response["entities"], :correct => 1, conversation: newConv, :bot_id => bot.id)
+      bot.comments.create(:body => "Hi there, I'm the Originate Bot. I came online 2 days ago so right now everything about me is new. But I'm learning every day to become a useful member of the team! Sort of like that movie Her, but with not so many moustaches...", :context => response["entities"], :correct => 1, conversation: newConv, :bot_id => bot.id)
+      bot.comments.create(:body => "Let's get to know each other. What's your name?", :context => response["entities"], :correct => 1, conversation: newConv, :bot_id => bot.id)
       newConv
     end
   end
@@ -167,9 +169,9 @@ class ChatbotController < ApplicationController
     actions = {
       send: -> (request, response) {
         context = {}
-        if response['text'] == "I can't answer yet, but now I have a gift for you! Well, actually, it's a gif for you. :P"
-          context = "{\"gif\": true}"
-        end
+        # if response['text'] == "I can't answer yet, but now I have a gift for you! Well, actually, it's a gif for you. :P"
+        #   context = "{\"gif\": true}"
+        # end
         botComment = bot.comments.create(:body => response["text"], :context => context, :correct => 1, conversation: conv, :bot_id => bot.id)
         data = {message: botComment}
         broadcast(channel, data)
@@ -201,17 +203,53 @@ class ChatbotController < ApplicationController
 
         #Return the context so that it continues normally
         return context
+      },
+      getName: -> (request) {
+        context = request['context']
+        contact = getLastEntity(request, 'contact')
+
+        context['name'] = contact
+        return context
+      },
+      checkName: -> (request) {
+        context = request['context']
+        contact = getLastEntity(request, 'contact')
+
+        bot_name = BotName.find_by(name: contact)
+
+        if bot_name.present?
+          name_count = bot_name.count
+          bot_name.update_attribute(:count, name_count+1)
+
+          context['oldName'] = contact
+        else
+          BotName.create(name: contact, count: 1)
+
+          context['newName'] = contact
+        end
+
+        return context
+      },
+      getMessageCount: -> (request) {
+        context = request['context']
+        contact = getLastEntity(request, 'finish')
+
+        context['numMessages'] = 8
+
+        return context
       }
     }
 
-    access_token = 'KMCUKA6A2FY4BXHPULMG3ZVHBY55OEEN'
+    access_token = '6Z74Y7HOXKI6YFLNQSBL25KAWDSNZGLJ'
     wit = Wit.new(access_token: access_token, actions: actions)
 
     userComment = user.comments.create(:body => query, :context => 'User Context', :correct => 1, conversation: conv, :bot_id => bot.id)
     data = {message: userComment}
     broadcast(channel, data)
 
-    wit.run_actions(conv.id, query, {})
+    max_steps = 8
+
+    wit.run_actions(conv.id, query, {}, max_steps)
 
     # response = $wit.converse(conv.id, query, {})
     # p 'RESPONSE'
@@ -392,13 +430,17 @@ class ChatbotController < ApplicationController
 
   def get_bot_user_convs(bot, user)
     query = "SELECT DISTINCT \"conversations\".* FROM \"conversations\" INNER JOIN \"comments\" c1 ON c1.\"conversation_id\" = \"conversations\".\"id\" INNER JOIN \"comments\" c2 ON c2.\"conversation_id\" = \"conversations\".\"id\" WHERE (c1.commentable_id = #{user.id} AND c1.commentable_type = 'User') AND (c2.commentable_id = #{bot.id} AND c2.commentable_type = 'Bot') AND (\"conversations\".\"end\" IS NULL) ORDER BY id ASC"
-    conv = Conversation.find_by_sql(query)
+    Conversation.find_by_sql(query)
   end
 
   def broadcast(channel, data)
     base_url = request ? request.base_url : "http://localhost:3000"
     client = Faye::Client.new("#{base_url}/faye")
     client.publish(channel, data)
+  end
+
+  def getLastEntity(request, value)
+    request['entities'][value][0]['value']
   end
 
 end

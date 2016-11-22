@@ -10,10 +10,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161014194518) do
+ActiveRecord::Schema.define(version: 20161122184916) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "bot_names", force: :cascade do |t|
+    t.string   "name"
+    t.integer  "count"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "bots", force: :cascade do |t|
     t.text     "trainingData"
@@ -55,6 +62,11 @@ ActiveRecord::Schema.define(version: 20161014194518) do
   create_table "intents", force: :cascade do |t|
     t.string   "name"
     t.text     "examples"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "user_questions", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
