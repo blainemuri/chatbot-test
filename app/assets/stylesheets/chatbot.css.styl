@@ -13,39 +13,75 @@
   height: "calc(100% - %s)" % nav-height
   float: left
 
+  #bottom-input
+    width: 100%
+    float: left
+    height: input-height
+    position: relative
+
+    .input
+      width: 100%
+      float: left
+      height: input-height
+      border-top: 1px solid medium-grey
+
+      form
+        responsiveWidth()
+        position: absolute
+        left: 50%
+        top: 50%
+        transform: translateY(-50%) translateX(-50%)
+
+        input
+          width: 100%
+          font-size: space*1.2
+          background-color: transparent
+          border-bottom: 2px solid turqoise
+
   #horizontal-center
-    responsiveWidth()
-    position: absolute
-    left: 50%
-    transform: translateX(-50%)
-    height: 100%
+    overflow-y: auto
+    overflow-x: hidden
+    position: relative
+    width: 100%
+    float: left
+    height: "calc(100% - %s)" % input-height
 
     .chat-container
-      width: 100%
+      responsiveWidth()
+      position: absolute
+      left: 50%
+      transform: translateX(-50%)
       height: 100%
-      float: left
 
       .conversation
         width: 100%
         float: left
-        height: "calc(100% - %s)" % input-height
 
-      .input
-        width: 100%
-        float: left
-        height: input-height
-        border-top: 1px solid medium-grey
-
-        form
+        .user-message, .bot-message
+          position: relative
+          float: left
           width: 100%
-          position: absolute
-          top: 50%
-          transform: translateY(-50%)
+          padding: space*.5 0
 
-          input
-            width: 100%
-            font-size: space*2
-            background-color: transparent
+          .message
+            float: left
+            margin-left: space
+            max-width: 80%
+            box-sizing: border-box
+            background-color: white
+            min-height: space*2
+            border-radius: 10px 10px 10px 3px
+            padding: space*1.5
+            transform: translateY(20px)
+            opacity: 0
+
+            p
+              padding: 0
+              margin: 0
+
+        .user-message
+          .message
+            float: right
 
 // @import 'params.styl'
 //

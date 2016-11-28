@@ -84,17 +84,17 @@ Giphy = require('giphy-api')('dc6zaTOxFJmzC')
       div
         className: 'message'
         id: 'message'
-        div className: 'heading',
-          h3 {}, 'Originate Chatbot'
-          span {}, @state.time
+        # div className: 'heading',
+        #   h3 {}, 'Originate Chatbot'
+        #   span {}, @state.time
         p {}, @props.comment.body
-        if @props.intent
-          span {}, @props.intent
-        if @props.gif
-          iframe
-            src: @state.url
-            height: "200"
-            frameBorder: "0"
-            className: "giphy-embed"
+        # if @props.intent
+        #   span {}, @props.intent
+        # if @props.gif
+        #   iframe
+        #     src: @state.url
+        #     height: "200"
+        #     frameBorder: "0"
+        #     className: "giphy-embed"
 
 module.exports = @BotMessage

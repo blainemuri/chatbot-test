@@ -31,9 +31,9 @@ React = require 'react'
     {div, img, p, h3, span, svg, circle} = React.DOM
     div className: 'user-message',
       div className: 'message',
-        div className: 'heading',
-          h3 {}, 'Originator'
-          span {}, @state.time
+        # div className: 'heading',
+        #   h3 {}, 'Originator'
+        #   span {}, @state.time
         p {}, @props.comment.body
       if @props.loading
         svg

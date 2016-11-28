@@ -45,9 +45,8 @@ React = require 'react'
   componentWillMount: -> @setState messages: @props.conversation
 
   componentDidMount: ->
-    conversation = document.getElementById 'conv-scroll'
-    conversation.scrollTop = conversation.scrollHeight
     chat = document.getElementById 'horizontal-center'
+    chat.scrollTop = chat.scrollHeight
     message = document.getElementById 'message'
     tl = new TimelineMax()
     tl.add('start')
@@ -65,12 +64,12 @@ React = require 'react'
       messages = @state.messages
       messages.push data.message
       @setState messages: messages
-      conversation.scrollTop = conversation.scrollHeight
+      chat.scrollTop = chat.scrollHeight
       message = $('.message:last')
       tl = new TimelineMax()
       tl.add('start')
       tl.fromTo(message, .25, {zoom: '50%', opacity: 0, marginTop: 20}, {transform: "translateY(0)", opacity: 1, zoom: '100%', marginTop: 0}, 'start')
-        .to(conversation, .25, {scrollTop: conversation.scrollHeight}, 'start')
+        .to(chat, .25, {scrollTop: chat.scrollHeight}, 'start')
       # TweenLite.fromTo(message, .4, {zoom: '50%', opacity: 0, marginTop: 20}, {transform: "translateY(0)", opacity: 1, zoom: '100%', marginTop: 0})
 
   render: ->
@@ -81,7 +80,7 @@ React = require 'react'
       div
         id: 'loading2'
       div
-        id: 'horizontal-center',
+        id: 'horizontal-center'
         div className: 'chat-container',
           div
             className: 'conversation'
@@ -129,16 +128,18 @@ React = require 'react'
             #   frameBorder: "0"
             #   className: "giphy-embed"
             #   allowFullScreen: false
-          div className: 'input',
-            form
-              id: 'chatbot'
-              onSubmit: @handleSubmit
-              input
-                type: 'text'
-                name: 'botquery'
-                id: 'bot-query'
-                placeholder: 'Ask a question...'
-                onChange: @handleChange
-                value: @state.text
+      div
+        id: 'bottom-input',
+        div className: 'input',
+          form
+            id: 'chatbot'
+            onSubmit: @handleSubmit
+            input
+              type: 'text'
+              name: 'botquery'
+              id: 'bot-query'
+              placeholder: 'Type your message here...'
+              onChange: @handleChange
+              value: @state.text
 
 module.exports = @Bot
