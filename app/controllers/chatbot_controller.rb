@@ -277,9 +277,10 @@ class ChatbotController < ApplicationController
     bot = Bot.find_by(name: 'originate-questions')
     conv = get_recent_conv(bot, user)
     @numConvs = Conversation.count
-    sql = "SELECT count(*) AS num_comments FROM comments WHERE (commentable_type = 'User')"
+    # sql = "SELECT count(*) AS num_comments FROM comments WHERE (commentable_type = 'User')"
     # @answered = Comment.find_by_sql(sql)
-    # p @answered
+    @answered = Comment.where(commentable_type: 'User').count
+    p @answered
     @conversation = conv.comments
   end
 

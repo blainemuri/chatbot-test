@@ -1,5 +1,13 @@
 @import 'mixins.styl'
 
+.main
+  position: fixed
+  top: 0
+  right: 0
+  transition: right .25s ease-out
+  &.show-menu
+    right: menu-width
+
 .bot-submit
   width: space*8
   height: space*3
@@ -41,12 +49,15 @@
   width: menu-width
   max-width: 100%
   position: fixed
-  right: 0
+  right: - menu-width
   top: 0
   height: 100%
   background-color: white
   z-index: 100
   overflow-y: auto
+  transition: right .25s ease-out
+  &.show
+    right: 0
 
   svg
     width: 25%

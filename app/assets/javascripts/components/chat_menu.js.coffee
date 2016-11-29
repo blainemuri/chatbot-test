@@ -34,7 +34,7 @@ React = require 'react'
 
   render: ->
     {div, img, a, span, svg, g, path, textarea, form, button, input} = React.DOM
-    div className: "main #{'dark' if @state.lightsOut}",
+    div className: "main #{'dark' if @state.lightsOut} #{'show-menu' if @state.showMenu}",
       div
         id: 'chat-menu'
         # a
@@ -67,7 +67,9 @@ React = require 'react'
             className: 'more'
             onClick: @toggleMenu
             'i'
-      div id: 'right-menu',
+      div
+        id: 'right-menu'
+        className: "#{'show' if @state.showMenu}"
         div
           className: 'close'
           onClick: @toggleMenu
