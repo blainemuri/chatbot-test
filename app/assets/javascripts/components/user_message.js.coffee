@@ -20,12 +20,12 @@ React = require 'react'
     tl = new TimelineMax({repeat:-1, repeatDelay:.2})
     tl.add('start')
     if @props.loading
-      tl.to('#circle-1', .3, {transform: "translateY(5px)"}, 'start')
-        .to('#circle-2', .3, {transform: "translateY(5px)"}, 'start+=.15')
-        .to('#circle-3', .3, {transform: "translateY(5px)"}, 'start+=.3')
-        .to('#circle-1', .3, {transform: "translateY(0px)"}, 'start+=.6')
-        .to('#circle-2', .3, {transform: "translateY(0px)"}, 'start+=.75')
-        .to('#circle-3', .3, {transform: "translateY(0px)"}, 'start+=.9')
+      tl.to('#circle-1', .3, {fill: '#dbfcf4'}, 'start')
+        .to('#circle-2', .3, {fill: '#dbfcf4'}, 'start+=.15')
+        .to('#circle-3', .3, {fill: '#dbfcf4'}, 'start+=.3')
+        .to('#circle-1', .3, {fill: '#27eab2'}, 'start+=.6')
+        .to('#circle-2', .3, {fill: '#27eab2'}, 'start+=.75')
+        .to('#circle-3', .3, {fill: '#27eab2'}, 'start+=.9')
 
   render: ->
     {div, img, p, h3, span, svg, circle} = React.DOM
@@ -47,17 +47,17 @@ React = require 'react'
           circle
             id: 'circle-1'
             cx: "3"
-            cy: "3"
+            cy: "6"
             r: "2"
           circle
             id: 'circle-2'
             cx: "10"
-            cy: "3"
+            cy: "6"
             r: "2"
           circle
             id: 'circle-3'
             cx: "17"
-            cy: "3"
+            cy: "6"
             r: "2"
 
 module.exports = @UserMessage

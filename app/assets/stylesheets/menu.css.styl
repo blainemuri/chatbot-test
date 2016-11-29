@@ -1,5 +1,14 @@
 @import 'mixins.styl'
 
+.bot-submit
+  width: space*8
+  height: space*3
+  color: white
+  background-color: turqoise
+  border: none
+  margin: space 0
+  float: right
+
 #chat-menu
   width: 100%
   height: nav-height
@@ -14,6 +23,100 @@
     top: 50%
     transform: translateX(-50%)
     margin-top: nav-height*.1
+
+  .more
+    width: space*1.5
+    height: space*1.5
+    background-color: turqoise
+    color: white
+    border-radius: space
+    line-height: space*1.5
+    position: absolute
+    top: "calc(%s - %s)" % (nav-height*.5 space*.75)
+    right: 0
+    margin-right: space*2
+    cursor: pointer
+
+#right-menu
+  width: menu-width
+  max-width: 100%
+  position: fixed
+  right: 0
+  top: 0
+  height: 100%
+  background-color: white
+  z-index: 100
+  overflow-y: auto
+
+  svg
+    width: 25%
+    margin-top: nav-height*.75
+    left: 50%
+    transform: translateX(-50%)
+
+  .close
+    width: space*1.5
+    height: space*1.5
+    line-height: space*1.1
+    position: absolute
+    top: "calc(%s - %s)" % (nav-height*.5 space*.75)
+    right: 0
+    margin-right: space*2
+    cursor: pointer
+    border: 2px solid turqoise
+    border-radius: space*.75
+    color: turqoise
+    text-align: center
+
+  .analytics
+    width: 100%
+    padding: 0 space*2
+    float: left
+
+    .title, .analytic
+      width: 100%
+      height: space*3.5
+      line-height: space*3.5
+      border-bottom: 1px solid medium-grey
+      font-size: space*.8
+
+    .analytic
+      height: space*3
+      line-height: space*3
+      font-weight: normal
+
+      span
+        float: left
+
+      div
+        float: right
+
+    .user-feedback
+      margin-top: space*2
+      width: 100%
+      float: left
+
+      .title
+        font-size: space*.8
+
+      textarea
+        width: 100%
+        height: nav-height*1.5
+        resize: none
+        border: 1px solid medium-grey
+
+    .user-email
+      margin-top: space*2
+      width: 100%
+      float: left
+
+      input
+        width: 100%
+        font-size: space*.8
+        border-bottom: 1px solid turqoise
+        &:focus
+          font-size: space*.8
+
 
 // @import 'params.styl'
 //
