@@ -16,15 +16,14 @@ React = require 'react'
     context = {}
     if last?
       if last.commentable_type == "Bot"
-        context = {} # JSON.parse(last.context).context
+        context = JSON.parse(last.context).context
     $.ajax
       url: '/bot'
       data: {
               'query': {
                 'input': {
                   'text': @state.text
-                },
-                'context': context
+                }
               }
             }
       method: 'POST'
@@ -32,7 +31,7 @@ React = require 'react'
       @setState text: ""
       @forceUpdate()
     .fail ->
-      alert 'Error sending message!'
+      alert 'Message failed to send!'
     @setState text: ''
 
   handleChange: (e) -> @setState text: e.target.value

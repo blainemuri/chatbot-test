@@ -52,8 +52,8 @@ class ChatbotController < ApplicationController
       if (elapsed_seconds / 60) > 1
         # Greater than 5 minutes, create a new conversation
         newConv = Conversation.create(entity: "blarg", correct: 1)
-        bot.comments.create(:body => "Hi there, I'm the Originate Bot. I came online 2 days ago so right now everything about me is new. But I'm learning every day to become a useful member of the team! Sort of like that movie Her, but with not so many moustaches...", :context => response["entities"], :correct => 1, conversation: newConv, :bot_id => bot.id)
-        bot.comments.create(:body => "Let's get to know each other. What's your name?", :context => response["entities"], :correct => 1, conversation: newConv, :bot_id => bot.id)
+        # bot.comments.create(:body => "Hi there, I'm the Originate Bot. I came online 2 days ago so right now everything about me is new. But I'm learning every day to become a useful member of the team! Sort of like that movie Her, but with not so many moustaches...", :context => response["entities"], :correct => 1, conversation: newConv, :bot_id => bot.id)
+        # bot.comments.create(:body => "Let's get to know each other. What's your name?", :context => response["entities"], :correct => 1, conversation: newConv, :bot_id => bot.id)
         newConv
       else
         # Current conversation is still going
@@ -63,8 +63,8 @@ class ChatbotController < ApplicationController
     else
       # Return a new conversation
       newConv = Conversation.create(entity: "blarg", correct: 1)
-      bot.comments.create(:body => "Hi there, I'm the Originate Bot. I came online 2 days ago so right now everything about me is new. But I'm learning every day to become a useful member of the team! Sort of like that movie Her, but with not so many moustaches...", :context => response["entities"], :correct => 1, conversation: newConv, :bot_id => bot.id)
-      bot.comments.create(:body => "Let's get to know each other. What's your name?", :context => response["entities"], :correct => 1, conversation: newConv, :bot_id => bot.id)
+      # bot.comments.create(:body => "Hi there, I'm the Originate Bot. I came online 2 days ago so right now everything about me is new. But I'm learning every day to become a useful member of the team! Sort of like that movie Her, but with not so many moustaches...", :context => response["entities"], :correct => 1, conversation: newConv, :bot_id => bot.id)
+      # bot.comments.create(:body => "Let's get to know each other. What's your name?", :context => response["entities"], :correct => 1, conversation: newConv, :bot_id => bot.id)
       newConv
     end
   end
@@ -72,21 +72,24 @@ class ChatbotController < ApplicationController
   def ask_watson(query)
     require 'net/http'
 
-    @body = query.to_json
-
-    # comments = conv.comments
-
-    # Get the context of the previous conversation
-    # if comments.present?
-    #   context = comments.last.context
-    #   p "context: " + @body
-    #   @body['context'] = context
-    # end
+    body = query.to_json
 
     user = get_user_by_cookie()
     bot = Bot.find_by(name: 'originate-questions')
     # Grab the current conversation, or new if one doesn't exist
     conv = get_recent_conv(bot, user)
+
+    # Get the context of the previous conversation
+    comments = conv.comments
+    if comments.present?
+      context = JSON.parse comments.last.context
+      query['context'] = context
+
+      # Check the previous context to see if actions need to be taken
+      query = check_for_actions(query)
+
+      body = ActiveSupport::JSON.encode query
+    end
 
     # For now just broadcast to a single channel
     channel = '/bot'
@@ -96,162 +99,126 @@ class ChatbotController < ApplicationController
     broadcast(channel, data)
 
     # Query Watson API through http:post
-    uri = URI.parse("https://gateway.watsonplatform.net/conversation/api/v1/workspaces/c930657b-7d1f-4947-b8f2-8d24a933ba71/message?version=2016-09-16")
+    uri = URI.parse("https://gateway.watsonplatform.net/conversation/api/v1/workspaces/7ff7c931-6628-46f8-af4f-c6604a4424c6/message?version=2016-09-16")
     http = Net::HTTP.new(uri.host, uri.port)
     http.use_ssl = true
     http.verify_mode = OpenSSL::SSL::VERIFY_NONE
     request = Net::HTTP::Post.new(uri.request_uri)
     request.add_field('Content-Type', 'application/json')
-    request.basic_auth("a4da0ece-5ee3-4e11-87ed-e6afe3ed8b8c", "IeUUcCDdkoMH")
-    request.body = @body
+    request.basic_auth("7abe25d1-9b85-4eec-b842-20a30ab01183", "UATIE1LNveQj")
+    request.body = body
     response = http.request(request)
 
-    # First message returns nothing useful. Just use it to grab the context
-    # if conv.comments.size == 0
-    #
-
     bot_json = ActiveSupport::JSON.decode(response.body)
+
     context = bot_json['context']
-
-    botComment = bot.comments.create(:body => bot_json['output']['text'].last, :context => response.body, :correct => 1, conversation: conv, :bot_id => bot.id)
-    data = {message: botComment}
-    broadcast(channel, data)
-
-    newContext = JSON.parse botComment['context']
-    if newContext['intents'][0]['intent'] == 'create_timer'
-      num = newContext['entities'][0]['value'].to_i
-      sleep(num)
-
-      newContext['timer_done'] = 1
-      newBody = JSON.parse @body
-      newBody['context'] = newContext
-
-      botComment = bot.comments.create(:body => 'Time is up!', :context => newBody, :correct => 1, conversation: conv, :bot_id => bot.id)
+    new_context = ActiveSupport::JSON.encode context
+    bot_responses = bot_json['output']['text']
+    for bot_res in bot_responses
+      botComment = bot.comments.create(:body => bot_res, :context => new_context, :correct => 1, conversation: conv, :bot_id => bot.id)
       data = {message: botComment}
       broadcast(channel, data)
-
-      # # Query watson again to get the response
-      # newContext['timer_done'] = 1
-      # new_http = Net::HTTP.new(uri.host, uri.port)
-      # new_http.use_ssl = true
-      # new_http.verify_mode = OpenSSL::SSL::VERIFY_NONE
-      #
-      # # request.body =
-      # newBody = JSON.parse @body
-      # newBody['context'] = newContext
-      # newBody['input']['text'] = ''
-      # newRequest = request
-      # newRequest.body = ActiveSupport::JSON.encode(newBody)
-      # newResponse = new_http.request(newRequest)
-      # decoded = ActiveSupport::JSON.decode(newResponse.body)
+      sleep(1.5)
     end
-    # if context["intents"][0]["intent"] == 'create_timer'
-    #   p '##############################'
-    # end
-    # if data.message.commentable_type == 'Bot'
-    #   context = JSON.parse data.message.context
-    #   if context.intents[0].intent == 'create_timer'
-    #     num = parseInt context.entities[0].value
-    #     setTimeout
+
   end
 
   def query
-    require 'wit'
-    query = params[:query][:input][:text]
-    # ask_watson(@query)
-    channel = '/bot'
+    query = params[:query]
+    ask_watson(query)
+    render :bot
 
-    user = get_user_by_cookie()
-    bot = Bot.find_by(name: 'originate-questions')
-    # Grab the current conversation, or new if one doesn't exist
-    conv = get_recent_conv(bot, user)
+    # user = get_user_by_cookie()
+    # bot = Bot.find_by(name: 'originate-questions')
+    # # Grab the current conversation, or new if one doesn't exist
+    # conv = get_recent_conv(bot, user)
 
-    actions = {
-      send: -> (request, response) {
-        context = {}
-        # if response['text'] == "I can't answer yet, but now I have a gift for you! Well, actually, it's a gif for you. :P"
-        #   context = "{\"gif\": true}"
-        # end
-        botComment = bot.comments.create(:body => response["text"], :context => context, :correct => 1, conversation: conv, :bot_id => bot.id)
-        data = {message: botComment}
-        broadcast(channel, data)
-        puts("sending... #{response['text']}")
-      },
-      getGif: -> (request) {
-        # botComment = bot.comments.create(:body => '', :context => "{\"gif\": true}", :correct => 1, conversation: conv, :bot_id => bot.id)
-        # data = {message: botComment}
-        # broadcast(channel, data)
-        sleep(4)
-        return {}
-      },
-      lightsOut: -> (request) {
-        entity = request['entities']['yesno'][0]['value']
-        context = request['context']
+    # actions = {
+    #   send: -> (request, response) {
+    #     context = {}
+    #     # if response['text'] == "I can't answer yet, but now I have a gift for you! Well, actually, it's a gif for you. :P"
+    #     #   context = "{\"gif\": true}"
+    #     # end
+    #     botComment = bot.comments.create(:body => response["text"], :context => context, :correct => 1, conversation: conv, :bot_id => bot.id)
+    #     data = {message: botComment}
+    #     broadcast(channel, data)
+    #     puts("sending... #{response['text']}")
+    #   },
+    #   getGif: -> (request) {
+    #     # botComment = bot.comments.create(:body => '', :context => "{\"gif\": true}", :correct => 1, conversation: conv, :bot_id => bot.id)
+    #     # data = {message: botComment}
+    #     # broadcast(channel, data)
+    #     sleep(4)
+    #     return {}
+    #   },
+    #   lightsOut: -> (request) {
+    #     entity = request['entities']['yesno'][0]['value']
+    #     context = request['context']
+    #
+    #     lightChannel = '/lights'
+    #
+    #     #Broadcast the entity and context
+    #     if entity == 'Yes'
+    #       lightData = {lightsOut: true}
+    #       context['yes'] = true
+    #     else
+    #       lightData = {lightsOut: false}
+    #       context['no'] = true
+    #     end
+    #
+    #     broadcast(lightChannel, lightData)
+    #
+    #     #Return the context so that it continues normally
+    #     return context
+    #   },
+    #   getName: -> (request) {
+    #     context = request['context']
+    #     contact = getLastEntity(request, 'contact')
+    #
+    #     context['name'] = contact
+    #     return context
+    #   },
+    #   checkName: -> (request) {
+    #     context = request['context']
+    #     contact = getLastEntity(request, 'contact')
+    #
+    #     bot_name = BotName.find_by(name: contact)
+    #
+    #     if bot_name.present?
+    #       name_count = bot_name.count
+    #       bot_name.update_attribute(:count, name_count+1)
+    #
+    #       context['oldName'] = contact
+    #     else
+    #       BotName.create(name: contact, count: 1)
+    #
+    #       context['newName'] = contact
+    #     end
+    #
+    #     return context
+    #   },
+    #   getMessageCount: -> (request) {
+    #     context = request['context']
+    #     contact = getLastEntity(request, 'finish')
+    #
+    #     context = {}
+    #
+    #     context['numMessages'] = 8
+    #
+    #     return context
+    #   }
+    # }
 
-        lightChannel = '/lights'
-
-        #Broadcast the entity and context
-        if entity == 'Yes'
-          lightData = {lightsOut: true}
-          context['yes'] = true
-        else
-          lightData = {lightsOut: false}
-          context['no'] = true
-        end
-
-        broadcast(lightChannel, lightData)
-
-        #Return the context so that it continues normally
-        return context
-      },
-      getName: -> (request) {
-        context = request['context']
-        contact = getLastEntity(request, 'contact')
-
-        context['name'] = contact
-        return context
-      },
-      checkName: -> (request) {
-        context = request['context']
-        contact = getLastEntity(request, 'contact')
-
-        bot_name = BotName.find_by(name: contact)
-
-        if bot_name.present?
-          name_count = bot_name.count
-          bot_name.update_attribute(:count, name_count+1)
-
-          context['oldName'] = contact
-        else
-          BotName.create(name: contact, count: 1)
-
-          context['newName'] = contact
-        end
-
-        return context
-      },
-      getMessageCount: -> (request) {
-        context = request['context']
-        contact = getLastEntity(request, 'finish')
-
-        context = {}
-
-        context['numMessages'] = 8
-
-        return context
-      }
-    }
-
-    access_token = '6Z74Y7HOXKI6YFLNQSBL25KAWDSNZGLJ'
-    wit = Wit.new(access_token: access_token, actions: actions)
-
-    userComment = user.comments.create(:body => query, :context => 'User Context', :correct => 1, conversation: conv, :bot_id => bot.id)
-    data = {message: userComment}
-    broadcast(channel, data)
-
-    max_steps = 8
-
-    wit.run_actions(conv.id, query, {}, max_steps)
+    # access_token = '6Z74Y7HOXKI6YFLNQSBL25KAWDSNZGLJ'
+    # wit = Wit.new(access_token: access_token, actions: actions)
+    #
+    # userComment = user.comments.create(:body => query, :context => 'User Context', :correct => 1, conversation: conv, :bot_id => bot.id)
+    # data = {message: userComment}
+    # broadcast(channel, data)
+    #
+    # max_steps = 8
+    #
+    # wit.run_actions(conv.id, query, {}, max_steps)
 
     # response = $wit.converse(conv.id, query, {})
     # p 'RESPONSE'
@@ -267,8 +234,6 @@ class ChatbotController < ApplicationController
     # botComment = bot.comments.create(:body => response["msg"], :context => response["entities"], :correct => 1, conversation: conv, :bot_id => bot.id)
     # data = {message: botComment}
     # broadcast(channel, data)
-
-    render :bot
   end
 
   def bot
@@ -448,6 +413,58 @@ class ChatbotController < ApplicationController
 
   def getLastEntity(request, value)
     request['entities'][value][0]['value']
+  end
+
+  def check_for_actions(query)
+    action = query['context']['action']
+    if action == 'grabName'
+      return grab_name(query)
+    elsif action == 'grabBotName'
+      return grab_bot_name(query)
+    elsif action == 'getRandomResponse'
+      return get_random_response(query)
+    end
+    return query
+  end
+
+  def grab_name(query)
+    input = query['input']['text']
+    query['context'][:entities] = []
+    query['context']['entities'][0] = {'entity' => 'Contact', 'value' => 'Blaine Muri'} #['entity']['Contact']['value'] = input
+    # no preprocessing for now
+    query['context']['userName'] = input
+    return query
+  end
+
+  def grab_bot_name(query)
+    #Change it later so that it only stores in the next step
+    input = query['input']['text'].downcase
+    query['context']['botName'] = input
+
+    bot_name = BotName.find_by(name: input)
+
+    if bot_name.present?
+      query['context']['newName'] = 'false'
+      bot_name.update_attribute(:count, bot_name.count+1)
+    else
+      query['context']['newName'] = 'true'
+      BotName.create(name: input, count: 1)
+    end
+
+    return query
+  end
+
+  def get_random_response(query)
+    responses = [
+      "Thanks! I've made a note of that.",
+      "Another one for the database, nice.",
+      "Can't wait to find the answer to that one!",
+      "You're good at this question asking thing. Alex Trebek, eat your heart out.",
+      "If there's an answer to that, I'll find it!",
+      "No one expects the Originate inquisition!"
+    ]
+    query['context']['response'] = responses[rand(6)]
+    return query
   end
 
 end
