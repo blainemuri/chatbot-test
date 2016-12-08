@@ -1,6 +1,15 @@
 React = require 'react'
 
 @Butler = React.createClass
+  componentDidMount: ->
+    tl = new TimelineMax()
+    tl.add('start')
+    tl.to('#eye-1', .2, {height: 0}, 'start')
+      .to('#eye-2', .2, {height: 0}, 'start')
+      .to('#eye-3', .2, {height: 0}, 'start')
+      .to('#eye-4', .2, {height: 0}, 'start')
+    tl.timeScale(1)
+
   render: ->
     {svg, path, circle, g, line} = React.DOM
     svg
@@ -20,21 +29,25 @@ React = require 'react'
 		          C302.1,406.5,395.7,375.6,395.7,287.8z"
         circle
           className: 'bot-st2'
+          id: 'eye-1'
           cx: '117.3'
           cy: '287'
           r: '57'
         circle
           className: 'bot-st2'
+          id: 'eye-2'
           cx: '300.3'
           cy: '287'
           r: '57'
         circle
           className: 'bot-st0'
+          id: 'eye-3'
           cx: '300.4'
           cy: '283.4'
           r: '28.8'
         circle
           className: 'bot-st0'
+          id: 'eye-4'
           cx: '117.4'
           cy: '283.4'
           r: '28.8'
