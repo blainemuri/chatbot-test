@@ -26,5 +26,6 @@ window.Logo = require('./components/logo');
 window.MenuBot = require('./components/menu_bot');
 window.NewBot = require('./components/new_bot');
 window.Overview = require('./components/overview');
+window.Shadow = require('./components/shadow');
 window.Training = require('./components/training');
 window.UserMessage = require('./components/user_message');

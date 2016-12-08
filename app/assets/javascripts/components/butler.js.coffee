@@ -7,9 +7,7 @@ React = require 'react'
       version: '1.1'
       id: 'bot-logo-svg'
       xmlns: 'http://www.w3.org/2000/svg'
-      xmlns:xling: 'http://www.w3.org/1999/xlink'
       viewBox: '0 0 418 482'
-      xml:space: 'preserve'
       g
         g
           path

@@ -63,6 +63,7 @@ React = require 'react'
         #   #   src: @props.chatbot
         div className: 'chat-header',
           React.createElement Butler, null
+          React.createElement Shadow, null
           div
             className: 'more'
             onClick: @toggleMenu
@@ -75,6 +76,7 @@ React = require 'react'
           onClick: @toggleMenu
           'x'
         React.createElement Butler, null
+        React.createElement Shadow, null
         div className: 'analytics',
           div className: 'title', 'Audience Analysis'
           div className: 'analytic',
@@ -99,12 +101,12 @@ React = require 'react'
             textarea
               placeholder: ''
             button className: 'bot-submit', 'Send'
-          form
-            className: 'user-email'
-            name: 'email'
-            input
-              placeholder: 'Sign up for updates...'
-            button className: 'bot-submit', 'Send'
+          # form
+          #   className: 'user-email'
+          #   name: 'email'
+          #   input
+          #     placeholder: 'Sign up for updates...'
+          #   button className: 'bot-submit', 'Send'
       React.createElement Bot,
         chatbot: @props.chatbot
         profile: @props.profile
