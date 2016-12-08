@@ -362,7 +362,13 @@ class ChatbotController < ApplicationController
   def get_user_by_cookie
     if user = cookies.permanent.signed[:user_id]
       currUser = User.find_by(id: user)
-      currUser
+      if currUser
+        currUser
+      else
+        newUser = User.create(accessLevel: 1)
+        cookies.permanent.signed[:user_id] = newUser.id
+        newUser
+      end
     else
       newUser = User.create(accessLevel: 1)
       cookies.permanent.signed[:user_id] = newUser.id
