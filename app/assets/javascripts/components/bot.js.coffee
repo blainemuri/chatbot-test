@@ -132,6 +132,7 @@ React = require 'react'
         div className: 'input',
           form
             id: 'chatbot'
+            type: 'submit'
             onSubmit: @handleSubmit
             input
               type: 'text'
