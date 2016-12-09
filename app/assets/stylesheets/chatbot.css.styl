@@ -15,9 +15,10 @@
 
   #bottom-input
     width: 100%
-    float: left
+    position: fixed
+    bottom: 0
+    left: 0
     height: input-height
-    position: relative
 
     .input
       width: 100%
@@ -44,6 +45,7 @@
     position: relative
     width: 100%
     float: left
+    margin-top: nav-height
     height: "calc(100% - %s)" % input-height
 
     .chat-container
