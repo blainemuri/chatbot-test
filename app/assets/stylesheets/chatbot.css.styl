@@ -1,5 +1,7 @@
 @import 'mixins.styl'
 
+button-width = space*5
+
 @media screen and (-webkit-min-device-pixel-ratio:0) {
   select:focus,
   textarea:focus,
@@ -19,6 +21,7 @@
     bottom: 0
     left: 0
     height: input-height
+    background-color: white
 
     .input
       width: 100%
@@ -28,16 +31,38 @@
 
       form
         responsiveWidth()
-        position: absolute
-        left: 50%
-        top: 50%
-        transform: translateY(-50%) translateX(-50%)
+        height: 100%
+        position: relative
+        margin: 0 auto
+        overflow: hidden
 
         input
           width: 100%
-          font-size: space*1.2
+          font-size: space*1.1
           background-color: transparent
           border-bottom: 2px solid turqoise
+          height: space*3
+          position: absolute
+          left: 0
+          top: 50%
+          transform: translateY(-50%)
+          &.send
+            width: "calc(100% - %s)" % button-width
+
+        button
+          position: absolute
+          right: - button-width
+          top: 50%
+          transform: translateY(-50%)
+          width: button-width
+          color: turqoise
+          height: space*3
+          border: 1px solid turqoise
+          border-radius: 2px
+          background-color: white
+          transition: right .2s ease-out
+          &.send
+            right: 0
 
   #horizontal-center
     overflow-y: auto

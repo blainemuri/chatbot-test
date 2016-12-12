@@ -72,7 +72,7 @@ React = require 'react'
       # TweenLite.fromTo(message, .4, {zoom: '50%', opacity: 0, marginTop: 20}, {transform: "translateY(0)", opacity: 1, zoom: '100%', marginTop: 0})
 
   render: ->
-    {div, input, img, form, iframe} = React.DOM
+    {button, div, input, img, form, iframe} = React.DOM
     div className: "bot-chat-outer #{'dark-theme' unless !@state.dark}",
       div
         id: 'loading'
@@ -138,8 +138,13 @@ React = require 'react'
               type: 'text'
               name: 'botquery'
               id: 'bot-query'
+              className: "#{'send' if @state.text != ''}"
               placeholder: 'Type your message here...'
               onChange: @handleChange
               value: @state.text
+            button
+              type: 'submit'
+              className: "#{'send' if @state.text != ''}"
+              'Send'
 
 module.exports = @Bot

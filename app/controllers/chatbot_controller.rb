@@ -110,6 +110,8 @@ class ChatbotController < ApplicationController
     response = http.request(request)
 
     bot_json = ActiveSupport::JSON.decode(response.body)
+    p '###############################'
+    p bot_json
 
     context = bot_json['context']
     new_context = ActiveSupport::JSON.encode context
@@ -241,11 +243,42 @@ class ChatbotController < ApplicationController
     # user = User.first
     bot = Bot.find_by(name: 'originate-questions')
     conv = get_recent_conv(bot, user)
+
+    # Check to see if you need to query Watson first to get initial comments
+    if !conv.comments.present?
+      channel = '/bot'
+
+      # Query Watson API through http:post
+      uri = URI.parse("https://gateway.watsonplatform.net/conversation/api/v1/workspaces/7ff7c931-6628-46f8-af4f-c6604a4424c6/message?version=2016-09-16")
+      http = Net::HTTP.new(uri.host, uri.port)
+      http.use_ssl = true
+      http.verify_mode = OpenSSL::SSL::VERIFY_NONE
+      request = Net::HTTP::Post.new(uri.request_uri)
+      request.add_field('Content-Type', 'application/json')
+      request.basic_auth("7abe25d1-9b85-4eec-b842-20a30ab01183", "UATIE1LNveQj")
+      request.body = {'input': {'text': 'hello'}}.to_json
+      response = http.request(request)
+
+      bot_json = ActiveSupport::JSON.decode(response.body)
+
+      context = bot_json['context']
+      new_context = ActiveSupport::JSON.encode context
+      bot_responses = bot_json['output']['text']
+      for bot_res in bot_responses
+        p 'BOT RESPONSE'
+        p bot_res
+        botComment = bot.comments.create(:body => bot_res, :context => new_context, :correct => 1, conversation: conv, :bot_id => bot.id)
+        data = {message: botComment}
+        broadcast(channel, data)
+        sleep(1.5)
+      end
+
+    end
+
     @numConvs = Conversation.count
     # sql = "SELECT count(*) AS num_comments FROM comments WHERE (commentable_type = 'User')"
     # @answered = Comment.find_by_sql(sql)
     @answered = Comment.where(commentable_type: 'User').count
-    p @answered
     @conversation = conv.comments
   end
 
