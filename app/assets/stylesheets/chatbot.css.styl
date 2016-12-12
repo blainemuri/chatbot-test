@@ -22,6 +22,8 @@ button-width = space*5
     left: 0
     height: input-height
     background-color: white
+    @media screen and (max-width: mobile)
+      height: input-height*.8
 
     .input
       width: 100%
@@ -49,8 +51,12 @@ button-width = space*5
           left: 0
           top: 50%
           transform: translateY(-50%)
+          border-radius: 0
           &.send
             width: "calc(100% - %s)" % button-width
+          @media screen and (max-width: mobile)
+            font-size: space
+            height: space*2
 
         button
           position: absolute
