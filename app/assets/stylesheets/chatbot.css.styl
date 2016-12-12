@@ -36,7 +36,8 @@ button-width = space*5
         margin: 0 auto
         overflow: hidden
         @media screen and (max-width: mobile)
-          padding space
+          margin: 0 space
+          width: "calc(100% - (%s * 2))" % space
 
         input
           width: 100%
