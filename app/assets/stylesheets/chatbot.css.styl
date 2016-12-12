@@ -65,7 +65,8 @@ button-width = space*5
             right: 0
 
   #horizontal-center
-    overflow-y: auto
+    overflow-y: scroll /* has to be scroll, not auto */
+    -webkit-overflow-scrolling: touch
     overflow-x: hidden
     position: relative
     width: 100%
