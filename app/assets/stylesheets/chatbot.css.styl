@@ -66,8 +66,6 @@ button-width = space*5
 
   #horizontal-center
     overflow-y: scroll /* has to be scroll, not auto */
-    -webkit-overflow-scrolling: touch
-    overflow-x: hidden
     position: relative
     width: 100%
     float: left
@@ -77,6 +75,8 @@ button-width = space*5
     .chat-container
       responsiveWidth()
       position: absolute
+      overflow-y: scroll /* has to be scroll, not auto */
+      -webkit-overflow-scrolling: touch
       left: 50%
       transform: translateX(-50%)
       height: 100%
