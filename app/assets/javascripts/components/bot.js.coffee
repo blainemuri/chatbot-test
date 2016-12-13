@@ -139,7 +139,7 @@ React = require 'react'
               name: 'botquery'
               id: 'bot-query'
               className: "#{'send' if @state.text != ''}"
-              placeholder: 'Type message...'
+              placeholder: 'Message...'
               onChange: @handleChange
               value: @state.text
             button
