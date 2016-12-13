@@ -80,6 +80,8 @@
     &.show
       top: 0
       opacity: 1
+      svg
+        transform: translateX(-50%) translateY(0px)
 
   svg
     width: 25%
@@ -87,6 +89,9 @@
     left: 50%
     transform: translateX(-50%)
     margin-bottom: space*2
+    transition: all .5s ease-out
+    @media screen and (max-width: mobile)
+      transform: translateX(-50%) translateY(50%)
 
   .bot-shadow
     margin-top: (nav-height*.2)
