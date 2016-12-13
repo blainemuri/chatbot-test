@@ -68,14 +68,17 @@
   overflow-y: scroll /* has to be scroll, not auto */
   -webkit-overflow-scrolling: touch
   transition: all .2s ease-in-out
+  opacity: 0
   &.show
     right: 0
+    opacity: 1
   @media screen and (max-width: mobile)
     top: 100%
     right: 0
     width: 100%
     &.show
       top: 0
+      opacity: 1
 
   svg
     width: 25%
