@@ -82,7 +82,7 @@ button-width = space*5
     margin-top: nav-height
     height: "calc(100% - %s)" % input-height
 
-    .chat-container
+    #chat-container
       responsiveWidth()
       position: absolute
       overflow-y: scroll /* has to be scroll, not auto */
@@ -124,6 +124,8 @@ button-width = space*5
           .message
             float: right
             margin-right: space
+            border-radius: 10px 3px 10px 10px
+            background-color: #99e9ff
 
           svg
             width: profile-size*3
