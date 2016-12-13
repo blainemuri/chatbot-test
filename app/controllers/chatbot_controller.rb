@@ -76,6 +76,7 @@ class ChatbotController < ApplicationController
 
     user = get_user_by_cookie()
     bot = Bot.find_by(name: 'originate-questions')
+
     # Grab the current conversation, or new if one doesn't exist
     conv = get_recent_conv(bot, user)
 

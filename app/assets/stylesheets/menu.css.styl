@@ -5,8 +5,6 @@
   top: 0
   right: 0
   transition: right .15s ease-out
-  &.show-menu
-    right: menu-width
 
 .bot-submit
   width: space*8
@@ -34,7 +32,7 @@
     left: 50%
     top: 50%
     transform: translateX(-50%)
-    margin-top: nav-height*.1
+    margin-top: nav-height*.2
     background-color: transparent
     border-radius: 20px
 
@@ -69,15 +67,22 @@
   z-index: 100000
   overflow-y: scroll /* has to be scroll, not auto */
   -webkit-overflow-scrolling: touch
-  transition: right .15s ease-out
+  transition: all .2s ease-in-out
   &.show
     right: 0
+  @media screen and (max-width: mobile)
+    top: 100%
+    right: 0
+    width: 100%
+    &.show
+      top: 0
 
   svg
     width: 25%
     margin-top: nav-height*.75
     left: 50%
     transform: translateX(-50%)
+    margin-bottom: space*2
 
   .bot-shadow
     margin-top: (nav-height*.2)

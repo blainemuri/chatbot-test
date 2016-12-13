@@ -63,7 +63,6 @@ React = require 'react'
         #   #   src: @props.chatbot
         div className: 'chat-header',
           React.createElement Butler, null
-          React.createElement Shadow, null
           div
             className: 'more'
             onClick: @toggleMenu
@@ -76,7 +75,6 @@ React = require 'react'
           onClick: @toggleMenu
           'x'
         React.createElement Butler, null
-        React.createElement Shadow, null
         div className: 'analytics',
           div className: 'title', 'Audience Analysis'
           div className: 'analytic',
