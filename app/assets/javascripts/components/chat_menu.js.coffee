@@ -104,7 +104,6 @@ React = require 'react'
         div
           className: 'close'
           onClick: @toggleMenu
-          'x'
         React.createElement Butler,
           p001: @props.p001
           p002: @props.p002
