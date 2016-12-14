@@ -84,6 +84,7 @@ button-width = space*4.7
 
   #horizontal-center
     overflow-y: scroll /* has to be scroll, not auto */
+    -webkit-overflow-scrolling: touch
     position: relative
     width: 100%
     float: left
@@ -97,8 +98,8 @@ button-width = space*4.7
     #chat-container
       responsiveWidth()
       position: absolute
-      overflow-y: scroll /* has to be scroll, not auto */
-      -webkit-overflow-scrolling: touch
+      // overflow-y: scroll /* has to be scroll, not auto */
+      // -webkit-overflow-scrolling: touch
       left: 50%
       transform: translateX(-50%)
       height: 100%
@@ -131,6 +132,9 @@ button-width = space*4.7
             p
               padding: 0
               margin: 0
+
+        .bot-message + .bot-message
+          padding-top: 0
 
         .user-message
           .message
