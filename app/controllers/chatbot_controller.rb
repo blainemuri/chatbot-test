@@ -54,6 +54,28 @@ class ChatbotController < ApplicationController
         newConv = Conversation.create(entity: "blarg", correct: 1)
         # bot.comments.create(:body => "Hi there, I'm the Originate Bot. I came online 2 days ago so right now everything about me is new. But I'm learning every day to become a useful member of the team! Sort of like that movie Her, but with not so many moustaches...", :context => response["entities"], :correct => 1, conversation: newConv, :bot_id => bot.id)
         # bot.comments.create(:body => "Let's get to know each other. What's your name?", :context => response["entities"], :correct => 1, conversation: newConv, :bot_id => bot.id)
+        # Check to see if you need to query Watson first to get initial comments
+
+        # Query Watson API through http:post
+        uri = URI.parse("https://gateway.watsonplatform.net/conversation/api/v1/workspaces/7ff7c931-6628-46f8-af4f-c6604a4424c6/message?version=2016-09-16")
+        http = Net::HTTP.new(uri.host, uri.port)
+        http.use_ssl = true
+        http.verify_mode = OpenSSL::SSL::VERIFY_NONE
+        request = Net::HTTP::Post.new(uri.request_uri)
+        request.add_field('Content-Type', 'application/json')
+        request.basic_auth("7abe25d1-9b85-4eec-b842-20a30ab01183", "UATIE1LNveQj")
+        request.body = {'input': {'text': 'New Conversation'}}.to_json
+        response = http.request(request)
+
+        bot_json = ActiveSupport::JSON.decode(response.body)
+
+        context = bot_json['context']
+        new_context = ActiveSupport::JSON.encode context
+        bot_responses = bot_json['output']['text']
+        for bot_res in bot_responses
+          botComment = bot.comments.create(:body => bot_res, :context => new_context, :correct => 1, conversation: newConv, :bot_id => bot.id)
+        end
+
         newConv
       else
         # Current conversation is still going
@@ -65,6 +87,27 @@ class ChatbotController < ApplicationController
       newConv = Conversation.create(entity: "blarg", correct: 1)
       # bot.comments.create(:body => "Hi there, I'm the Originate Bot. I came online 2 days ago so right now everything about me is new. But I'm learning every day to become a useful member of the team! Sort of like that movie Her, but with not so many moustaches...", :context => response["entities"], :correct => 1, conversation: newConv, :bot_id => bot.id)
       # bot.comments.create(:body => "Let's get to know each other. What's your name?", :context => response["entities"], :correct => 1, conversation: newConv, :bot_id => bot.id)
+
+      # Query Watson API through http:post
+      uri = URI.parse("https://gateway.watsonplatform.net/conversation/api/v1/workspaces/7ff7c931-6628-46f8-af4f-c6604a4424c6/message?version=2016-09-16")
+      http = Net::HTTP.new(uri.host, uri.port)
+      http.use_ssl = true
+      http.verify_mode = OpenSSL::SSL::VERIFY_NONE
+      request = Net::HTTP::Post.new(uri.request_uri)
+      request.add_field('Content-Type', 'application/json')
+      request.basic_auth("7abe25d1-9b85-4eec-b842-20a30ab01183", "UATIE1LNveQj")
+      request.body = {'input': {'text': 'New Conversation'}}.to_json
+      response = http.request(request)
+
+      bot_json = ActiveSupport::JSON.decode(response.body)
+
+      context = bot_json['context']
+      new_context = ActiveSupport::JSON.encode context
+      bot_responses = bot_json['output']['text']
+      for bot_res in bot_responses
+        botComment = bot.comments.create(:body => bot_res, :context => new_context, :correct => 1, conversation: newConv, :bot_id => bot.id)
+      end
+
       newConv
     end
   end
@@ -244,37 +287,6 @@ class ChatbotController < ApplicationController
     # user = User.first
     bot = Bot.find_by(name: 'originate-questions')
     conv = get_recent_conv(bot, user)
-
-    # Check to see if you need to query Watson first to get initial comments
-    if !conv.comments.present?
-      channel = '/bot'
-
-      # Query Watson API through http:post
-      uri = URI.parse("https://gateway.watsonplatform.net/conversation/api/v1/workspaces/7ff7c931-6628-46f8-af4f-c6604a4424c6/message?version=2016-09-16")
-      http = Net::HTTP.new(uri.host, uri.port)
-      http.use_ssl = true
-      http.verify_mode = OpenSSL::SSL::VERIFY_NONE
-      request = Net::HTTP::Post.new(uri.request_uri)
-      request.add_field('Content-Type', 'application/json')
-      request.basic_auth("7abe25d1-9b85-4eec-b842-20a30ab01183", "UATIE1LNveQj")
-      request.body = {'input': {'text': 'hello'}}.to_json
-      response = http.request(request)
-
-      bot_json = ActiveSupport::JSON.decode(response.body)
-
-      context = bot_json['context']
-      new_context = ActiveSupport::JSON.encode context
-      bot_responses = bot_json['output']['text']
-      for bot_res in bot_responses
-        p 'BOT RESPONSE'
-        p bot_res
-        botComment = bot.comments.create(:body => bot_res, :context => new_context, :correct => 1, conversation: conv, :bot_id => bot.id)
-        data = {message: botComment}
-        broadcast(channel, data)
-        sleep(1.5)
-      end
-
-    end
 
     @numConvs = Conversation.count
     # sql = "SELECT count(*) AS num_comments FROM comments WHERE (commentable_type = 'User')"

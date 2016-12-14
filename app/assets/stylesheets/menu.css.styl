@@ -1,5 +1,7 @@
 @import 'mixins.styl'
 
+button-width = space*4.7
+
 .main
   position: fixed
   top: 0
@@ -7,13 +9,17 @@
   transition: right .15s ease-out
 
 .bot-submit
-  width: space*8
+  width: button-width
+  color: turqoise
   height: space*3
-  color: white
+  border: 1px solid turqoise
+  border-radius: 2px
   background-color: turqoise
-  border: none
-  margin: space 0
+  color: white
+  font-weight: bold
+  font-size: space*.9
   float: right
+  margin: space 0
 
 #chat-menu
   width: 100%
@@ -120,7 +126,7 @@
       height: space*3.5
       line-height: space*3.5
       border-bottom: 1px solid medium-grey
-      font-size: space*.8
+      font-size: space*.9
 
     .analytic
       height: space*3
@@ -139,13 +145,18 @@
       float: left
 
       .title
-        font-size: space*.8
+        font-size: space*.9
 
       textarea
         width: 100%
         height: nav-height*1.5
         resize: none
         border: 1px solid medium-grey
+        font-size: space
+        line-height: space
+        max-height: nav-height*1.5
+        border-top: none
+        padding: space*.5
 
     .user-email
       margin-top: space*2
