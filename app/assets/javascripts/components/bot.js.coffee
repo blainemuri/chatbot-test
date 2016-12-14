@@ -59,7 +59,6 @@ React = require 'react'
 
     # Set up the faye websocket client to listen to /bot
     client = new Faye.Client(window.location.protocol + "//" + window.location.host + "/faye")
-    console.log "/bot-#{@props.convId}"
     client.subscribe "/bot-#{@props.convId}", (data) =>
       messages = @state.messages
       messages.push data.message

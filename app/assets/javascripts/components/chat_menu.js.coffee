@@ -97,6 +97,7 @@ React = require 'react'
             className: 'more'
             onClick: @toggleMenu
             'i'
+      div className: "overlay #{'show' if @state.showMenu}", ''
       div
         id: 'right-menu'
         className: "#{'show' if @state.showMenu}"
