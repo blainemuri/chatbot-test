@@ -49,7 +49,7 @@ class ChatbotController < ApplicationController
       # Check to see if the conversation intents decreased (create new conv.)
       # Or create a new one based off of time stamps (current implementation)
       elapsed_seconds = Time.now - Time.parse(conv.comments.last.created_at.to_s)
-      if (elapsed_seconds / 60) > 1
+      if (elapsed_seconds / 60) > 15
         # Greater than 5 minutes, create a new conversation
         newConv = Conversation.create(entity: "blarg", correct: 1)
         # bot.comments.create(:body => "Hi there, I'm the Originate Bot. I came online 2 days ago so right now everything about me is new. But I'm learning every day to become a useful member of the team! Sort of like that movie Her, but with not so many moustaches...", :context => response["entities"], :correct => 1, conversation: newConv, :bot_id => bot.id)
