@@ -136,7 +136,9 @@ class ChatbotController < ApplicationController
     end
 
     # For now just broadcast to a single channel
-    channel = '/bot'
+    channel = "/bot-#{conv.id}"
+
+    p channel
 
     userComment = user.comments.create(:body => query['input']['text'], :context => 'User Context', :correct => 1, conversation: conv, :bot_id => bot.id)
     data = {message: userComment}
@@ -293,6 +295,7 @@ class ChatbotController < ApplicationController
     # @answered = Comment.find_by_sql(sql)
     @answered = Comment.where(commentable_type: 'User').count
     @conversation = conv.comments
+    @convId = conv.id
   end
 
   # TODO: When creating a new bot, add the entities/intents to their respective records

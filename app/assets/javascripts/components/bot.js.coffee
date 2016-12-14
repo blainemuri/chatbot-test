@@ -12,6 +12,8 @@ React = require 'react'
   handleSubmit: (e) ->
     e.preventDefault()
 
+    text = @state.text
+    @setState text: ''
     last =  @state.messages[..].pop()
     context = {}
     if last?
@@ -22,17 +24,15 @@ React = require 'react'
       data: {
               'query': {
                 'input': {
-                  'text': @state.text
+                  'text': text
                 }
               }
             }
       method: 'POST'
     .done (response) =>
-      @setState text: ""
       @forceUpdate()
     .fail ->
       alert 'Message failed to send!'
-    @setState text: ''
 
   handleChange: (e) -> @setState text: e.target.value
 
@@ -59,7 +59,8 @@ React = require 'react'
 
     # Set up the faye websocket client to listen to /bot
     client = new Faye.Client(window.location.protocol + "//" + window.location.host + "/faye")
-    client.subscribe '/bot', (data) =>
+    console.log "/bot-#{@props.convId}"
+    client.subscribe "/bot-#{@props.convId}", (data) =>
       messages = @state.messages
       messages.push data.message
       @setState messages: messages
