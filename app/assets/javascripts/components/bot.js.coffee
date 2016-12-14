@@ -8,11 +8,20 @@ React = require 'react'
     dark: no
     messages: []
     url: ''
+    space: no
 
   handleSubmit: (e) ->
     e.preventDefault()
 
     text = @state.text
+    if text.substring(0, 1) == '/'
+      @setState space: !@state.space
+      @setState text: ""
+    else
+      @sendMessage text
+
+
+  sendMessage: (text) ->
     @setState text: ''
     last =  @state.messages[..].pop()
     context = {}
@@ -80,6 +89,7 @@ React = require 'react'
         id: 'loading2'
       div
         id: 'horizontal-center'
+        className: "#{'space' if @state.space}"
         div id: 'chat-container',
           div
             className: 'conversation'
