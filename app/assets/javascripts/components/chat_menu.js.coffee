@@ -62,7 +62,37 @@ React = require 'react'
         #   #   className: 'chat-botler'
         #   #   src: @props.chatbot
         div className: 'chat-header',
-          React.createElement Butler, null
+          React.createElement Butler,
+            p001: @props.p001
+            p002: @props.p002
+            p003: @props.p003
+            p004: @props.p004
+            p005: @props.p005
+            p006: @props.p006
+            p007: @props.p007
+            p008: @props.p008
+            p009: @props.p009
+            p010: @props.p010
+            p011: @props.p011
+            p012: @props.p012
+            p013: @props.p013
+            p014: @props.p014
+            p015: @props.p015
+            p016: @props.p016
+            p017: @props.p017
+            p018: @props.p018
+            p019: @props.p019
+            p020: @props.p020
+            p021: @props.p021
+            p022: @props.p022
+            p023: @props.p023
+            p024: @props.p024
+            p025: @props.p025
+            p026: @props.p026
+            p027: @props.p027
+            p028: @props.p028
+            p029: @props.p029
+            p030: @props.p030
           div
             className: 'more'
             onClick: @toggleMenu
@@ -74,7 +104,37 @@ React = require 'react'
           className: 'close'
           onClick: @toggleMenu
           'x'
-        React.createElement Butler, null
+        React.createElement Butler,
+          p001: @props.p001
+          p002: @props.p002
+          p003: @props.p003
+          p004: @props.p004
+          p005: @props.p005
+          p006: @props.p006
+          p007: @props.p007
+          p008: @props.p008
+          p009: @props.p009
+          p010: @props.p010
+          p011: @props.p011
+          p012: @props.p012
+          p013: @props.p013
+          p014: @props.p014
+          p015: @props.p015
+          p016: @props.p016
+          p017: @props.p017
+          p018: @props.p018
+          p019: @props.p019
+          p020: @props.p020
+          p021: @props.p021
+          p022: @props.p022
+          p023: @props.p023
+          p024: @props.p024
+          p025: @props.p025
+          p026: @props.p026
+          p027: @props.p027
+          p028: @props.p028
+          p029: @props.p029
+          p030: @props.p030
         div className: 'analytics',
           div className: 'title', 'Audience Analysis'
           div className: 'analytic',
