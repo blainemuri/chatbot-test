@@ -71,10 +71,14 @@ button-width = space*4.7
           border-radius: 2px
           background-color: turqoise
           color: white
-          transition: right .2s ease-out
           font-weight: bold
           font-size: space*.9
           padding: 0
+          transition: opacity .3s, right .3s ease
+          opacity: 1
+          cursor: pointer
+          &:hover
+            opacity: .7
           &.send
             right: 0
 
